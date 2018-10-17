@@ -1,0 +1,57 @@
+<%= form_with(model: exam, local: true) do |form| %>
+  <% if exam.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(exam.errors.count, "error") %> prohibited this exam from being saved:</h2>
+
+      <ul>
+      <% exam.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :exam_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sem %>
+    <%= form.number_field :sem, id: :exam_sem %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.text_field :year, id: :exam_year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :program %>
+    <%= form.number_field :program, id: :exam_program %>
+  </div>
+
+  <div class="field">
+    <%= form.label :registered_regular_students %>
+    <%= form.number_field :registered_regular_students, id: :exam_registered_regular_students %>
+  </div>
+
+  <div class="field">
+    <%= form.label :registered_irregular_students %>
+    <%= form.number_field :registered_irregular_students, id: :exam_registered_irregular_students %>
+  </div>
+
+  <div class="field">
+    <%= form.label :passed %>
+    <%= form.number_field :passed, id: :exam_passed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :failed %>
+    <%= form.number_field :failed, id: :exam_failed %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
