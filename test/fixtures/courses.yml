@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: courses
+#
+#  id              :integer          not null, primary key
+#  section_a_marks :float(24)
+#  section_b_marks :float(24)
+#  attendance      :float(24)
+#  assesment       :float(24)
+#  grade           :integer
+#  marks           :float(24)
+#  total_marks     :float(24)
+#  percentage      :float(24)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section_a_marks: 
+  section_b_marks: 
+  attendance: 
+  assesment: 
+  grade: 1
+  marks: 
+  total_marks: 
+  percentage: 
+
+two:
+  section_a_marks: 
+  section_b_marks: 
+  attendance: 
+  assesment: 
+  grade: 1
+  marks: 
+  total_marks: 
+  percentage: 

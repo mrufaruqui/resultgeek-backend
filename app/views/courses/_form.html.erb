@@ -1,0 +1,57 @@
+<%= form_with(model: course, local: true) do |form| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :section_a_marks %>
+    <%= form.text_field :section_a_marks, id: :course_section_a_marks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :section_b_marks %>
+    <%= form.text_field :section_b_marks, id: :course_section_b_marks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attendance %>
+    <%= form.text_field :attendance, id: :course_attendance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assesment %>
+    <%= form.text_field :assesment, id: :course_assesment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade %>
+    <%= form.number_field :grade, id: :course_grade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :marks %>
+    <%= form.text_field :marks, id: :course_marks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_marks %>
+    <%= form.text_field :total_marks, id: :course_total_marks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :percentage %>
+    <%= form.text_field :percentage, id: :course_percentage %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
