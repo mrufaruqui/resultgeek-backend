@@ -6,43 +6,33 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get courses_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_course_url
+    get courses_url, as: :json
     assert_response :success
   end
 
   test "should create course" do
     assert_difference('Course.count') do
-      post courses_url, params: { course: { assesment: @course.assesment, attendance: @course.attendance, grade: @course.grade, marks: @course.marks, percentage: @course.percentage, section_a_marks: @course.section_a_marks, section_b_marks: @course.section_b_marks, total_marks: @course.total_marks } }
+      post courses_url, params: { course: { code: @course.code, credit: @course.credit, title: @course.title } }, as: :json
     end
 
-    assert_redirected_to course_url(Course.last)
+    assert_response 201
   end
 
   test "should show course" do
-    get course_url(@course)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_course_url(@course)
+    get course_url(@course), as: :json
     assert_response :success
   end
 
   test "should update course" do
-    patch course_url(@course), params: { course: { assesment: @course.assesment, attendance: @course.attendance, grade: @course.grade, marks: @course.marks, percentage: @course.percentage, section_a_marks: @course.section_a_marks, section_b_marks: @course.section_b_marks, total_marks: @course.total_marks } }
-    assert_redirected_to course_url(@course)
+    patch course_url(@course), params: { course: { code: @course.code, credit: @course.credit, title: @course.title } }, as: :json
+    assert_response 200
   end
 
   test "should destroy course" do
     assert_difference('Course.count', -1) do
-      delete course_url(@course)
+      delete course_url(@course), as: :json
     end
 
-    assert_redirected_to courses_url
+    assert_response 204
   end
 end

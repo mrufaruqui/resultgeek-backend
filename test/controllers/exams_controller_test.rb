@@ -6,43 +6,33 @@ class ExamsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get exams_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_exam_url
+    get exams_url, as: :json
     assert_response :success
   end
 
   test "should create exam" do
     assert_difference('Exam.count') do
-      post exams_url, params: { exam: { failed: @exam.failed, passed: @exam.passed, program: @exam.program, registered_irregular_students: @exam.registered_irregular_students, registered_regular_students: @exam.registered_regular_students, sem: @exam.sem, title: @exam.title, year: @exam.year } }
+      post exams_url, params: { exam: { program: @exam.program, sem: @exam.sem, title: @exam.title, year: @exam.year } }, as: :json
     end
 
-    assert_redirected_to exam_url(Exam.last)
+    assert_response 201
   end
 
   test "should show exam" do
-    get exam_url(@exam)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_exam_url(@exam)
+    get exam_url(@exam), as: :json
     assert_response :success
   end
 
   test "should update exam" do
-    patch exam_url(@exam), params: { exam: { failed: @exam.failed, passed: @exam.passed, program: @exam.program, registered_irregular_students: @exam.registered_irregular_students, registered_regular_students: @exam.registered_regular_students, sem: @exam.sem, title: @exam.title, year: @exam.year } }
-    assert_redirected_to exam_url(@exam)
+    patch exam_url(@exam), params: { exam: { program: @exam.program, sem: @exam.sem, title: @exam.title, year: @exam.year } }, as: :json
+    assert_response 200
   end
 
   test "should destroy exam" do
     assert_difference('Exam.count', -1) do
-      delete exam_url(@exam)
+      delete exam_url(@exam), as: :json
     end
 
-    assert_redirected_to exams_url
+    assert_response 204
   end
 end

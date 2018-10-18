@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-  resources :students do 
-     collection do
-        post :import
-     end
-  end
-  resources :courses
   resources :exams
-  root to: 'visitors#index'
-  devise_for :users
-  resources :users
-  resources :visitors
+  resources :courses
+  #root_url 'students#index'
+  resources :customers
+  mount_devise_token_auth_for 'User', at: 'auth'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+   resources :students
+   post 'import_students'                   => 'students#import' 
 end

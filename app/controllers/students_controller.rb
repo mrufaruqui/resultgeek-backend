@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_student, only: [:show, :update, :destroy]
 
   # GET /students
   # GET /students.json
@@ -12,42 +13,25 @@ class StudentsController < ApplicationController
   def show
   end
 
-  # GET /students/new
-  def new
-    @student = Student.new
-  end
-
-  # GET /students/1/edit
-  def edit
-  end
-
   # POST /students
   # POST /students.json
   def create
     @student = Student.new(student_params)
 
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
-        format.json { render :show, status: :created, location: @student }
-      else
-        format.html { render :new }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
+    if @student.save
+      render :show, status: :created, location: @student
+    else
+      render json: @student.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
-    respond_to do |format|
-      if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
-        format.json { render :show, status: :ok, location: @student }
-      else
-        format.html { render :edit }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
+    if @student.update(student_params)
+      render :show, status: :ok, location: @student
+    else
+      render json: @student.errors, status: :unprocessable_entity
     end
   end
 
@@ -55,15 +39,19 @@ class StudentsController < ApplicationController
   # DELETE /students/1.json
   def destroy
     @student.destroy
-    respond_to do |format|
-      format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   def import
-    Student.import(params[:file])
-    redirect_to root_url, notice: 'Students imported.'
+    # puts params[:file]
+     
+    # params[:file].each |student_p| do 
+    # #   s = Student.new(student_p)
+    # #   s.save
+    # # end
+    Student.import(params[:file]) unless params[:file].blank?
+    #@students = Student.all
+    render :index
+    #redirect_to root_url, notice: 'Students imported.'
   end
 
   private
@@ -74,16 +62,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :roll, :hall, :hall_name, :gpa, :status)
+      params.fetch(:student, {})
     end
-    
-    # def self.open_spreadsheet(file)
-    #   case File.extname(file.original_filename)
-    #   when ".csv" then Roo::CSV.new(file.path, nil, :ignore)
-    #   when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
-    #   when ".xlsx" then Roo::Excelx.new(file.path, nil, :ignore)
-    #   else raise "Unknown file type: #{file.original_filename}"
-    # end
-    #end
-
 end
