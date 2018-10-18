@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181018105431) do
+ActiveRecord::Schema.define(version: 20181018113221) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -38,6 +38,31 @@ ActiveRecord::Schema.define(version: 20181018105431) do
     t.integer "status", limit: 1, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "summations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.float "assesment", limit: 24
+    t.float "attendance", limit: 24
+    t.float "section_a_marks", limit: 24
+    t.float "section_b_marks", limit: 24
+    t.float "total_marks", limit: 24
+    t.string "gpa"
+    t.float "grade", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "section_a_code"
+    t.string "section_b_code"
+  end
+
+  create_table "tabulations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "student_id"
+    t.float "gpa", limit: 24
+    t.float "tce", limit: 24
+    t.string "result"
+    t.string "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_tabulations_on_student_id", unique: true
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -70,4 +95,5 @@ ActiveRecord::Schema.define(version: 20181018105431) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "tabulations", "students"
 end

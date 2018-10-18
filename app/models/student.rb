@@ -33,22 +33,16 @@ class Student < ApplicationRecord
     #   end
     # end
 
-    def self.import(students_info)
-      # students_info.each do |s|
-      #   puts s
-      # end
-      #spreadsheet = Roo::Spreadsheet.open(file.path)
+    def self.import(students_info) 
       header = students_info[0]
       body = students_info - [header]
-      body.each do |i|
-        #row = Hash[header, students_info[i].transpose].symbolize_keys
+      body.each do |i| 
         row = Hash[[header, i].transpose].symbolize_keys
         student = find_by(roll: row[:roll]) || new
         student.roll = row[:roll]
         student.name = row[:name]
         student.hall_name = row[:hall_name]
-        student.hall = row[:hall]
-        #student.attributes = row.to_hash.re
+        student.hall = row[:hall] 
         student.save
       end
     end

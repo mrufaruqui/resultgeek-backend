@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  assesment: 1.5
+  attendance: 1.5
+  section_a_marks: 1.5
+  section_b_marks: 1.5
+  total_marks: 1.5
+  gpa: MyString
+  grade: 1.5
+
+two:
+  assesment: 1.5
+  attendance: 1.5
+  section_a_marks: 1.5
+  section_b_marks: 1.5
+  total_marks: 1.5
+  gpa: MyString
+  grade: 1.5

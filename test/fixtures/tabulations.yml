@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  gpa: 1.5
+  tce: 1.5
+  result: 
+  remarks: MyString
+
+two:
+  student_id: 1
+  gpa: 1.5
+  tce: 1.5
+  result: 
+  remarks: MyString

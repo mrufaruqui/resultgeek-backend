@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :summations
+  resources :tabulations
   resources :exams
   resources :courses
   #root_url 'students#index'
