@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181018113221) do
+ActiveRecord::Schema.define(version: 20181018171617) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20181018113221) do
     t.integer "credit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "course_type", limit: 1, default: 0
   end
 
   create_table "exams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -52,6 +53,14 @@ ActiveRecord::Schema.define(version: 20181018113221) do
     t.datetime "updated_at", null: false
     t.string "section_a_code"
     t.string "section_b_code"
+    t.bigint "student_id"
+    t.bigint "course_id"
+    t.string "marks"
+    t.string "remarks"
+    t.float "percetage", limit: 24
+    t.float "cact", limit: 24
+    t.index ["course_id"], name: "index_summations_on_course_id"
+    t.index ["student_id"], name: "index_summations_on_student_id"
   end
 
   create_table "tabulations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

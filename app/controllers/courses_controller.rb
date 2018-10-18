@@ -40,6 +40,11 @@ class CoursesController < ApplicationController
     @course.destroy
   end
 
+
+  def import
+    Course.import(params[:file]) unless params[:file].blank?
+    render :index
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course

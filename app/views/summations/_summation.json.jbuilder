@@ -1,2 +1,2 @@
-json.extract! summation, :id, :assesment, :attendance, :section_a_marks, :section_b_marks, :total_marks, :gpa, :grade, :created_at, :updated_at
+json.extract! summation, :id, :assesment, :attendance, :cact, :section_a_code, :section_b_code, :marks, :percetage, :section_a_marks, :section_b_marks, :total_marks, :gpa, :grade
 json.url summation_url(summation, format: :json)
