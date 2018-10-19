@@ -76,7 +76,7 @@ class SummationsController < ApplicationController
         end
 
         summation.percetage = (summation.total_marks.to_f / (@course.credit.to_f * 25.to_f)) * 100.to_f
-        ret = calculate_grade(summation.percetage.to_f)
+        ret = calculate_grade(summation.percetage.to_f) 
         summation.gpa = ret[:lg]
         summation.grade = ret[:ps]
         summation.save

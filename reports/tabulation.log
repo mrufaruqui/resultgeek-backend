@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  19 OCT 2018 23:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  20 OCT 2018 01:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -687,224 +687,198 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 )) ABD: EveryShipout initializing macros
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 22--22
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 23--23
  []|\T1/put/b/n/10.95 Letter 
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 22--22
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 23--23
  \T1/put/b/n/10.95 Grade| 
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 22--23
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 23--24
 []|\T1/put/b/n/10.95 Grade
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 22--23
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 23--24
 \T1/put/b/n/10.95 Point| 
  []
 
 <cu-logo.jpg, id=4, 726.715pt x 1027.84pt>
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 42.
+Package pdftex.def Info: cu-logo.jpg  used on input line 44.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--98
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 66--78
+ []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--106
 []|\T1/put/m/n/10 Md. Habibul
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 98--98
+Underfull \hbox (badness 4144) in paragraph at lines 106--106
 []|\T1/put/m/n/10 Md. Abu Saiem
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--98
+Underfull \hbox (badness 10000) in paragraph at lines 106--106
 []|\T1/put/m/n/10 Misbah Ud-din
  []
 
 
-Underfull \hbox (badness 2717) in paragraph at lines 98--98
+Underfull \hbox (badness 2717) in paragraph at lines 106--106
 []|\T1/put/m/n/10 Mohammed Sai-ful
  []
 
 [1
 
 {/Users/rufaruqui/Library/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/p
-dftex.map} <./cu-logo.jpg>]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 148--148
+dftex.map} <./cu-logo.jpg>] [2]
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 156--156
  []|\T1/put/b/n/10.95 Letter 
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 148--148
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 156--156
  \T1/put/b/n/10.95 Grade| 
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 148--149
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 156--157
 []|\T1/put/b/n/10.95 Grade
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 148--149
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 156--157
 \T1/put/b/n/10.95 Point| 
  []
 
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 168.
-(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
-[2
-
-]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 274--274
- []|\T1/put/b/n/10.95 Letter 
- []
-
-
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 274--274
- \T1/put/b/n/10.95 Grade| 
- []
-
-
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 274--275
-[]|\T1/put/b/n/10.95 Grade
- []
-
-
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 274--275
-\T1/put/b/n/10.95 Point| 
- []
-
-File: cu-logo.jpg Graphic file (type jpg)
-<use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 294.
+Package pdftex.def Info: cu-logo.jpg  used on input line 201.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--350
-[]|\T1/put/m/n/10 Nu Shai Mong
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 223--235
  []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--350
-[]|\T1/put/m/n/10 Md Mosharaf
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--350
-[]|\T1/put/m/n/10 Md Sai-fud-din
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--350
-[]|\T1/put/m/n/10 Muntasir Md.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--350
-[]|\T1/put/m/n/10 Mostaq Ahmed
  []
 
 [3
 
 ]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 400--400
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 313--313
  []|\T1/put/b/n/10.95 Letter 
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 400--400
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 313--313
  \T1/put/b/n/10.95 Grade| 
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 400--401
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 313--314
 []|\T1/put/b/n/10.95 Grade
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 400--401
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 313--314
 \T1/put/b/n/10.95 Point| 
  []
 
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 420.
+Package pdftex.def Info: cu-logo.jpg  used on input line 358.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 
-Underfull \hbox (badness 1436) in paragraph at lines 476--476
-[]|\T1/put/m/n/10 Md. Akram Hos-
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 380--392
+ []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 476--476
-[]|\T1/put/m/n/10 Zishan Sid-diqui
+Underfull \hbox (badness 10000) in paragraph at lines 420--420
+[]|\T1/put/m/n/10 Nu Shai Mong
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--420
+[]|\T1/put/m/n/10 Md Mosharaf
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--420
+[]|\T1/put/m/n/10 Md Sai-fud-din
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--420
+[]|\T1/put/m/n/10 Muntasir Md.
  []
 
 [4
 
-]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 526--526
+] [5]
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 470--470
  []|\T1/put/b/n/10.95 Letter 
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 526--526
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 470--470
  \T1/put/b/n/10.95 Grade| 
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 526--527
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 470--471
 []|\T1/put/b/n/10.95 Grade
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 526--527
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 470--471
 \T1/put/b/n/10.95 Point| 
  []
 
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 546.
+Package pdftex.def Info: cu-logo.jpg  used on input line 515.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 602--602
-[]|\T1/put/m/n/10 Shah Azhar Hos-
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 537--549
+ []
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 602--602
-[]|\T1/put/m/n/10 Sadab Sad-man Is-
+Underfull \hbox (badness 1436) in paragraph at lines 577--577
+[]|\T1/put/m/n/10 Md. Akram Hos-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 602--602
-[]|\T1/put/m/n/10 Mohammad
+Underfull \hbox (badness 10000) in paragraph at lines 577--577
+[]|\T1/put/m/n/10 Zishan Sid-diqui
  []
 
-[5
+[6
 
 ]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 652--652
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 627--627
  []|\T1/put/b/n/10.95 Letter 
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 652--652
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 627--627
  \T1/put/b/n/10.95 Grade| 
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 652--653
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 627--628
 []|\T1/put/b/n/10.95 Grade
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 652--653
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 627--628
 \T1/put/b/n/10.95 Point| 
  []
 
@@ -912,173 +886,337 @@ File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
 Package pdftex.def Info: cu-logo.jpg  used on input line 672.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
-[6
 
-]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 778--778
- []|\T1/put/b/n/10.95 Letter 
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 694--706
+ []
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 778--778
- \T1/put/b/n/10.95 Grade| 
+Underfull \hbox (badness 10000) in paragraph at lines 734--734
+[]|\T1/put/m/n/10 Shah Azhar Hos-
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 778--779
-[]|\T1/put/b/n/10.95 Grade
+Underfull \hbox (badness 1509) in paragraph at lines 734--734
+[]|\T1/put/m/n/10 Sadab Sad-man Is-
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 778--779
-\T1/put/b/n/10.95 Point| 
+Underfull \hbox (badness 10000) in paragraph at lines 734--734
+[]|\T1/put/m/n/10 Mohammad
  []
 
-File: cu-logo.jpg Graphic file (type jpg)
-<use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 798.
-(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 [7
 
 ]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 904--904
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 784--784
  []|\T1/put/b/n/10.95 Letter 
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 904--904
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 784--784
  \T1/put/b/n/10.95 Grade| 
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 904--905
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 784--785
 []|\T1/put/b/n/10.95 Grade
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 904--905
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 784--785
 \T1/put/b/n/10.95 Point| 
  []
 
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 924.
+Package pdftex.def Info: cu-logo.jpg  used on input line 829.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 980--980
-[]|\T1/put/m/n/10 Nishat Sul-tana
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 851--863
+ []
  []
 
 [8
 
 ]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 1030--1030
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 941--941
  []|\T1/put/b/n/10.95 Letter 
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 1030--1030
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 941--941
  \T1/put/b/n/10.95 Grade| 
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 1030--1031
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 941--942
 []|\T1/put/b/n/10.95 Grade
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 1030--1031
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 941--942
 \T1/put/b/n/10.95 Point| 
  []
 
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 1050.
+Package pdftex.def Info: cu-logo.jpg  used on input line 986.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1106--1106
-[]|\T1/put/m/n/10 Shahnaz Ak-ter
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 1008--1020
  []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1106--1106
-[]|\T1/put/m/n/10 Nuzhath Yesmin
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1106--1106
-[]|\T1/put/m/n/10 Jannatul Fer-dous
- []
-
-
-Underfull \hbox (badness 3492) in paragraph at lines 1106--1106
-[]|\T1/put/m/n/10 Saima Ja-han Sul-
  []
 
 [9
 
 ]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 1156--1156
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 1098--1098
  []|\T1/put/b/n/10.95 Letter 
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 1156--1156
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 1098--1098
  \T1/put/b/n/10.95 Grade| 
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 1156--1157
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 1098--1099
 []|\T1/put/b/n/10.95 Grade
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 1156--1157
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 1098--1099
 \T1/put/b/n/10.95 Point| 
  []
 
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 1176.
+Package pdftex.def Info: cu-logo.jpg  used on input line 1143.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 
-Underfull \hbox (badness 7168) in paragraph at lines 1232--1232
-[]|\T1/put/m/n/10 Khadiza Mori-oum
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 1165--1177
+ []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1205--1205
+[]|\T1/put/m/n/10 Nishat Sul-tana
  []
 
 [10
 
 ]
-Overfull \hbox (5.08514pt too wide) in paragraph at lines 1282--1282
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 1255--1255
  []|\T1/put/b/n/10.95 Letter 
  []
 
 
-Overfull \hbox (5.2275pt too wide) in paragraph at lines 1282--1282
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 1255--1255
  \T1/put/b/n/10.95 Grade| 
  []
 
 
-Overfull \hbox (4.94269pt too wide) in paragraph at lines 1282--1283
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 1255--1256
 []|\T1/put/b/n/10.95 Grade
  []
 
 
-Overfull \hbox (1.7344pt too wide) in paragraph at lines 1282--1283
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 1255--1256
 \T1/put/b/n/10.95 Point| 
  []
 
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 1302.
+Package pdftex.def Info: cu-logo.jpg  used on input line 1300.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 1322--1334
+ []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1362
+[]|\T1/put/m/n/10 Shahnaz Ak-ter
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1362
+[]|\T1/put/m/n/10 Nuzhath Yesmin
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1362
+[]|\T1/put/m/n/10 Jannatul Fer-dous
+ []
+
 [11
+
+]
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 1412--1412
+ []|\T1/put/b/n/10.95 Letter 
+ []
+
+
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 1412--1412
+ \T1/put/b/n/10.95 Grade| 
+ []
+
+
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 1412--1413
+[]|\T1/put/b/n/10.95 Grade
+ []
+
+
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 1412--1413
+\T1/put/b/n/10.95 Point| 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1457.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 1479--1491
+ []
+ []
+
+
+Underfull \hbox (badness 7168) in paragraph at lines 1519--1519
+[]|\T1/put/m/n/10 Khadiza Mori-oum
+ []
+
+[12
+
+]
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 1569--1569
+ []|\T1/put/b/n/10.95 Letter 
+ []
+
+
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 1569--1569
+ \T1/put/b/n/10.95 Grade| 
+ []
+
+
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 1569--1570
+[]|\T1/put/b/n/10.95 Grade
+ []
+
+
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 1569--1570
+\T1/put/b/n/10.95 Point| 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1614.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 1636--1648
+ []
+ []
+
+[13
+
+]
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 1726--1726
+ []|\T1/put/b/n/10.95 Letter 
+ []
+
+
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 1726--1726
+ \T1/put/b/n/10.95 Grade| 
+ []
+
+
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 1726--1727
+[]|\T1/put/b/n/10.95 Grade
+ []
+
+
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 1726--1727
+\T1/put/b/n/10.95 Point| 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1771.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 1793--1805
+ []
+ []
+
+[14
+
+]
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 1877--1877
+ []|\T1/put/b/n/10.95 Letter 
+ []
+
+
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 1877--1877
+ \T1/put/b/n/10.95 Grade| 
+ []
+
+
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 1877--1878
+[]|\T1/put/b/n/10.95 Grade
+ []
+
+
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 1877--1878
+\T1/put/b/n/10.95 Point| 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1922.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 1944--1956
+ []
+ []
+
+[15
+
+]
+Overfull \hbox (5.08514pt too wide) in paragraph at lines 2018--2018
+ []|\T1/put/b/n/10.95 Letter 
+ []
+
+
+Overfull \hbox (5.2275pt too wide) in paragraph at lines 2018--2018
+ \T1/put/b/n/10.95 Grade| 
+ []
+
+
+Overfull \hbox (4.94269pt too wide) in paragraph at lines 2018--2019
+[]|\T1/put/b/n/10.95 Grade
+ []
+
+
+Overfull \hbox (1.7344pt too wide) in paragraph at lines 2018--2019
+\T1/put/b/n/10.95 Point| 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2063.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (71.34373pt too wide) in paragraph at lines 2085--2097
+ []
+ []
+
+[16
 
 ] (./tabulation.aux) ) 
 Here is how much of TeX's memory you used:
  12968 strings out of 494091
  229591 string characters out of 6163523
- 418773 words of memory out of 5000000
+ 429665 words of memory out of 5000000
  16343 multiletter control sequences out of 15000+600000
  59561 words of font info for 43 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
@@ -1090,10 +1228,10 @@ fonts/cm/cmmi8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adob
 e/utopia/putb8a.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adobe/
 utopia/putr8a.pfb>
-Output written on tabulation.pdf (11 pages, 234483 bytes).
+Output written on tabulation.pdf (16 pages, 258716 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 83 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

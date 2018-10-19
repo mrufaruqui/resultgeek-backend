@@ -14,12 +14,13 @@ class GenerateTabulationLatexService
     end
 
     def self.latex_tabulation_template(options) 
+          @courses = Course.all;
           header = tabulation_header
           main = ''
-       (Tabulation.count / 10.to_i).times.each do |item|
+       (Tabulation.count / 8.to_i).times.each do |item|
             main << main_preamble() 
             #Tabulation.find_each(batch_size:10) do |t|
-            Tabulation.limit(10).offset(item * 10).each do |t|
+            Tabulation.limit(8).offset(item * 10).each do |t|
              data = generate_single_page_tabulation(t)
              main << course_body(data) 
             end
@@ -118,8 +119,8 @@ class GenerateTabulationLatexService
     end
 
     def self.main_preamble(data={})
-         <<-EOF 
-         \\begin{table}[ht]
+       part_a =  <<-EOF 
+\\begin{table}[ht]
 \\begin{minipage}[m]{0.3\\linewidth} %\\centering
 \\vspace*{-3.0cm} 
 \\begin{tabular}{ |c|>{\\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\\centering}p{1cm} | >{\\centering}p{1cm} |}
@@ -138,9 +139,34 @@ class GenerateTabulationLatexService
 	\\hline 
 	
 \\end{tabular}
-
 \\end{minipage}
-\\hspace{0.3cm}
+\\hspace{-4cm}
+\\begin{minipage}[m]{0.3\\linewidth} %\\centering
+	\\vspace*{-3.0cm} 
+	\\begin{small}
+		\\renewcommand{\\arraystretch}{1.01}
+		\\begin{tabular}{ |c|} 
+			\\hline {\\bf	ABBREVIATIONS } \\\\		
+			\\hline 	NG = Numerical Grade		 \\\\			
+			\\hline 	LG = Letter Grade			 \\\\		
+			\\hline 	GP = Grade Points			 \\\\		
+			 \\hline	CATM = Class Attendance \\\\ 
+			 	        and Class Test Marks	 \\\\				
+			\\hline 	FEM = Final Exam Marks				
+ \\\\	
+			\\hline 	MO = Marks Obtained				
+ \\\\	
+			\\hline 	CP = Credit Points = Credit x GP	 \\\\				
+			\\hline 	TCE = Total Credit Earned		 \\\\			
+			\\hline 	TCP = Total Credit Points		 \\\\			
+			\\hline 	GPA = Grade Point Average = TCP/18		 \\\\	 
+			\\hline 
+			
+		\\end{tabular}
+	\\end{small}
+\\end{minipage}
+
+\\hspace{-1cm}
 \\begin{minipage}[b]{0.35\\textwidth}
 	\\vspace*{.5in}
 \\centering \\includegraphics[width=0.6in]{cu-logo.jpg}
@@ -166,14 +192,15 @@ class GenerateTabulationLatexService
 \\begin{small}
 \\renewcommand{\\arraystretch}{1.01}
 \\begin{tabular} {|l|l|r|r|}
-	\\hline \\hline Code & Title  & Credit &  Marks \\\\ \\hline
-	\\hline CSE 111 & Computer Fundamentals  & 3.00 & 75 \\\\
-	\\hline CSE 111 & Computer Fundamentals  & 3.00 & 75 \\\\
-	\\hline CSE 111 & Computer Fundamentals  & 3.00 & 75 \\\\
-	\\hline CSE 111 & Computer Fundamentals  & 3.00 & 75 \\\\
-	\\hline CSE 111 & Computer Fundamentals  & 3.00 & 75 \\\\
-	\\hline CSE 111 & Computer Fundamentals  & 3.00 & 75 \\\\
-	\\hline CSE 111 & Computer Fundamentals  & 3.00 & 75 \\\\
+    \\hline \\hline Code & Title  & Credit &  Marks \\\\ \\hline
+EOF
+	 
+    a = ''
+    @courses.each  do |course|
+        a << "\\hline  " << [course.code, course.title, course.credit, course.credit * 25].join(' & ') << "  \\\\\n"
+    end
+ part_b = a
+ part_c = <<-EOF   
 	\\hline
 \\end{tabular}
 \\end{small} 
@@ -190,6 +217,7 @@ class GenerateTabulationLatexService
 	 
     &   & CATM & FEM & MO & LG     & CATM & FEM & MO &  LG   & MO & LG   & CATM & FEM & MO & LG   & MO & LG   & CATM & FEM & MO & LG   & CATM & FEM & MO & LG   &  &   &   &  \\\\ \\hline
             EOF
+        part_a + part_b + part_c
     end
 
     def self.main_footer(data ={})
@@ -253,10 +281,16 @@ class GenerateTabulationLatexService
                a << [course[:cact], course[:fem], course[:mo], course[:lg]].join(' & ') << '&'
             end   
           end
-         a << [data[:tce], data[:tps], data[:gpa], data[:result]].join(' & ') << ' & ' 
+         a << [data[:tce], data[:tps], data[:gpa], data[:result]].join(' & ') << ' & '  #"\\multirow{3}{*}{#{data[:remarks]}}"
          a << "\\\\"
-         30.times.each {a << ' & '}
-          a << "\\\\\n\\hline"
+          
+          30.times.each {a << ' & '}
+          a << "\\\\\n"
+          
+          30.times.each {a << ' & '}
+          a << "\\\\\n"
+
+          a << "\\hline"
         a   
     end
 end

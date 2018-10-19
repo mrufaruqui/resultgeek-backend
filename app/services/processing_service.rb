@@ -17,17 +17,14 @@ class ProcessingService
             sm_a = []
             courses.each do |c|
                 sm = Summation.find_by(student_id:s.id, course_id: c.id) || Summation.create(student_id:s.id, course_id: c.id, gpa:'X', grade:0)
-                if sm.gpa != 'X' #!sm.blank? || !sm.nil?
+               # if sm.gpa != 'X' #!sm.blank? || !sm.nil?
                     td = TabulationDetail.find_by(:tabulation_id=>tabulation.id, :summation_id=>sm.id)  || TabulationDetail.new
                         td.tabulation = tabulation
                         td.summation  = sm
                         td.save 
-                    if sm.gpa === 'F'
-                        remarks << c.code 
-                    else
-                        tce += c.credit
-                    end
-                end
+                        remarks << c.code if sm.gpa === 'F' 
+                        tce += c.credit unless sm.gpa === 'F' || sm.gpa === 'X'
+               # end
                 
                 ##Generate remarks if failed 
                 tps += (sm.grade * c.credit) unless sm.nil? || sm.blank? || sm.gpa === 'X' || sm.gpa === 'F'
@@ -35,12 +32,12 @@ class ProcessingService
             end
             #tabulation.summations = sm_a;
 
-            gpa = format_gpa(tps / 18.to_f) if tps > 0
+            gpa = tps > 0 ? format_gpa(tps / 18.to_f) : 0.00
             s.gpa = gpa
             s.save
             tabulation.gpa = gpa #gpa.round(2);
             tabulation.tce = tce.to_i
-            tabulation.result = tabulation.gpa >= 2.20 ? 'Pass' : 'Fail'
+            tabulation.result = (gpa >= 2.20) ? 'P' : 'F'
             tabulation.remarks = 'F-' + remarks.join(",") if tce < 18 #ToDo
             tabulation.save
        end
