@@ -16,28 +16,26 @@ class ProcessingService
             remarks = []
             sm_a = []
             courses.each do |c|
-                sm = Summation.find_by(student_id:s.id, course_id: c.id)
-                if !sm.blank? || !sm.nil?
+                sm = Summation.find_by(student_id:s.id, course_id: c.id) || Summation.create(student_id:s.id, course_id: c.id, gpa:'X', grade:0)
+                if sm.gpa != 'X' #!sm.blank? || !sm.nil?
                     td = TabulationDetail.find_by(:tabulation_id=>tabulation.id, :summation_id=>sm.id)  || TabulationDetail.new
                         td.tabulation = tabulation
                         td.summation  = sm
                         td.save 
                     if sm.gpa === 'F'
-                        remarks << c.code
+                        remarks << c.code 
                     else
                         tce += c.credit
                     end
                 end
                 
                 ##Generate remarks if failed 
-                
-
-                tps += (sm.grade * c.credit) unless sm.nil? || sm.blank? || sm.grade.nil? || sm.grade.blank?
+                tps += (sm.grade * c.credit) unless sm.nil? || sm.blank? || sm.gpa === 'X' || sm.gpa === 'F'
                 sm_a << sm
             end
             #tabulation.summations = sm_a;
 
-            gpa = format_gpa(tps / 18.to_f)
+            gpa = format_gpa(tps / 18.to_f) if tps > 0
             s.gpa = gpa
             s.save
             tabulation.gpa = gpa #gpa.round(2);
