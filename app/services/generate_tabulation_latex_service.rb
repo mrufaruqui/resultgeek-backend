@@ -40,7 +40,11 @@ class GenerateTabulationLatexService
         tps = 0.0;
         t.tabulation_details.each do |td|
             ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
-            course = {:code=> td.summation.course.id, :mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
+            if td.summation.course.course_type === "lab"
+              course =  {:course_type=>"lab", :code=> td.summation.course.id, :mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
+            else
+               course = {:course_type=>"theory", :code=> td.summation.course.id, :cact=>td.summation.cact, :fem=>td.summation.marks, :mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
+            end  
             tps += ps;
             @retHash[:courses] << course
         end
@@ -208,14 +212,18 @@ class GenerateTabulationLatexService
 
     def self.course_body(data)
           a = ''
-          a << [data[:roll], data[:name], "\\\\"].join('&')
-        #   data.courses.each do |course|
-        #     a << 
-        #     <<-EOF
-        #         \\hline   #{course[:code]} &  #{course[:title]}		 & #{course[:credit]} & #{course[:lg]} & #{course[:gp]} & #{course[:ps]} \\\\ %\\numtwo{summation.gp} %\\\\ 
-        #     EOF
-        #   end
-          a << "\n\\hline"
+          a << [data[:roll], data[:name]].join('&') << '&'
+          data[:courses].each do |course|
+            if course[:course_type] === "lab"
+               a << [course[:mo], course[:gp], course[:ps],].join('&')
+            else
+               a << [course[:cact], course[:fem], course[:mo], course[:gp], course[:ps],].join('&')
+            end   
+            # <<-EOF
+            #     \\hline   #{course[:code]} &  #{course[:title]}		 & #{course[:credit]} & #{course[:lg]} & #{course[:gp]} & #{course[:ps]} \\\\ %\\numtwo{summation.gp} %\\\\ 
+            # EOF
+          end
+          a << "\\\\\n\\hline"
         a   
     end
 end
