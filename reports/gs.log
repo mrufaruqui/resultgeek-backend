@@ -1,0 +1,3677 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  19 OCT 2018 15:51
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**gs.tex
+(./gs.tex
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 22 language(s) loaded.
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/03/24 v5.7 Page Geometry
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/datatool/datatool.sty
+Package: datatool 2018/04/16 v2.30 (NLCT)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks16
+\XKV@tempa@toks=\toks17
+)
+\XKV@depth=\count91
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/xfor/xfor.sty
+Package: xfor 2009/02/05 v1.05 (NLCT)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/substr/substr.sty
+Package: substr 2009/10/20 v1.2 Handle substrings
+\c@su@anzahl=\count92
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count93
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/datatool/datatool-base.sty
+Package: datatool-base 2018/04/16 v2.30 (NLCT)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen111
+))
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen112
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count94
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count95
+\leftroot@=\count96
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count97
+\DOTSCASE@=\count98
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen113
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count99
+\c@MaxMatrixCols=\count100
+\dotsspace@=\muskip10
+\c@parentequation=\count101
+\dspbrk@lvl=\count102
+\tag@help=\toks19
+\row@=\count103
+\column@=\count104
+\maxfields@=\count105
+\andhelp@=\toks20
+\eqnshift@=\dimen114
+\alignsep@=\dimen115
+\tagshift@=\dimen116
+\tagwidth@=\dimen117
+\totwidth@=\dimen118
+\lineht@=\dimen119
+\@envbody=\toks21
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/datatool/datatool-fp.sty
+Package: datatool-fp 2018/04/16 v2.30 (NLCT)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp.sty
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/defpattern.sty
+Package: defpattern 1994/10/12
+\actioncount=\count106
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-basic.sty
+Package: fp-basic 1996/05/13
+\FP@xs=\count107
+\FP@xia=\count108
+\FP@xib=\count109
+\FP@xfa=\count110
+\FP@xfb=\count111
+\FP@rega=\count112
+\FP@regb=\count113
+\FP@regs=\count114
+\FP@times=\count115
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-addons.sty
+Package: fp-addons 1995/03/15
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-snap.sty
+Package: fp-snap 1995/04/05
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-exp.sty
+Package: fp-exp 1995/04/03
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-trigo.sty
+Package: fp-trigo 1995/04/14
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-pas.sty
+Package: fp-pas 1994/08/29
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-random.sty
+Package: fp-random 1995/02/23
+\FPseed=\count116
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-eqn.sty
+Package: fp-eqn 1995/04/03
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-upn.sty
+Package: fp-upn 1996/10/21
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fp/fp-eval.sty
+Package: fp-eval 1995/04/03
+)))
+\@dtl@toks=\toks23
+\@dtl@tmpcount=\count117
+\dtl@tmplength=\skip46
+\dtl@sortresult=\count118
+\@dtl@numgrpsepcount=\count119
+\@dtl@datatype=\count120
+\dtl@codeA=\count121
+\dtl@codeB=\count122
+\@dtl@foreach@level=\count123
+)
+\dtlcolumnnum=\count124
+\dtlrownum=\count125
+\@dtl@before=\toks24
+\@dtl@after=\toks25
+\@dtl@colhead=\toks26
+\dtlcurrentrow=\toks27
+\dtlbeforerow=\toks28
+\dtlafterrow=\toks29
+\dtlforeachlevel=\count126
+\c@DTLrowi=\count127
+\c@DTLrowii=\count128
+\c@DTLrowiii=\count129
+\c@DTLrow=\count130
+\dtl@rowi=\count131
+\dtl@rowii=\count132
+\dtl@rowiii=\count133
+\@dtl@curi=\toks30
+\@dtl@previ=\toks31
+\@dtl@nexti=\toks32
+\@dtl@curii=\toks33
+\@dtl@previi=\toks34
+\@dtl@nextii=\toks35
+\@dtl@curiii=\toks36
+\@dtl@previii=\toks37
+\@dtl@nextiii=\toks38
+\@dtl@elements=\count134
+\@dtl@list=\toks39
+\@dtl@rowa=\toks40
+\@dtl@rowb=\toks41
+\@dtl@toksA=\toks42
+\@dtl@toksB=\toks43
+\@dtl@write=\write3
+\@dtl@read=\read1
+\dtl@entrycr=\count135
+\dtl@omitlines=\count136
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count137
+\calc@Bcount=\count138
+\calc@Adimen=\dimen120
+\calc@Bdimen=\dimen121
+\calc@Askip=\skip47
+\calc@Bskip=\skip48
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count139
+\calc@Cskip=\skip49
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/tools/array.sty
+Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
+\col@sep=\dimen122
+\ar@mcellbox=\box28
+\extrarowheight=\dimen123
+\NC@list=\toks44
+\extratabsurround=\skip50
+\backup@length=\skip51
+\ar@cellbox=\box29
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+\TX@col@width=\dimen124
+\TX@old@table=\dimen125
+\TX@old@col=\dimen126
+\TX@target=\dimen127
+\TX@delta=\dimen128
+\TX@cols=\count140
+\TX@ftn=\toks45
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen129
+\Gin@req@width=\dimen130
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/utilities/pgfutil-comm
+on.tex
+\pgfutil@everybye=\toks46
+\pgfutil@tempdima=\dimen131
+\pgfutil@tempdimb=\dimen132
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/utilities/pgfutil-comm
+on-lists.tex))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/utilities/pgfutil-late
+x.def
+\pgfutil@abb=\box30
+ (/usr/local/texlive/2018basic/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.
+tex
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.cod
+e.tex
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code
+.tex
+\pgfkeys@pathtoks=\toks47
+\pgfkeys@temptoks=\toks48
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/utilities/pgfkeysfilte
+red.code.tex
+\pgfkeys@tmptoks=\toks49
+))
+\pgf@x=\dimen133
+\pgf@y=\dimen134
+\pgf@xa=\dimen135
+\pgf@ya=\dimen136
+\pgf@xb=\dimen137
+\pgf@yb=\dimen138
+\pgf@xc=\dimen139
+\pgf@yc=\dimen140
+\w@pgf@writea=\write4
+\r@pgf@reada=\read2
+\c@pgf@counta=\count141
+\c@pgf@countb=\count142
+\c@pgf@countc=\count143
+\c@pgf@countd=\count144
+\t@pgf@toka=\toks50
+\t@pgf@tokb=\toks51
+\t@pgf@tokc=\toks52
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdf
+tex.def
+File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-com
+mon-pdf.def
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoft
+path.code.tex
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count145
+\pgfsyssoftpath@bigbuffer@items=\count146
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprot
+ocol.code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.cod
+e.tex
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.
+tex
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.
+tex)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathparser.cod
+e.tex
+\pgfmath@dimen=\dimen141
+\pgfmath@count=\count147
+\pgfmath@box=\box31
+\pgfmath@toks=\toks53
+\pgfmath@stack@operand=\toks54
+\pgfmath@stack@operation=\toks55
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+code.tex
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+basic.code.tex)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+trigonometric.code.tex)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+random.code.tex)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+comparison.code.tex)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+base.code.tex)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+round.code.tex)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+misc.code.tex)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+integerarithmetics.code.tex)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code
+.tex
+\c@pgfmathroundto@lastzeros=\count148
+))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoin
+ts.code.tex
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen142
+\pgf@picmaxx=\dimen143
+\pgf@picminy=\dimen144
+\pgf@picmaxy=\dimen145
+\pgf@pathminx=\dimen146
+\pgf@pathmaxx=\dimen147
+\pgf@pathminy=\dimen148
+\pgf@pathmaxy=\dimen149
+\pgf@xx=\dimen150
+\pgf@xy=\dimen151
+\pgf@yx=\dimen152
+\pgf@yy=\dimen153
+\pgf@zx=\dimen154
+\pgf@zy=\dimen155
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+construct.code.tex
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen156
+\pgf@path@lasty=\dimen157
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+usage.code.tex
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen158
+\pgf@shorten@start@additional=\dimen159
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescop
+es.code.tex
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box32
+\pgf@hbox=\box33
+\pgf@layerbox@main=\box34
+\pgf@picture@serial@count=\count149
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregrap
+hicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen160
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretran
+sformations.code.tex
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen161
+\pgf@pt@y=\dimen162
+\pgf@pt@temp=\dimen163
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequic
+k.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobje
+cts.code.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+processing.code.tex
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearro
+ws.code.tex
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen164
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshad
+e.code.tex
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen165
+\pgf@sys@shading@range@num=\count150
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimag
+e.code.tex
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexte
+rnal.code.tex
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box35
+))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelaye
+rs.code.tex
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretran
+sparency.code.tex
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatt
+erns.code.tex
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/modules/pgfmoduleshape
+s.code.tex
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box36
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.
+code.tex
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-ve
+rsion-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen166
+\pgf@nodesepend=\dimen167
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-ve
+rsion-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+))
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/psnfss/utopia.sty
+Package: utopia 2005/04/12 PSNFSS-v9.2a (P.Dyballa) 
+
+
+Package utopia Warning: This package is to be regarded as obsolete.
+(utopia)                See the PSNFSS documentation.
+
+) (/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write5
+\integerpart=\count151
+\decimalpart=\count152
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2018/08/03 v2.3 Span multiple rows of a table
+\multirow@colwidth=\skip52
+\multirow@cntb=\count153
+\multirow@dima=\skip53
+\bigstrutjot=\dimen168
+)
+(./gs.aux)
+\openout1 = `gs.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Try loading font information for T1+put on input line 17.
+ (/usr/local/texlive/2018basic/texmf-dist/tex/latex/psnfss/t1put.fd
+File: t1put.fd 2001/06/04 font definitions for T1/put.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.3705pt, 775.53096pt, 21.68121pt)
+* v-part:(T,H,B)=(18.06749pt, 564.98662pt, 14.45377pt)
+* \paperwidth=853.58267pt
+* \paperheight=597.50787pt
+* \textwidth=775.53096pt
+* \textheight=564.98662pt
+* \oddsidemargin=-15.89949pt
+* \evensidemargin=-15.89949pt
+* \topmargin=-91.2025pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=59.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count154
+\scratchdimen=\dimen169
+\scratchbox=\box37
+\nofMPsegments=\count155
+\nofMParguments=\count156
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count157
+\MPscratchDim=\dimen170
+\MPnumerator=\count158
+\makeMPintoPDFobject=\count159
+\everyMPtoPDFconversion=\toks57
+) (/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+)) ABD: EveryShipout initializing macros
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 22--29
+[][] 
+ []
+
+<cu-logo.jpg, id=4, 726.715pt x 1027.84pt>
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 33.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 56--56
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 56--56
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 56--57
+[]|\T1/put/b/n/10 Grade
+ []
+
+[1
+
+{/Users/rufaruqui/Library/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/p
+dftex.map} <./cu-logo.jpg>]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 129--136
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 140.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 163--163
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 163--163
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 163--164
+[]|\T1/put/b/n/10 Grade
+ []
+
+[2
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 236--243
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 247.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 270--270
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 270--270
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 270--271
+[]|\T1/put/b/n/10 Grade
+ []
+
+[3
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 342--349
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 353.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 376--376
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 376--376
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 376--377
+[]|\T1/put/b/n/10 Grade
+ []
+
+[4
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 449--456
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 460.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 483--483
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 483--483
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 483--484
+[]|\T1/put/b/n/10 Grade
+ []
+
+[5
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 556--563
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 567.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 590--590
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 590--590
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 590--591
+[]|\T1/put/b/n/10 Grade
+ []
+
+[6
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 663--670
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 674.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 697--697
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 697--697
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 697--698
+[]|\T1/put/b/n/10 Grade
+ []
+
+[7
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 770--777
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 781.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 804--804
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 804--804
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 804--805
+[]|\T1/put/b/n/10 Grade
+ []
+
+[8
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 877--884
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 888.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 911--911
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 911--911
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 911--912
+[]|\T1/put/b/n/10 Grade
+ []
+
+[9
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 984--991
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 995.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1018--1018
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1018--1018
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1018--1019
+[]|\T1/put/b/n/10 Grade
+ []
+
+[10
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 1091--1098
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1102.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1125--1125
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1125--1125
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1125--1126
+[]|\T1/put/b/n/10 Grade
+ []
+
+[11
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 1198--1205
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1209.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1232--1232
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1232--1232
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1232--1233
+[]|\T1/put/b/n/10 Grade
+ []
+
+[12
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 1305--1312
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1316.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1339--1339
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1339--1339
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1339--1340
+[]|\T1/put/b/n/10 Grade
+ []
+
+[13
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 1412--1419
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1423.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1446--1446
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1446--1446
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1446--1447
+[]|\T1/put/b/n/10 Grade
+ []
+
+[14
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 1519--1526
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1530.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1553--1553
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1553--1553
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1553--1554
+[]|\T1/put/b/n/10 Grade
+ []
+
+[15
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 1626--1633
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1637.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1660--1660
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1660--1660
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1660--1661
+[]|\T1/put/b/n/10 Grade
+ []
+
+[16
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 1733--1740
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1744.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1767--1767
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1767--1767
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1767--1768
+[]|\T1/put/b/n/10 Grade
+ []
+
+[17
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 1840--1847
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1851.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1874--1874
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1874--1874
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1874--1875
+[]|\T1/put/b/n/10 Grade
+ []
+
+[18
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 1947--1954
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 1958.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1981--1981
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1981--1981
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1981--1982
+[]|\T1/put/b/n/10 Grade
+ []
+
+[19
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 2054--2061
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2065.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 2088--2088
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 2088--2088
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 2088--2089
+[]|\T1/put/b/n/10 Grade
+ []
+
+[20
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 2161--2168
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2172.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 2195--2195
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 2195--2195
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 2195--2196
+[]|\T1/put/b/n/10 Grade
+ []
+
+[21
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 2268--2275
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2279.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 2302--2302
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 2302--2302
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 2302--2303
+[]|\T1/put/b/n/10 Grade
+ []
+
+[22
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 2375--2382
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2386.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 2409--2409
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 2409--2409
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 2409--2410
+[]|\T1/put/b/n/10 Grade
+ []
+
+[23
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 2482--2489
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2493.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 2516--2516
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 2516--2516
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 2516--2517
+[]|\T1/put/b/n/10 Grade
+ []
+
+[24
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 2589--2596
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2600.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 2623--2623
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 2623--2623
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 2623--2624
+[]|\T1/put/b/n/10 Grade
+ []
+
+[25
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 2696--2703
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2707.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 2730--2730
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 2730--2730
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 2730--2731
+[]|\T1/put/b/n/10 Grade
+ []
+
+[26
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 2803--2810
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2814.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 2837--2837
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 2837--2837
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 2837--2838
+[]|\T1/put/b/n/10 Grade
+ []
+
+[27
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 2910--2917
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 2921.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 2944--2944
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 2944--2944
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 2944--2945
+[]|\T1/put/b/n/10 Grade
+ []
+
+[28
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3017--3024
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3028.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 3051--3051
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 3051--3051
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 3051--3052
+[]|\T1/put/b/n/10 Grade
+ []
+
+[29
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3124--3131
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3135.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 3158--3158
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 3158--3158
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 3158--3159
+[]|\T1/put/b/n/10 Grade
+ []
+
+[30
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3231--3238
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3242.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 3265--3265
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 3265--3265
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 3265--3266
+[]|\T1/put/b/n/10 Grade
+ []
+
+[31
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3338--3345
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3349.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 3372--3372
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 3372--3372
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 3372--3373
+[]|\T1/put/b/n/10 Grade
+ []
+
+[32
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3445--3452
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3456.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 3479--3479
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 3479--3479
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 3479--3480
+[]|\T1/put/b/n/10 Grade
+ []
+
+[33
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3552--3559
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3563.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 3586--3586
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 3586--3586
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 3586--3587
+[]|\T1/put/b/n/10 Grade
+ []
+
+[34
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3659--3666
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3670.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 3693--3693
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 3693--3693
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 3693--3694
+[]|\T1/put/b/n/10 Grade
+ []
+
+[35
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3766--3773
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3777.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 3800--3800
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 3800--3800
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 3800--3801
+[]|\T1/put/b/n/10 Grade
+ []
+
+[36
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3873--3880
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3884.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 3907--3907
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 3907--3907
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 3907--3908
+[]|\T1/put/b/n/10 Grade
+ []
+
+[37
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 3980--3987
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 3991.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4014--4014
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4014--4014
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4014--4015
+[]|\T1/put/b/n/10 Grade
+ []
+
+[38
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 4087--4094
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 4098.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4121--4121
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4121--4121
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4121--4122
+[]|\T1/put/b/n/10 Grade
+ []
+
+[39
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 4194--4201
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 4205.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4228--4228
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4228--4228
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4228--4229
+[]|\T1/put/b/n/10 Grade
+ []
+
+[40
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 4301--4308
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 4312.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4335--4335
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4335--4335
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4335--4336
+[]|\T1/put/b/n/10 Grade
+ []
+
+[41
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 4406--4413
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 4417.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4440--4440
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4440--4440
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4440--4441
+[]|\T1/put/b/n/10 Grade
+ []
+
+[42
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 4510--4517
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 4521.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4544--4544
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4544--4544
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4544--4545
+[]|\T1/put/b/n/10 Grade
+ []
+
+[43
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 4617--4624
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 4628.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4651--4651
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4651--4651
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4651--4652
+[]|\T1/put/b/n/10 Grade
+ []
+
+[44
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 4724--4731
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 4735.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4758--4758
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4758--4758
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4758--4759
+[]|\T1/put/b/n/10 Grade
+ []
+
+[45
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 4831--4838
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 4842.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4865--4865
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4865--4865
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4865--4866
+[]|\T1/put/b/n/10 Grade
+ []
+
+[46
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 4938--4945
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 4949.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 4972--4972
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 4972--4972
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 4972--4973
+[]|\T1/put/b/n/10 Grade
+ []
+
+[47
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 5045--5052
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 5056.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 5079--5079
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 5079--5079
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 5079--5080
+[]|\T1/put/b/n/10 Grade
+ []
+
+[48
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 5152--5159
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 5163.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 5186--5186
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 5186--5186
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 5186--5187
+[]|\T1/put/b/n/10 Grade
+ []
+
+[49
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 5257--5264
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 5268.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 5291--5291
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 5291--5291
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 5291--5292
+[]|\T1/put/b/n/10 Grade
+ []
+
+[50
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 5364--5371
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 5375.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 5398--5398
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 5398--5398
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 5398--5399
+[]|\T1/put/b/n/10 Grade
+ []
+
+[51
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 5471--5478
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 5482.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 5505--5505
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 5505--5505
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 5505--5506
+[]|\T1/put/b/n/10 Grade
+ []
+
+[52
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 5578--5585
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 5589.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 5612--5612
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 5612--5612
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 5612--5613
+[]|\T1/put/b/n/10 Grade
+ []
+
+[53
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 5682--5689
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 5693.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 5716--5716
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 5716--5716
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 5716--5717
+[]|\T1/put/b/n/10 Grade
+ []
+
+[54
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 5789--5796
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 5800.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 5823--5823
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 5823--5823
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 5823--5824
+[]|\T1/put/b/n/10 Grade
+ []
+
+[55
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 5896--5903
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 5907.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 5930--5930
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 5930--5930
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 5930--5931
+[]|\T1/put/b/n/10 Grade
+ []
+
+[56
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6003--6010
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6014.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6037--6037
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6037--6037
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6037--6038
+[]|\T1/put/b/n/10 Grade
+ []
+
+[57
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6110--6117
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6121.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6144--6144
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6144--6144
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6144--6145
+[]|\T1/put/b/n/10 Grade
+ []
+
+[58
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6217--6224
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6228.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6251--6251
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6251--6251
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6251--6252
+[]|\T1/put/b/n/10 Grade
+ []
+
+[59
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6324--6331
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6335.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6358--6358
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6358--6358
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6358--6359
+[]|\T1/put/b/n/10 Grade
+ []
+
+[60
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6430--6437
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6441.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6464--6464
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6464--6464
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6464--6465
+[]|\T1/put/b/n/10 Grade
+ []
+
+[61
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6536--6543
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6547.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6570--6570
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6570--6570
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6570--6571
+[]|\T1/put/b/n/10 Grade
+ []
+
+[62
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6642--6649
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6653.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6676--6676
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6676--6676
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6676--6677
+[]|\T1/put/b/n/10 Grade
+ []
+
+[63
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6749--6756
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6760.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6783--6783
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6783--6783
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6783--6784
+[]|\T1/put/b/n/10 Grade
+ []
+
+[64
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6856--6863
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6867.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6890--6890
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6890--6890
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6890--6891
+[]|\T1/put/b/n/10 Grade
+ []
+
+[65
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 6963--6970
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 6974.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 6997--6997
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 6997--6997
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 6997--6998
+[]|\T1/put/b/n/10 Grade
+ []
+
+[66
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 7070--7077
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 7081.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 7104--7104
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 7104--7104
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 7104--7105
+[]|\T1/put/b/n/10 Grade
+ []
+
+[67
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 7177--7184
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 7188.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 7211--7211
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 7211--7211
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 7211--7212
+[]|\T1/put/b/n/10 Grade
+ []
+
+[68
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 7284--7291
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 7295.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 7318--7318
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 7318--7318
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 7318--7319
+[]|\T1/put/b/n/10 Grade
+ []
+
+[69
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 7391--7398
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 7402.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 7425--7425
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 7425--7425
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 7425--7426
+[]|\T1/put/b/n/10 Grade
+ []
+
+[70
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 7498--7505
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 7509.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 7532--7532
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 7532--7532
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 7532--7533
+[]|\T1/put/b/n/10 Grade
+ []
+
+[71
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 7605--7612
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 7616.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 7639--7639
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 7639--7639
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 7639--7640
+[]|\T1/put/b/n/10 Grade
+ []
+
+[72
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 7712--7719
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 7723.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 7746--7746
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 7746--7746
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 7746--7747
+[]|\T1/put/b/n/10 Grade
+ []
+
+[73
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 7819--7826
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 7830.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 7853--7853
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 7853--7853
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 7853--7854
+[]|\T1/put/b/n/10 Grade
+ []
+
+[74
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 7926--7933
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 7937.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 7960--7960
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 7960--7960
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 7960--7961
+[]|\T1/put/b/n/10 Grade
+ []
+
+[75
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8033--8040
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 8044.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 8067--8067
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 8067--8067
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 8067--8068
+[]|\T1/put/b/n/10 Grade
+ []
+
+[76
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8140--8147
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 8151.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 8174--8174
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 8174--8174
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 8174--8175
+[]|\T1/put/b/n/10 Grade
+ []
+
+[77
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8247--8254
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 8258.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 8281--8281
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 8281--8281
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 8281--8282
+[]|\T1/put/b/n/10 Grade
+ []
+
+[78
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8354--8361
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 8365.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 8388--8388
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 8388--8388
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 8388--8389
+[]|\T1/put/b/n/10 Grade
+ []
+
+[79
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8461--8468
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 8472.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 8495--8495
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 8495--8495
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 8495--8496
+[]|\T1/put/b/n/10 Grade
+ []
+
+[80
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8568--8575
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 8579.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 8602--8602
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 8602--8602
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 8602--8603
+[]|\T1/put/b/n/10 Grade
+ []
+
+[81
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8675--8682
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 8686.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 8709--8709
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 8709--8709
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 8709--8710
+[]|\T1/put/b/n/10 Grade
+ []
+
+[82
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8782--8789
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 8793.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 8816--8816
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 8816--8816
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 8816--8817
+[]|\T1/put/b/n/10 Grade
+ []
+
+[83
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8889--8896
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 8900.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 8923--8923
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 8923--8923
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 8923--8924
+[]|\T1/put/b/n/10 Grade
+ []
+
+[84
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 8996--9003
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9007.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9030--9030
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9030--9030
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9030--9031
+[]|\T1/put/b/n/10 Grade
+ []
+
+[85
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 9103--9110
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9114.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9137--9137
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9137--9137
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9137--9138
+[]|\T1/put/b/n/10 Grade
+ []
+
+[86
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 9210--9217
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9221.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9244--9244
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9244--9244
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9244--9245
+[]|\T1/put/b/n/10 Grade
+ []
+
+[87
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 9317--9324
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9328.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9351--9351
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9351--9351
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9351--9352
+[]|\T1/put/b/n/10 Grade
+ []
+
+[88
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 9424--9431
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9435.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9458--9458
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9458--9458
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9458--9459
+[]|\T1/put/b/n/10 Grade
+ []
+
+[89
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 9531--9538
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9542.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9565--9565
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9565--9565
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9565--9566
+[]|\T1/put/b/n/10 Grade
+ []
+
+[90
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 9638--9645
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9649.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9672--9672
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9672--9672
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9672--9673
+[]|\T1/put/b/n/10 Grade
+ []
+
+[91
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 9745--9752
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9756.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9779--9779
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9779--9779
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9779--9780
+[]|\T1/put/b/n/10 Grade
+ []
+
+[92
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 9852--9859
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9863.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9886--9886
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9886--9886
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9886--9887
+[]|\T1/put/b/n/10 Grade
+ []
+
+[93
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 9959--9966
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 9970.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 9993--9993
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 9993--9993
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 9993--9994
+[]|\T1/put/b/n/10 Grade
+ []
+
+[94
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10066--10073
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 10077.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 10100--10100
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 10100--10100
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 10100--10101
+[]|\T1/put/b/n/10 Grade
+ []
+
+[95
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10167--10174
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 10178.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 10201--10201
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 10201--10201
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 10201--10202
+[]|\T1/put/b/n/10 Grade
+ []
+
+[96
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10272--10279
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 10283.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 10306--10306
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 10306--10306
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 10306--10307
+[]|\T1/put/b/n/10 Grade
+ []
+
+[97
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10375--10382
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 10386.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 10409--10409
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 10409--10409
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 10409--10410
+[]|\T1/put/b/n/10 Grade
+ []
+
+[98
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10478--10485
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 10489.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 10512--10512
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 10512--10512
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 10512--10513
+[]|\T1/put/b/n/10 Grade
+ []
+
+[99
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10579--10586
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 10590.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 10613--10613
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 10613--10613
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 10613--10614
+[]|\T1/put/b/n/10 Grade
+ []
+
+[100
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10682--10689
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 10693.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 10716--10716
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 10716--10716
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 10716--10717
+[]|\T1/put/b/n/10 Grade
+ []
+
+[101
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10788--10795
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 10799.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 10822--10822
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 10822--10822
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 10822--10823
+[]|\T1/put/b/n/10 Grade
+ []
+
+[102
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10890--10897
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 10901.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 10924--10924
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 10924--10924
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 10924--10925
+[]|\T1/put/b/n/10 Grade
+ []
+
+[103
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 10992--10999
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11003.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11026--11026
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11026--11026
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11026--11027
+[]|\T1/put/b/n/10 Grade
+ []
+
+[104
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 11093--11100
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11104.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11127--11127
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11127--11127
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11127--11128
+[]|\T1/put/b/n/10 Grade
+ []
+
+[105
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 11194--11201
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11205.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11228--11228
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11228--11228
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11228--11229
+[]|\T1/put/b/n/10 Grade
+ []
+
+[106
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 11295--11302
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11306.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11329--11329
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11329--11329
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11329--11330
+[]|\T1/put/b/n/10 Grade
+ []
+
+[107
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 11396--11403
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11407.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11430--11430
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11430--11430
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11430--11431
+[]|\T1/put/b/n/10 Grade
+ []
+
+[108
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 11497--11504
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11508.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11531--11531
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11531--11531
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11531--11532
+[]|\T1/put/b/n/10 Grade
+ []
+
+[109
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 11599--11606
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11610.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11633--11633
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11633--11633
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11633--11634
+[]|\T1/put/b/n/10 Grade
+ []
+
+[110
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 11700--11707
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11711.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11734--11734
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11734--11734
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11734--11735
+[]|\T1/put/b/n/10 Grade
+ []
+
+[111
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 11801--11808
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11812.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11835--11835
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11835--11835
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11835--11836
+[]|\T1/put/b/n/10 Grade
+ []
+
+[112
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 11902--11909
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 11913.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 11936--11936
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 11936--11936
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 11936--11937
+[]|\T1/put/b/n/10 Grade
+ []
+
+[113
+
+]
+Overfull \hbox (35.34796pt too wide) in paragraph at lines 12003--12010
+[][] 
+ []
+
+File: cu-logo.jpg Graphic file (type jpg)
+<use cu-logo.jpg>
+Package pdftex.def Info: cu-logo.jpg  used on input line 12014.
+(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
+
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 12037--12037
+ []|\T1/put/b/n/10 Letter 
+ []
+
+
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 12037--12037
+ \T1/put/b/n/10 Grade| 
+ []
+
+
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 12037--12038
+[]|\T1/put/b/n/10 Grade
+ []
+
+[114
+
+] (./gs.aux) ) 
+Here is how much of TeX's memory you used:
+ 12970 strings out of 494091
+ 229543 string characters out of 6163523
+ 328663 words of memory out of 5000000
+ 16344 multiletter control sequences out of 15000+600000
+ 63809 words of font info for 44 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 48i,14n,45p,829b,361s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018basic/texmf-dist/fonts/enc/dvips/base/8r.
+enc}</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adobe/ut
+opia/putb8a.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adobe/utop
+ia/putr8a.pfb>
+Output written on gs.pdf (114 pages, 510228 bytes).
+PDF statistics:
+ 403 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+

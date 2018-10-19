@@ -1,5 +1,5 @@
             \documentclass[11pt]{article}
-            \usepackage[paperwidth=30cm, paperheight=21cm,left=0.78in,top=0.25in,right=0.3in,bottom=0.2in]{geometry}
+           \usepackage[paperwidth=30cm, paperheight=21cm,left=0.78in,top=0.25in,right=0.3in,bottom=0.2in]{geometry}
             \setlength\parskip{0pt}
             \usepackage{datatool}
             \usepackage{calc}
@@ -19,19 +19,19 @@
 
             \begin{document}
 
-            \DTLloaddb{tabulation}{1st-tabulation-csv.csv}  
+         %   \DTLloaddb{tabulation}{1st-tabulation-csv.csv}  
 
-            \DTLforeach*{tabulation}{\sl=SL,\roll=ID,\name=NAME, \onelg =LG111, \onegp =GP111, \oneps =PS111, \twolg =LG113, \twogp =GP113, \twops =PS113, \threelg =LG114, \threegp =GP114, \threeps =PS114, \fourlg =LG121, \fourgp =GP121, \fourps =PS121,\fivelg =LG122, \fivegp =GP122, \fiveps =PS122, \sixlg =LG131, \sixgp =GP131, \sixps =PS131, \sevenlg =LG151, \sevengp =GP151, \sevenps =PS151,\tce=TCE,\tps=TPS,\gpa=GPA, \result=RESULT, \hall =HALL}{%
+           % \DTLforeach*{tabulation}{\sl=SL,\roll=ID,\name=NAME, \onelg =LG111, \onegp =GP111, \oneps =PS111, \twolg =LG113, \twogp =GP113, \twops =PS113, \threelg =LG114, \threegp =GP114, \threeps =PS114, \fourlg =LG121, \fourgp =GP121, \fourps =PS121,\fivelg =LG122, \fivegp =GP122, \fiveps =PS122, \sixlg =LG131, \sixgp =GP131, \sixps =PS131, \sevenlg =LG151, \sevengp =GP151, \sevenps =PS151,\tce=TCE,\tps=TPS,\gpa=GPA, \result=RESULT, \hall =HALL}{%
 
             \begin{table}[ht]
             \begin{minipage}[m]{0.3\linewidth}  
 
             \vspace*{-3.0cm} 
             \begin{tabular}{l >{\hspace*{-1.8ex}}p{2.6in}} % >{\raggedleft}m{1.5in}}
-            Name &: \textsc{\name}\\ 
-            Session &: \IfSubStr{\roll}{1770}{$2017-2018$}{$2018-2019$}\\ 
-            Roll/ID No. &: $\roll $\\ 
-            Hall &: \hall\\ 
+            Name &: \textsc{student.name}\\ 
+            Session &: \IfSubStr{student.roll}{1770}{$2017-2018$}{$2018-2019$}\\ 
+            Roll/ID No. &: $student.roll$\\ 
+            Hall &: student.hall \\ 
             \end{tabular} 
             \end{minipage}
             \hspace{0.3cm}
@@ -85,21 +85,22 @@
                 
             \begin{tabular}{|c|l|c|>{\scshape}c|c|c|}
             \hline  \rule[-1ex]{0pt}{3.5ex} {\centering{\bf Course Code}} &  \multicolumn{1}{c|}{\textbf{Course Title}}  & {\bf Credits} & {\bf Letter Grade} & {\bf Grade Point} & {\bf Point Secured}  \\ 
-            \hline   CSE 111 & Introduction to Computer Systems and Computing Agents				 & $3$ & \onelg & \numtwo{\onegp} & \numtwo{\oneps} \\ 
-            \hline  CSE 113 & Structured Programming Language				 & $3$ & \twolg  & \numtwo{\twogp} & \numtwo{\twops} \\ 
-            \hline   CSE 114 & Structured Programming Language Lab					& $2$ & \threelg & \numtwo{\threegp} & \numtwo{\threeps}\\ 
-            \hline   EEE 121 & Electrical Engineering & $3$ &  \fourlg & \numtwo{\fourgp}  & \numtwo{\fourps} \\ 
-            \hline   EEE 121 &Electrical Engineering Lab					& $1$ & \fivelg & \numtwo{\fivegp} & \numtwo{\fiveps} \\ 
-            \hline  MAT 131 & Matrices, Vector Analysis and Geometry				& $3$ &  \sixlg & \numtwo{\sixgp} & \numtwo{\sixps}  \\ 
-            \hline   STA 151 & Basic Statistics	 & $3$ &  \sevenlg & \numtwo{\sevengp} & \numtwo{\sevenps} \\ 
-            \hline 
+            
+            \hline   course.code &  course.code			 & $course.credit$ & summation.lg & summation.gp & summation.gp \\ %\numtwo{summation.gp} %\\ 
+            %\hline  CSE 113 & Structured Programming Language				 & $3$ & \twolg  & \numtwo{\twogp} & \numtwo{\twops} \\ 
+            %\hline   CSE 114 & Structured Programming Language Lab					& $2$ & \threelg & \numtwo{\threegp} & \numtwo{\threeps}\\ 
+            %\hline   EEE 121 & Electrical Engineering & $3$ &  \fourlg & \numtwo{\fourgp}  & \numtwo{\fourps} \\ 
+            %\hline   EEE 121 &Electrical Engineering Lab					& $1$ & \fivelg & \numtwo{\fivegp} & \numtwo{\fiveps} \\ 
+            %\hline  MAT 131 & Matrices, Vector Analysis and Geometry				& $3$ &  \sixlg & \numtwo{\sixgp} & \numtwo{\sixps}  \\ 
+            %\hline   STA 151 & Basic Statistics	 & $3$ &  \sevenlg & \numtwo{\sevengp} & \numtwo{\sevenps} \\ 
+            %\hline 
             \end{tabular}
             \end{center}
             \renewcommand{\arraystretch}{1.03}
 
             \begin{center}
             \begin{tabular}{p{1.5in} >{\raggedright}p{1.6in} p{0.1in} >{\raggedright}p{2.8in} >{\raggedleft}p{1.0in}}
-            Credits Offered: $18$ &  Credits Earned: $\tce$ & &  Grade Point Average (GPA): \fbox{\bf~\numtwo{\gpa}~} & Result: \fbox{\bf~{\result}~} \\
+            Credits Offered: $18$ &  Credits Earned: $tabulation.tcs$ & &  Grade Point Average (GPA): \fbox{\bf~tabulation.gpa~} & Result: \fbox{\bf~{tabulation.result}~} \\
             \end{tabular}
             \end{center}
             \vspace{1cm}
@@ -128,6 +129,6 @@
             \end{table}
 
             \clearpage
-            }
+         %   }
 
             \end{document}
