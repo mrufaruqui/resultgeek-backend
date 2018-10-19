@@ -4,7 +4,8 @@ class TabulationsController < ApplicationController
   # GET /tabulations
   # GET /tabulations.json
   def index
-    @tabulations = Tabulation.all
+     @tabulation = generate_tabulations_view
+     render :aggregate
   end
 
   # GET /tabulations/1
@@ -50,4 +51,21 @@ class TabulationsController < ApplicationController
     def tabulation_params
       params.require(:tabulation).permit(:student_id, :gpa, :tce, :result, :remarks)
     end
+    def generate_tabulations_view
+      a = []
+        @tab = Tabulation.all
+        @tab.each do |t| 
+          @retHash = Hash.new
+          @retHash[:tabulation] = t;
+          @retHash[:student] = t.student;
+          @retHash[:summations] = []
+          t.tabulation_details.each do |td|
+            @retHash[:summations] << td.summation
+          end
+          puts @retHash
+          a << @retHash
+      end
+      a
+    end
 end
+

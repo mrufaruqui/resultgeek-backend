@@ -14,5 +14,6 @@
 
 class Tabulation < ApplicationRecord
     belongs_to :student
-   # has_many   :summations
+    has_many   :tabulation_details,:dependent=> :destroy
+    scope :with_tabulation_details, -> {includes(:tabulation_details)} 
 end

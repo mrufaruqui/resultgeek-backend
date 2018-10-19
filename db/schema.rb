@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181018171617) do
+ActiveRecord::Schema.define(version: 20181019004402) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -63,6 +63,15 @@ ActiveRecord::Schema.define(version: 20181018171617) do
     t.index ["student_id"], name: "index_summations_on_student_id"
   end
 
+  create_table "tabulation_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "summation_id"
+    t.bigint "tabulation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["summation_id"], name: "index_tabulation_details_on_summation_id"
+    t.index ["tabulation_id"], name: "index_tabulation_details_on_tabulation_id"
+  end
+
   create_table "tabulations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "student_id"
     t.float "gpa", limit: 24
@@ -104,5 +113,7 @@ ActiveRecord::Schema.define(version: 20181018171617) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "tabulation_details", "summations"
+  add_foreign_key "tabulation_details", "tabulations"
   add_foreign_key "tabulations", "students"
 end

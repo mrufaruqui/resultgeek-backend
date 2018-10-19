@@ -68,10 +68,11 @@ class SummationsController < ApplicationController
           summation.section_a_code = row[:code_a]
           summation.section_b_code = row[:code_b]
           summation.marks = summation.section_a_marks.to_f + summation.section_b_marks.to_f
-          summation.total_marks = summation.marks.to_f + summation.cact.to_f
+          m = 
+          summation.total_marks = (summation.marks.to_f + summation.cact.to_f).ceil
         else
           puts "lab"
-          summation.total_marks = row[:marks]
+          summation.total_marks = (row[:marks]).to_f.ceil
         end
 
         summation.percetage = (summation.total_marks.to_f / (@course.credit.to_f * 25.to_f)) * 100.to_f
