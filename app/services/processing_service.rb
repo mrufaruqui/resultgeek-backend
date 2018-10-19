@@ -37,16 +37,25 @@ class ProcessingService
             end
             #tabulation.summations = sm_a;
 
-            gpa = tps / 18.to_f
-            s.gpa = gpa.round(2)
+            gpa = format_gpa(tps / 18.to_f)
+            s.gpa = gpa
             s.save
-            tabulation.gpa = gpa.round(2);
+            tabulation.gpa = gpa #gpa.round(2);
             tabulation.tce = tce.to_i
             tabulation.result = tabulation.gpa >= 2.20 ? 'Pass' : 'Fail'
             tabulation.remarks = 'F-' + remarks.join(",") if tce < 18 #ToDo
             tabulation.save
        end
   end
+ 
+  ###Format CGPA According to CU Syndicate Directions ####
+
+  def self.format_gpa(gpa)
+    third_decimal = ((gpa.round(3) - gpa.round(2)) * 1000).to_i
+    fourth_decimal = ((gpa.round(4) - gpa.round(3)) * 10000).to_i
+    third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
+  end
+
 end
 
 
