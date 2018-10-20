@@ -17,21 +17,7 @@ class Student < ApplicationRecord
   require 'roo'
     attr_accessor :file
     attr_accessor :students_info
-
-    # def self.import(file)
-    #   spreadsheet = Roo::Spreadsheet.open(file.path)
-    #   header = spreadsheet.row(1)
-    #   (2..spreadsheet.last_row).each do |i|
-    #     row = Hash[[header, spreadsheet.row(i)].transpose].symbolize_keys
-    #     student = find_by(roll: row[:roll]) || new
-    #     student.roll = row[:roll]
-    #     student.name = row[:name]
-    #     student.hall_name = row[:hall_name]
-    #     student.hall = row[:hall]
-    #     #student.attributes = row.to_hash.re
-    #     student.save
-    #   end
-    # end
+     default_scope { order({hall: :asc}, :roll) }
 
     def self.import(students_info) 
       header = students_info[0]

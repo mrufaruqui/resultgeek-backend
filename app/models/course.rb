@@ -12,7 +12,8 @@
 
 class Course < ApplicationRecord
     enum course_type: [:theory, :lab]
-    
+    default_scope { order(:sl_no) }
+
     def self.import(students_info) 
       header = students_info[0]
       body = students_info - [header]

@@ -1,0 +1,66 @@
+           \documentclass[11pt]{article}
+            \usepackage[a4paper, left=0.78in,top=0.25in,right=0.3in,bottom=0.2in]{geometry}
+            \setlength\parskip{0pt}
+            \usepackage{datatool}
+            \usepackage{calc}
+            \usepackage{array,tabularx}
+            \usepackage{graphicx,pgf}
+            \usepackage{utopia}
+            \usepackage[T1]{fontenc}
+            \usepackage{ifthen}
+            \pagestyle{empty}
+            \usepackage{xstring}
+            \usepackage{multirow}
+
+            \newcommand*{\numtwo}[1]{\pgfmathprintnumber[
+                    fixed, precision=2, fixed zerofill=true]{#1}}
+            \begin{document}
+ 
+  \centering
+\begin{minipage}[m]{.8\textwidth} \centering 
+%\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	\textsc{$1^{st}$ Semester B.Sc. Engineering Examination 2018}\\
+		{\large {\sc Summation Sheet}}\\ 
+\end{minipage} 
+ 
+ 
+\begin{center} 
+	\renewcommand{\arraystretch}{1.08}
+	
+	\begin{small}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \hline
+	\multirow{2}{*}{ID} & 	\multirow{2}{*}{CA}  & 	\multirow{2}{*}{CT}  & 	\multirow{2}{*}{CACT}  & \multicolumn{2 }{|c|}{Section A}& \multicolumn{2 }{c|}{Section B} & 	\multirow{2}{*}{Marks}  & 	\multirow{2}{*}{Total Marks}  \\ 
+	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\ \hline
+	
+ \end{tabular}
+            \end{small}
+            \end{center}
+          
+            \centering
+            
+            \begin{table}[hb]
+            	\centering
+            \begin{minipage}[b]{0.5\linewidth} %\centering
+            {\centering Tabulators }
+            \begin{enumerate}
+                \item  \hspace*{1ex} $\ldots \ldots \ldots \ldots$  
+                \item  \hspace*{1ex} $\ldots \ldots \ldots \ldots$  
+                \item  \hspace*{1ex} $\ldots \ldots \ldots \ldots$  
+            \end{enumerate} 
+
+            \end{minipage}
+            \hspace*{1.2cm}
+            \begin{minipage}[b]{0.4\linewidth} \centering
+            Chairman  \hspace*{1ex} \\
+ $1^{st}$ Sem B.Sc. Engg Exam 2018 Committee
+            \end{minipage}
+            \end{table}
+ 
+
+            \clearpage
+            \end{document}

@@ -17,6 +17,8 @@ class ExamsController < ApplicationController
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
+    @exam.uuid = set_exam
+    @exam.fullname = set_fullname
 
     if @exam.save
       render :show, status: :created, location: @exam
@@ -41,6 +43,22 @@ class ExamsController < ApplicationController
     @exam.destroy
   end
 
+   def process_result
+      ProcessingService.perform
+      render json: {:message=>"Job Submitted"}, status: "ok"
+   end
+
+   def generate_tabulations_latex
+       GenerateGradeSheetService.create_gs_latex
+       render json: {:message=>"Job Submitted"}, status: "ok"
+   end
+
+   def generate_gradesheets_latex
+        GenerateTabulationLatexService.create_tabulation_latex
+        render json: {:message=>"Job Submitted"}, status: "ok"
+   end
+   
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_exam
@@ -49,6 +67,14 @@ class ExamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exam_params
-      params.require(:exam).permit(:year, :program, :sem, :title)
+      params.require(:exam).permit(:year, :program, :sem, :title, :held_in)
+    end
+
+    def set_fullname
+      [@exam.sem.titlecase, @exam.program.titlecase,"Engineering Exam",  @exam.year].join(" ")
+    end
+
+    def set_uuid
+      [e.sem, e.program, e.title, e.year].join("")
     end
 end
