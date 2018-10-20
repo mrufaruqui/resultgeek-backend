@@ -1,4 +1,5 @@
 class TabulationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_tabulation, only: [:show, :update, :destroy]
 
   # GET /tabulations
