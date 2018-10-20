@@ -71,7 +71,7 @@ class ExamsController < ApplicationController
     end
 
     def set_fullname
-      [@exam.sem.titlecase, @exam.program.titlecase,"Engineering Exam",  @exam.year].join(" ")
+      [@exam.sem.titlecase,"Sem", @exam.program.titlecase,"Engineering Exam",  @exam.year].join(" ")
     end
 
     def set_uuid
