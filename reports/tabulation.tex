@@ -16,9 +16,10 @@
                     fixed, precision=2, fixed zerofill=true]{#1}}
             \begin{document}
 \begin{table}[ht]
-	
-\begin{minipage}[m]{0.3\linewidth} %\centering
-%\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -35,36 +36,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
+\end{minipage}
+&
+\begin{minipage}[m]{0.3\linewidth} %\centering
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
+	\end{small}
 \end{minipage}
 
-
-\hspace{5cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -72,11 +103,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -150,8 +185,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -168,60 +205,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -229,11 +272,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -307,8 +354,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -325,60 +374,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -386,11 +441,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -464,8 +523,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -482,60 +543,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -543,11 +610,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -621,8 +692,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -639,60 +712,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -700,11 +779,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -778,8 +861,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -796,60 +881,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -857,11 +948,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -935,8 +1030,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -953,60 +1050,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -1014,11 +1117,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -1092,8 +1199,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -1110,60 +1219,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -1171,11 +1286,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -1249,8 +1368,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -1267,60 +1388,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -1328,11 +1455,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -1406,8 +1537,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -1424,60 +1557,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -1485,11 +1624,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -1563,8 +1706,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -1581,60 +1726,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -1642,11 +1793,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -1720,8 +1875,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -1738,60 +1895,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -1799,11 +1962,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -1871,8 +2038,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -1889,60 +2058,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -1950,11 +2125,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
@@ -2012,8 +2191,10 @@
 
             \clearpage
 \begin{table}[ht]
-\begin{minipage}[m]{0.3\linewidth} %\centering
-\vspace*{-3.0cm} 
+\begin{tabularx}{\linewidth}{llll}
+     \begin{minipage}[m]{0.3\linewidth} \flushleft
+%\vspace*{3.0cm} 
+\begin{small}
 \begin{tabular}{ |c|>{\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
 	\hline {\bf Numerical Range} & {\bf Letter Grade} & {\bf Grade Point} \\
 	\hline   80\% and above & A+ & $4.00$  \\ 
@@ -2030,60 +2211,66 @@
 	\hline 
 	
 \end{tabular}
+\end{small}
 \end{minipage}
-\hspace{-4cm}
+&
 \begin{minipage}[m]{0.3\linewidth} %\centering
-	\vspace*{-3.0cm} 
+	\hspace{-5cm}
+%	\vspace*{-3.0cm} 
 	\begin{small}
-		\renewcommand{\arraystretch}{1.01}
-		\begin{tabular}{ |c|} 
-			\hline {\bf	ABBREVIATIONS } \\		
-			\hline 	NG = Numerical Grade		 \\			
-			\hline 	LG = Letter Grade			 \\		
-			\hline 	GP = Grade Points			 \\		
-			 \hline	CATM = Class Attendance \\ 
-			 	        and Class Test Marks	 \\				
-			\hline 	FEM = Final Exam Marks				
- \\	
-			\hline 	MO = Marks Obtained				
- \\	
-			\hline 	CP = Credit Points = Credit x GP	 \\				
-			\hline 	TCE = Total Credit Earned		 \\			
-			\hline 	TCP = Total Credit Points		 \\			
-			\hline 	GPA = Grade Point Average = TCP/18		 \\	 
-			\hline 
-			
-		\end{tabular}
+		\renewcommand{\arraystretch}{1.01}{
+			\begin{tabular}{ |c|} 
+				\hline {\bf	ABBREVIATIONS } \\		
+				\hline 	NG = Numerical Grade		 \\			
+				\hline 	LG = Letter Grade			 \\		
+				\hline 	GP = Grade Points			 \\		
+				\hline	CATM = Class Attendance \\ 
+				and Class Test Marks	 \\				
+				\hline 	FEM = Final Exam Marks				
+				\\	
+				\hline 	MO = Marks Obtained				
+				\\	
+				\hline 	CP = Credit Points = Credit x GP	 \\				
+				\hline 	TCE = Total Credit Earned		 \\			
+				\hline 	TCP = Total Credit Points		 \\			
+				\hline 	GPA = Grade Point Average = TCP/18		 \\	 
+				\hline 
+				
+			\end{tabular}
+		}
 	\end{small}
 \end{minipage}
 
-\hspace{-1cm}
-\begin{minipage}[b]{0.35\textwidth}
-	\vspace*{.5in}
-\centering \includegraphics[width=0.6in]{cu-logo.jpg}
-
-\smallskip
-
-\noindent {\textsc{University of Chittagong}}\\
-\textsc{Department of Computer Science \& Engineering}\\
-
-\smallskip
-
-{\large {\sc Grade Sheet}}\\
-
-\smallskip
-\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
-{Held in December 2016 - January 2017}\\
+&
+     \hspace{-5in}
+\begin{minipage}[m]{0.35\textwidth} \centering
+%	\vspace*{-0.2in} 
+\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\smallskip
+	
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	
+	\smallskip
+	
+	{\large {\sc Grade Sheet}}\\
+	
+	\smallskip
+	\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\
+	{Held in December 2016 - January 2017}\\
 \end{minipage}
-\hspace{0.2cm}
+&
+\hspace{1cm}
 \begin{minipage}[m]{0.3\linewidth} \flushright
-\vspace*{-1in} %\centering 
-%{\flushright \bf	Serial No:\sl \\}
-%\vspace{4mm}
-\begin{small}
-\renewcommand{\arraystretch}{1.01}
-\begin{tabular} {|l|l|r|r|}
-    \hline \hline Code & Title  & Credit &  Marks \\ \hline
+%	\vspace*{-1in} %\centering 
+	%{\flushright \bf	Serial No:\sl \\}
+	%\vspace{4mm}
+	\hspace{-5cm}
+	\begin{small}
+		\renewcommand{\arraystretch}{1.01}
+		\begin{tabular} {|l|l|r|r|}
+			\hline \hline Code & Title  & Credit &  Marks \\ \hline
 \hline  CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
 \hline  CSE113 & Structured Programming Language & 3 & 75  \\
 \hline  CSE114 & Structured Programming Language Lab & 2 & 50  \\
@@ -2091,11 +2278,15 @@
 \hline  EEE122 & Electrical Engineering Lab & 1 & 25  \\
 \hline  MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
 \hline  STA151 & Basic Statistics & 3 & 75  \\
-	\hline
-\end{tabular}
-\end{small} 
+ \hline
+		\end{tabular}
+	\end{small} 
 \end{minipage}
+
+\end{tabularx}
 \end{table}
+
+
 \vspace*{-0.5cm}
 \begin{center}
 	%\hspace*{1in}
