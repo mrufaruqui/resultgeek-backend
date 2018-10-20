@@ -48,4 +48,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  adapter: pg
+  port: 5432
+  database: deepdcqr9jhtnr
+  username: fmxzqkgczikowv
+  password: a695e93ffc4d5fc528ea204f4b7739612983ddf158089a92f992abb7f7e43e59
+  host: ec2-54-243-61-194.compute-1.amazonaws.com
   url: <%= ENV["DATABASE_URL"] %>
+  
