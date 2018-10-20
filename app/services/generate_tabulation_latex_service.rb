@@ -124,110 +124,7 @@ class GenerateTabulationLatexService
 \\begin{table}[ht]
 \\begin{tabularx}{\\linewidth}{llll}
     EOF
-    
-     _grading_system = <<-EOF
-     \\begin{minipage}[m]{0.3\\linewidth} \\flushleft
-%\\vspace*{3.0cm} 
-\\begin{small}
-\\begin{tabular}{ |c|>{\\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\\centering}p{1cm} | >{\\centering}p{1cm} |}
-	\\hline {\\bf Numerical Range} & {\\bf Letter Grade} & {\\bf Grade Point} \\\\
-	\\hline   80\\% and above & A+ & $4.00$  \\\\ 
-	\\hline   75\\% to less than 80\\% &  A & $3.75$\\\\ 
-	\\hline   70\\% to less than 75\\% &  A- & $3.50$ \\\\ 
-	\\hline   65\\% to less than 70\\% &  B+ & $3.25$\\\\ 
-	\\hline   60\\% to less than 65\\% &  B  & $3.00$\\\\ 
-	\\hline   55\\% to less than 60\\% &  B- & $2.75$\\\\ 
-	\\hline   50\\% to less than 55\\% &  C+ & $2.50$\\\\ 
-	\\hline   45\\% to less than 50\\% &  C  & $2.25$\\\\
-	\\hline   40\\% to less than 45\\% &  D  & $2.00$\\\\
-	\\hline   Less than 40\\%         &  F  & $0.00$\\\\ 
-	\\hline   Incomplete/Absent         &  X  & X\\\\ 
-	\\hline 
-	
-\\end{tabular}
-\\end{small}
-\\end{minipage}
-     EOF
-
-     _abbreviations = <<-EOF
-\\begin{minipage}[m]{0.3\\linewidth} %\\centering
-	\\hspace{-5cm}
-%	\\vspace*{-3.0cm} 
-	\\begin{small}
-		\\renewcommand{\\arraystretch}{1.01}{
-			\\begin{tabular}{ |c|} 
-				\\hline {\\bf	ABBREVIATIONS } \\\\		
-				\\hline 	NG = Numerical Grade		 \\\\			
-				\\hline 	LG = Letter Grade			 \\\\		
-				\\hline 	GP = Grade Points			 \\\\		
-				\\hline	CATM = Class Attendance \\\\ 
-				and Class Test Marks	 \\\\				
-				\\hline 	FEM = Final Exam Marks				
-				\\\\	
-				\\hline 	MO = Marks Obtained				
-				\\\\	
-				\\hline 	CP = Credit Points = Credit x GP	 \\\\				
-				\\hline 	TCE = Total Credit Earned		 \\\\			
-				\\hline 	TCP = Total Credit Points		 \\\\			
-				\\hline 	GPA = Grade Point Average = TCP/18		 \\\\	 
-				\\hline 
-				
-			\\end{tabular}
-		}
-	\\end{small}
-\\end{minipage}
-
-     EOF
-
-     _exam_info = <<-EOF
-     \\hspace{-5in}
-\\begin{minipage}[m]{0.35\\textwidth} \\centering
-%	\\vspace*{-0.2in} 
-\\includegraphics[width=0.6in]{cu-logo.jpg}
-	
-	\\smallskip
-	
-	\\noindent {\\textsc{University of Chittagong}}\\\\
-	\\textsc{Department of Computer Science \\& Engineering}\\\\
-	
-	\\smallskip
-	
-	{\\large {\\sc Grade Sheet}}\\\\
-	
-	\\smallskip
-	\\textsc{$5^{th}$ Semester B.Sc. Engineering Examination 2016}\\\\
-	{Held in December 2016 - January 2017}\\\\
-\\end{minipage}
-EOF
-
-  _course_info_a = <<-EOF
-\\hspace{1cm}
-\\begin{minipage}[m]{0.3\\linewidth} \\flushright
-%	\\vspace*{-1in} %\\centering 
-	%{\\flushright \\bf	Serial No:\\sl \\\\}
-	%\\vspace{4mm}
-	\\hspace{-5cm}
-	\\begin{small}
-		\\renewcommand{\\arraystretch}{1.01}
-		\\begin{tabular} {|l|l|r|r|}
-			\\hline \\hline Code & Title  & Credit &  Marks \\\\ \\hline
-EOF
-	 
-    a = ''
-    @courses.each  do |course|
-        a << "\\hline  " << [course.code, course.title, course.credit, course.credit * 25].join(' & ') << "  \\\\\n"
-    end
- _course_info_b = a
- 
- _course_info_c= <<-EOF
- \\hline
-		\\end{tabular}
-	\\end{small} 
-\\end{minipage}
-EOF
-_course_info = _course_info_a + _course_info_b + _course_info_c
-
-part_b = _grading_system + "&\n" + _abbreviations + "&\n" + _exam_info + "&\n" + _course_info + "\n"
+part_b = grading_system + "&\n" + abbreviations + "&\n" + exam_info + "&\n" + course_info + "\n"
 part_c = <<-EOF   
 \\end{tabularx}
 \\end{table}
@@ -323,12 +220,114 @@ part_c = <<-EOF
 
 
     def self.grading_system
+        <<-EOF
+     \\begin{minipage}[m]{0.3\\linewidth} \\flushleft
+%\\vspace*{3.0cm} 
+\\begin{small}
+\\begin{tabular}{ |c|>{\\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\\centering}p{1cm} | >{\\centering}p{1cm} |}
+	\\hline {\\bf Numerical Range} & {\\bf Letter Grade} & {\\bf Grade Point} \\\\
+	\\hline   80\\% and above & A+ & $4.00$  \\\\ 
+	\\hline   75\\% to less than 80\\% &  A & $3.75$\\\\ 
+	\\hline   70\\% to less than 75\\% &  A- & $3.50$ \\\\ 
+	\\hline   65\\% to less than 70\\% &  B+ & $3.25$\\\\ 
+	\\hline   60\\% to less than 65\\% &  B  & $3.00$\\\\ 
+	\\hline   55\\% to less than 60\\% &  B- & $2.75$\\\\ 
+	\\hline   50\\% to less than 55\\% &  C+ & $2.50$\\\\ 
+	\\hline   45\\% to less than 50\\% &  C  & $2.25$\\\\
+	\\hline   40\\% to less than 45\\% &  D  & $2.00$\\\\
+	\\hline   Less than 40\\%         &  F  & $0.00$\\\\ 
+	\\hline   Incomplete/Absent         &  X  & X\\\\ 
+	\\hline 
+	
+\\end{tabular}
+\\end{small}
+\\end{minipage}
+     EOF
     end
 
     def self.abbreviations 
+        <<-EOF
+\\begin{minipage}[m]{0.3\\linewidth} %\\centering
+	\\hspace{-5cm}
+%	\\vspace*{-3.0cm} 
+	\\begin{small}
+		\\renewcommand{\\arraystretch}{1.01}{
+			\\begin{tabular}{ |c|} 
+				\\hline {\\bf	ABBREVIATIONS } \\\\		
+				\\hline 	NG = Numerical Grade		 \\\\			
+				\\hline 	LG = Letter Grade			 \\\\		
+				\\hline 	GP = Grade Points			 \\\\		
+				\\hline	CATM = Class Attendance \\\\ 
+				and Class Test Marks	 \\\\				
+				\\hline 	FEM = Final Exam Marks				
+				\\\\	
+				\\hline 	MO = Marks Obtained				
+				\\\\	
+				\\hline 	CP = Credit Points = Credit x GP	 \\\\				
+				\\hline 	TCE = Total Credit Earned		 \\\\			
+				\\hline 	TCP = Total Credit Points		 \\\\			
+				\\hline 	GPA = Grade Point Average = TCP/18		 \\\\	 
+				\\hline 
+				
+			\\end{tabular}
+		}
+	\\end{small}
+\\end{minipage}
+
+     EOF
+
     end
 
     def self.exam_info
+        <<-EOF
+     \\hspace{-5in}
+\\begin{minipage}[m]{0.35\\textwidth} \\centering
+%	\\vspace*{-0.2in} 
+\\includegraphics[width=0.6in]{cu-logo.jpg}
+	
+	\\smallskip
+	
+	\\noindent {\\textsc{University of Chittagong}}\\\\
+	\\textsc{Department of Computer Science \\& Engineering}\\\\
+	
+	\\smallskip
+	
+	{\\large {\\sc Tabulation Sheet}}\\\\
+	
+	\\smallskip
+	\\textsc{$1^{st}$ Semester B.Sc. Engineering Examination 2018}\\\\
+	{Held in April 2018 - May 2018}\\\\
+\\end{minipage}
+EOF
+    end
+
+    def self.course_info
+      _course_info_a = <<-EOF
+\\hspace{1cm}
+\\begin{minipage}[m]{0.3\\linewidth} \\flushright
+%	\\vspace*{-1in} %\\centering 
+	%{\\flushright \\bf	Serial No:\\sl \\\\}
+	%\\vspace{4mm}
+	\\hspace{-5cm}
+	\\begin{small}
+		\\renewcommand{\\arraystretch}{1.01}
+		\\begin{tabular} {|l|l|r|r|}
+			\\hline \\hline Code & Title  & Credit &  Marks \\\\ \\hline
+EOF
+	 
+    a = ''
+    @courses.each  do |course|
+        a << "\\hline  " << [course.code, course.title, course.credit, course.credit * 25].join(' & ') << "  \\\\\n"
+    end
+ _course_info_b = a
+ 
+ _course_info_c= <<-EOF
+ \\hline
+		\\end{tabular}
+	\\end{small} 
+\\end{minipage}
+EOF
+ _course_info_a + _course_info_b + _course_info_c
     end
 
 end

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  20 OCT 2018 10:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  20 OCT 2018 10:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1145,7 +1145,7 @@ Underfull \hbox (badness 10000) in alignment at lines 2286--2286
 Here is how much of TeX's memory you used:
  12966 strings out of 494091
  229569 string characters out of 6163523
- 429681 words of memory out of 5000000
+ 429679 words of memory out of 5000000
  16342 multiletter control sequences out of 15000+600000
  52998 words of font info for 41 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
@@ -1157,7 +1157,7 @@ fonts/cm/cmmi8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adob
 e/utopia/putb8a.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adobe/
 utopia/putr8a.pfb>
-Output written on tabulation.pdf (14 pages, 259386 bytes).
+Output written on tabulation.pdf (14 pages, 259295 bytes).
 PDF statistics:
  77 PDF objects out of 1000 (max. 8388607)
  53 compressed objects within 1 object stream
