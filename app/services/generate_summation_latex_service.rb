@@ -8,6 +8,8 @@ class GenerateSummationLatexService
     def initialize(options={})
      @exam = (options.include? :uuid) ? Exam.find_by(uuid:options[:uuid]) : Exam.last
      @courses = Course.all
+     @members = @exam.workforces.where(role:"member")
+     @tabulators = @exam.workforces.where(role:"tabulator")
     end
     
     def perform(options={})
@@ -118,14 +120,15 @@ class GenerateSummationLatexService
             \\begin{minipage}[b]{0.5\\linewidth} %\\centering
             {\\centering Tabulators }
             \\begin{enumerate}
-                \\item  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$  
-                \\item  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$  
-                \\item  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$  
+                \\item #{@tabulators[0].teacher.display_name unless @tabulators[0].nil?} \\hspace*{1ex} $\\ldots \\ldots  $  
+                \\item #{@tabulators[1].teacher.display_name unless @tabulators[1].nil? || @tabulators.length < 2} \\hspace*{1ex} $\\ldots \\ldots  $  
+                \\item #{@tabulators[2].teacher.display_name unless @tabulators[2].nil? || @tabulators.length < 3} \\hspace*{1ex} $\\ldots \\ldots $  
             \\end{enumerate} 
 
             \\end{minipage}
             \\hspace*{1.2cm}
             \\begin{minipage}[b]{0.4\\linewidth} \\centering
+            (#{@exam.workforces.find_by(role:"chairman").teacher.display_name}) \\\\
             Chairman  \\hspace*{1ex} \\\\
            #{@exam.fullname} Committee
             \\end{minipage}

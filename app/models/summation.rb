@@ -16,6 +16,11 @@
 #  section_b_code  :string(255)
 #  student_id      :integer
 #  course_id       :integer
+#  marks           :string(255)
+#  remarks         :string(255)
+#  percetage       :float(24)
+#  cact            :float(24)
+#  exam_uuid       :string(255)
 #
 
 class Summation < ApplicationRecord

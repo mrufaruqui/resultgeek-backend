@@ -17,8 +17,8 @@ class ExamsController < ApplicationController
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
-    @exam.uuid = set_exam
-    @exam.fullname = set_fullname
+    @exam.uuid = set_uuid
+    # @exam.fullname = set_fullname
 
     if @exam.save
       render :show, status: :created, location: @exam

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181021042900) do
+ActiveRecord::Schema.define(version: 20181021060458) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20181021042900) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "uuid"
-    t.string "fullname"
+    t.integer "program_type", limit: 1
     t.index ["uuid"], name: "index_exams_on_uuid", unique: true
   end
 
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20181021042900) do
     t.integer "status", limit: 1, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sl_no"
     t.index ["dept_id"], name: "index_teachers_on_dept_id"
   end
 
@@ -140,11 +141,15 @@ ActiveRecord::Schema.define(version: 20181021042900) do
   end
 
   create_table "workforces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "role"
+    t.string "role", default: "member"
     t.integer "status"
     t.string "exam_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "exam_id"
+    t.bigint "teacher_id"
+    t.index ["exam_id"], name: "index_workforces_on_exam_id"
+    t.index ["teacher_id"], name: "index_workforces_on_teacher_id"
   end
 
   add_foreign_key "tabulation_details", "summations"
