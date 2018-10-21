@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  20 OCT 2018 10:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  21 OCT 2018 15:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -712,22 +712,17 @@ Underfull \hbox (badness 10000) in alignment at lines 111--111
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 141--141
-[]|\T1/put/m/n/10 Md. Habibul
+[]|\T1/put/m/n/10 Shah Azhar Hos-
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 141--141
-[]|\T1/put/m/n/10 Md. Abu Saiem
+Underfull \hbox (badness 1509) in paragraph at lines 141--141
+[]|\T1/put/m/n/10 Sadab Sad-man Is-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 141--141
-[]|\T1/put/m/n/10 Misbah Ud-din
- []
-
-
-Underfull \hbox (badness 2717) in paragraph at lines 141--141
-[]|\T1/put/m/n/10 Mohammed Sai-ful
+[]|\T1/put/m/n/10 Mohammad
  []
 
 [1
@@ -785,22 +780,12 @@ Underfull \hbox (badness 10000) in alignment at lines 449--449
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 479--479
-[]|\T1/put/m/n/10 Nu Shai Mong
+[]|\T1/put/m/n/10 Md. Habibul
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 479--479
-[]|\T1/put/m/n/10 Md Mosharaf
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 479--479
-[]|\T1/put/m/n/10 Md Sai-fud-din
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 479--479
-[]|\T1/put/m/n/10 Muntasir Md.
+Underfull \hbox (badness 4144) in paragraph at lines 479--479
+[]|\T1/put/m/n/10 Md. Abu Saiem
  []
 
 [3
@@ -827,16 +812,6 @@ Package pdftex.def Info: cu-logo.jpg  used on input line 618.
 
 Underfull \hbox (badness 10000) in alignment at lines 618--618
 [][][][] 
- []
-
-
-Underfull \hbox (badness 1436) in paragraph at lines 648--648
-[]|\T1/put/m/n/10 Md. Akram Hos-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 648--648
-[]|\T1/put/m/n/10 Zishan Sid-diqui
  []
 
 [4
@@ -867,17 +842,22 @@ Underfull \hbox (badness 10000) in alignment at lines 787--787
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 817--817
-[]|\T1/put/m/n/10 Shah Azhar Hos-
- []
-
-
-Underfull \hbox (badness 1509) in paragraph at lines 817--817
-[]|\T1/put/m/n/10 Sadab Sad-man Is-
+[]|\T1/put/m/n/10 Nu Shai Mong
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 817--817
-[]|\T1/put/m/n/10 Mohammad
+[]|\T1/put/m/n/10 Md Mosharaf
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 817--817
+[]|\T1/put/m/n/10 Md Sai-fud-din
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 817--817
+[]|\T1/put/m/n/10 Muntasir Md.
  []
 
 [5
@@ -904,6 +884,16 @@ Package pdftex.def Info: cu-logo.jpg  used on input line 956.
 
 Underfull \hbox (badness 10000) in alignment at lines 956--956
 [][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 986--986
+[]|\T1/put/m/n/10 Mostaq Ahmed
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 986--986
+[]|\T1/put/m/n/10 Md. Akram Hos-
  []
 
 [6
@@ -995,13 +985,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 1493--1493
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1493--1493
-[]|\T1/put/m/n/10 Nuzhath Yesmin
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1493--1493
-[]|\T1/put/m/n/10 Jannatul Fer-dous
+Underfull \hbox (badness 7168) in paragraph at lines 1493--1493
+[]|\T1/put/m/n/10 Khadiza Mori-oum
  []
 
 [9
@@ -1031,121 +1016,69 @@ Underfull \hbox (badness 10000) in alignment at lines 1632--1632
  []
 
 
-Underfull \hbox (badness 7168) in paragraph at lines 1662--1662
-[]|\T1/put/m/n/10 Khadiza Mori-oum
+Underfull \hbox (badness 7468) in paragraph at lines 1654--1654
+[]|\T1/put/m/n/10 Saima Ja-han Sul-
  []
 
 [10
 
 ]
-Overfull \hbox (2.42235pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1793--1793
  []|\T1/put/b/n/10 Letter 
  []
 
 
-Overfull \hbox (2.55234pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1793--1793
  \T1/put/b/n/10 Grade| 
  []
 
 
-Overfull \hbox (2.26753pt too wide) in paragraph at lines 1801--1801
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1793--1793
 []|\T1/put/b/n/10 Grade
  []
 
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 1801.
+Package pdftex.def Info: cu-logo.jpg  used on input line 1793.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 
-Underfull \hbox (badness 10000) in alignment at lines 1801--1801
+Underfull \hbox (badness 10000) in alignment at lines 1793--1793
 [][][][] 
  []
 
 [11
 
 ]
-Overfull \hbox (2.42235pt too wide) in paragraph at lines 1970--1970
+Overfull \hbox (2.42235pt too wide) in paragraph at lines 1946--1946
  []|\T1/put/b/n/10 Letter 
  []
 
 
-Overfull \hbox (2.55234pt too wide) in paragraph at lines 1970--1970
+Overfull \hbox (2.55234pt too wide) in paragraph at lines 1946--1946
  \T1/put/b/n/10 Grade| 
  []
 
 
-Overfull \hbox (2.26753pt too wide) in paragraph at lines 1970--1970
+Overfull \hbox (2.26753pt too wide) in paragraph at lines 1946--1946
 []|\T1/put/b/n/10 Grade
  []
 
 File: cu-logo.jpg Graphic file (type jpg)
 <use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 1970.
+Package pdftex.def Info: cu-logo.jpg  used on input line 1946.
 (pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
 
-Underfull \hbox (badness 10000) in alignment at lines 1970--1970
+Underfull \hbox (badness 10000) in alignment at lines 1946--1946
 [][][][] 
  []
 
 [12
 
-]
-Overfull \hbox (2.42235pt too wide) in paragraph at lines 2133--2133
- []|\T1/put/b/n/10 Letter 
- []
-
-
-Overfull \hbox (2.55234pt too wide) in paragraph at lines 2133--2133
- \T1/put/b/n/10 Grade| 
- []
-
-
-Overfull \hbox (2.26753pt too wide) in paragraph at lines 2133--2133
-[]|\T1/put/b/n/10 Grade
- []
-
-File: cu-logo.jpg Graphic file (type jpg)
-<use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 2133.
-(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
-
-Underfull \hbox (badness 10000) in alignment at lines 2133--2133
-[][][][] 
- []
-
-[13
-
-]
-Overfull \hbox (2.42235pt too wide) in paragraph at lines 2286--2286
- []|\T1/put/b/n/10 Letter 
- []
-
-
-Overfull \hbox (2.55234pt too wide) in paragraph at lines 2286--2286
- \T1/put/b/n/10 Grade| 
- []
-
-
-Overfull \hbox (2.26753pt too wide) in paragraph at lines 2286--2286
-[]|\T1/put/b/n/10 Grade
- []
-
-File: cu-logo.jpg Graphic file (type jpg)
-<use cu-logo.jpg>
-Package pdftex.def Info: cu-logo.jpg  used on input line 2286.
-(pdftex.def)             Requested size: 43.36243pt x 61.3227pt.
-
-Underfull \hbox (badness 10000) in alignment at lines 2286--2286
-[][][][] 
- []
-
-[14
-
 ] (./tabulation.aux) ) 
 Here is how much of TeX's memory you used:
  12966 strings out of 494091
  229569 string characters out of 6163523
- 429679 words of memory out of 5000000
+ 429630 words of memory out of 5000000
  16342 multiletter control sequences out of 15000+600000
  52998 words of font info for 41 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
@@ -1157,10 +1090,10 @@ fonts/cm/cmmi8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adob
 e/utopia/putb8a.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adobe/
 utopia/putr8a.pfb>
-Output written on tabulation.pdf (14 pages, 259295 bytes).
+Output written on tabulation.pdf (12 pages, 242645 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -50,11 +50,11 @@ class TabulationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tabulation_params
-      params.require(:tabulation).permit(:student_id, :gpa, :tce, :result, :remarks)
+      params.require(:tabulation).permit(:student_id, :gpa, :tce, :result, :remarks, :exam_uuid)
     end
     def generate_tabulations_view
       a = []
-        @tab = Tabulation.all
+        @tab = (params.include? :exam_uuid) ? Tabulation.where(exam_uuid: params[:exam_uuid]) : Tabulation.where(exam_uuid: Exam.first.uuid)
         @tab.each do |t| 
           @retHash = Hash.new
           @retHash[:tabulation] = t;

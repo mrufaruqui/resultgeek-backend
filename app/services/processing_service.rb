@@ -4,13 +4,16 @@ class ProcessingService
        ####Remove Old Caculations####
        TabulationDetail.destroy_all
        Tabulation.destroy_all
-
-
-       students = Student.all
+       
+       #######Retrieve exam info or default last one##########
+       @exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
        courses = Course.all
-       students.each do |s|
+       #######Retrieve Registered students #########
+       Registration.where(exam_uuid:@exam.uuid).each do |r|
+            s = r.student
             tabulation = Tabulation.find_by(student_id:s.id) || Tabulation.new
             tabulation.student_id = s.id;
+            tabulation.exam_uuid = @exam.uuid
             tps = 0.0
             tce = 0.0
             remarks = []

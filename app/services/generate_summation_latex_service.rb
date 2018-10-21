@@ -6,7 +6,7 @@
 class GenerateSummationLatexService
     
     def initialize(options={})
-     @exam = (options.include? :uuid) ? Exam.find_by(uuid:options[:uuid]) : Exam.last
+     @exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
      @courses = Course.all
      @members = @exam.workforces.where(role:"member")
      @tabulators = @exam.workforces.where(role:"tabulator")
