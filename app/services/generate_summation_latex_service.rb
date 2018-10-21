@@ -34,8 +34,10 @@ class GenerateSummationLatexService
    
     def latex_summation_template(course)
           no_sm_entries = Summation.where(course_id:course.id).count
-             sm_sheet = ''
-          (no_sm_entries / 35.to_f).ceil.times.each do |item|
+          batch_size = (no_sm_entries % 35 == 0) ? no_sm_entries / 35.to_i : (no_sm_entries / 35.to_i) + 1.to_i
+          
+          sm_sheet = ''
+          batch_size.times.each do |item|
              a = ''
             Summation.where(course_id:course.id).limit(35).offset(item* 35).each do |sm|  
                a << summation_table_row(sm) 

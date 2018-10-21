@@ -8,6 +8,7 @@ class GenerateTabulationLatexService
         @tabulators = @exam.workforces.where(role:"tabulator")
         @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
         @hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
+        @hall_name = ' '
 
          perform(options)
     end
@@ -23,7 +24,10 @@ class GenerateTabulationLatexService
           header = tabulation_header
           main = ''
           @hall_list.each do |hall|
-            (Tabulation.joins(:student).merge(Student.where(hall_name:hall)).count / 8.to_f).ceil.times.each do |item|
+            @hall_name = hall
+            total_students_in_a_hall = Tabulation.joins(:student).merge(Student.where(hall_name:hall)).count
+            batch_size = (total_students_in_a_hall % 8  == 0) ?  total_students_in_a_hall / 8.to_i : (total_students_in_a_hall / 8.to_i)+1.to_i
+            batch_size.times.each do |item|
                     main << main_preamble() 
                     #Tabulation.find_each(batch_size:10) do |t|
                     Tabulation.joins(:student).merge(Student.where(hall_name:hall)).limit(8).offset(item * 10).each do |t|
@@ -302,6 +306,7 @@ part_c = <<-EOF
 	\\smallskip
 	
 	{\\large {\\sc Tabulation Sheet}}\\\\
+	{\\large {\\sc Hall: #{@hall_name}}}\\\\
 	
 	\\smallskip
 	\\textsc{$1^{st}$ Semester B.Sc. Engineering Examination 2018}\\\\
