@@ -19,3 +19,9 @@ reports/*.tex
 reports/*.aux
 reports/*.log 
 reports/*.gz
+reports/gs.log
+reports/gs.pdf
+reports/tabulation.log
+reports/tabulation.pdf
+reports/tabulation.synctex.gz
+.DS_Store

@@ -63,8 +63,9 @@ class ExamsController < ApplicationController
    end
    
    def reset_exam_result
-      Tabulation.delete_all
-      Summation.delete_all
+      TabulationDetail.destroy_all
+      Tabulation.destroy_all
+      Summation.destroy_all
    end
   
   private
