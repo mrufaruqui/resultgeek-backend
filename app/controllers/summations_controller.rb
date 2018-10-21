@@ -1,5 +1,6 @@
 class SummationsController < ApplicationController
   before_action :authenticate_user!
+  before_action  :set_exam
   before_action :set_summation, only: [:show, :update, :destroy]
 
   # GET /summations
@@ -55,8 +56,9 @@ class SummationsController < ApplicationController
         row = Hash[[header, i].transpose].symbolize_keys
         student = Student.find_by(roll: row[:roll]) || Student.create(:roll=>row[:roll])
         summation = Summation.find_by(student_id: student.id, course_id: @course.id) || Summation.new
-        summation.student = student
-        summation.course   = @course 
+        summation.exam_uuid = @exam.uuid
+        summation.student =   student
+        summation.course   =  @course 
         
         
         if @course.course_type === "theory"
@@ -104,7 +106,11 @@ class SummationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the whitce list through.
     def summation_params
-      params.require(:summation).permit(:assesment, :attendance, :section_a_marks, :section_b_marks, :total_marks, :gpa, :grade)
+      params.require(:summation).permit(:assesment, :attendance, :section_a_marks, :section_b_marks, :total_marks, :gpa, :grade, :exam_uuid)
+    end
+
+    def set_exam
+       @exam  = (params.include? :exam_uuid) ? Exam.find_by(uuid:params[:exam_uuid]) : Exam.last
     end
 
     def calculate_grade(p)

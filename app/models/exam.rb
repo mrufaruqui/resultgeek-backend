@@ -14,7 +14,7 @@
 #
 
 class Exam < ApplicationRecord
-    enum sem: [ :_first, :_second, :_third, :_fourth ]
+    enum sem: [ :_first, :_second, :_third, :_fourth, :_sixth, :_seventh, :_eight ]
     enum program: [:bsc, :msc, :mphil, :phd]
     enum program_type: [:semester, :year, :term]
 
@@ -26,10 +26,7 @@ class Exam < ApplicationRecord
 
 
     def fullname
-      [ sem.titlecase, program_type.titlecase,  program.titlecase,"Engineering Exam",   year].join(" ")
+      [ sem, program_type,  program,"Engineering Exam",   year].join(" ").titlecase
     end
-
-    # def self.uuid
-    #   [sem, program, title, year].join("")
-    # end
+ 
 end

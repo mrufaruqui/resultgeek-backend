@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  21 OCT 2018 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  21 OCT 2018 22:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1151,7 +1151,7 @@ fonts/cm/cmmi8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adob
 e/utopia/putb8a.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adobe/
 utopia/putr8a.pfb>
-Output written on tabulation.pdf (14 pages, 255753 bytes).
+Output written on tabulation.pdf (14 pages, 255332 bytes).
 PDF statistics:
  77 PDF objects out of 1000 (max. 8388607)
  53 compressed objects within 1 object stream

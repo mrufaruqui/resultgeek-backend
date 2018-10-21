@@ -1,13 +1,14 @@
 class ProcessingService
    def self.perform(options={})
-   
-       ####Remove Old Caculations####
-       TabulationDetail.destroy_all
-       Tabulation.destroy_all
-       
        #######Retrieve exam info or default last one##########
        @exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
        courses = Course.all
+
+       ####Remove Old Caculations####
+       #TabulationDetail.destroy_all
+       Tabulation.where(exam_uuid:@exam.uuid).destroy_all
+       
+      
        #######Retrieve Registered students #########
        Registration.where(exam_uuid:@exam.uuid).each do |r|
             s = r.student

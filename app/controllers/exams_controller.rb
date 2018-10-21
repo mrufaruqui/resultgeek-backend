@@ -1,5 +1,6 @@
 class ExamsController < ApplicationController
   before_action :authenticate_user!
+  before_action  :set_current_exam
   before_action :set_exam, only: [:show, :update, :destroy]
 
   # GET /exams
@@ -17,11 +18,16 @@ class ExamsController < ApplicationController
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
+    # @exam.program = params[:program].underscore.to_sym if params.include? :program
+    # @exam.sem = params[:sem].underscore.to_sym if params.include? :sem
+    # @exam.program_type = params[:program_type].underscore.to_sym if params.include? :program_type
+    # @exam.year = params[:year] if params.include? :year
     @exam.uuid = set_uuid
     # @exam.fullname = set_fullname
 
     if @exam.save
-      render :show, status: :created, location: @exam
+     # render :show, status: :created, location: @exam
+      render json:  {status: true}, status: :ok, location: @student
     else
       render json: @exam.errors, status: :unprocessable_entity
     end
@@ -31,7 +37,8 @@ class ExamsController < ApplicationController
   # PATCH/PUT /exams/1.json
   def update
     if @exam.update(exam_params)
-      render :show, status: :ok, location: @exam
+      #render :show, status: :ok, location: @exam
+      render json:  {status: true}, status: :ok, location: @student
     else
       render json: @exam.errors, status: :unprocessable_entity
     end
@@ -63,9 +70,9 @@ class ExamsController < ApplicationController
    end
    
    def reset_exam_result
-      TabulationDetail.destroy_all
-      Tabulation.destroy_all
-      Summation.destroy_all
+    #  TabulationDetail.destroy_all
+      Tabulation.where(exam_uuid:@current_exam.uuid).destroy_all
+      Summation.where(exam_uuid:@current_exam.uuid).destroy_all
    end
   
   private
@@ -76,7 +83,7 @@ class ExamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exam_params
-      params.require(:exam).permit(:year, :program, :sem, :title, :held_in)
+      params.require(:exam).permit(:year, :program, :sem, :title, :held_in, :program_type, :id, :uuid, :fullname)
     end
 
     def set_fullname
@@ -84,6 +91,10 @@ class ExamsController < ApplicationController
     end
 
     def set_uuid
-      [e.sem, e.program, e.title, e.year].join("")
+      [@exam.sem, @exam.program, @exam.title, @exam.year].join("")
+    end
+
+    def set_current_exam
+      @current_exam  = (params.include? :exam_uuid) ? Exam.find_by(uuid:params[:exam_uuid]) : Exam.last
     end
 end

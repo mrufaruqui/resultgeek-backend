@@ -100,7 +100,7 @@ class GenerateSummationLatexService
 	\\renewcommand{\\arraystretch}{1.08}
 	\\begin{small}
     \\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \\hline
-	\\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CA}  & 	\\multirow{2}{*}{CT}  & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{|c|}{Section A}& \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{Marks}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
+	\\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CA}  & 	\\multirow{2}{*}{CT}  & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{c|}{Section A}& \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{Marks}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
 	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\\\ \\hline
 	EOF
      end
