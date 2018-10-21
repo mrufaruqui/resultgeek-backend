@@ -14,4 +14,6 @@
 class Exam < ApplicationRecord
     enum sem: [ :_first, :_second, :_third, :_fourth ]
     enum program: [:bsc, :msc, :mphil, :phd]
+    has_many: :workforces
+    has_many: :teachers, through: :workforces
 end

@@ -1,0 +1,2 @@
+class Dept < ApplicationRecord
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181020170547) do
+ActiveRecord::Schema.define(version: 20181021042900) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20181020170547) do
     t.datetime "updated_at", null: false
     t.integer "course_type", limit: 1, default: 0
     t.integer "sl_no"
+  end
+
+  create_table "depts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "code"
   end
 
   create_table "exams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -88,6 +95,20 @@ ActiveRecord::Schema.define(version: 20181020170547) do
     t.index ["student_id"], name: "index_tabulations_on_student_id", unique: true
   end
 
+  create_table "teachers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "title"
+    t.string "fullname"
+    t.integer "designation", limit: 1, default: 0
+    t.bigint "dept_id"
+    t.string "address"
+    t.string "email"
+    t.integer "phone"
+    t.integer "status", limit: 1, default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dept_id"], name: "index_teachers_on_dept_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -118,7 +139,16 @@ ActiveRecord::Schema.define(version: 20181020170547) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  create_table "workforces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "role"
+    t.integer "status"
+    t.string "exam_uuid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "tabulation_details", "summations"
   add_foreign_key "tabulation_details", "tabulations"
   add_foreign_key "tabulations", "students"
+  add_foreign_key "teachers", "depts"
 end
