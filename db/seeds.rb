@@ -14,7 +14,7 @@
 # Course.create(code:'EEE122',	title:	'Electrical Engineering Lab', credit:1)
 # Course.create(code:'MAT131',	title:	'Matrices, Vector Analysis and Geometry', credit:3)
 # Course.create(code:'STA151',	title:	'Basic Statistics', credit:	3)
-Exam.create(sem: "_first", year: "2018", program: "bsc", title: "", uuid: "_firstbsc2018", fullname: "First Semester Bsc Engineering Exam 2018")
+Exam.create(sem: "_first", year: "2018", program: "bsc", title: "", uuid: "_firstbsc2018")
 Course.find_by(code:'CSE111').update(sl_no:1)
 Course.find_by(code:'CSE113').update(sl_no:2)
 Course.find_by(code:'CSE114').update(sl_no:3)
