@@ -17,7 +17,7 @@ class GenerateTabulationLatexService
           @courses = Course.all;
           header = tabulation_header
           main = ''
-       (Tabulation.count / 8.to_i).times.each do |item|
+       (Tabulation.count / 8.to_f).ceil.times.each do |item|
             main << main_preamble() 
             #Tabulation.find_each(batch_size:10) do |t|
             Tabulation.limit(8).offset(item * 10).each do |t|

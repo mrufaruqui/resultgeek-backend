@@ -2,8 +2,8 @@ class ProcessingService
    def self.perform(options={})
    
        ####Remove Old Caculations####
-       TabulationDetail.delete_all
-       Tabulation.delete_all
+       TabulationDetail.destroy_all
+       Tabulation.destroy_all
 
 
        students = Student.all

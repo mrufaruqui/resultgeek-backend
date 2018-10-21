@@ -29,7 +29,7 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1.json
   def update
     if @student.update(student_params)
-      render :show, status: :ok, location: @student
+      render json:  {status: true}, status: :ok, location: @student
     else
       render json: @student.errors, status: :unprocessable_entity
     end
@@ -38,7 +38,8 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
-    @student.destroy
+    _status = @student.destroy
+    render json:  {status: _status}
   end
 
   def import
@@ -62,6 +63,7 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.fetch(:student, {})
+      #params.fetch(:student, {})
+      params.require(:student).permit(:roll, :hall, :hall_no, :name)
     end
 end

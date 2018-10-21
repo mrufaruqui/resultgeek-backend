@@ -57,8 +57,16 @@ class ExamsController < ApplicationController
         GenerateTabulationLatexService.create_tabulation_latex
         render json: {:message=>"Job Submitted"}, status: "ok"
    end
+   def generate_summationsheets_latex
+      GenerateSummationLatexService.new.perform
+      render json: {:message=>"Job Submitted"}, status: "ok"
+   end
    
-
+   def reset_exam_result
+      Tabulation.delete_all
+      Summation.delete_all
+   end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_exam

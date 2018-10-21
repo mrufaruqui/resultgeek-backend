@@ -18,3 +18,4 @@
 reports/*.tex 
 reports/*.aux
 reports/*.log 
+reports/*.gz

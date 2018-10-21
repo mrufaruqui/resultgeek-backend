@@ -33,7 +33,7 @@ class GenerateSummationLatexService
     def latex_summation_template(course)
           no_sm_entries = Summation.where(course_id:course.id).count
              sm_sheet = ''
-          (no_sm_entries / 35.to_i).times.each do |item|
+          (no_sm_entries / 35.to_f).ceil.times.each do |item|
              a = ''
             Summation.where(course_id:course.id).limit(35).offset(item* 35).each do |sm|  
                a << summation_table_row(sm) 
@@ -48,7 +48,7 @@ class GenerateSummationLatexService
     def summation_body
          a = ''
         Summation.first(35).each do |sm|
-          a << summation_table_row(sm) 
+          a << summation_table_row(sm) unless sm.nil? || sm.student.nil?
           a << "\\\\ \\hline \n"
         end
         a
@@ -90,7 +90,7 @@ class GenerateSummationLatexService
 	\\textsc{Department of Computer Science \\& Engineering}\\\\
 	\\textsc{ #{@exam.fullname}}\\\\
     {\\large {\\sc Summation Sheet}}\\\\  
-     {\\centering #{course.code} : #{course.title}  Credit:#{course.credit} } \\\\
+     {\\centering #{course.code} : #{course.title}     Credit : #{course.credit} } \\\\
     \\end{minipage} 
     \\begin{center} 
 	\\renewcommand{\\arraystretch}{1.08}
@@ -127,9 +127,10 @@ class GenerateSummationLatexService
             \\hspace*{1.2cm}
             \\begin{minipage}[b]{0.4\\linewidth} \\centering
             Chairman  \\hspace*{1ex} \\\\
-           $1^{st}$ Sem B.Sc. Engg Exam 2018 Committee
+           #{@exam.fullname} Committee
             \\end{minipage}
             \\end{table}
+            \\clearpage
      EOF
     end
 

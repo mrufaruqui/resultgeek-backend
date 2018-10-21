@@ -12,3 +12,8 @@ desc 'generate tabulations sheets  latex file'
 task generate_tabulations_sheets_latex: :environment do   
     GenerateTabulationLatexService.create_tabulation_latex
 end
+
+desc 'generate summations sheets  latex file'
+task generate_summations_sheets_latex: :environment do   
+    GenerateSummationLatexService.new.perform
+end

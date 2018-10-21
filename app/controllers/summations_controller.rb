@@ -45,6 +45,10 @@ class SummationsController < ApplicationController
       data = params[:file]
       @course = Course.find_by(id: params[:course_id])
     if !@course.blank?
+      
+      ##Destroy previous data
+      Summation.where(course_id:@course.id).destroy_all
+
       header = data[0]
       body = data - [header]
       body.each do |i| 
