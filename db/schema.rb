@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181021060458) do
+ActiveRecord::Schema.define(version: 20181021083738) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20181021060458) do
     t.string "uuid"
     t.integer "program_type", limit: 1
     t.index ["uuid"], name: "index_exams_on_uuid", unique: true
+  end
+
+  create_table "registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "exam_id"
+    t.bigint "student_id"
+    t.integer "student_type", limit: 1, default: 0
+    t.string "course_list"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_registrations_on_exam_id"
+    t.index ["student_id"], name: "index_registrations_on_student_id"
   end
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -152,6 +163,8 @@ ActiveRecord::Schema.define(version: 20181021060458) do
     t.index ["teacher_id"], name: "index_workforces_on_teacher_id"
   end
 
+  add_foreign_key "registrations", "exams"
+  add_foreign_key "registrations", "students"
   add_foreign_key "tabulation_details", "summations"
   add_foreign_key "tabulation_details", "tabulations"
   add_foreign_key "tabulations", "students"

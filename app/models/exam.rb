@@ -2,15 +2,15 @@
 #
 # Table name: exams
 #
-#  id         :integer          not null, primary key
-#  sem        :integer          default("_first")
-#  year       :string(255)
-#  program    :integer          default("bsc")
-#  title      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  uuid       :string(255)
-#  fullname   :string(255)
+#  id           :integer          not null, primary key
+#  sem          :integer          default("_first")
+#  year         :string(255)
+#  program      :integer          default("bsc")
+#  title        :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  uuid         :string(255)
+#  program_type :integer
 #
 
 class Exam < ApplicationRecord
@@ -20,6 +20,10 @@ class Exam < ApplicationRecord
 
     has_many :workforces
     has_many :teachers, through: :workforces
+
+    has_many :registrations
+    has_many :students, through: :registrations
+
 
     def fullname
       [ sem.titlecase, program_type.titlecase,  program.titlecase,"Engineering Exam",   year].join(" ")

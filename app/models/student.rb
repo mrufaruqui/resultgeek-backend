@@ -19,6 +19,9 @@ class Student < ApplicationRecord
     attr_accessor :students_info
      default_scope { order({hall: :asc}, :roll) }
 
+    has_many :registrations
+    has_many :exams, through: :registrations
+
     def self.import(students_info) 
       header = students_info[0]
       body = students_info - [header]
