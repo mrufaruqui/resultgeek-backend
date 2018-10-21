@@ -1,9 +1,14 @@
 class GenerateTabulationLatexService
    
     def self.create_tabulation_latex(options={})
-         number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
-         #options = generate_tabulation_view
-         #options[:number_of_tabulation_column] = number_of_tabulation_column
+
+        @exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
+        @courses = Course.all
+        @members = @exam.workforces.where(role:"member")
+        @tabulators = @exam.workforces.where(role:"tabulator")
+        @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
+        @hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
+
          perform(options)
     end
 
@@ -17,15 +22,19 @@ class GenerateTabulationLatexService
           @courses = Course.all;
           header = tabulation_header
           main = ''
-       (Tabulation.count / 8.to_f).ceil.times.each do |item|
-            main << main_preamble() 
-            #Tabulation.find_each(batch_size:10) do |t|
-            Tabulation.limit(8).offset(item * 10).each do |t|
-             data = generate_single_page_tabulation(t)
-             main << course_body(data) 
+          @hall_list.each do |hall|
+            (Tabulation.joins(:student).merge(Student.where(hall_name:hall)).count / 8.to_f).ceil.times.each do |item|
+                    main << main_preamble() 
+                    #Tabulation.find_each(batch_size:10) do |t|
+                    Tabulation.joins(:student).merge(Student.where(hall_name:hall)).limit(8).offset(item * 10).each do |t|
+                    data = generate_single_page_tabulation(t)
+                    main << course_body(data) 
+                    end
+                    main << main_footer()
+                end
+                main << "\\clearpage\n"
             end
-            main << main_footer()
-        end
+
          footer = tabulation_footer
          header + main + footer
     end
@@ -168,9 +177,9 @@ part_c = <<-EOF
             \\begin{minipage}[b]{0.33\\linewidth} %\\centering
             {\\centering Tabulators }
             \\begin{enumerate}
-                \\item Name: \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$ Signature:  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$
-                \\item Name: \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$ Signature:  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$
-                \\item Name: \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$ Signature:  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$
+             \\item #{@tabulators[0].teacher.display_name unless @tabulators[0].nil?} \\hspace*{1ex} $\\ldots \\ldots  $  
+             \\item #{@tabulators[1].teacher.display_name unless @tabulators[1].nil? || @tabulators.length < 2} \\hspace*{1ex} $\\ldots \\ldots  $  
+             \\item #{@tabulators[2].teacher.display_name unless @tabulators[2].nil? || @tabulators.length < 3} \\hspace*{1ex} $\\ldots \\ldots $  
             \\end{enumerate} 
 
             \\end{minipage}
@@ -178,9 +187,9 @@ part_c = <<-EOF
             \\begin{minipage}[b]{0.33\\linewidth}
             {\\centering Exam Committee}
             \\begin{enumerate}
-            \\item Name: \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$  Signature:  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$ --  Chairman
-            \\item Name: \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$  Signature:  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$ -- Member
-            \\item Name: \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$  Signature:  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$-- Member
+            \\item #{@exam.workforces.find_by(role:"chairman").teacher.display_name}  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$ --  Chairman
+            \\item #{@members[0].teacher.display_name unless @members[0].nil?}  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$ -- Member
+            \\item #{@members[1].teacher.display_name unless @members[1].nil? || @members.length < 2}  \\hspace*{1ex} $\\ldots \\ldots \\ldots \\ldots$-- Member
             \\end{enumerate} 
             \\end{minipage}
             \\hspace*{1.2cm}
