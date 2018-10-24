@@ -1,7 +1,6 @@
-class GenerateTabulationLatexService
+class GenerateTabulationLatexService < TabulationBaseService
    
     def self.create_tabulation_latex(options={})
-
         @exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
         @courses = Course.all
         @members = @exam.workforces.where(role:"member")
@@ -9,17 +8,19 @@ class GenerateTabulationLatexService
         @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
         @hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
         @hall_name = ' '
-
-         perform(options)
+        perform(options)
     end
 
     def self.perform(options={})
-      File.open(File.join('./reports/', 'tabulation.tex'), 'w') do |f| 
+      File.open( ['./reports/',@exam.uuid, 'tabulation.tex'].join, 'w') do |f| 
        f.puts latex_tabulation_template(options)
       end
     end
 
     def self.latex_tabulation_template(options) 
+          tab_xls = Hash.new
+          tab_xls[:tabulations] = []
+
           @courses = Course.all;
           header = tabulation_header
           main = ''
@@ -32,6 +33,7 @@ class GenerateTabulationLatexService
                     #Tabulation.find_each(batch_size:10) do |t|
                     Tabulation.joins(:student).merge(Student.where(hall_name:hall)).limit(8).offset(item * 10).each do |t|
                     data = generate_single_page_tabulation(t)
+                    tab_xls[:tabulations] = data
                     main << course_body(data) 
                     end
                     main << main_footer()
@@ -41,67 +43,11 @@ class GenerateTabulationLatexService
 
          footer = tabulation_footer
          header + main + footer
+         #GenerateTabulationXlsService.perform(tab_xls)
     end
 
-    def self.generate_single_page_tabulation(t) 
-        @retHash = Hash.new
-        @retHash[:gpa] = t.gpa
-        @retHash[:result] = t.result
-        @retHash[:tce] = t.tce
-        @retHash[:remarks] = t.remarks
-        @retHash[:roll] = t.student.roll
-        @retHash[:name] = t.student.name
-        @retHash[:hall] = t.student.hall_name;
-        @retHash[:courses] = []
-        tps = 0.0;
-        t.tabulation_details.each do |td|
-            course = Hash.new
-            ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
-            if td.summation.course.course_type === "lab"
-               course =  {:course_type=>"lab", :code=> td.summation.course.id, :mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
-            else
-               course = {:course_type=>"theory", :code=> td.summation.course.id, :cact=>td.summation.cact, :fem=>td.summation.marks, :mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
-            end  
-            tps += ps;
-            @retHash[:courses] << course
-        end
-        @retHash[:tps] = tps;
-        #puts @retHash
-         @retHash
-      end
-
-    # def self.generate_tabulation_view(options={})
-    #   a = []
-    #   @tab = Tabulation.all
-    #   @tab.each do |t| 
-    #     @retHash = Hash.new
-    #     @retHash[:gpa] = t.gpa
-    #     @retHash[:result] = t.result
-    #     @retHash[:tce] = t.tce
-    #     @retHash[:remarks] = t.remarks
-    #     @retHash[:roll] = t.student.roll
-    #     @retHash[:name] = t.student.name
-    #     @retHash[:hall] = t.student.hall_name;
-    #     @retHash[:courses] = []
-    #     tps = 0.0;
-    #     t.tabulation_details.each do |td|
-    #         course = Hash.new
-    #         ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
-    #         if td.summation.course.course_type === "lab"
-    #            course =  {:course_type=>"lab", :code=> td.summation.course.id, :mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
-    #         else
-    #            course = {:course_type=>"theory", :code=> td.summation.course.id, :cact=>td.summation.cact, :fem=>td.summation.marks, :mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
-    #         end  
-    #         tps += ps;
-    #         @retHash[:courses] << course
-    #     end
-    #     @retHash[:tps] = tps;
-    #     #puts @retHash
-    #     a << @retHash
-    #   end
-    #   a
-    # end
-
+   
+    
     def self.tabulation_header
           <<-EOF      
            \\documentclass[11pt]{article}
@@ -149,8 +95,8 @@ part_c = <<-EOF
 	\\renewcommand{\\arraystretch}{1.08}
 	
 	\\begin{small}
-\\begin{tabularx}{\\linewidth}{|l|X|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|c|c|c|} \\hline
-    \\bf ID No. & \\bf Student Name &\\multicolumn{4}{c|}{\\textbf{CSE 111}}  & \\multicolumn{4}{c|}{\\textbf{CSE 113}} & \\multicolumn{2}{c|}{\\textbf{CSE 114}} & \\multicolumn{4}{c|}{\\textbf{EEE 121}} & \\multicolumn{2}{c|}{\\textbf{EEE 122}} &  \\multicolumn{4}{c|}{\\textbf{MAT 131}} & \\multicolumn{4}{c|}{\\textbf{STA 151}} & TCE & TPS & GPA & Result & Remarks \\\\ \\hline
+\\begin{tabularx}{\\linewidth}{|X|X|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|c|X|X|} \\hline
+    \\bf ID No. & \\bf Student Name &\\multicolumn{4}{c|}{\\textbf{CSE 111}}  & \\multicolumn{4}{c|}{\\textbf{CSE 113}} & \\multicolumn{2}{c|}{\\textbf{CSE 114}} & \\multicolumn{4}{c|}{\\textbf{EEE 121}} & \\multicolumn{2}{c|}{\\textbf{EEE 122}} &  \\multicolumn{4}{c|}{\\textbf{MAT 131}} & \\multicolumn{4}{c|}{\\textbf{STA 151}} & TCE & TPS & GPA & Result & Remarks  \\\\ \\hline
 	 
     &   & CATM & FEM & MO & LG     & CATM & FEM & MO &  LG   & MO & LG   & CATM & FEM & MO & LG   & MO & LG   & CATM & FEM & MO & LG   & CATM & FEM & MO & LG   &  &   &   &  \\\\ \\hline
             EOF
@@ -211,14 +157,16 @@ part_c = <<-EOF
     def self.course_body(data)
           a = ''
           a << [data[:roll], data[:name]].join(' & ') << ' & '
-          data[:courses].each do |course|
-            if course[:course_type] === "lab"
-               a << [course[:mo], course[:lg]].join(' & ') << ' & '
-            else
-               a << [course[:cact], course[:fem], course[:mo], course[:lg]].join(' & ') << '&'
-            end   
+          
+          @courses.each do |course|
+            if course.course_type === "lab"
+                a << [data[course.code][:mo], data[course.code][:lg]].join(' & ') << ' & ' if data.include? course.code
+             else
+                a << [data[course.code][:cact], data[course.code][:fem], data[course.code][:mo], data[course.code][:lg]].join(' & ') << '&' if data.include? course.code
+             end
           end
-         a << [data[:tce], data[:tps], data[:gpa], data[:result]].join(' & ') << ' & '  #"\\multirow{3}{*}{#{data[:remarks]}}"
+
+         a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks]].join(' & ')   #"\\multirow{3}{*}{#{data[:remarks]}}"
          a << "\\\\"
           
           30.times.each {a << ' & '}

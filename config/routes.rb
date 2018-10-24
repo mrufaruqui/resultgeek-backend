@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tennats
   resources :registrations
   resources :workforces
   resources :teachers

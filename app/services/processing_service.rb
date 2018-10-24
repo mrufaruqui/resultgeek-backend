@@ -26,7 +26,7 @@ class ProcessingService
                         td.tabulation = tabulation
                         td.summation  = sm
                         td.save 
-                        remarks << c.code if sm.gpa === 'F' 
+                        remarks << c.code.split(/[a-zA-Z]/).last if sm.gpa === 'F' 
                         tce += c.credit unless sm.gpa === 'F' || sm.gpa === 'X'
                # end
                 
@@ -42,7 +42,7 @@ class ProcessingService
             tabulation.gpa = gpa #gpa.round(2);
             tabulation.tce = tce.to_i
             tabulation.result = (gpa >= 2.20) ? 'P' : 'F'
-            tabulation.remarks = 'F-' + remarks.join(",") if tce < 18 #ToDo
+            tabulation.remarks = 'F-' + remarks.join(", ") if tce < 18 #ToDo
             tabulation.save
        end
   end

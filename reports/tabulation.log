@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  21 OCT 2018 22:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  23 OCT 2018 17:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -711,24 +711,174 @@ Underfull \hbox (badness 10000) in alignment at lines 112--112
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--142
-[]|\T1/put/m/n/10 Shah Azhar Hos-
+Overfull \hbox (22.11778pt too wide) in paragraph at lines 142--142
+[]|\T1/put/b/n/10 Student
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 142--142
-[]|\T1/put/m/n/10 Sadab Sad-man Is-
+Overfull \hbox (12.63805pt too wide) in paragraph at lines 142--142
+\T1/put/b/n/10 Name| 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 142--142
+[]|\T1/put/m/n/10 Al-
+ []
+
+
+Overfull \hbox (10.11803pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Amin| 
+ []
+
+
+Overfull \hbox (3.2081pt too wide) in paragraph at lines 142--142
+[]|\T1/put/m/n/10 Md.
+ []
+
+
+Overfull \hbox (6.8481pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Nay-
+ []
+
+
+Overfull \hbox (4.94801pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 eem
+ []
+
+
+Overfull \hbox (2.79805pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Ud-
+ []
+
+
+Overfull \hbox (0.51804pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 din
+ []
+
+
+Overfull \hbox (23.2978pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Bhuiyan| 
+ []
+
+
+Overfull \hbox (8.09799pt too wide) in paragraph at lines 142--142
+[]|\T1/put/m/n/10 Shah
+ []
+
+
+Overfull \hbox (11.83789pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Azhar
+ []
+
+
+Overfull \hbox (7.16808pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Hos-
+ []
+
+
+Overfull \hbox (4.12802pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 sain| 
+ []
+
+
+Overfull \hbox (13.08807pt too wide) in paragraph at lines 142--142
+[]|\T1/put/m/n/10 Sadab
+ []
+
+
+Overfull \hbox (5.79805pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Sad-
+ []
+
+
+Overfull \hbox (6.08812pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 man
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--142
+\T1/put/m/n/10 Is-
+ []
+
+
+Overfull \hbox (2.68811pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 lam| 
+ []
+
+
+Overfull \hbox (3.2081pt too wide) in paragraph at lines 142--142
+[]|\T1/put/m/n/10 Md.
+ []
+
+
+Overfull \hbox (18.68782pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Rizwan
+ []
+
+
+Overfull \hbox (2.79805pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Ud-
+ []
+
+
+Overfull \hbox (0.51804pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 din| 
+ []
+
+
+Overfull \hbox (11.60799pt too wide) in paragraph at lines 142--142
+[]|\T1/put/m/n/10 Zihad
+ []
+
+
+Overfull \hbox (8.30797pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Been
+ []
+
+
+Overfull \hbox (19.8779pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Mohsin| 
+ []
+
+
+Overfull \hbox (3.2081pt too wide) in paragraph at lines 142--142
+[]|\T1/put/m/n/10 Md.
+ []
+
+
+Overfull \hbox (3.62788pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Shi-
+ []
+
+
+Overfull \hbox (2.71812pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 hab
+ []
+
+
+Overfull \hbox (2.79805pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Ud-
+ []
+
+
+Overfull \hbox (0.51804pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 din| 
+ []
+
+
+Overfull \hbox (41.31795pt too wide) in paragraph at lines 142--142
 []|\T1/put/m/n/10 Mohammad
+ []
+
+
+Overfull \hbox (23.85785pt too wide) in paragraph at lines 142--142
+\T1/put/m/n/10 Showkat| 
  []
 
 [1
 
 {/Users/rufaruqui/Library/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/p
-dftex.map} <./cu-logo.jpg>]
+dftex.map} <./cu-logo.jpg>] [2]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 282--282
  []|\T1/put/b/n/10 Letter 
  []
@@ -752,9 +902,94 @@ Underfull \hbox (badness 10000) in alignment at lines 282--282
 [][][][] 
  []
 
-[2
 
-]
+Overfull \hbox (3.56812pt too wide) in paragraph at lines 312--312
+[]|\T1/put/b/n/10 Student
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+[]|\T1/put/m/n/10 Sarose
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+[]|\T1/put/m/n/10 Nishan
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+[]|\T1/put/m/n/10 Maruf
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+\T1/put/m/n/10 Bin
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+\T1/put/m/n/10 Soli-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+[]|\T1/put/m/n/10 Md.
+ []
+
+
+Overfull \hbox (9.66818pt too wide) in paragraph at lines 312--312
+[]|\T1/put/m/n/10 Mosharaf
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+\T1/put/m/n/10 Hos-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+[]|\T1/put/m/n/10 Md.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+\T1/put/m/n/10 Ma-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+\T1/put/m/n/10 jbaur
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+\T1/put/m/n/10 Rah-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+\T1/put/m/n/10 man
+ []
+
+
+Overfull \hbox (8.01816pt too wide) in paragraph at lines 312--312
+[]|\T1/put/m/n/10 Abdullah
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+\T1/put/m/n/10 Al
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--312
+[]|\T1/put/m/n/10 Shanta
+ []
+
+[3
+
+] [4]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 452--452
  []|\T1/put/b/n/10 Letter 
  []
@@ -779,18 +1014,168 @@ Underfull \hbox (badness 10000) in alignment at lines 452--452
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--482
-[]|\T1/put/m/n/10 Md. Habibul
+Package tabularx Warning: X Columns too narrow (table too wide)
+(tabularx)                 on input line 482.
+
+
+Overfull \hbox (26.67953pt too wide) in paragraph at lines 482--482
+[]|\T1/put/b/n/10 Student
  []
 
 
-Underfull \hbox (badness 4144) in paragraph at lines 482--482
-[]|\T1/put/m/n/10 Md. Abu Saiem
+Overfull \hbox (17.1998pt too wide) in paragraph at lines 482--482
+\T1/put/b/n/10 Name| 
  []
 
-[3
 
-]
+Overfull \hbox (13.22983pt too wide) in paragraph at lines 482--482
+[]|\T1/put/m/n/10 Joytu
+ []
+
+
+Overfull \hbox (7.90977pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Dev| 
+ []
+
+
+Overfull \hbox (11.05978pt too wide) in paragraph at lines 482--482
+[]|\T1/put/m/n/10 Abul
+ []
+
+
+Overfull \hbox (27.41972pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Hasanat
+ []
+
+
+Overfull \hbox (12.57979pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Siam| 
+ []
+
+
+Overfull \hbox (7.76985pt too wide) in paragraph at lines 482--482
+[]|\T1/put/m/n/10 Md.
+ []
+
+
+Overfull \hbox (26.68962pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Habibul
+ []
+
+
+Overfull \hbox (21.1197pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Bashar
+ []
+
+
+Overfull \hbox (16.48958pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Faruq| 
+ []
+
+
+Overfull \hbox (7.76985pt too wide) in paragraph at lines 482--482
+[]|\T1/put/m/n/10 Md.
+ []
+
+
+Overfull \hbox (8.26987pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Abu
+ []
+
+
+Overfull \hbox (17.7397pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Saiem
+ []
+
+
+Overfull \hbox (8.91966pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Aziz
+ []
+
+
+Overfull \hbox (25.8997pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Chowd-
+ []
+
+
+Overfull \hbox (11.25963pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 hury| 
+ []
+
+
+Overfull \hbox (28.72964pt too wide) in paragraph at lines 482--482
+[]|\T1/put/m/n/10 Yubayed
+ []
+
+
+Overfull \hbox (1.58995pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Is-
+ []
+
+
+Overfull \hbox (7.24986pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 lam| 
+ []
+
+
+Overfull \hbox (12.45972pt too wide) in paragraph at lines 482--482
+[]|\T1/put/m/n/10 Arup
+ []
+
+
+Overfull \hbox (15.83969pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Dutta
+ []
+
+
+Overfull \hbox (18.53976pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Bappy| 
+ []
+
+
+Overfull \hbox (22.5894pt too wide) in paragraph at lines 482--482
+[]|\T1/put/m/n/10 Shariar
+ []
+
+
+Overfull \hbox (18.74982pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Hasan| 
+ []
+
+
+Overfull \hbox (9.39973pt too wide) in paragraph at lines 482--482
+[]|\T1/put/m/n/10 Kazi
+ []
+
+
+Overfull \hbox (21.98956pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Farhan
+ []
+
+
+Overfull \hbox (18.74982pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Hasan
+ []
+
+
+Overfull \hbox (10.54974pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 Tan-
+ []
+
+
+Overfull \hbox (4.9398pt too wide) in paragraph at lines 482--482
+\T1/put/m/n/10 jim| 
+ []
+
+
+Overfull \hbox (13.98792pt too wide) in alignment at lines 482--482
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][]
+ []
+
+[5
+
+] [6]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 622--622
  []|\T1/put/b/n/10 Letter 
  []
@@ -814,7 +1199,12 @@ Underfull \hbox (badness 10000) in alignment at lines 622--622
 [][][][] 
  []
 
-[4
+
+Underfull \hbox (badness 2799) in paragraph at lines 652--652
+[]|\T1/put/m/n/10 Md. Aziz-Ul-
+ []
+
+[7
 
 ]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 792--792
@@ -841,28 +1231,103 @@ Underfull \hbox (badness 10000) in alignment at lines 792--792
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 822--822
-[]|\T1/put/m/n/10 Nu Shai Mong
+Overfull \hbox (3.56812pt too wide) in paragraph at lines 822--822
+[]|\T1/put/b/n/10 Student
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 822--822
-[]|\T1/put/m/n/10 Md Mosharaf
+[]|\T1/put/m/n/10 Nurul
+ []
+
+
+Overfull \hbox (2.67807pt too wide) in paragraph at lines 822--822
+[]|\T1/put/m/n/10 Tanveer
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 822--822
-[]|\T1/put/m/n/10 Md Sai-fud-din
+[]|\T1/put/m/n/10 Nu
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 822--822
-[]|\T1/put/m/n/10 Muntasir Md.
+\T1/put/m/n/10 Shai
  []
 
-[5
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+\T1/put/m/n/10 Mong
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+[]|\T1/put/m/n/10 Md
+ []
+
+
+Overfull \hbox (9.66818pt too wide) in paragraph at lines 822--822
+\T1/put/m/n/10 Mosharaf
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+[]|\T1/put/m/n/10 Md
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+\T1/put/m/n/10 Sai-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+\T1/put/m/n/10 fud-din
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+\T1/put/m/n/10 Ahmed
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+\T1/put/m/n/10 Sha-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+[]|\T1/put/m/n/10 Nurl
+ []
+
+
+Overfull \hbox (3.24828pt too wide) in paragraph at lines 822--822
+\T1/put/m/n/10 Mostafa
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+[]|\T1/put/m/n/10 Sahim
+ []
+
+
+Overfull \hbox (8.04807pt too wide) in paragraph at lines 822--822
+[]|\T1/put/m/n/10 Muntasir
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+\T1/put/m/n/10 Md.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 822--822
+\T1/put/m/n/10 za-man
+ []
+
+[8
+
+] [9]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 962--962
  []|\T1/put/b/n/10 Letter 
  []
@@ -888,15 +1353,30 @@ Underfull \hbox (badness 10000) in alignment at lines 962--962
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 992--992
-[]|\T1/put/m/n/10 Mostaq Ahmed
+[]|\T1/put/m/n/10 Shah Tareq
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 992--992
-[]|\T1/put/m/n/10 Md. Akram Hos-
+Underfull \hbox (badness 10000) in paragraph at lines 992--992
+[]|\T1/put/m/n/10 Muhammad
  []
 
-[6
+
+Underfull \hbox (badness 10000) in paragraph at lines 992--992
+[]|\T1/put/m/n/10 Md. Ruhul
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 992--992
+[]|\T1/put/m/n/10 Md. Sabiul
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 992--992
+[]|\T1/put/m/n/10 Md. Akram
+ []
+
+[10
 
 ]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 1132--1132
@@ -922,7 +1402,7 @@ Underfull \hbox (badness 10000) in alignment at lines 1132--1132
 [][][][] 
  []
 
-[7
+[11
 
 ]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 1290--1290
@@ -948,7 +1428,7 @@ Underfull \hbox (badness 10000) in alignment at lines 1290--1290
 [][][][] 
  []
 
-[8
+[12
 
 ]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 1445--1445
@@ -974,7 +1454,12 @@ Underfull \hbox (badness 10000) in alignment at lines 1445--1445
 [][][][] 
  []
 
-[9
+
+Underfull \hbox (badness 10000) in paragraph at lines 1471--1471
+[]|\T1/put/m/n/10 Sanjida Tan-jir
+ []
+
+[13
 
 
 ]
@@ -1001,7 +1486,12 @@ Underfull \hbox (badness 10000) in alignment at lines 1612--1612
 [][][][] 
  []
 
-[10
+
+Underfull \hbox (badness 10000) in paragraph at lines 1642--1642
+[]|\T1/put/m/n/10 U-Shangnu
+ []
+
+[14
 
 
 ]
@@ -1028,7 +1518,7 @@ Underfull \hbox (badness 10000) in alignment at lines 1782--1782
 [][][][] 
  []
 
-[11
+[15
 
 ]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 1937--1937
@@ -1056,10 +1546,20 @@ Underfull \hbox (badness 10000) in alignment at lines 1937--1937
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 1967--1967
+[]|\T1/put/m/n/10 Fareen Tas-
+ []
+
+
+Underfull \hbox (badness 5133) in paragraph at lines 1967--1967
 []|\T1/put/m/n/10 Shahnaz Ak-ter
  []
 
-[12
+
+Underfull \hbox (badness 10000) in paragraph at lines 1967--1967
+[]|\T1/put/m/n/10 Radia Thun
+ []
+
+[16
 
 
 ]
@@ -1087,26 +1587,36 @@ Underfull \hbox (badness 10000) in alignment at lines 2108--2108
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 2138--2138
-[]|\T1/put/m/n/10 Khadiza Mori-oum
+Underfull \hbox (badness 10000) in paragraph at lines 2138--2138
+[]|\T1/put/m/n/10 Purnima Mi-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 2138--2138
-[]|\T1/put/m/n/10 Nuzhath Yesmin
+[]|\T1/put/m/n/10 Nuzhath
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 2138--2138
-[]|\T1/put/m/n/10 Jannatul Fer-dous
+[]|\T1/put/m/n/10 Jannatul Fer-
  []
 
 
-Underfull \hbox (badness 3492) in paragraph at lines 2138--2138
-[]|\T1/put/m/n/10 Saima Ja-han Sul-
+Underfull \hbox (badness 10000) in paragraph at lines 2138--2138
+[]|\T1/put/m/n/10 Saima Ja-han
  []
 
-[13
+
+Underfull \hbox (badness 10000) in paragraph at lines 2138--2138
+[]|\T1/put/m/n/10 Marufa Sul-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2138--2138
+[]|\T1/put/m/n/10 Tashin Hos-
+ []
+
+[17
 
 
 ]
@@ -1133,13 +1643,13 @@ Underfull \hbox (badness 10000) in alignment at lines 2278--2278
 [][][][] 
  []
 
-[14
+[18
 
 ] (./tabulation.aux) ) 
 Here is how much of TeX's memory you used:
  12966 strings out of 494091
  229569 string characters out of 6163523
- 429674 words of memory out of 5000000
+ 432336 words of memory out of 5000000
  16342 multiletter control sequences out of 15000+600000
  52998 words of font info for 41 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
@@ -1151,10 +1661,10 @@ fonts/cm/cmmi8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adob
 e/utopia/putb8a.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/adobe/
 utopia/putr8a.pfb>
-Output written on tabulation.pdf (14 pages, 255332 bytes).
+Output written on tabulation.pdf (18 pages, 257896 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 53 compressed objects within 1 object stream
+ 89 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

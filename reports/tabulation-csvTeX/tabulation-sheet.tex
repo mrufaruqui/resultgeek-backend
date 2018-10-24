@@ -1,0 +1,225 @@
+\documentclass[10pt,landscape]{article}
+% \usepackage[a3paper,verbose,margin=0.5cm,left=0.8in,textheight=7.9in]{geometry}
+\usepackage[a3paper,verbose,right=0.5in,left=0.8in,top=0.8cm,textheight=7.8in]{geometry}
+
+\usepackage{amsmath,amsfonts}
+\usepackage[condensed,math]{iwona}
+\usepackage[T1]{fontenc}
+
+\usepackage{csvsimple}
+\usepackage{calc}
+\usepackage{array,tabularx,multirow,longtable,booktabs,colortbl}
+\usepackage{ifthen,booktabs}
+\usepackage{fancyhdr}
+\usepackage[table]{xcolor}
+\usepackage{pgf,tcolorbox}
+\usepackage{rotating}
+\usepackage{xstring,kantlipsum}
+
+\pagestyle{fancy}
+% \everymath{\displaystyle}
+
+% \newcommand{\xgpps}[2]{\ifthenelse{\equal{#1}{X}}{$\cdots$}{#2}}  
+\newcommand{\xgpps}[2]{\ifthenelse{\equal{#1}{X}}{X}{#2}}  
+  
+\setlength{\headheight}{6.0cm} % 
+\setlength{\footskip}{5pt}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\lhead{%
+    % \fbox{%
+        \begin{minipage}[m][5cm][c]{2in}%
+		\begin{footnotesize}
+		\begingroup
+		\rowcolors{2}{gray!10}{white}
+		\setlength\tabcolsep{2pt}
+		\setlength\extrarowheight{0pt}
+		\flushleft\begin{tabular}{ c>{\centering}m{0.9cm}m{0.91cm}}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
+		\toprule \rowcolor[gray]{0.99}\textit{Numerical Grade} & \textit{Letter Grade} & \textit{Grade Point} \\
+		\midrule
+		   80\% and above & A+ & $4.00$  \\ 
+		   75\% to less than 80\% &  A & $3.75$\\ 
+		   70\% to less that 75\% &  A- & $3.50$ \\ 
+		   65\% to less than 70\% &  B+ & $3.25$\\ 
+		   60\% to less than 65\% &  B  & $3.00$\\ 
+		   55\% to less than 60\% &  B- & $2.75$\\ 
+		   50\% to less than 55\% &  C+ & $2.50$\\ 
+		   45\% to less than 50\% &  C  & $2.25$\\
+		   40\% to less than 45\% &  D  & $2.00$\\
+		   Less than 40\%         &  F  & $0.00$\\ 
+		   Incomplete/Absent         &  X  & $\cdots$\\ 
+		\bottomrule 
+		\end{tabular}
+		\endgroup
+		\end{footnotesize}
+        \end{minipage}%
+        \begin{minipage}[m][5cm][c]{2in}%
+		\begin{footnotesize}
+		\begingroup
+		\rowcolors{1}{white}{gray!10}
+		\setlength\tabcolsep{4pt}		
+		\tcbset{colframe=gray!60,colback=white,%colupper=red!5,
+		fonttitle=\bfseries,nobeforeafter}
+		{\vspace*{0.4cm}}\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Acromyms]{%
+		\renewcommand\arraystretch{0.89}
+	    \begin{tabular}{lm{1.8in}}
+		% \toprule
+		CA & Continuous Assessment marks (30\% of total: 10\% in attendance + 20\% in class tests) \\
+		MO & Marks Obtained: total marks in final (70\%) + CA (rounded upwards)\\
+		LG & Letter Grade (per the table on the left)\\
+		GP & Grade Point (per the table on the left)\\
+		Cr & Credit (per course)\\
+		PS & Point Secured ($= \text{GP} \times \text{Cr}$)\\
+		TPS & Total Points Secured ($ = \sum PS$)\\
+		TCE & Total Credit Earned\\
+		GPA & TPS/18 (Total Credits Offered=$18$)\\
+		% \bottomrule
+		\end{tabular}}
+		\endgroup
+		\end{footnotesize}
+        \end{minipage}%
+}% end \lhead
+
+\chead{%
+    % \fbox{%
+        \begin{minipage}[m][5cm][c]{0.8in}%
+		{\hspace*{2.0in}\includegraphics[width=0.7in]{cu-logo.png}}
+        \end{minipage}%
+        \hspace*{2.0in}\begin{minipage}[m][5cm][c]{5in}%
+        \raggedright\begin{center}
+		\begin{LARGE}
+		{\textsc{University of Chittagong}}\\
+		\textsc{Department of Computer Science \& Engineering}\\
+		% \vspace*{0.1in}
+		{{\sc Tabulation Sheet}}\\
+		% \vspace*{0.1in}
+		\textsc{First Semester M.S. Engineering Examination 2015}\\
+		{Held in December 2017}
+		\end{LARGE}
+		\end{center}
+        \end{minipage}%
+    % }% end \fbox
+}% end \chead
+
+\rhead{%
+    % \fbox{%
+        \begin{minipage}[m][5cm][c]{3in}%
+		\begin{footnotesize}
+		% \raggedright %centering  
+		\begingroup
+		\setlength\tabcolsep{2pt}
+		% \setlength\extrarowheight{0pt}
+		% \hfill
+		\rowcolors{2}{gray!10}{white}
+		\renewcommand\arraystretch{0.95}
+		\hspace*{-0.1in}\begin{tabular}{ l >{\centering}m{4.5cm} cc}
+		\toprule \rowcolor[gray]{0.99}
+		{\it Course Code} & {\it Course Title} & {\it Credit} & {\it Marks} \\
+		\midrule 
+		  CSE 111 & Introduction to Computer Systems and Computing Agents & $3$ & $75$ \\ 
+		  CSE 113 & Structured Programming Language & $3$ & $75$ \\ 
+		  CSE 114 & Structured Programming Language Lab & $2$ & $50$ \\ 
+		  EEE 121  & Electrical Engineering & $3$ & $75$ \\
+		  EEE 122 & Electrical Engineering Lab & $1$ & $25$ \\
+		  MAT 131 & Matrices, Vector Analysis and Geometry & $3$ & $75$ \\
+		  STA 151 & Basic Statistics & $3$ & $75$\\
+		\bottomrule
+		\end{tabular}
+		\endgroup
+		\end{footnotesize}
+        \end{minipage}%
+    % }% end \fbox
+}% end \rhead
+
+\lfoot{%
+    % \fbox{%
+    	\begingroup
+        \vspace*{0.1cm}
+        \begin{minipage}[b][2cm][c]{2in}%
+		\tcbset{colframe=gray,colback=white,%colupper=red!5,
+		fonttitle=\bfseries,nobeforeafter}
+		{\vspace*{0.2cm}}\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Examination Committee]{%
+		\renewcommand\arraystretch{1.5}
+		\begin{footnotesize}
+	    \begin{tabular}{rll}
+		 Chairman: & Rokan Uddin Faruqui & $\cdots\cdots\cdots$	\\
+		 Member: & Kazi Ashrafuzzaman & $\cdots\cdots\cdots$	\\
+		Member: & Md. Aman Ullah & $\cdots\cdots\cdots$	\\
+		\end{tabular}
+		\end{footnotesize}
+		}
+        \end{minipage}%
+		\endgroup
+}
+
+\cfoot{%
+    % \fbox{%
+    	\begingroup
+        \begin{center}
+        \begin{minipage}[b][2cm][c]{2in}%
+		\tcbset{colframe=gray,colback=white,%colupper=red!5,
+		fonttitle=\bfseries,nobeforeafter}
+		{\vspace*{-0.1cm}}\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Tabulators]{%
+		\renewcommand\arraystretch{1.5}
+		\begin{footnotesize}
+	    \begin{tabular}{rll}
+		 1. & Rokan Uddin Faruqui & $\cdots\cdots\cdots$	\\
+		 2. & Kazi Ashrafuzzaman & $\cdots\cdots\cdots$	\\
+		 3. & Md. Osiur Rahman & $\cdots\cdots\cdots$	\\
+		\end{tabular}
+		\end{footnotesize}
+		}
+        \end{minipage}%
+        \end{center}
+        \endgroup
+}
+
+\rfoot{%
+    % \fbox{%
+        % \begin{raggedright}
+        \vspace*{0.0cm}\begin{minipage}[b][2cm][c]{4in}%
+		\tcbset{colframe=gray,colback=white,%colupper=red!5,
+		fonttitle=\bfseries,nobeforeafter}
+        \tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Date of Publication]{\framebox(100,15){}}%
+        \\[3ex]
+        % \tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Date of Publication]{\framebox(100,20){}}%
+        \tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Controller of Examination]{\framebox(100,30){}}%}\hfill
+        \hfill\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Vice-Chancellor]{\framebox(100,30){}}%}\hfill
+        % \tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Vice-Chancellor]{\hspace*{1.2in}}%
+        \end{minipage}%
+        % \end{raggedright}
+}
+
+\newcommand*\rot{\rotatebox{90}}
+\newcommand*{\numtwo}[1]{\pgfmathprintnumber[fixed, precision=2, fixed zerofill=true]{#1}}
+% \newcommand*{\numz}[1]{\pgfmathprintnumber[fixed, precision=0]{#1}}
+
+
+\begin{document}
+
+\begingroup
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\setlength\tabcolsep{5pt}
+\setlength\extrarowheight{3pt}
+
+\begin{small}
+\begin{longtable}{lc >{\centering}p{0.8in}|*{5}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{5}{c}| cc|cc| p{0.5in}}\toprule\toprule%
+\multirow{2}{*}{SL\#} & \multirow{2}{*}{ID} & \multirow{2}{*}{{Name}} & \multicolumn{5}{c|}{CSE 111 (Cr: 3)} & \multicolumn{5}{c|}{CSE 113 (Cr: 3)} & \multicolumn{3}{c|}{CSE 114 (Cr: 2)} & \multicolumn{5}{c|}{EEE 121 (Cr: 3)} & \multicolumn{3}{c|}{EEE 122 (Cr: 1)} & \multicolumn{5}{c|}{MAT 131 (Cr: 3)} & \multicolumn{5}{c|}{STA 151 (Cr: 3)} & \multirow{2}{*}{TCE} & \multirow{2}{*}{TPS} & \multirow{2}{*}{GPA} & \multirow{2}{*}{\rot{ Result }} & \multirow{2}{*}{{ {\hspace*{5ex}}Hall}} \\ 
+ \cmidrule(lr){4-8}  \cmidrule(lr){9-13} \cmidrule(lr){14-16} \cmidrule(lr){17-21} \cmidrule(lr){22-24} \cmidrule(lr){25-29} \cmidrule(lr){30-34}
+ & & & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & & & & & \\
+\midrule \endfirsthead \toprule\toprule 
+\multirow{2}{*}{SL\#} & \multirow{2}{*}{ID} & \multirow{2}{*}{{Name}} & \multicolumn{5}{c|}{CSE 111 (Cr: 3)} & \multicolumn{5}{c|}{CSE 113 (Cr: 3)} & \multicolumn{3}{c|}{CSE 114 (Cr: 2)} & \multicolumn{5}{c|}{EEE 121 (Cr: 3)} & \multicolumn{3}{c|}{EEE 122 (Cr: 1)} & \multicolumn{5}{c|}{STA 141 (Cr: 3)} & \multicolumn{5}{c|}{MAT 131 (Cr: 3)} & \multirow{2}{*}{TCE} & \multirow{2}{*}{TPS} & \multirow{2}{*}{GPA} & \multirow{2}{*}{\rot{ Result }} & \multirow{2}{*}{{ {\hspace*{5ex}}Hall}} \\ 
+ \cmidrule(lr){4-8}  \cmidrule(lr){9-13} \cmidrule(lr){14-16} \cmidrule(lr){17-21} \cmidrule(lr){22-24} \cmidrule(lr){25-29} \cmidrule(lr){30-34}
+ & & & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & & & & & \\
+\midrule \endhead \bottomrule \endfoot
+\csvreader[head to column names,late after line=\csvifoddrow{\\[1.8ex]\midrule\rowcolor{white}}{\\[1.8ex]\midrule\rowcolor{gray!10}}]{raw.csv}{}%
+{\SL & \ID & \name & \numtwo{\ica} & \numtwo{\ifnl} & {\itot} &  {\ilg} &  \numtwo{\ips} & \numtwo{\iica} & \numtwo{\iifnl} & \iitot & \iilg & \numtwo{\iips} & \iiitot & \iiilg & \numtwo{\iiips} & \numtwo{\ivca} & \numtwo{\ivfnl} & \ivtot & \ivlg & \numtwo{\ivps} & \vtot & \vlg & \numtwo{\vips} & \numtwo{\vica} & \numtwo{\vifnl} & \vitot & \vilg & \numtwo{\vips} & \numtwo{\viica} & \numtwo{\viifnl} & \viitot & \viilg & \numtwo{\viips} & \tce & \numtwo{\tps} & \numtwo{\gpa} & \pf & \hall}
+\end{longtable}
+\end{small}
+
+\endgroup
+
+
+\end{document}

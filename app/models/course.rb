@@ -10,12 +10,14 @@
 #  updated_at  :datetime         not null
 #  course_type :integer          default("theory")
 #  sl_no       :integer
+#  exam_uuid   :integer
+#  exam_id     :integer
 #
 
 class Course < ApplicationRecord
     enum course_type: [:theory, :lab]
     default_scope { order(:sl_no) }
-
+    belongs_to :exam
     def self.import(students_info) 
       header = students_info[0]
       body = students_info - [header]

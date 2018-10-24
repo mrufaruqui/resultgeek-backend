@@ -10,6 +10,8 @@
 #  updated_at  :datetime         not null
 #  course_type :integer          default("theory")
 #  sl_no       :integer
+#  exam_uuid   :integer
+#  exam_id     :integer
 #
 
 require 'test_helper'

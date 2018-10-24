@@ -3,14 +3,15 @@
 # Table name: exams
 #
 #  id           :integer          not null, primary key
-#  sem          :integer          default("_first")
 #  year         :string(255)
-#  program      :integer          default("bsc")
 #  title        :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  held_in      :string(255)
 #  uuid         :string(255)
-#  program_type :integer
+#  sem          :integer          default("_first")
+#  program      :integer          default("bsc")
+#  program_type :integer          default("semester")
 #
 
 class Exam < ApplicationRecord
@@ -23,6 +24,8 @@ class Exam < ApplicationRecord
 
     has_many :registrations
     has_many :students, through: :registrations
+
+    has_many :courses
 
 
     def fullname

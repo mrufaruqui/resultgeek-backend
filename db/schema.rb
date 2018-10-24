@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181021152558) do
+ActiveRecord::Schema.define(version: 20181024063145) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20181021152558) do
     t.datetime "updated_at", null: false
     t.integer "course_type", limit: 1, default: 0
     t.integer "sl_no"
+    t.string "exam_uuid"
+    t.bigint "exam_id"
+    t.index ["exam_id"], name: "index_courses_on_exam_id"
   end
 
   create_table "depts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -106,6 +109,7 @@ ActiveRecord::Schema.define(version: 20181021152558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "exam_uuid"
+    t.integer "sl_no"
     t.index ["student_id"], name: "index_tabulations_on_student_id", unique: true
   end
 
@@ -122,6 +126,15 @@ ActiveRecord::Schema.define(version: 20181021152558) do
     t.datetime "updated_at", null: false
     t.integer "sl_no"
     t.index ["dept_id"], name: "index_teachers_on_dept_id"
+  end
+
+  create_table "tennats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "exam_id"
+    t.string "exam_uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_tennats_on_exam_id"
+    t.index ["exam_uuid"], name: "index_tennats_on_exam_uuid"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -172,4 +185,5 @@ ActiveRecord::Schema.define(version: 20181021152558) do
   add_foreign_key "tabulation_details", "tabulations"
   add_foreign_key "tabulations", "students"
   add_foreign_key "teachers", "depts"
+  add_foreign_key "tennats", "exams"
 end
