@@ -55,7 +55,7 @@ class TabulationsController < ApplicationController
     end
     def generate_tabulations_view
       a = []
-        @tab = (params.include? :exam_uuid) ? Tabulation.where(exam_uuid: @exam.uuid) : Tabulation.where(exam_uuid: Exam.last.uuid)
+        @tab =  Tabulation.where(exam_uuid: @exam.uuid)
         @tab.each do |t| 
           @retHash = Hash.new
           @retHash[:tabulation] = t;

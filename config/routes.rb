@@ -20,5 +20,8 @@ Rails.application.routes.draw do
    get 'generate_gradesheets_latex'  =>'exams#generate_gradesheets_latex'
    get 'generate_summationsheets_latex'  =>'exams#generate_summationsheets_latex'
    get 'reset_exam_result'               =>'exams#reset_exam_result'
+   post 'set_exam'                       =>'tenants#set_exam'
+   post 'reset_exam'                     =>'tenants#reset_exam'
+      
       
 end

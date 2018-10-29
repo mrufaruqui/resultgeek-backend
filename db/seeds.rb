@@ -49,4 +49,15 @@ Workforce.create(exam_uuid:Exam.first.uuid, exam:Exam.first, teacher: Teacher.fi
 #     end
 # end
 
-     
+Course.create(code:'CSE111',	title:'Introduction to Computer Systems and Computing Agents', credit:3)
+Course.create(code:'CSE113',	title:	'Structured Programming Language', credit: 3)
+Course.create(code:'CSE114',	title:	'Structured Programming Language Lab', credit:2, course_type:"lab")
+Course.create(code:'EEE121',	title:	'Electrical Engineering', credit: 3)
+Course.create(code:'EEE122',	title:	'Electrical Engineering Lab', credit:1, course_type:"lab")
+Course.create(code:'MAT131',	title:	'Matrices, Vector Analysis and Geometry', credit:3)
+Course.create(code:'STA151',	title:	'Basic Statistics', credit:	3)
+
+Course.create(sl_no:1, code:'CSE311', title:'Data Structures', credit:3, exam_uuid:'_thirdbsc2017', exam: Exam.first)
+Course.create(sl_no:2, code:'CSE312', title:'Data Structures Lab', credit:1, exam_uuid:'_thirdbsc2017', exam: Exam.first, course_type:"lab")
+
+
