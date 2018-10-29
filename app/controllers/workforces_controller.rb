@@ -1,10 +1,11 @@
 class WorkforcesController < ApplicationController
+  before_action :authenticate_user! 
+  before_action :get_tenant
   before_action :set_workforce, only: [:show, :update, :destroy]
-
   # GET /workforces
   # GET /workforces.json
   def index
-    @workforces = Workforce.all
+    @workforces = Workforce.where(exam_uuid:@exam.uuid)
   end
 
   # GET /workforces/1

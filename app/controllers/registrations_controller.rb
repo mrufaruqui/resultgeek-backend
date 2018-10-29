@@ -1,10 +1,13 @@
 class RegistrationsController < ApplicationController
+  before_action :authenticate_user! 
+  before_action :get_tenant
   before_action :set_registration, only: [:show, :update, :destroy]
+  
 
   # GET /registrations
   # GET /registrations.json
   def index
-    @registrations = Registration.all
+    @registrations = Registration.where(exam_uuid:@exam.uuid)
   end
 
   # GET /registrations/1

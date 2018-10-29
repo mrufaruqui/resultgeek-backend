@@ -1,5 +1,6 @@
 class TabulationsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! 
+  before_action :get_tenant
   before_action :set_tabulation, only: [:show, :update, :destroy]
 
   # GET /tabulations
@@ -54,7 +55,7 @@ class TabulationsController < ApplicationController
     end
     def generate_tabulations_view
       a = []
-        @tab = (params.include? :exam_uuid) ? Tabulation.where(exam_uuid: params[:exam_uuid]) : Tabulation.where(exam_uuid: Exam.first.uuid)
+        @tab = (params.include? :exam_uuid) ? Tabulation.where(exam_uuid: @exam.uuid) : Tabulation.where(exam_uuid: Exam.last.uuid)
         @tab.each do |t| 
           @retHash = Hash.new
           @retHash[:tabulation] = t;

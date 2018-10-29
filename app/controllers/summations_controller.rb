@@ -1,12 +1,12 @@
 class SummationsController < ApplicationController
   before_action :authenticate_user!
-  before_action  :set_exam
+  before_action  :get_tenant
   before_action :set_summation, only: [:show, :update, :destroy]
 
   # GET /summations
   # GET /summations.json
   def index
-    @summations = Summation.all
+    @summations = Summation.where(exam_uuid:@exam.uuid)
   end
 
   # GET /summations/1
@@ -43,11 +43,13 @@ class SummationsController < ApplicationController
   end
 
    def import
+
       data = params[:file]
       @course = Course.find_by(id: params[:course_id])
     if !@course.blank?
       
       ##Destroy previous data
+      Tabulation.destroy_all
       Summation.where(course_id:@course.id).destroy_all
 
       header = data[0]
@@ -109,9 +111,7 @@ class SummationsController < ApplicationController
       params.require(:summation).permit(:assesment, :attendance, :section_a_marks, :section_b_marks, :total_marks, :gpa, :grade, :exam_uuid)
     end
 
-    def set_exam
-       @exam  = (params.include? :exam_uuid) ? Exam.find_by(uuid:params[:exam_uuid]) : Exam.last
-    end
+     
 
     def calculate_grade(p)
       retHash = {}

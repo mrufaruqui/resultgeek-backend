@@ -1,7 +1,8 @@
 class ProcessingService
    def self.perform(options={})
        #######Retrieve exam info or default last one##########
-       @exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
+       #@exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
+       get_tenant
        courses = Course.all
 
        ####Remove Old Caculations####
@@ -11,6 +12,7 @@ class ProcessingService
       
        #######Retrieve Registered students #########
        Registration.where(exam_uuid:@exam.uuid).each do |r|
+            is_failed_in_a_course = false;
             s = r.student
             tabulation = Tabulation.find_by(student_id:s.id) || Tabulation.new
             tabulation.student_id = s.id;
@@ -28,6 +30,7 @@ class ProcessingService
                         td.save 
                         remarks << c.code.split(/[a-zA-Z]/).last if sm.gpa === 'F' 
                         tce += c.credit unless sm.gpa === 'F' || sm.gpa === 'X'
+                        is_failed_in_a_course = true if sm.gpa === 'F'
                # end
                 
                 ##Generate remarks if failed 
@@ -42,7 +45,7 @@ class ProcessingService
             tabulation.gpa = gpa #gpa.round(2);
             tabulation.tce = tce.to_i
             tabulation.result = (gpa >= 2.20) ? 'P' : 'F'
-            tabulation.remarks = 'F-' + remarks.join(", ") if tce < 18 #ToDo
+            tabulation.remarks = 'F-' + remarks.join(", ") if is_failed_in_a_course  
             tabulation.save
        end
   end

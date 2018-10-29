@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tennats
+  resources :tenants
   resources :registrations
   resources :workforces
   resources :teachers
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    post 'import_students'                   => 'students#import' 
    post 'insert_marks'                      => 'summations#import' 
-   post  'summations_by_course_id'    => 'summations#get_by_course_id'
+   post 'summations_by_course_id'    => 'summations#get_by_course_id'
    get 'process_result'             =>'exams#process_result'
    get 'generate_tabulations_latex'  =>'exams#generate_tabulations_latex'
    get 'generate_gradesheets_latex'  =>'exams#generate_gradesheets_latex'

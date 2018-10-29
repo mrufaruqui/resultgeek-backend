@@ -6,9 +6,10 @@ class GenerateTabulationLatexV2Service < TabulationBaseService
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
         @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
-        @hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
+		@hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
+		@tco = Course.where(exam_uuid:@exam.uuid).sum(:credit)
 		@hall_name = ' '
-      File.open( ['./reports/', 'tabulation_v2_.tex'].join, 'w') do |f| 
+      File.open( ['./reports/', @exam.uuid, 'tabulation_v2_.tex'].join, 'w') do |f| 
        f.puts tabulation(options)
       end
     end
@@ -29,7 +30,7 @@ class GenerateTabulationLatexV2Service < TabulationBaseService
 
 
     def tabulation_header
-<<-EOF
+part_a =<<-EOF
 \\newcommand{\\xgpps}[2]{\\ifthenelse{\\equal{#1}{X}}{X}{#2}}  
 
 \\newcommand*\\rot{\\rotatebox{90}}
@@ -61,30 +62,61 @@ class GenerateTabulationLatexV2Service < TabulationBaseService
 \\setlength\\extrarowheight{3pt}
 
 \\begin{small}
-\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.88in}|*{5}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{5}{c}| cc|cc |>{\\centering}p{0.3in} p{0.5in}}\\toprule\\toprule%
+\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.88in}|*{5}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{5}{c}| cc|cc |>{\\centering}p{0.5in} p{0.5in}}\\toprule\\toprule%
+EOF
+
+a=[]
+a << "\\multirow{2}{*}{SL\\#}" << "\\multirow{2}{*}{ID}" << "\\multirow{2}{*}{{Name}}"
+@courses.each do | course|
+	if course.course_type == "theory"	
+		a << "\\multicolumn{5}{c|}{#{course.code} (Cr: #{course.credit})}" 
+	else
+		a << "\\multicolumn{3}{c|}{#{course.code} (Cr: #{course.credit})}" 
+	end
+end 
+a << "\\multirow{2}{*}{TCE}" << "\\multirow{2}{*}{TPS}" << "\\multirow{2}{*}{GPA}" << "\\multirow{2}{*}{\\rot{ Result }}" <<"\\multirow{2}{*}{Remark}" << "\\multirow{2}{*}{\\hspace*{3ex}{Hall}}"
+ part_b = a.join(" &") + "\\\\"
+
+part_c = <<-EOF
+\\cmidrule(lr){4-8}  \\cmidrule(lr){9-13} \\cmidrule(lr){14-16} \\cmidrule(lr){17-21} \\cmidrule(lr){22-24} \\cmidrule(lr){25-29} \\cmidrule(lr){30-34} 
+& & & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & & & & & & \\\\
+
+
+ \\midrule \\endfirsthead \\toprule\\toprule 
+EOF
+
+part_f = <<-EOF
 \\multirow{2}{*}{SL\\#} & \\multirow{2}{*}{ID} & \\multirow{2}{*}{{Name}} & \\multicolumn{5}{c|}{CSE 111 (Cr: 3)} & \\multicolumn{5}{c|}{CSE 113 (Cr: 3)} & \\multicolumn{3}{c|}{CSE 114 (Cr: 2)} & \\multicolumn{5}{c|}{EEE 121 (Cr: 3)} & \\multicolumn{3}{c|}{EEE 122 (Cr: 1)} & \\multicolumn{5}{c|}{MAT 131 (Cr: 3)} & \\multicolumn{5}{c|}{STA 151 (Cr: 3)} & \\multirow{2}{*}{TCE} & \\multirow{2}{*}{TPS} & \\multirow{2}{*}{GPA} & \\multirow{2}{*}{\\rot{ Result }} & \\multirow{2}{*}{Remark} & \\multirow{2}{*}{\\hspace*{3ex}{Hall}} \\\\ 
  \\cmidrule(lr){4-8}  \\cmidrule(lr){9-13} \\cmidrule(lr){14-16} \\cmidrule(lr){17-21} \\cmidrule(lr){22-24} \\cmidrule(lr){25-29} \\cmidrule(lr){30-34}
+
  & & & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & & & & & & \\\\
-\\midrule \\endfirsthead \\toprule\\toprule 
-\\multirow{2}{*}{SL\\#} & \\multirow{2}{*}{ID} & \\multirow{2}{*}{{Name}} & \\multicolumn{5}{c|}{CSE 111 (Cr: 3)} & \\multicolumn{5}{c|}{CSE 113 (Cr: 3)} & \\multicolumn{3}{c|}{CSE 114 (Cr: 2)} & \\multicolumn{5}{c|}{EEE 121 (Cr: 3)} & \\multicolumn{3}{c|}{EEE 122 (Cr: 1)} & \\multicolumn{5}{c|}{MAT 131 (Cr: 3)} & \\multicolumn{5}{c|}{STA 151 (Cr: 3)} & \\multirow{2}{*}{TCE} & \\multirow{2}{*}{TPS} & \\multirow{2}{*}{GPA} & \\multirow{2}{*}{\\rot{ Result }} & \\multirow{2}{*}{Remark} & \\multirow{2}{*}{\\hspace*{3ex}{Hall}} \\\\ 
- \\cmidrule(lr){4-8}  \\cmidrule(lr){9-13} \\cmidrule(lr){14-16} \\cmidrule(lr){17-21} \\cmidrule(lr){22-24} \\cmidrule(lr){25-29} \\cmidrule(lr){30-34}
- & & & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & & & & & & \\\\
-\\midrule \\endhead \\bottomrule \\endfoot \\endlastfoot % \\ifnumcomp{\\value{csvrow}}{>}{20}{}{\\toContinue} and \\ifnumcomp{\\value{page}}{<}{2}{\\toContinue}{} worked in a weird way!!
+
+
+ EOF
+
+ part_d =<<-EOF
+ \\midrule \\endhead \\bottomrule \\endfoot \\endlastfoot 
+ % \\ifnumcomp{\\value{csvrow}}{>}{20}{}{\\toContinue} and \\ifnumcomp{\\value{page}}{<}{2}{\\toContinue}{} worked in a weird way!!
 %\\csvreader[head to column names,late after line=\\csvifoddrow{\\\\[1.9ex]\\midrule\\rowcolor{white}} {\\\\[1.9ex]\\midrule\\rowcolor{gray!10}} \\ifnumcomp{\\value{csvrow}}{=}{\\realrows}{\\pagebreak\\Dummywarning} {}]{rawextra.csv}{}
 % \\csvreader[head to column names,late after line=\\csvifoddrow{\\\\[1.8ex]\\midrule\\rowcolor{white}}{\\ifismultiple{\\thecsvrow}{14}{\\\\\\pagebreak}{\\\\[1.8ex]}\\midrule\\rowcolor{gray!10}}\\ifnumcomp{\\value{csvrow}}{=}{35}{\\pagebreak}{}]{rawextra.csv}{}%  ****** THIS WORKS, for integer multiple of lines
 %{\\thecsvrow & \\ID & \\name & \\numtwo{\\ica} & \\numtwo{\\ifnl} & {\\itot} &  {\\ilg} &  \\numtwo{\\ips} & \\numtwo{\\iica} & \\numtwo{\\iifnl} & \\iitot & \\iilg & \\numtwo{\\iips} & \\iiitot & \\iiilg & \\numtwo{\\iiips} & \\numtwo{\\ivca} & \\numtwo{\\ivfnl} & \\ivtot & \\ivlg & \\numtwo{\\ivps} & \\vtot & \\vlg & \\numtwo{\\vips} & \\numtwo{\\vica} & \\numtwo{\\vifnl} & \\vitot & \\vilg & \\numtwo{\\vips} & \\numtwo{\\viica} & \\numtwo{\\viifnl} & \\viitot & \\viilg & \\numtwo{\\viips} & \\tce & \\numtwo{\\tps} & \\numtwo{\\gpa} & \\pf & \\rem & \\hall}
 EOF
+
+part_a + part_b + part_c + part_d
     end
 
 def tabulation_table
 #   <<-EOF
 #    {\\SL & \\ID & \\name & \\numtwo{\\ica} & \\numtwo{\\ifnl} & {\\itot} &  {\\ilg} &  \\numtwo{\\ips} & \\numtwo{\\iica} & \\numtwo{\\iifnl} & \\iitot & \\iilg & \\numtwo{\\iips} & \\iiitot & \\iiilg & \\numtwo{\\iiips} & \\numtwo{\\ivca} & \\numtwo{\\ivfnl} & \\ivtot & \\ivlg & \\numtwo{\\ivps} & \\vtot & \\vlg & \\numtwo{\\vips} & \\numtwo{\\vica} & \\numtwo{\\vifnl} & \\vitot & \\vilg & \\numtwo{\\vips} & \\numtwo{\\viica} & \\numtwo{\\viifnl} & \\viitot & \\viilg & \\numtwo{\\viips} & \\tce & \\numtwo{\\tps} & \\numtwo{\\gpa} & \\pf & \\hall}
 #    EOF
+  sl_no = 1
   a=''
   @hall_list.each do |hall|
 	@hall_name = hall
-    Tabulation.joins(:student).merge(Student.where(hall_name:hall)).each do |t| 
-      a<<tabulation_row(generate_single_page_tabulation(t))
+	Tabulation.joins(:student).merge(Student.where(hall_name:hall)).each do |t| 
+	  a << sl_no.to_s
+	  a<<tabulation_row(generate_single_page_tabulation(t))
+	  sl_no += 1
 	 end
 	 a << '\\pagebreak'
    end
@@ -206,7 +238,7 @@ EOF
 		PS & Point Secured ($= \\text{GP} \\times \\text{Cr}$, per course)\\\\
 		TPS & Total Points Secured ($=\\!\\sum PS$ all courses)\\\\
 		TCE & Total Credit Earned\\\\
-		GPA & TPS/18 (Total Credits Offered=$18$)\\\\
+		GPA & TPS/18 (Total Credits Offered=$#{@tco}$)\\\\
 		\\end{tabular}}
 		\\end{footnotesize}
         \\end{minipage}%
@@ -228,8 +260,8 @@ EOF
 		{\\textsc{University of Chittagong}}\\\\
 		\\textsc{Department of Computer Science \\& Engineering}\\\\
 		{{\\sc Tabulation Sheet}}\\\\
-		\\textsc{First Semester M.S. Engineering Examination 2015}\\\\
-		{Held in December 2017}
+		\\textsc{#{@exam.fullname}}\\\\
+		{Held in #{@exam.held_in}}
 		\\end{LARGE}
 		\\end{center}
         \\end{minipage}%
@@ -239,7 +271,7 @@ EOF
     end
 
     def latex_preamble_rhead
-		<<-EOF
+		part_a = <<-EOF
 		\\rhead{%
 		\\begingroup
         \\begin{minipage}[m][5cm][c]{3in}%
@@ -251,22 +283,27 @@ EOF
 		\\toprule \\rowcolor[gray]{0.99}
 		{\\it Course Code} & {\\it Course Title} & {\\it Credit} & {\\it Marks} \\\\
 		\\midrule 
-		  CSE 111 & Introduction to Computer Systems and Computing Agents & $3$ & $75$ \\\\ 
-		  CSE 113 & Structured Programming Language & $3$ & $75$ \\\\ 
-		  CSE 114 & Structured Programming Language Lab & $2$ & $50$ \\\\ 
-		  EEE 121 & Electrical Engineering & $3$ & $75$ \\\\
-		  EEE 122 & Electrical Engineering Lab & $1$ & $25$ \\\\
-		  MAT 131 & Matrices, Vector Analysis and Geometry & $3$ & $75$ \\\\
-		  STA 151 & Basic Statistics & $3$ & $75$\\\\
-		  \\midrule
-		 \\rowcolor{White} & \\multicolumn{2}{c}{\\hspace*{2.1cm} Total Credits Offered: $18$} & \\\\
+	    EOF
+		
+		  part_b = ''
+    @courses.each  do |course|
+        part_b << [course.code, course.title, course.credit, course.credit * 25].join(' & ') << "  \\\\\n"
+    end
+		 
+		
+		part_c= 
+		<<-EOF 
+		 \\midrule
+		 \\rowcolor{White} & \\multicolumn{2}{c}{\\hspace*{2.1cm} Total Credits Offered: $#{@tco}$} & \\\\
 		\\bottomrule
 		\\end{tabular}
 		\\end{footnotesize}
         \\end{minipage}%
 		\\endgroup
-}% end \\rhead
-        EOF
+         }% end \\rhead
+		EOF
+		
+		part_a + part_b + part_c
     end
     
     def tabulation_lfoot
@@ -282,10 +319,10 @@ EOF
 		\\renewcommand\\arraystretch{1.3}
 		\\begin{footnotesize}
 	    \\begin{tabular}{rll}
-		 Chairman: & Rokan Uddin Faruqui & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
-		 Member: & Kazi Ashrafuzzaman & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
-		 Member: & Md. Aman Ullah & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
-		\\end{tabular}
+		 Chairman: &  #{@exam.workforces.find_by(role:"chairman").teacher.display_name}  & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+		 Member: & #{@members[0].teacher.display_name unless @members[0].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+		 Member: & #{@members[1].teacher.display_name unless @members[1].nil? || @members.length < 2} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+	 	\\end{tabular}
 		\\end{footnotesize}
 		}
         \\end{minipage}%
@@ -307,9 +344,9 @@ EOF
 		\\renewcommand\\arraystretch{1.3}
 		\\begin{footnotesize}
 	    \\begin{tabular}{rll}
-		 1. & Rokan Uddin Faruqui & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
-		 2. & Kazi Ashrafuzzaman & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}	\\\\
-		 3. & Md. Osiur Rahman & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}\\\\
+		 1. & #{@tabulators[0].teacher.display_name unless @tabulators[0].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+		 2. & #{@tabulators[1].teacher.display_name unless @tabulators[1].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}	\\\\
+		 3. & #{@tabulators[2].teacher.display_name unless @tabulators[2].nil? || @tabulators.length < 3} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}\\\\
 		\\end{tabular}
 		\\end{footnotesize}
 		}

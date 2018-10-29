@@ -3,9 +3,9 @@ class TabulationBaseService
   def generate_single_page_tabulation(t) 
         @retHash = Hash.new
         @retHash[:sl_no] = t.sl_no
-        @retHash[:gpa] = t.gpa
+        @retHash[:gpa] = '%.2f' % t.gpa
         @retHash[:result] = t.result
-        @retHash[:tce] = t.tce
+        @retHash[:tce] = '%.2f' % t.tce
         @retHash[:remarks] = t.remarks
         @retHash[:roll] = t.student.roll
         @retHash[:name] = t.student.name
@@ -23,8 +23,17 @@ class TabulationBaseService
             tps += ps;
           #  @retHash[:courses] << course
         end
-        @retHash[:tps] = tps; 
+        @retHash[:tps] = '%.2f' % tps; 
         @retHash
       end    
+  protected
+  def get_tenant(options={})
+      @tenant = Tenant.last
+      if @tenant
+         @exam = Exam.find_by(exam_uuid: @tenant.exam_uuid) 
+      else
+        @exam = Exam.last;
+    end
+  end
 
 end

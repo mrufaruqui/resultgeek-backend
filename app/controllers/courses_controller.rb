@@ -1,11 +1,12 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_tenant
   before_action :set_course, only: [:show, :update, :destroy]
-
+  
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @courses = Course.where(exam_uuid:@exam.uuid)
   end
 
   # GET /courses/1
@@ -17,7 +18,9 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
+    @course.exam = @exam
+    @course.exam_uuid = @exam.exam_uuid
+    
     if @course.save
       render :show, status: :created, location: @course
     else

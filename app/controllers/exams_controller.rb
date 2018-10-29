@@ -1,7 +1,6 @@
 class ExamsController < ApplicationController
-  before_action :authenticate_user!
-  before_action  :set_current_exam
-  before_action :set_exam, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
+  before_action :get_tenant, only: [:show, :update, :destroy]
 
   # GET /exams
   # GET /exams.json
