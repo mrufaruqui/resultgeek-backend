@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181029005820) do
+ActiveRecord::Schema.define(version: 20181102034828) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 20181029005820) do
     t.string "exam_uuid"
     t.index ["exam_id"], name: "index_registrations_on_exam_id"
     t.index ["student_id"], name: "index_registrations_on_student_id"
+  end
+
+  create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "uuid", null: false
+    t.string "exam_uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_uuid"], name: "index_sessions_on_exam_uuid"
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+    t.index ["uuid"], name: "index_sessions_on_uuid", unique: true
   end
 
   create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -173,9 +183,11 @@ ActiveRecord::Schema.define(version: 20181029005820) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "exam_uuid"
+    t.string "session_uuid"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["session_uuid"], name: "index_users_on_session_uuid"
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 

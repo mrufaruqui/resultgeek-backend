@@ -4,11 +4,15 @@ class TenantsController < ApplicationController
 
 
   def set_exam
-    @user= current_user.update(exam_uuid:params[:exam_uuid])
+    @session = Session.new(exam_uuid:params[:exam_uuid]) 
+    @user= current_user.update(session_uuid:@session.uuid) if @session.save 
   end
 
   def reset_exam
-    @user= current_user.update(exam_uuid:nil)
+    puts session[:current_user_id]
+    @session = Session.find_by(uuid:current_user.session_uuid)
+    @user= current_user.update(session_uuid:nil)
+    @session.destroy
   end
 
 

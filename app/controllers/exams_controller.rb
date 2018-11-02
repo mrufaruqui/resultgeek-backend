@@ -4,7 +4,9 @@ class ExamsController < ApplicationController
 
   # GET /exams
   # GET /exams.json
-  def index
+  def index 
+    puts "session info"
+    puts session[:exam_uuid]
     @exams = Exam.all
   end
 

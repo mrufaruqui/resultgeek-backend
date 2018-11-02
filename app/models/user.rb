@@ -27,8 +27,8 @@
 #  tokens                 :text(65535)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  exam_uuid              :string(255)
 #
-
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:

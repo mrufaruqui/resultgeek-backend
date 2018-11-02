@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   resources :courses
   #root_url 'students#index'
   resources :customers
-  mount_devise_token_auth_for 'User', at: 'auth'
+
+  mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+  sessions:           'exam_sessions',
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    post 'import_students'                   => 'students#import' 
    post 'insert_marks'                      => 'summations#import' 
