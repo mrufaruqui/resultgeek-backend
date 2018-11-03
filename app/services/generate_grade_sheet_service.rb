@@ -46,7 +46,7 @@ class GenerateGradeSheetService
         @retHash[:hall] = t.student.hall_name;
         @retHash[:courses] = []
         t.tabulation_details.each do |td|
-            course = {:code=> td.summation.course.id, :title=>td.summation.course.title, :credit=>td.summation.course.credit, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2) }
+            course = {:code=> td.summation.course.code, :title=>td.summation.course.title, :credit=>td.summation.course.credit, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2) }
             @retHash[:courses] << course
         end
         puts @retHash
