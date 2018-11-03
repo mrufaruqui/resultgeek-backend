@@ -59,6 +59,7 @@ class RegistrationsController < ApplicationController
   # DELETE /registrations/1.json
   def destroy
     @registration.destroy
+    render json:  {status: true}
   end
 
    def register

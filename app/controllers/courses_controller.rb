@@ -42,6 +42,7 @@ class CoursesController < ApplicationController
   # DELETE /courses/1.json
   def destroy
     @course.destroy
+    render json:  {status: true}
   end
 
 

@@ -60,6 +60,7 @@ class WorkforcesController < ApplicationController
   # DELETE /workforces/1.json
   def destroy
     @workforce.destroy
+    render json:  {status: true}
   end
 
   private

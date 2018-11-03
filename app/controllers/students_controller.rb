@@ -39,7 +39,7 @@ class StudentsController < ApplicationController
   # DELETE /students/1.json
   def destroy
     _status = @student.destroy
-    render json:  {status: _status}
+   render json:  {status: true}
   end
 
   def import
