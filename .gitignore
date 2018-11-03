@@ -14,8 +14,7 @@
 !/tmp/.keep
 
 .byebug_history
-/reports/*.pdf
-reports/*.tex 
+/reports/*.pdf 
 reports/*.aux
 reports/*.log 
 reports/*.gz

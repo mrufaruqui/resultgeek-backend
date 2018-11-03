@@ -1,0 +1,240 @@
+         \documentclass[12pt]{article}
+            \usepackage[a4paper, left=0.78in,top=0.25in,right=0.5in,bottom=0.2in]{geometry}
+            \setlength\parskip{0pt}
+            \usepackage{datatool}
+            \usepackage{calc}
+            \usepackage{array,tabularx}
+            \usepackage{graphicx,pgf}
+            \usepackage{utopia}
+            \usepackage[T1]{fontenc}
+            \usepackage{ifthen}
+            \pagestyle{empty}
+            \usepackage{xstring}
+            \usepackage{multirow}
+
+            \newcommand*{\numtwo}[1]{\pgfmathprintnumber[
+                    fixed, precision=2, fixed zerofill=true]{#1}}
+            \begin{document}
+    \centering
+    \begin{minipage}[m]{.8\textwidth} \centering 
+    %\includegraphics[width=0.6in]{cu-logo.jpg}
+	\smallskip
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	\textsc{ First Semester Bsc Engineering Exam 2018}\\
+    {\large {\sc Summation Sheet}}\\  
+     {\centering EEE122 : Electrical Engineering Lab     Credit : 1 } \\
+    \end{minipage} 
+    \begin{center} 
+	\renewcommand{\arraystretch}{1.08}
+	\begin{small}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \hline
+	\multirow{2}{*}{ID} & 	\multirow{2}{*}{CA}  & 	\multirow{2}{*}{CT}  & 	\multirow{2}{*}{CACT}  & \multicolumn{2 }{c|}{Section A}& \multicolumn{2 }{c|}{Section B} & 	\multirow{2}{*}{Marks}  & 	\multirow{2}{*}{Total Marks}  \\ 
+	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\ \hline
+16701063 &  &  &  &  &  &  &  &  & 15.0\\ \hline 
+17701001 &  &  &  &  &  &  &  &  & 14.0\\ \hline 
+17701004 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+17701005 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+17701006 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+17701007 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+17701009 &  &  &  &  &  &  &  &  & 0.0\\ \hline 
+17701012 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+17701013 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+17701020 &  &  &  &  &  &  &  &  & 0.0\\ \hline 
+17701024 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+17701027 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+17701033 &  &  &  &  &  &  &  &  & 0.0\\ \hline 
+17701046 &  &  &  &  &  &  &  &  & 0.0\\ \hline 
+17701049 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+17701050 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+17701055 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+17701069 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+17701075 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+17701084 &  &  &  &  &  &  &  &  & 0.0\\ \hline 
+17701092 &  &  &  &  &  &  &  &  & 0.0\\ \hline 
+17701093 &  &  &  &  &  &  &  &  & 20.0\\ \hline 
+17701101 &  &  &  &  &  &  &  &  & 0.0\\ \hline 
+17701102 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+17701104 &  &  &  &  &  &  &  &  & 14.0\\ \hline 
+17701106 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701001 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+18701002 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701003 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+18701004 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+18701005 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+18701006 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701007 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701008 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701009 &  &  &  &  &  &  &  &  & 0.0\\ \hline 
+        \end{tabular}
+            \end{small}
+            \end{center}
+  \centering
+            
+            \begin{table}[hb]
+            	\centering
+            \begin{minipage}[b]{0.5\linewidth} %\centering
+            {\centering Tabulators }
+            \begin{enumerate}
+                \item Mr. Rokan Uddin Faruqui \hspace*{1ex} $\ldots \ldots  $  
+                \item Dr. Kazi Ashrafuzzaman \hspace*{1ex} $\ldots \ldots  $  
+                \item Prof. Dr. Osiur Rahman \hspace*{1ex} $\ldots \ldots $  
+            \end{enumerate} 
+
+            \end{minipage}
+            \hspace*{1.2cm}
+            \begin{minipage}[b]{0.4\linewidth} \centering
+            (Mr. Rokan Uddin Faruqui) \\
+            Chairman  \hspace*{1ex} \\
+           First Semester Bsc Engineering Exam 2018 Committee
+            \end{minipage}
+            \end{table}
+            \clearpage
+    \centering
+    \begin{minipage}[m]{.8\textwidth} \centering 
+    %\includegraphics[width=0.6in]{cu-logo.jpg}
+	\smallskip
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	\textsc{ First Semester Bsc Engineering Exam 2018}\\
+    {\large {\sc Summation Sheet}}\\  
+     {\centering EEE122 : Electrical Engineering Lab     Credit : 1 } \\
+    \end{minipage} 
+    \begin{center} 
+	\renewcommand{\arraystretch}{1.08}
+	\begin{small}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \hline
+	\multirow{2}{*}{ID} & 	\multirow{2}{*}{CA}  & 	\multirow{2}{*}{CT}  & 	\multirow{2}{*}{CACT}  & \multicolumn{2 }{c|}{Section A}& \multicolumn{2 }{c|}{Section B} & 	\multirow{2}{*}{Marks}  & 	\multirow{2}{*}{Total Marks}  \\ 
+	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\ \hline
+18701010 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+18701012 &  &  &  &  &  &  &  &  & 14.0\\ \hline 
+18701013 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701014 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701015 &  &  &  &  &  &  &  &  & 17.0\\ \hline 
+18701016 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+18701017 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+18701018 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+18701019 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+18701020 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701021 &  &  &  &  &  &  &  &  & 24.0\\ \hline 
+18701022 &  &  &  &  &  &  &  &  & 24.0\\ \hline 
+18701023 &  &  &  &  &  &  &  &  & 20.0\\ \hline 
+18701024 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701025 &  &  &  &  &  &  &  &  & 20.0\\ \hline 
+18701026 &  &  &  &  &  &  &  &  & 17.0\\ \hline 
+18701027 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701028 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+18701029 &  &  &  &  &  &  &  &  & 24.0\\ \hline 
+18701030 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701031 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+18701032 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701033 &  &  &  &  &  &  &  &  & 15.0\\ \hline 
+18701034 &  &  &  &  &  &  &  &  & 14.0\\ \hline 
+18701035 &  &  &  &  &  &  &  &  & 20.0\\ \hline 
+18701036 &  &  &  &  &  &  &  &  & 17.0\\ \hline 
+18701037 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+18701038 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701039 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+18701040 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+18701041 &  &  &  &  &  &  &  &  & 0.0\\ \hline 
+18701042 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+18701043 &  &  &  &  &  &  &  &  & 20.0\\ \hline 
+18701044 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+18701045 &  &  &  &  &  &  &  &  & 15.0\\ \hline 
+        \end{tabular}
+            \end{small}
+            \end{center}
+  \centering
+            
+            \begin{table}[hb]
+            	\centering
+            \begin{minipage}[b]{0.5\linewidth} %\centering
+            {\centering Tabulators }
+            \begin{enumerate}
+                \item Mr. Rokan Uddin Faruqui \hspace*{1ex} $\ldots \ldots  $  
+                \item Dr. Kazi Ashrafuzzaman \hspace*{1ex} $\ldots \ldots  $  
+                \item Prof. Dr. Osiur Rahman \hspace*{1ex} $\ldots \ldots $  
+            \end{enumerate} 
+
+            \end{minipage}
+            \hspace*{1.2cm}
+            \begin{minipage}[b]{0.4\linewidth} \centering
+            (Mr. Rokan Uddin Faruqui) \\
+            Chairman  \hspace*{1ex} \\
+           First Semester Bsc Engineering Exam 2018 Committee
+            \end{minipage}
+            \end{table}
+            \clearpage
+    \centering
+    \begin{minipage}[m]{.8\textwidth} \centering 
+    %\includegraphics[width=0.6in]{cu-logo.jpg}
+	\smallskip
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	\textsc{ First Semester Bsc Engineering Exam 2018}\\
+    {\large {\sc Summation Sheet}}\\  
+     {\centering EEE122 : Electrical Engineering Lab     Credit : 1 } \\
+    \end{minipage} 
+    \begin{center} 
+	\renewcommand{\arraystretch}{1.08}
+	\begin{small}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \hline
+	\multirow{2}{*}{ID} & 	\multirow{2}{*}{CA}  & 	\multirow{2}{*}{CT}  & 	\multirow{2}{*}{CACT}  & \multicolumn{2 }{c|}{Section A}& \multicolumn{2 }{c|}{Section B} & 	\multirow{2}{*}{Marks}  & 	\multirow{2}{*}{Total Marks}  \\ 
+	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\ \hline
+18701046 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701047 &  &  &  &  &  &  &  &  & 14.0\\ \hline 
+18701048 &  &  &  &  &  &  &  &  & 14.0\\ \hline 
+18701049 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+18701050 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701051 &  &  &  &  &  &  &  &  & 22.0\\ \hline 
+18701052 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+18701053 &  &  &  &  &  &  &  &  & 10.0\\ \hline 
+18701054 &  &  &  &  &  &  &  &  & 16.0\\ \hline 
+18701055 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+18701056 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+18701057 &  &  &  &  &  &  &  &  & 24.0\\ \hline 
+18701058 &  &  &  &  &  &  &  &  & 17.0\\ \hline 
+18701059 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+18701060 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+18701061 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+18701062 &  &  &  &  &  &  &  &  & 15.0\\ \hline 
+18701063 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+18701064 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+18701066 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+18701067 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+18701068 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+18701069 &  &  &  &  &  &  &  &  & 18.0\\ \hline 
+18701070 &  &  &  &  &  &  &  &  & 21.0\\ \hline 
+18701071 &  &  &  &  &  &  &  &  & 17.0\\ \hline 
+18701072 &  &  &  &  &  &  &  &  & 20.0\\ \hline 
+18701073 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701074 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701075 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701076 &  &  &  &  &  &  &  &  & 19.0\\ \hline 
+18701077 &  &  &  &  &  &  &  &  & 13.0\\ \hline 
+        \end{tabular}
+            \end{small}
+            \end{center}
+  \centering
+            
+            \begin{table}[hb]
+            	\centering
+            \begin{minipage}[b]{0.5\linewidth} %\centering
+            {\centering Tabulators }
+            \begin{enumerate}
+                \item Mr. Rokan Uddin Faruqui \hspace*{1ex} $\ldots \ldots  $  
+                \item Dr. Kazi Ashrafuzzaman \hspace*{1ex} $\ldots \ldots  $  
+                \item Prof. Dr. Osiur Rahman \hspace*{1ex} $\ldots \ldots $  
+            \end{enumerate} 
+
+            \end{minipage}
+            \hspace*{1.2cm}
+            \begin{minipage}[b]{0.4\linewidth} \centering
+            (Mr. Rokan Uddin Faruqui) \\
+            Chairman  \hspace*{1ex} \\
+           First Semester Bsc Engineering Exam 2018 Committee
+            \end{minipage}
+            \end{table}
+            \clearpage
+            \clearpage
+            \end{document}

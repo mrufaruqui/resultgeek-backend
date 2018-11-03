@@ -1,0 +1,236 @@
+         \documentclass[12pt]{article}
+            \usepackage[a4paper, left=0.78in,top=0.25in,right=0.5in,bottom=0.2in]{geometry}
+            \setlength\parskip{0pt}
+            \usepackage{datatool}
+            \usepackage{calc}
+            \usepackage{array,tabularx}
+            \usepackage{graphicx,pgf}
+            \usepackage{utopia}
+            \usepackage[T1]{fontenc}
+            \usepackage{ifthen}
+            \pagestyle{empty}
+            \usepackage{xstring}
+            \usepackage{multirow}
+
+            \newcommand*{\numtwo}[1]{\pgfmathprintnumber[
+                    fixed, precision=2, fixed zerofill=true]{#1}}
+            \begin{document}
+    \centering
+    \begin{minipage}[m]{.8\textwidth} \centering 
+    %\includegraphics[width=0.6in]{cu-logo.jpg}
+	\smallskip
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	\textsc{ First Semester Bsc Engineering Exam 2018}\\
+    {\large {\sc Summation Sheet}}\\  
+     {\centering CSE113 : Structured Programming Language     Credit : 3 } \\
+    \end{minipage} 
+    \begin{center} 
+	\renewcommand{\arraystretch}{1.08}
+	\begin{small}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \hline
+	\multirow{2}{*}{ID} & 	\multirow{2}{*}{CA}  & 	\multirow{2}{*}{CT}  & 	\multirow{2}{*}{CACT}  & \multicolumn{2 }{c|}{Section A}& \multicolumn{2 }{c|}{Section B} & 	\multirow{2}{*}{Marks}  & 	\multirow{2}{*}{Total Marks}  \\ 
+	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\ \hline
+16701063 &  &  & 8.75 & A378 & 20.5 & B371 & 2.0 & 22.5 & 32.0\\ \hline 
+17701003 &  &  & 0.0 & A306 & 20.5 & B306 & 16.5 & 37.0 & 37.0\\ \hline 
+17701004 &  &  & 10.75 & A370 & 16.25 & B342 & 8.0 & 24.25 & 35.0\\ \hline 
+17701005 &  &  & 13.25 & A391 & 21.25 & B384 & 5.0 & 26.25 & 40.0\\ \hline 
+17701006 &  &  & 10.5 & A337 & 6.5 & B330 & 0.0 & 6.5 & 17.0\\ \hline 
+17701007 &  &  & 15.25 & A384 & 22.75 & B372 & 8.0 & 30.75 & 46.0\\ \hline 
+17701009 &  &  & 15.75 & A371 & 23.5 & B343 & 9.5 & 33.0 & 49.0\\ \hline 
+17701012 &  &  & 20.25 & A314 & 21.75 & B314 & 12.0 & 33.75 & 54.0\\ \hline 
+17701013 &  &  & 19.75 & A363 & 24.0 & B387 & 18.0 & 42.0 & 62.0\\ \hline 
+17701024 &  &  & 15.25 & A343 & 23.25 & B350 & 12.0 & 35.25 & 51.0\\ \hline 
+17701027 &  &  & 11.0 & A375 & 20.75 & B347 & 12.0 & 32.75 & 44.0\\ \hline 
+17701033 &  &  & 14.5 & A387 & 21.5 & B380 & 12.0 & 33.5 & 48.0\\ \hline 
+17701049 &  &  & 14.25 & A304 & 21.5 & B304 & 8.5 & 30.0 & 45.0\\ \hline 
+17701050 &  &  & 3.0 & A342 & 22.0 & B349 & 12.0 & 34.0 & 37.0\\ \hline 
+17701055 &  &  & 11.5 & A365 & 21.5 & B389 & 13.5 & 35.0 & 47.0\\ \hline 
+17701069 &  &  & 17.0 & A361 & 19.75 & B368 & 11.0 & 30.75 & 48.0\\ \hline 
+17701075 &  &  & 18.75 & A393 & 24.25 & B393 & 14.0 & 38.25 & 57.0\\ \hline 
+17701084 &  &  & 11.0 & A368 & 21.5 & B392 & 12.0 & 33.5 & 45.0\\ \hline 
+17701091 &  &  & 0.0 & A339 & 16.5 & B332 & 18.0 & 34.5 & 35.0\\ \hline 
+17701092 &  &  & 14.75 & A322 & 21.75 & B322 & 10.0 & 31.75 & 47.0\\ \hline 
+17701093 &  &  & 19.75 & A311 & 23.75 & B311 & 20.0 & 43.75 & 64.0\\ \hline 
+17701101 &  &  & 19.0 & A312 & 23.25 & B312 & 17.0 & 40.25 & 60.0\\ \hline 
+17701102 &  &  & 14.5 & A347 & 19.5 & B354 & 11.0 & 30.5 & 45.0\\ \hline 
+17701104 &  &  & 14.5 & A327 & 22.0 & B327 & 15.0 & 37.0 & 52.0\\ \hline 
+17701106 &  &  & 19.5 & A316 & 22.5 & B316 & 23.0 & 45.5 & 65.0\\ \hline 
+18701001 &  &  & 18.0 & A382 & 22.25 & B377 & 16.0 & 38.25 & 57.0\\ \hline 
+18701003 &  &  & 10.0 & A345 & 22.25 & B351 & 16.0 & 38.25 & 49.0\\ \hline 
+18701004 &  &  & 11.75 & A352 & 12.0 & B359 & 11.5 & 23.5 & 36.0\\ \hline 
+18701005 &  &  & 18.0 & A315 & 24.25 & B315 & 24.0 & 48.25 & 67.0\\ \hline 
+18701006 &  &  & 16.5 & A303 & 21.75 & B303 & 19.5 & 41.25 & 58.0\\ \hline 
+18701007 &  &  & 20.0 & A360 & 22.0 & B367 & 14.5 & 36.5 & 57.0\\ \hline 
+18701008 &  &  & 16.25 & A309 & 22.5 & B309 & 22.0 & 44.5 & 61.0\\ \hline 
+18701009 &  &  & 2.0 & A338 & 8.5 & B331 & 0.0 & 8.5 & 11.0\\ \hline 
+18701010 &  &  & 17.75 & A376 & 23.0 & B369 & 12.5 & 35.5 & 54.0\\ \hline 
+18701012 &  &  & 12.75 & A329 & 23.75 & B329 & 15.0 & 38.75 & 52.0\\ \hline 
+        \end{tabular}
+            \end{small}
+            \end{center}
+  \centering
+            
+            \begin{table}[hb]
+            	\centering
+            \begin{minipage}[b]{0.5\linewidth} %\centering
+            {\centering Tabulators }
+            \begin{enumerate}
+                \item Mr. Rokan Uddin Faruqui \hspace*{1ex} $\ldots \ldots  $  
+                \item Dr. Kazi Ashrafuzzaman \hspace*{1ex} $\ldots \ldots  $  
+                \item Prof. Dr. Osiur Rahman \hspace*{1ex} $\ldots \ldots $  
+            \end{enumerate} 
+
+            \end{minipage}
+            \hspace*{1.2cm}
+            \begin{minipage}[b]{0.4\linewidth} \centering
+            (Mr. Rokan Uddin Faruqui) \\
+            Chairman  \hspace*{1ex} \\
+           First Semester Bsc Engineering Exam 2018 Committee
+            \end{minipage}
+            \end{table}
+            \clearpage
+    \centering
+    \begin{minipage}[m]{.8\textwidth} \centering 
+    %\includegraphics[width=0.6in]{cu-logo.jpg}
+	\smallskip
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	\textsc{ First Semester Bsc Engineering Exam 2018}\\
+    {\large {\sc Summation Sheet}}\\  
+     {\centering CSE113 : Structured Programming Language     Credit : 3 } \\
+    \end{minipage} 
+    \begin{center} 
+	\renewcommand{\arraystretch}{1.08}
+	\begin{small}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \hline
+	\multirow{2}{*}{ID} & 	\multirow{2}{*}{CA}  & 	\multirow{2}{*}{CT}  & 	\multirow{2}{*}{CACT}  & \multicolumn{2 }{c|}{Section A}& \multicolumn{2 }{c|}{Section B} & 	\multirow{2}{*}{Marks}  & 	\multirow{2}{*}{Total Marks}  \\ 
+	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\ \hline
+18701013 &  &  & 21.0 & A341 & 22.75 & B348 & 20.5 & 43.25 & 65.0\\ \hline 
+18701014 &  &  & 17.0 & A320 & 23.0 & B320 & 18.0 & 41.0 & 58.0\\ \hline 
+18701015 &  &  & 12.0 & A389 & 21.25 & B382 & 13.0 & 34.25 & 47.0\\ \hline 
+18701016 &  &  & 13.5 & A301 & 21.0 & B301 & 12.0 & 33.0 & 47.0\\ \hline 
+18701017 &  &  & 12.75 & A332 & 22.5 & B335 & 18.5 & 41.0 & 54.0\\ \hline 
+18701018 &  &  & 19.0 & A373 & 22.25 & B345 & 14.0 & 36.25 & 56.0\\ \hline 
+18701019 &  &  & 18.75 & A374 & 14.5 & B346 & 20.0 & 34.5 & 54.0\\ \hline 
+18701020 &  &  & 7.5 & A348 & 15.0 & B355 & 8.0 & 23.0 & 31.0\\ \hline 
+18701021 &  &  & 17.75 & A344 & 25.25 & B352 & 17.5 & 42.75 & 61.0\\ \hline 
+18701022 &  &  & 15.5 & A385 & 21.75 & B376 & 15.0 & 36.75 & 53.0\\ \hline 
+18701023 &  &  & 14.5 & A362 & 24.0 & B386 & 16.0 & 40.0 & 55.0\\ \hline 
+18701024 &  &  & 19.5 & A317 & 23.5 & B317 & 17.5 & 41.0 & 61.0\\ \hline 
+18701025 &  &  & 9.0 & A351 & 17.25 & B358 & 7.0 & 24.25 & 34.0\\ \hline 
+18701026 &  &  & 12.25 & A379 & 17.5 & B375 & 10.0 & 27.5 & 40.0\\ \hline 
+18701027 &  &  & 16.5 & A369 & 21.5 & B341 & 13.0 & 34.5 & 51.0\\ \hline 
+18701028 &  &  & 16.75 & A333 & 23.25 & B336 & 9.0 & 32.25 & 49.0\\ \hline 
+18701029 &  &  & 19.0 & A388 & 21.5 & B381 & 13.0 & 34.5 & 54.0\\ \hline 
+18701030 &  &  & 19.0 & A310 & 21.0 & B310 & 18.0 & 39.0 & 58.0\\ \hline 
+18701031 &  &  & 16.5 & A349 & 13.5 & B356 & 8.0 & 21.5 & 38.0\\ \hline 
+18701032 &  &  & 16.5 & A325 & 22.75 & B324 & 14.0 & 36.75 & 54.0\\ \hline 
+18701033 &  &  & 7.5 & A336 & 18.5 & B339 & 8.5 & 27.0 & 35.0\\ \hline 
+18701034 &  &  & 11.5 & A331 & 22.75 & B334 & 18.5 & 41.25 & 53.0\\ \hline 
+18701035 &  &  & 20.5 & A386 & 21.0 & B374 & 15.5 & 36.5 & 57.0\\ \hline 
+18701036 &  &  & 14.5 &  &  &  &  & 0.0 & 15.0\\ \hline 
+18701037 &  &  & 12.5 & A335 & 23.25 & B338 & 10.5 & 33.75 & 47.0\\ \hline 
+18701038 &  &  & 20.0 & A328 & 22.75 & B328 & 13.0 & 35.75 & 56.0\\ \hline 
+18701039 &  &  & 18.5 & A326 & 22.75 & B326 & 20.5 & 43.25 & 62.0\\ \hline 
+18701040 &  &  & 15.5 & A355 & 24.0 & B362 & 19.0 & 43.0 & 59.0\\ \hline 
+18701041 &  &  & 4.0 &  &  &  &  & 0.0 & 4.0\\ \hline 
+18701042 &  &  & 11.0 &  &  &  &  & 0.0 & 11.0\\ \hline 
+18701043 &  &  & 17.5 & A330 & 23.0 & B340 & 18.5 & 41.5 & 59.0\\ \hline 
+18701044 &  &  & 14.25 & A308 & 19.25 & B308 & 14.5 & 33.75 & 48.0\\ \hline 
+18701045 &  &  & 17.0 & A377 & 18.0 & B370 & 7.0 & 25.0 & 42.0\\ \hline 
+18701046 &  &  & 11.75 & A383 & 21.25 & B373 & 18.0 & 39.25 & 51.0\\ \hline 
+18701047 &  &  & 11.75 & A321 & 20.0 & B321 & 11.5 & 31.5 & 44.0\\ \hline 
+        \end{tabular}
+            \end{small}
+            \end{center}
+  \centering
+            
+            \begin{table}[hb]
+            	\centering
+            \begin{minipage}[b]{0.5\linewidth} %\centering
+            {\centering Tabulators }
+            \begin{enumerate}
+                \item Mr. Rokan Uddin Faruqui \hspace*{1ex} $\ldots \ldots  $  
+                \item Dr. Kazi Ashrafuzzaman \hspace*{1ex} $\ldots \ldots  $  
+                \item Prof. Dr. Osiur Rahman \hspace*{1ex} $\ldots \ldots $  
+            \end{enumerate} 
+
+            \end{minipage}
+            \hspace*{1.2cm}
+            \begin{minipage}[b]{0.4\linewidth} \centering
+            (Mr. Rokan Uddin Faruqui) \\
+            Chairman  \hspace*{1ex} \\
+           First Semester Bsc Engineering Exam 2018 Committee
+            \end{minipage}
+            \end{table}
+            \clearpage
+    \centering
+    \begin{minipage}[m]{.8\textwidth} \centering 
+    %\includegraphics[width=0.6in]{cu-logo.jpg}
+	\smallskip
+	\noindent {\textsc{University of Chittagong}}\\
+	\textsc{Department of Computer Science \& Engineering}\\
+	\textsc{ First Semester Bsc Engineering Exam 2018}\\
+    {\large {\sc Summation Sheet}}\\  
+     {\centering CSE113 : Structured Programming Language     Credit : 3 } \\
+    \end{minipage} 
+    \begin{center} 
+	\renewcommand{\arraystretch}{1.08}
+	\begin{small}
+    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \hline
+	\multirow{2}{*}{ID} & 	\multirow{2}{*}{CA}  & 	\multirow{2}{*}{CT}  & 	\multirow{2}{*}{CACT}  & \multicolumn{2 }{c|}{Section A}& \multicolumn{2 }{c|}{Section B} & 	\multirow{2}{*}{Marks}  & 	\multirow{2}{*}{Total Marks}  \\ 
+	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\ \hline
+18701048 &  &  & 15.0 & A380 & 20.0 & B379 & 10.0 & 30.0 & 45.0\\ \hline 
+18701049 &  &  & 14.25 & A307 & 17.5 & B307 & 9.5 & 27.0 & 42.0\\ \hline 
+18701050 &  &  & 15.5 & A324 & 23.75 & B325 & 16.0 & 39.75 & 56.0\\ \hline 
+18701051 &  &  & 17.75 & A372 & 21.75 & B344 & 13.0 & 34.75 & 53.0\\ \hline 
+18701052 &  &  & 8.0 & A358 & 19.0 & B365 & 13.0 & 32.0 & 40.0\\ \hline 
+18701054 &  &  & 14.0 & A346 & 14.5 & B353 & 11.0 & 25.5 & 40.0\\ \hline 
+18701055 &  &  & 8.5 & A340 & 13.5 & B333 & 5.5 & 19.0 & 28.0\\ \hline 
+18701056 &  &  & 13.0 & A319 & 16.75 & B319 & 11.5 & 28.25 & 42.0\\ \hline 
+18701057 &  &  & 16.0 & A323 & 19.5 & B323 & 23.0 & 42.5 & 59.0\\ \hline 
+18701058 &  &  & 15.0 & A302 & 18.75 & B302 & 16.0 & 34.75 & 50.0\\ \hline 
+18701060 &  &  & 10.5 & A367 & 19.0 & B391 & 10.0 & 29.0 & 40.0\\ \hline 
+18701061 &  &  & 10.0 & A359 & 13.75 & B366 & 6.0 & 19.75 & 30.0\\ \hline 
+18701062 &  &  & 10.25 & A364 & 21.75 & B388 & 15.5 & 37.25 & 48.0\\ \hline 
+18701063 &  &  & 13.0 & A305 & 22.5 & B305 & 10.0 & 32.5 & 46.0\\ \hline 
+18701064 &  &  & 13.75 & A318 & 20.75 & B318 & 11.0 & 31.75 & 46.0\\ \hline 
+18701066 &  &  & 9.5 & A334 & 23.25 & B337 & 1.0 & 24.25 & 34.0\\ \hline 
+18701067 &  &  & 10.5 & A390 & 18.25 & B383 & 9.0 & 27.25 & 38.0\\ \hline 
+18701068 &  &  & 6.0 &  &  &  &  & 0.0 & 6.0\\ \hline 
+18701069 &  &  & 17.75 & A350 & 22.25 & B357 & 19.5 & 41.75 & 60.0\\ \hline 
+18701070 &  &  & 18.0 & A366 & 20.75 & B390 & 15.0 & 35.75 & 54.0\\ \hline 
+18701071 &  &  & 19.25 & A381 & 23.0 & B378 & 16.0 & 39.0 & 59.0\\ \hline 
+18701072 &  &  & 13.5 & A353 & 22.75 & B360 & 15.0 & 37.75 & 52.0\\ \hline 
+18701073 &  &  & 12.75 & A392 & 20.75 & B385 & 19.0 & 39.75 & 53.0\\ \hline 
+18701074 &  &  & 19.0 & A357 & 23.25 & B364 & 16.5 & 39.75 & 59.0\\ \hline 
+18701075 &  &  & 10.0 & A354 & 19.25 & B361 & 7.0 & 26.25 & 37.0\\ \hline 
+18701076 &  &  & 9.5 & A356 & 15.5 & B363 & 7.0 & 22.5 & 32.0\\ \hline 
+18701077 &  &  & 9.5 & A313 & 15.0 & B313 & 9.0 & 24.0 & 34.0\\ \hline 
+        \end{tabular}
+            \end{small}
+            \end{center}
+  \centering
+            
+            \begin{table}[hb]
+            	\centering
+            \begin{minipage}[b]{0.5\linewidth} %\centering
+            {\centering Tabulators }
+            \begin{enumerate}
+                \item Mr. Rokan Uddin Faruqui \hspace*{1ex} $\ldots \ldots  $  
+                \item Dr. Kazi Ashrafuzzaman \hspace*{1ex} $\ldots \ldots  $  
+                \item Prof. Dr. Osiur Rahman \hspace*{1ex} $\ldots \ldots $  
+            \end{enumerate} 
+
+            \end{minipage}
+            \hspace*{1.2cm}
+            \begin{minipage}[b]{0.4\linewidth} \centering
+            (Mr. Rokan Uddin Faruqui) \\
+            Chairman  \hspace*{1ex} \\
+           First Semester Bsc Engineering Exam 2018 Committee
+            \end{minipage}
+            \end{table}
+            \clearpage
+            \clearpage
+            \end{document}
