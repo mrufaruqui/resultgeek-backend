@@ -71,7 +71,8 @@ class ExamsController < ApplicationController
    
    def latex_to_pdf
      # Doc.pluck(:latex_loc).each { |f| exec "pdflatex  -no-file-line-error #{f} -output-directory=./reports/"}
-     Doc.where.not('latex_name LIKE ?', '%tabulation%').each do |d|
+     # Doc.where.not('latex_name LIKE ?', '%tabulation%').each do |d|
+      Doc.where(exam_uuid:@exam.uuid).where.not('latex_name LIKE ?', '%tabulation%').each do |d|
        @status = LatexToPdfJob.perform_later({:doc=>d})
        d.pdf_loc  = d.latex_loc.sub(".tex", ".pdf")
        d.pdf_name = d.latex_name.sub(".tex", ".pdf")

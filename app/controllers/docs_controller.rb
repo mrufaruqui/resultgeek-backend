@@ -1,6 +1,8 @@
+require 'base64'
+
 class DocsController < ApplicationController
-  before_action :authenticate_user! 
-  before_action :set_doc, only: [:show, :update, :destroy]
+  # before_action :authenticate_user! 
+  # before_action :set_doc, only: [:show, :update, :destroy]
 
   # GET /docs
   # GET /docs.json
@@ -42,11 +44,14 @@ class DocsController < ApplicationController
   end
 
   def download
-    f = File.open( params[:file_loc], 'r')
-    if f 
-        render json: {:file=>f.readlines, :status=>true}
+    file = Base64.encode64(File.open(params[:file_loc], "rb").read)
+   if file
+    render json: {:data=>file, :filename=>params[:filename], :status=>"200 ok"} 
+    #send_data file.readlines, :disposition => "attachment; filename=#{params[:filename]}"
+    # if f 
+    #     render json: {:file=>f.readlines, :status=>true}
     else
-        render json: {:errors=>f.errors, :status=>false}
+        render json: {:errors=>file.errors, :status=>false}
     end
   end
 

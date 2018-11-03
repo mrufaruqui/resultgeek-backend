@@ -4,7 +4,7 @@ class LatexToPdfJob < ApplicationJob
   def perform(options={})
    d = options[:doc]
    # Doc.where.not('latex_name LIKE ?', '%tabulation%').each do |d|
-       exec "pdflatex -shell-escape -output-directory=./reports/ -no-file-line-error #{d.latex_loc}"
+       system "pdflatex -shell-escape -output-directory=./reports/ -no-file-line-error #{d.latex_loc}"
    #  end
    true
   end
