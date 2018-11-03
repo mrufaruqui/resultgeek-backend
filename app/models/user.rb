@@ -28,6 +28,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  exam_uuid              :string(255)
+#  session_uuid           :string(255)
 #
 
 class User < ActiveRecord::Base

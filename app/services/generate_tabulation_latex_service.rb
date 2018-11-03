@@ -1,26 +1,32 @@
 class GenerateTabulationLatexService < TabulationBaseService
    
     def self.create_tabulation_latex(options={})
-        @exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
-        @courses = Course.all
+        @exam = options[:exam]
+        @courses = Course.where(exam_uuid:@exam.uuid)
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
         @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
         @hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
         @hall_name = ' '
         perform(options)
+      true
     end
 
     def self.perform(options={})
       File.open( ['./reports/',@exam.uuid, 'tabulation.tex'].join, 'w') do |f| 
        f.puts latex_tabulation_template(options)
       end
+
+      @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid:'tabulation') || Doc.new(exam_uuid:@exam.uuid, uuid:'tabulation_v2') 
+	  @doc.latex_loc = ['./reports/', @exam.uuid, 'tabulation.tex'].join
+      @doc.latex_name = [@exam.uuid.titlecase, '_tabulation.tex'].join
+      @doc.description = ["tabulation", "sheets"].join("_").titlecase
+	  @doc.save
     end
 
     def self.latex_tabulation_template(options) 
           tab_xls = Hash.new
           tab_xls[:tabulations] = []
-
           @courses = Course.all;
           header = tabulation_header
           main = ''
@@ -166,7 +172,7 @@ part_c = <<-EOF
              end
           end
 
-         a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks]].join(' & ')   #"\\multirow{3}{*}{#{data[:remarks]}}"
+         a << [data[:tce], data[:tps], data[:gpa], data[:result]].join(' & ')   #"\\multirow{3}{*}{#{data[:remarks]}}"
          a << "\\\\"
           
           30.times.each {a << ' & '}
@@ -291,7 +297,7 @@ EOF
 EOF
  _course_info_a + _course_info_b + _course_info_c
     end
-def generate_single_page_tabulation(t) 
+def self.generate_single_page_tabulation(t) 
         @retHash = Hash.new
         @retHash[:sl_no] = t.sl_no
         @retHash[:gpa] = '%.2f' % t.gpa

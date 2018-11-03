@@ -4,16 +4,14 @@
 ######   GenerateSummationLatexService.new({uuid: exam_uuid}).perform
 
 class GenerateSummationLatexService
-    
-    def initialize(options={})
-     @exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
-     @courses = Course.all
+
+    def perform(options={})
+     @exam = options[:exam]
+     @courses = Course.where(exam_uuid:@exam.uuid)
      @members = @exam.workforces.where(role:"member")
      @tabulators = @exam.workforces.where(role:"tabulator")
-    end
-    
-    def perform(options={})
-          summations_courses
+     summations_courses
+     true
     end
 
     def summations_courses
@@ -30,16 +28,22 @@ class GenerateSummationLatexService
      File.open(File.join('./reports/', course.code + @exam.uuid + '_summation.tex'), 'w') do |f| 
        f.puts latex_summation_template(course)
       end
+
+      @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: course.code.downcase + '_summation') || Doc.new(exam_uuid:@exam.uuid, uuid:course.code.downcase + '_summation') 
+	  @doc.latex_loc = ['./reports/', course.code + @exam.uuid + '_summation.tex'].join
+      @doc.latex_name = [course.code.downcase, '_summation.tex'].join
+      @doc.description = [course.code.upcase, "Summation", "Sheet"].join(" ")
+	  @doc.save
     end
    
     def latex_summation_template(course)
-          no_sm_entries = Summation.where(course_id:course.id).count
+          no_sm_entries = Summation.where(course_id:course.id, exam_uuid:@exam.uuid).count
           batch_size = (no_sm_entries % 35 == 0) ? no_sm_entries / 35.to_i : (no_sm_entries / 35.to_i) + 1.to_i
           
           sm_sheet = ''
           batch_size.times.each do |item|
              a = ''
-            Summation.where(course_id:course.id).limit(35).offset(item* 35).each do |sm|  
+            Summation.where(course_id:course.id, exam_uuid:@exam.uuid).limit(35).offset(item* 35).each do |sm|  
                a << summation_table_row(sm) 
                a << "\\\\ \\hline \n"
              end 

@@ -1,14 +1,25 @@
 class GenerateGradeSheetService
     
     def self.create_gs_latex(options={})
+        @exam = options[:exam]
+        @courses = Course.where(exam_uuid:@exam.uuid)
+        @members = @exam.workforces.where(role:"member")
+        @tabulators = @exam.workforces.where(role:"tabulator")
+   
          options = generate_gs_view
          perform(options)
+         true
     end
 
     def self.perform(options={})
-    File.open(File.join('./reports/', 'gs.tex'), 'w') do |f| 
+    File.open(File.join('./reports/', @exam.uuid + '_gs.tex'), 'w') do |f| 
        f.puts latex_gs_template(options)
       end
+      @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: + 'gradesheets') || Doc.new(exam_uuid:@exam.uuid, uuid: + 'gradesheets') 
+      @doc.latex_loc = ['./reports/', @exam.uuid + '_gs.tex'].join
+      @doc.latex_name = ["grade", "sheets" ,".tex"].join
+      @doc.description = ["grade", "sheets"].join("_").titlecase
+	  @doc.save
     end
 
     def self.latex_gs_template(options) 
@@ -24,7 +35,7 @@ class GenerateGradeSheetService
 
     def self.generate_gs_view(options={})
       a = []
-      @tab = Tabulation.all
+      @tab = Tabulation.where(exam_uuid:@exam.uuid)
       @tab.each do |t| 
         @retHash = Hash.new
         @retHash[:gpa] = t.gpa
@@ -102,8 +113,8 @@ class GenerateGradeSheetService
                 {\\large {\\sc Grade Sheet}}\\\\
 
                 \\smallskip
-                \\textsc{$1^{st}$ Semester B.Sc. Engineering Examination 2018}\\\\
-                {Held in May  - June 2018}\\\\
+                \\textsc{#{@exam.fullname}}\\\\
+                {Held in #{@exam.held_in}}\\\\
                 \\end{minipage}
                 \\hspace{0.2cm}
                 \\begin{minipage}[m]{0.3\\linewidth} \\flushright

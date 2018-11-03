@@ -1,12 +1,10 @@
 class ExamsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :get_tenant, only: [:show, :update, :destroy]
+  before_action :get_tenant, except: [:index, :create, :show, :update, :destroy]
 
   # GET /exams
   # GET /exams.json
-  def index 
-    puts "session info"
-    puts session[:exam_uuid]
+  def index
     @exams = Exam.all
   end
 
@@ -52,28 +50,30 @@ class ExamsController < ApplicationController
   end
 
    def process_result
-      ProcessingService.perform
-      render json: {:message=>"Job Submitted"}, status: "ok"
+      @status = ProcessingService.perform({:exam=>@exam})
+      render json: {:message=>"Job Submitted", :status=> @status}
    end
 
    def generate_tabulations_latex
-       GenerateGradeSheetService.create_gs_latex
-       render json: {:message=>"Job Submitted"}, status: "ok"
+    # @status =   GenerateTabulationLatexService.create_tabulation_latex({:exam=>@exam})
+     @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam})
+       render json: {:message=>"Job Submitted", :status=> @status}
    end
 
    def generate_gradesheets_latex
-        GenerateTabulationLatexService.create_tabulation_latex
-        render json: {:message=>"Job Submitted"}, status: "ok"
+       @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam})
+       render json: {:message=>"Job Submitted", :status=> @status}
    end
    def generate_summationsheets_latex
-      GenerateSummationLatexService.new.perform
-      render json: {:message=>"Job Submitted"}, status: "ok"
+      @status = GenerateSummationLatexService.new.perform({:exam=>@exam})
+      render json: {:message=>"Job Submitted", :status=> @status}
    end
    
    def reset_exam_result
     #  TabulationDetail.destroy_all
       Tabulation.where(exam_uuid:@current_exam.uuid).destroy_all
       Summation.where(exam_uuid:@current_exam.uuid).destroy_all
+      render json: {:message=>"Job Submitted", :status=> true}
    end
   
   private

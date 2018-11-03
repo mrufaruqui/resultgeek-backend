@@ -7,8 +7,26 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   def index
-    @registrations = Registration.where(exam_uuid:@exam.uuid)
+      @registrations = Registration.where(exam_uuid:@exam.uuid)
+   if @registrations
+      a = []
+      @registrations.each do |r|
+       retHash = Hash.new
+       retHash[:sl_no] = r.sl_no
+       retHash[:roll] = r.student.roll
+       retHash[:hall_name] = r.student.hall_name unless r.student.hall_name.blank?
+       retHash[:name] = r.student.name.titlecase unless r.student.name.blank?
+       retHash[:type] = r.student_type.titlecase unless r.student_type.blank?
+       retHash[:courses] = r.course_list.split(";").join(",") unless r.course_list.blank?
+       a << retHash
+    end
+      render json: a, status: "200 ok"
+     else
+      render json: @registrations.errors, status: :unprocessable_entity
+    end 
+    
   end
+
 
   # GET /registrations/1
   # GET /registrations/1.json
@@ -43,6 +61,37 @@ class RegistrationsController < ApplicationController
     @registration.destroy
   end
 
+   def register
+    # options = {}
+    # options[:student_info] = params[:file]
+    # options[:exam] = @exam
+    # Registration.register(options) unless params[:file].blank? 
+     if !params[:file].blank?
+      header = params[:file][0]
+      body =   params[:file] - [header]
+      body.each do |i| 
+        row = Hash[[header, i].transpose].symbolize_keys
+        student = Student.find_by(roll: row[:roll]) || Student.new
+        student.roll = row[:roll]
+        student.name = row[:name]
+        student.hall_name = row[:hall_name]
+        student.hall = row[:hall] 
+        student.save
+        registration = Registration.find_by(student_id: student.id) || Registration.new
+        registration.exam = @exam
+        registration.sl_no = row[:sl]
+        registration.exam_uuid = @exam.uuid
+        registration.student = student
+        registration.student_type = row[:type].downcase.to_sym
+        registration.course_list=row[:courses]
+        registration.save
+      end
+        render json:  {status: true}
+      else
+        render json:  {status: false}
+      end
+    
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_registration

@@ -2,7 +2,7 @@ require 'axlsx'
 
 class GenerateTabulationXlsService < TabulationBaseService
     def self.perform(options={})
-      @exam = Exam.first
+      @exam = options[:exam]
       Axlsx::Package.new do |p|
        wb = p.workbook
          wb.styles do |s| 
@@ -24,7 +24,7 @@ class GenerateTabulationXlsService < TabulationBaseService
     
      def self.generate_tabulations()
         tab_a = []
-        Tabulation.all.each do |t| 
+        Tabulation.where(exam_uuid:@exam.uuid).each do |t| 
             tab_a <<  generate_single_page_tabulation(t)
         end
         tab_a
@@ -32,7 +32,7 @@ class GenerateTabulationXlsService < TabulationBaseService
 
      def self.course_array(data)
         a = []
-        Course.all.each { |c| a << data[c.code].values }
+        Course.where(exam_uuid:@exam.uuid).each { |c| a << data[c.code].values }
         a
      end
 

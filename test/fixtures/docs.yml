@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: docs
+#
+#  id          :integer          not null, primary key
+#  exam_uuid   :string(255)
+#  uuid        :string(255)
+#  latex_name  :string(255)
+#  latex_loc   :string(255)
+#  pdf_name    :string(255)
+#  pdf_loc     :string(255)
+#  xls_name    :string(255)
+#  xls_loc     :string(255)
+#  description :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exam_uuid: MyString
+  uuid: MyString
+  latex_name: MyString
+  latex_loc: MyString
+  pdf_name: MyString
+  pdf_loc: MyString
+  xls_name: MyString
+  xls_loc: MyString
+  description: MyString
+
+two:
+  exam_uuid: MyString
+  uuid: MyString
+  latex_name: MyString
+  latex_loc: MyString
+  pdf_name: MyString
+  pdf_loc: MyString
+  xls_name: MyString
+  xls_loc: MyString
+  description: MyString

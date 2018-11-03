@@ -2,8 +2,8 @@ class ProcessingService
    def self.perform(options={})
        #######Retrieve exam info or default last one##########
        #@exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
-       get_tenant
-       courses = Course.all
+       @exam = options[:exam]
+       courses = Course.where(exam_uuid:@exam.uuid)
 
        ####Remove Old Caculations####
        #TabulationDetail.destroy_all
@@ -17,6 +17,7 @@ class ProcessingService
             tabulation = Tabulation.find_by(student_id:s.id) || Tabulation.new
             tabulation.student_id = s.id;
             tabulation.exam_uuid = @exam.uuid
+            tabulation.sl_no = r.sl_no
             tps = 0.0
             tce = 0.0
             remarks = []
@@ -48,6 +49,7 @@ class ProcessingService
             tabulation.remarks = 'F-' + remarks.join(", ") if is_failed_in_a_course  
             tabulation.save
        end
+     true  
   end
  
   ###Format CGPA According to CU Syndicate Directions ####
@@ -58,12 +60,10 @@ class ProcessingService
     third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
   end
 
+#   def self.get_tenant
+#     @session = Session.find_by(uuid:current_user.session_uuid)
+#     @exam = Exam.find_by(uuid: @session.exam_uuid)
+#     @exam 
+#   end
+
 end
-
-
-#  id         :integer          not null, primary key
-#  student_id :integer
-#  gpa        :float(24)
-#  tce        :float(24)
-#  result     :string(255)
-#  remarks    :string(255)

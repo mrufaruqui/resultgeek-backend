@@ -43,16 +43,8 @@ class StudentsController < ApplicationController
   end
 
   def import
-    # puts params[:file]
-     
-    # params[:file].each |student_p| do 
-    # #   s = Student.new(student_p)
-    # #   s.save
-    # # end
-    Student.import(params[:file]) unless params[:file].blank?
-    #@students = Student.all
-    render :index
-    #redirect_to root_url, notice: 'Students imported.'
+    Student.import(params[:file]) unless params[:file].blank? 
+    render json:  {status: true}
   end
 
   private

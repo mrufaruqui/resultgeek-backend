@@ -5,7 +5,28 @@ class WorkforcesController < ApplicationController
   # GET /workforces
   # GET /workforces.json
   def index
-    @workforces = Workforce.where(exam_uuid:@exam.uuid)
+    @w = Workforce.where(exam_uuid:@exam.uuid).includes(:teacher)
+
+    if @w
+      a = []
+     @w.each do |w| 
+      rethash = Hash.new
+      rethash[:role] = w.role.titlecase 
+      rethash[:status] = w.status
+      rethash[:name] = w.teacher.display_name
+      rethash[:designation]= w.teacher.designation.titlecase unless w.teacher.designation.nil?
+      rethash[:email]= w.teacher.email
+      rethash[:phone]= w.teacher.phone
+      rethash[:dept_name]= w.teacher.dept.name
+      rethash[:dept_code]= w.teacher.dept.code
+      rethash[:inst_name]= w.teacher.dept.institute
+      rethash[:inst_code]= w.teacher.dept.institute_code
+      a << rethash
+    end
+      render json: a, status: "200 ok"
+     else
+      render json: @w.errors, status: :unprocessable_entity
+    end 
   end
 
   # GET /workforces/1

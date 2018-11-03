@@ -1,2 +1,3 @@
-json.extract! workforce, :id, :role, :status, :exam_uuid, :created_at, :updated_at
-json.url workforce_url(workforce, format: :json)
+json.extract! workforce, :id, :role, :status, :exam_uuid 
+json.extract! workforce.teacher, :display_name, :fullname, :designation, :email, :phone
+ 

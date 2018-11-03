@@ -35,12 +35,12 @@ Teacher.create(title:'Dr.', fullname:'Osiur Rahman', designation: :professor, em
 Teacher.create(title:'Ms.', fullname:'Nasrin Akther', designation: :assistant_professor, email:'nasrin1219@gmail.com')
 
 Workforce.destroy_all
-Workforce.create(exam_uuid:Exam.first.uuid, exam:Exam.first, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: :chairman) 
-Workforce.create(exam_uuid:Exam.first.uuid, exam:Exam.first, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: :member)
-Workforce.create(exam_uuid:Exam.first.uuid, exam:Exam.first, teacher: Teacher.find_by('fullname LIKE ?', '%Nasrin%'), role: :member)
-Workforce.create(exam_uuid:Exam.first.uuid, exam:Exam.first, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: :tabulator)
-Workforce.create(exam_uuid:Exam.first.uuid, exam:Exam.first, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: :tabulator)
-Workforce.create(exam_uuid:Exam.first.uuid, exam:Exam.first, teacher: Teacher.find_by('fullname LIKE ?', '%Osiur%'), role: :tabulator)
+Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "chairman") 
+Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "member")
+Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Nasrin%'), role: "member")
+Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "tabulator")
+Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "tabulator")
+Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Osiur%'), role: "tabulator")
 
 #####Student registration###############
 Student.all.each { |s| Registration.create(student:s, exam:Exam.first, exam_uuid:Exam.first.uuid, student_type:"regular") }

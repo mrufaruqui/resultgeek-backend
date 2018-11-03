@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  23 OCT 2018 17:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.29)  3 NOV 2018 06:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -877,8 +877,8 @@ Overfull \hbox (23.85785pt too wide) in paragraph at lines 142--142
 
 [1
 
-{/Users/rufaruqui/Library/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/p
-dftex.map} <./cu-logo.jpg>] [2]
+{/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./
+cu-logo.jpg>] [2]
 Overfull \hbox (2.42235pt too wide) in paragraph at lines 282--282
  []|\T1/put/b/n/10 Letter 
  []
@@ -1649,7 +1649,7 @@ Underfull \hbox (badness 10000) in alignment at lines 2278--2278
 Here is how much of TeX's memory you used:
  12966 strings out of 494091
  229569 string characters out of 6163523
- 432336 words of memory out of 5000000
+ 432335 words of memory out of 5000000
  16342 multiletter control sequences out of 15000+600000
  52998 words of font info for 41 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191

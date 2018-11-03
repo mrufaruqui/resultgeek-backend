@@ -1,7 +1,7 @@
 class GenerateTabulationLatexV2Service < TabulationBaseService
 
 	def perform(options={})
-	    @exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
+	    @exam = options[:exam]
         @courses = Course.all
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
@@ -9,9 +9,17 @@ class GenerateTabulationLatexV2Service < TabulationBaseService
 		@hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
 		@tco = Course.where(exam_uuid:@exam.uuid).sum(:credit)
 		@hall_name = ' '
-      File.open( ['./reports/', @exam.uuid, 'tabulation_v2_.tex'].join, 'w') do |f| 
+      File.open( ['./reports/', @exam.uuid, 'tabulation_v2.tex'].join, 'w') do |f| 
        f.puts tabulation(options)
-      end
+	  end
+	 
+	  @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid:'tabulation_v2') || Doc.new(exam_uuid:@exam.uuid, uuid:'tabulation_v2') 
+	  @doc.latex_loc = ['./reports/', @exam.uuid, 'tabulation_v2.tex'].join
+	  @doc.latex_name = 'tabulation_sheets_v2.tex'
+	  @doc.description = ["tabulation", "sheets"].join("_").titlecase
+	  @doc.save
+	 
+	  true
     end
      
     def tabulation(options={})

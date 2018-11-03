@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181102034828) do
+ActiveRecord::Schema.define(version: 20181103025208) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 20181102034828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
+    t.string "institute"
+    t.string "institute_code"
+  end
+
+  create_table "docs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "exam_uuid"
+    t.string "uuid"
+    t.string "latex_name"
+    t.string "latex_loc"
+    t.string "pdf_name"
+    t.string "pdf_loc"
+    t.string "xls_name"
+    t.string "xls_loc"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "exams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -53,6 +69,7 @@ ActiveRecord::Schema.define(version: 20181102034828) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "exam_uuid"
+    t.integer "sl_no"
     t.index ["exam_id"], name: "index_registrations_on_exam_id"
     t.index ["student_id"], name: "index_registrations_on_student_id"
   end
@@ -192,7 +209,7 @@ ActiveRecord::Schema.define(version: 20181102034828) do
   end
 
   create_table "workforces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "role", default: "member"
+    t.integer "role", limit: 1, default: 0
     t.integer "status"
     t.string "exam_uuid", null: false
     t.datetime "created_at", null: false

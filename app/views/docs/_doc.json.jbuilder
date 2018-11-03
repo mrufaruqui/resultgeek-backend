@@ -1,0 +1,1 @@
+json.extract! doc, :uuid, :description, :exam_uuid, :latex_name, :latex_loc, :pdf_name, :pdf_loc

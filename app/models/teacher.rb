@@ -21,8 +21,9 @@ class Teacher < ApplicationRecord
     enum status: [:active, :on_leave, :retired, :resigned]
     has_many :workforces
     has_many :exams, through: :workforces
-    has_one  :dept
-    default_scope { order(:designation) }
+    belongs_to  :dept
+    default_scope { order(:designation)}
+    default_scope { includes(:dept)}
 
     def display_name
       if designation == "professor"
