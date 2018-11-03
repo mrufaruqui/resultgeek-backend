@@ -24,6 +24,7 @@ Rails.application.routes.draw do
    get 'generate_tabulations_latex'         => 'exams#generate_tabulations_latex'
    get 'generate_gradesheets_latex'         => 'exams#generate_gradesheets_latex'
    get 'generate_summationsheets_latex'     => 'exams#generate_summationsheets_latex'
+   get 'latex_to_pdf'                       => 'exams#latex_to_pdf'
    get 'reset_exam_result'                  => 'exams#reset_exam_result'
    post 'set_exam'                          => 'tenants#set_exam'
    post 'reset_exam'                        => 'tenants#reset_exam'
