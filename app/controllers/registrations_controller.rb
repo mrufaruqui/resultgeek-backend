@@ -16,7 +16,7 @@ class RegistrationsController < ApplicationController
        retHash[:roll] = r.student.roll
        retHash[:hall_name] = r.student.hall_name unless r.student.hall_name.blank?
        retHash[:name] = r.student.name.titlecase unless r.student.name.blank?
-       retHash[:type] = r.student_type.titlecase unless r.student_type.blank?
+       retHash[:student_type] = r.student_type.titlecase unless r.student_type.blank?
        retHash[:courses] = r.course_list.split(";").join(",") unless r.course_list.blank?
        a << retHash
     end
@@ -100,6 +100,6 @@ class RegistrationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registration_params
-      params.require(:registration).permit(:exam, :student, :student_type, :course_list)
+      params.require(:registration).permit(:id, :exam, :student, :student_type, :course_list)
     end
 end
