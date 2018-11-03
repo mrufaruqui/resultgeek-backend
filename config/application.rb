@@ -32,6 +32,6 @@ module ResultgeekBackend
     #config.middleware.use ActionDispatch::Session::CacheStore
     #config.middleware.use ActionDispatch::Session::ActiveRecordStore
     config.api_only = true
-    
+    config.active_job.queue_adapter = :delayed_job
   end
 end
