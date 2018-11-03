@@ -4,7 +4,12 @@ collection-langgerman
 collection-xetex
 csvsimple 
 calc 
-array,tabularx,multirow,longtable,booktabs,colortbl 
+array
+tabularx
+multirow
+longtable
+booktabs
+colortbl 
 ifthen
 booktabs 
 fancyhdr 
