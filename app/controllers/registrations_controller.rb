@@ -77,7 +77,7 @@ class RegistrationsController < ApplicationController
         student.hall_name = row[:hall_name]
         student.hall = row[:hall] 
         student.save
-        registration = Registration.find_by(student_id: student.id) || Registration.new
+        registration = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid ) || Registration.new
         registration.exam = @exam
         registration.sl_no = row[:sl]
         registration.exam_uuid = @exam.uuid

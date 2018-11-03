@@ -41,6 +41,7 @@ class DocsController < ApplicationController
   # DELETE /docs/1.json
   def destroy
     @doc.destroy
+    render json:  {status: true}
   end
 
   def download
