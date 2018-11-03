@@ -60,16 +60,13 @@ class GenerateGradeSheetService
            \\documentclass[11pt]{article}
            \\usepackage[paperwidth=30cm, paperheight=21cm,left=0.78in,top=0.25in,right=0.3in,bottom=0.2in]{geometry}
             \\setlength\\parskip{0pt}
-            \\usepackage{datatool}
-            \\usepackage{calc}
-            \\usepackage{array,tabularx}
-            \\usepackage{graphicx,pgf}
+            \\usepackage{array}
+            \\usepackage{graphicx}
             \\usepackage{utopia}
             \\usepackage[T1]{fontenc}
             \\usepackage{ifthen}
             \\pagestyle{empty}
-            \\usepackage{xstring}
-            \\usepackage{multirow}
+            \\usepackage{xstring} 
 
             \\newcommand*{\\numtwo}[1]{\\pgfmathprintnumber[
                     fixed, precision=2, fixed zerofill=true]{#1}}

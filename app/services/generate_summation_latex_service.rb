@@ -71,15 +71,6 @@ class GenerateSummationLatexService
          \\documentclass[12pt]{article}
             \\usepackage[a4paper, left=0.78in,top=0.25in,right=0.5in,bottom=0.2in]{geometry}
             \\setlength\\parskip{0pt}
-            \\usepackage{datatool}
-            \\usepackage{calc}
-            \\usepackage{array,tabularx}
-            \\usepackage{graphicx,pgf}
-            \\usepackage{utopia}
-            \\usepackage[T1]{fontenc}
-            \\usepackage{ifthen}
-            \\pagestyle{empty}
-            \\usepackage{xstring}
             \\usepackage{multirow}
 
             \\newcommand*{\\numtwo}[1]{\\pgfmathprintnumber[
