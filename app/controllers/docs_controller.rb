@@ -1,8 +1,8 @@
 require 'base64'
 
 class DocsController < ApplicationController
-  # before_action :authenticate_user! 
-  # before_action :set_doc, only: [:show, :update, :destroy]
+  before_action :authenticate_user! 
+  before_action :set_doc, only: [:show, :update, :destroy]
 
   # GET /docs
   # GET /docs.json
@@ -63,6 +63,6 @@ class DocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doc_params
-      params.require(:doc).permit(:uuid, :exam_uuid, :description, :latex_name, :latex_loc, :filename, :file_loc)
+      params.require(:doc).permit(:id, :uuid, :exam_uuid, :description, :latex_name, :latex_loc, :filename, :file_loc)
     end
 end

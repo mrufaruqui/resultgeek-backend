@@ -15,9 +15,13 @@
 #
 
 class Course < ApplicationRecord
+    #before_create :set_exam_uuid
+
     enum course_type: [:theory, :lab]
     default_scope { order(:sl_no) }
     belongs_to :exam
+
+
     def self.import(students_info) 
       header = students_info[0]
       body = students_info - [header]
@@ -31,4 +35,12 @@ class Course < ApplicationRecord
         student.save
       end
     end
+
+
+    # private 
+    #  def set_exam_uuid
+    #     # session = Session.find_by(uuid:current_user.session_uuid)
+    #      @exam = Exam.find_by(uuid: Exam.first.uuid) #@session.exam_uuid)
+    #      self.exam_uuid = @exam.uuid 
+    #   end
 end

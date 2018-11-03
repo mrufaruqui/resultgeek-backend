@@ -66,3 +66,5 @@ end
 # Course.create(sl_no:2, code:'CSE312', title:'Data Structures Lab', credit:1, exam_uuid:'_thirdbsc2017', exam: Exam.first, course_type:"lab")
 
 
+#Course.update(exam_uuid:Exam.last.uuid)
+#Summation.update(exam_uuid:Exam.last.uuid)
