@@ -28,12 +28,13 @@ class GenerateSummationLatexService
      File.open(Rails.root.join('reports', course.code + @exam.uuid + '_summation.tex'), 'w') do |f|
        puts "writing latex file:"
        puts Rails.root.join('reports', course.code + @exam.uuid + '_summation.tex')
-      
-       f.puts latex_summation_template(course)
+       f_data = latex_summation_template(course)
+       f.puts f_data
 
       @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: course.code.downcase + '_summation') || Doc.new(exam_uuid:@exam.uuid, uuid:course.code.downcase + '_summation') 
 	  @doc.latex_loc = ['reports/', course.code + @exam.uuid + '_summation.tex'].join
       @doc.latex_name = [course.code.downcase, '_summation.tex'].join
+      @doc.latex_str = Base64.encode64(f_data)
       @doc.description = [course.code.upcase, "Summation", "Sheet"].join(" ")
 	  @doc.save
       end

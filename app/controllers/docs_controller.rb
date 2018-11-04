@@ -45,12 +45,25 @@ class DocsController < ApplicationController
   end
 
   def download
-    file = Base64.encode64(File.open(Rails.root.join(params[:file_loc]), "rb").read)
+     file = Base64.encode64(File.open(Rails.root.join(params[:file_loc]), "rb").read)
    if file
     render json: {:data=>file, :filename=>params[:filename], :status=>"200 ok"} 
     #send_data file.readlines, :disposition => "attachment; filename=#{params[:filename]}"
     # if f 
     #     render json: {:file=>f.readlines, :status=>true}
+    else
+        render json: {:errors=>file.errors, :status=>false}
+    end
+  end
+
+
+   def download
+    file = Doc.find_by(latex_name: params[:filename])
+
+   if params[:filename].include?".tex" and !file.latex_str.blank?
+      render json: {:data=>file.latex_str, :filename=>params[:filename], :status=>"200 ok"} 
+   elsif params[:filename].include?".pdf" and !file.pdf_str.blank?
+      render json: {:data=>file.pdf_str, :filename=>params[:filename], :status=>"200 ok"}   
     else
         render json: {:errors=>file.errors, :status=>false}
     end
