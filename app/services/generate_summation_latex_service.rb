@@ -25,12 +25,12 @@ class GenerateSummationLatexService
     end
 
     def write_to_latex_file(course)
-     File.open(File.join('./reports/', course.code + @exam.uuid + '_summation.tex'), 'w') do |f| 
+     File.open(Rails.root.join('reports/', course.code + @exam.uuid + '_summation.tex'), 'w') do |f| 
        f.puts latex_summation_template(course)
       end
 
       @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: course.code.downcase + '_summation') || Doc.new(exam_uuid:@exam.uuid, uuid:course.code.downcase + '_summation') 
-	  @doc.latex_loc = ['./reports/', course.code + @exam.uuid + '_summation.tex'].join
+	  @doc.latex_loc = ['reports/', course.code + @exam.uuid + '_summation.tex'].join
       @doc.latex_name = [course.code.downcase, '_summation.tex'].join
       @doc.description = [course.code.upcase, "Summation", "Sheet"].join(" ")
 	  @doc.save

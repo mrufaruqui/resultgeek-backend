@@ -12,11 +12,11 @@ class GenerateGradeSheetService
     end
 
     def self.perform(options={})
-    File.open(File.join('./reports/', @exam.uuid + '_gs.tex'), 'w') do |f| 
+    File.open(Rails.root.join('reports/', @exam.uuid + '_gs.tex'), 'w') do |f| 
        f.puts latex_gs_template(options)
       end
       @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: + 'gradesheets') || Doc.new(exam_uuid:@exam.uuid, uuid: + 'gradesheets') 
-      @doc.latex_loc = ['./reports/', @exam.uuid + '_gs.tex'].join
+      @doc.latex_loc = ['reports/', @exam.uuid + '_gs.tex'].join
       @doc.latex_name = ["grade", "sheets" ,".tex"].join
       @doc.description = ["grade", "sheets"].join("_").titlecase
 	  @doc.save

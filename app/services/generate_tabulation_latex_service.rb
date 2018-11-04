@@ -13,12 +13,12 @@ class GenerateTabulationLatexService < TabulationBaseService
     end
 
     def self.perform(options={})
-      File.open( ['./reports/',@exam.uuid, 'tabulation.tex'].join, 'w') do |f| 
+      File.open( ['reports/',@exam.uuid, 'tabulation.tex'].join, 'w') do |f| 
        f.puts latex_tabulation_template(options)
       end
 
       @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid:'tabulation') || Doc.new(exam_uuid:@exam.uuid, uuid:'tabulation_v2') 
-	  @doc.latex_loc = ['./reports/', @exam.uuid, 'tabulation.tex'].join
+	  @doc.latex_loc = ['reports/', @exam.uuid, 'tabulation.tex'].join
       @doc.latex_name = [@exam.uuid.titlecase, '_tabulation.tex'].join
       @doc.description = ["tabulation", "sheets"].join("_").titlecase
 	  @doc.save
