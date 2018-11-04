@@ -25,15 +25,18 @@ class GenerateSummationLatexService
     end
 
     def write_to_latex_file(course)
-     File.open(Rails.root.join('reports/', course.code + @exam.uuid + '_summation.tex'), 'w') do |f| 
+     File.open(Rails.root.join('reports', course.code + @exam.uuid + '_summation.tex'), 'w') do |f|
+       puts "writing latex file:"
+       puts Rails.root.join('reports', course.code + @exam.uuid + '_summation.tex')
+      
        f.puts latex_summation_template(course)
-      end
 
       @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: course.code.downcase + '_summation') || Doc.new(exam_uuid:@exam.uuid, uuid:course.code.downcase + '_summation') 
-	  @doc.latex_loc = ['reports/', course.code + @exam.uuid + '_summation.tex'].join
+	  @doc.latex_loc = ['reports', course.code + @exam.uuid + '_summation.tex'].join
       @doc.latex_name = [course.code.downcase, '_summation.tex'].join
       @doc.description = [course.code.upcase, "Summation", "Sheet"].join(" ")
 	  @doc.save
+      end
     end
    
     def latex_summation_template(course)
@@ -55,7 +58,7 @@ class GenerateSummationLatexService
 
     def summation_body
          a = ''
-        Summation.first(35).each do |sm|
+        Summation.where(exam_uuid:@exam.uuid).first(35).each do |sm|
           a << summation_table_row(sm) unless sm.nil? || sm.student.nil?
           a << "\\\\ \\hline \n"
         end
