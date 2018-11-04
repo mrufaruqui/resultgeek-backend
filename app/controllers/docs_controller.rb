@@ -45,7 +45,7 @@ class DocsController < ApplicationController
   end
 
   def download
-    file = Base64.encode64(File.open(params[:file_loc], "rb").read)
+    file = Base64.encode64(File.open(Rails.root.join(params[:file_loc]), "rb").read)
    if file
     render json: {:data=>file, :filename=>params[:filename], :status=>"200 ok"} 
     #send_data file.readlines, :disposition => "attachment; filename=#{params[:filename]}"
