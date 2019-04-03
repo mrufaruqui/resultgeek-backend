@@ -1,22 +1,23 @@
 class GenerateTabulationLatexV2Service < TabulationBaseService
 
 	def perform(options={})
+	    @student_type = options[:student_type]
 	    @exam = options[:exam]
-        @courses = Course.all
+		@courses = Course.where(exam_uuid:@exam.uuid)
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
         @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
 		@hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
-		@tco = Course.where(exam_uuid:@exam.uuid).sum(:credit)
+		@tco = Course.where(exam_uuid:@exam.uuid).sum(:credit).round
 		@hall_name = ' '
-      File.open( [Rails.root, '/reports/', @exam.uuid, 'tabulation_v2.tex'].join, 'w') do |f| 
+      File.open( Rails.root.join('reports/', [@exam.uuid, @student_type.to_s, 'tabulation_v2.tex'].join("_")), 'w') do |f| 
        f.puts tabulation(options)
 	  end
 	 
-	  @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid:'tabulation_v2') || Doc.new(exam_uuid:@exam.uuid, uuid:'tabulation_v2') 
-	  @doc.latex_loc = ['reports/', @exam.uuid, 'tabulation_v2.tex'].join
-	  @doc.latex_name = 'tabulation_sheets_v2.tex'
-	  @doc.description = ["tabulation", "sheets"].join("_").titlecase
+	  @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v2') || Doc.new(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v2') 
+	  @doc.latex_loc = 'reports/' + [@exam.uuid, @student_type.to_s, 'tabulation_v2.tex'].join("_")
+	  @doc.latex_name =  ["tabulation", "sheets", "v2", @student_type.to_s ,".tex"].join("_")
+	  @doc.description = ["tabulation", "sheets", @student_type.to_s ].join("_").titlecase
 	  @doc.save
 	 
 	  true
@@ -121,7 +122,7 @@ def tabulation_table
   a=''
   @hall_list.each do |hall|
 	@hall_name = hall
-	Tabulation.joins(:student).merge(Student.where(hall_name:hall)).each do |t| 
+	Tabulation.where(student_type:@student_type).joins(:student).merge(Student.where(hall_name:hall)).each do |t| 
 	  a << sl_no.to_s
 	  a<<tabulation_row(generate_single_page_tabulation(t))
 	  sl_no += 1
@@ -267,7 +268,7 @@ EOF
 		\\begin{LARGE}
 		{\\textsc{University of Chittagong}}\\\\
 		\\textsc{Department of Computer Science \\& Engineering}\\\\
-		{{\\sc Tabulation Sheet}}\\\\
+		{{\\sc Tabulation Sheet #{ '(Improvement)' if  @gradesheet_type ==  :improvement }}}\\\\
 		\\textsc{#{@exam.fullname}}\\\\
 		{Held in #{@exam.held_in}}
 		\\end{LARGE}

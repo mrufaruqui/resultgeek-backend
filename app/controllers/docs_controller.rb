@@ -2,12 +2,13 @@ require 'base64'
 
 class DocsController < ApplicationController
   before_action :authenticate_user! 
+  before_action :get_tenant
   before_action :set_doc, only: [:show, :update, :destroy]
 
   # GET /docs
   # GET /docs.json
   def index
-    @docs = Doc.all
+    @docs = Doc.where(exam_uuid:@exam.uuid)
   end
 
   # GET /docs/1
@@ -44,22 +45,23 @@ class DocsController < ApplicationController
     render json:  {status: true}
   end
 
-  def download
-     file = Base64.encode64(File.open(Rails.root.join(params[:file_loc]), "rb").read)
-   if file
-    render json: {:data=>file, :filename=>params[:filename], :status=>"200 ok"} 
-    #send_data file.readlines, :disposition => "attachment; filename=#{params[:filename]}"
-    # if f 
-    #     render json: {:file=>f.readlines, :status=>true}
-    else
-        render json: {:errors=>file.errors, :status=>false}
-    end
-  end
+  # def download
+  #    file = Base64.encode64(File.open(Rails.root.join(params[:file_loc]), "rb").read)
+  #  if file
+  #   render json: {:data=>file, :filename=>params[:filename], :status=>"200 ok"} 
+  #   #send_data file.readlines, :disposition => "attachment; filename=#{params[:filename]}"
+  #   # if f 
+  #   #     render json: {:file=>f.readlines, :status=>true}
+  #   else
+  #       render json: {:errors=>file.errors, :status=>false}
+  #   end
+  # end
 
 
    def download
-    file = Doc.find_by(latex_name: params[:filename])
-
+     
+     file = Doc.find_by(latex_name: params[:filename])
+     
    if params[:filename].include?".tex" and !file.latex_str.blank?
       render json: {:data=>file.latex_str, :filename=>params[:filename], :status=>"200 ok"} 
    elsif params[:filename].include?".pdf" and !file.pdf_str.blank?
@@ -72,7 +74,7 @@ class DocsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_doc
-      @doc = Doc.find(params[:id])
+      @doc = Doc.find_by(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

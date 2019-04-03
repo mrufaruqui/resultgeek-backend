@@ -56,12 +56,14 @@ class ExamsController < ApplicationController
 
    def generate_tabulations_latex
     # @status =   GenerateTabulationLatexService.create_tabulation_latex({:exam=>@exam})
-     @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam})
+     @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:regular})
+      @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:improvement})
        render json: {:message=>"Job Submitted", :status=> @status}
    end
 
    def generate_gradesheets_latex
-       @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam})
+       @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:regular})
+        @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:improvement})
        render json: {:message=>"Job Submitted", :status=> @status}
    end
    def generate_summationsheets_latex

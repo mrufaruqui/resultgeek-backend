@@ -15,7 +15,7 @@
 #
 
 class Exam < ApplicationRecord
-    enum sem: [:_first, :_second, :_third, :_fourth, :_sixth, :_seventh, :_eight ]
+    enum sem: [:_first, :_second, :_third, :_fourth, :_fifth, :_sixth, :_seventh, :_eight ]
     enum program: [:bsc, :msc, :mphil, :phd]
     enum program_type: [:semester, :year, :term]
 

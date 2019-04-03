@@ -56,9 +56,9 @@ class SummationsController < ApplicationController
       body = data - [header]
       body.each do |i| 
         row = Hash[[header, i].transpose].symbolize_keys
-        student = Student.find_by(roll: row[:roll]) || Student.create(:roll=>row[:roll])
+        student =   Student.find_by(roll: row[:roll]) || Student.create(:roll=>row[:roll])
         summation = Summation.find_by(student_id: student.id, course_id: @course.id) || Summation.new
-        summation.exam_uuid = @exam.uuid
+        summation.exam_uuid = @exam.uuid 
         summation.student =   student
         summation.course   =  @course 
         

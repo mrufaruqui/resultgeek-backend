@@ -12,6 +12,7 @@ class RegistrationsController < ApplicationController
       a = []
       @registrations.each do |r|
        retHash = Hash.new
+       retHash[:id] = r.id
        retHash[:sl_no] = r.sl_no
        retHash[:roll] = r.student.roll
        retHash[:hall_name] = r.student.hall_name unless r.student.hall_name.blank?

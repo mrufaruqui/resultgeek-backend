@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181104102006) do
+ActiveRecord::Schema.define(version: 20190403124652) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20181104102006) do
     t.datetime "updated_at", null: false
     t.string "exam_uuid"
     t.integer "sl_no"
+    t.integer "student_type", limit: 1, default: 0
     t.index ["student_id"], name: "index_tabulations_on_student_id", unique: true
   end
 

@@ -1,0 +1,421 @@
+\documentclass[10pt,landscape]{article}
+\usepackage[a3paper,verbose,right=0.4in,left=0.8in,top=0.8cm,foot=1.9in,textheight=7.85in]{geometry}
+
+\usepackage{amsmath,amsfonts}
+\usepackage[condensed,math]{iwona}
+\usepackage[T1]{fontenc}
+
+\usepackage{csvsimple}
+\usepackage{calc}
+\usepackage{array,tabularx,multirow,longtable,booktabs,colortbl}
+\usepackage{ifthen,booktabs}
+\usepackage{fancyhdr}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{pgf,tcolorbox} 
+\usepackage{rotating}
+\usepackage{xstring,etoolbox,dashrule,lastpage}
+% ,kantlipsum}
+
+\pagestyle{fancy}
+  
+\setlength{\headheight}{6.0cm} % 
+\setlength{\footskip}{0.1pt}
+\setlength{\headsep}{20pt}
+
+\definecolor{shada}{RGB}{250,250,250}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}        
+ \lhead{%
+		\begingroup
+        \begin{minipage}[m][5cm][c]{2in}%
+		\begin{footnotesize}
+		\rowcolors{2}{gray!10}{white}
+		\setlength\tabcolsep{2pt}
+		\setlength\extrarowheight{0pt}
+		\flushleft\begin{tabular}{ c>{\centering}m{0.9cm}m{0.91cm}}%| c | >{\centering}p{1cm} | >{\centering}p{1cm} |}
+		\toprule \rowcolor[gray]{0.99}\textit{Numerical Grade} & \textit{Letter Grade} & \textit{Grade Point} \\
+		\midrule
+		   80\% and above & A+ & $4.00$  \\ 
+		   75\% to less than 80\% &  A & $3.75$\\ 
+		   70\% to less that 75\% &  A- & $3.50$ \\ 
+		   65\% to less than 70\% &  B+ & $3.25$\\ 
+		   60\% to less than 65\% &  B  & $3.00$\\ 
+		   55\% to less than 60\% &  B- & $2.75$\\ 
+		   50\% to less than 55\% &  C+ & $2.50$\\ 
+		   45\% to less than 50\% &  C  & $2.25$\\
+		   40\% to less than 45\% &  D  & $2.00$\\
+		   Less than 40\%         &  F  & $0.00$\\ 
+		   Incomplete/Absent         &  X  & $\cdots$\\ 
+		\bottomrule 
+		\end{tabular}
+		\end{footnotesize}
+        \end{minipage}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\endgroup
+		\begingroup
+        \begin{minipage}[m][5cm][c]{2in}%
+		\begin{footnotesize}
+		\rowcolors{1}{white}{gray!10}
+		\setlength\tabcolsep{4pt}		
+		\tcbset{colframe=gray!60,width=2in,height=5cm,colback=white,%colupper=red!5,
+		fonttitle=\bfseries,nobeforeafter}
+		{\vspace*{0.41cm}}\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Acromyms/Glossaries]{%
+		\renewcommand\arraystretch{0.89}
+	    \begin{tabular}{lm{1.8in}}
+		CA & Continuous Assessment marks (30\% of total: 10\% in attendance + 20\% in class tests) \\
+		MO & Marks Obtained: total marks in final (70\%) + CA (rounded upwards)\\
+		LG & Letter Grade (per the table on the left)\\
+		GP & Grade Point (per the table on the left)\\
+		Cr & Credit (per course)\\
+		PS & Point Secured ($= \text{GP} \times \text{Cr}$, per course)\\
+		TPS & Total Points Secured ($=\!\sum PS$ all courses)\\
+		TCE & Total Credit Earned\\
+		GPA & TPS/18 (Total Credits Offered=$18$)\\
+		\end{tabular}}
+		\end{footnotesize}
+        \end{minipage}%
+		\endgroup
+}% end \lhead
+\chead{%
+		\begingroup
+        \begin{minipage}[m][5cm][c]{0.8in}%
+		{\hspace*{2.0in}\includegraphics[width=0.7in]{cu-logo.png}}
+        \end{minipage}%
+        \hspace*{2.0in}\begin{minipage}[m][5cm][c]{5in}%
+        \raggedright\begin{center}
+		\begin{LARGE}
+		{\textsc{University of Chittagong}}\\
+		\textsc{Department of Computer Science \& Engineering}\\
+		{{\sc Tabulation Sheet }}\\
+		\textsc{First Semester Bsc Engineering Exam 2018}\\
+		{Held in }
+		\end{LARGE}
+		\end{center}
+        \end{minipage}%
+        \endgroup
+}% end \chead
+		\rhead{%
+		\begingroup
+        \begin{minipage}[m][5cm][c]{3in}%
+		\begin{footnotesize}
+		\setlength\tabcolsep{2pt}
+		\rowcolors{2}{gray!10}{white}
+		\renewcommand\arraystretch{0.91}
+		\hspace*{-0.1in}\begin{tabular}{ l >{\centering}m{4.5cm} cc}
+		\toprule \rowcolor[gray]{0.99}
+		{\it Course Code} & {\it Course Title} & {\it Credit} & {\it Marks} \\
+		\midrule 
+CSE111 & Introduction to Computer Systems and Computing Agents & 3 & 75  \\
+CSE113 & Structured Programming Language & 3 & 75  \\
+CSE114 & Structured Programming Language Lab & 2 & 50  \\
+MAT131 & Matrices, Vector Analysis and Geometry & 3 & 75  \\
+STA151 & Basic Statistics & 3 & 75  \\
+EEE121 & Electrical Engineering & 3 & 75  \\
+EEE122 & Electrical Engineering Lab & 1 & 25  \\
+		 \midrule
+		 \rowcolor{White} & \multicolumn{2}{c}{\hspace*{2.1cm} Total Credits Offered: $18$} & \\
+		\bottomrule
+		\end{tabular}
+		\end{footnotesize}
+        \end{minipage}%
+		\endgroup
+         }% end \rhead
+		\lfoot{%
+    % \fbox{%
+    	\begingroup
+        \vspace*{0.65cm}
+        \begin{minipage}[b][2cm][c]{3in}%
+		\tcbset{colframe=gray,colback=white,%colupper=red!5,
+		fonttitle=\bfseries,nobeforeafter}
+		{\vspace*{0.02cm}}\tcbox[left=0mm,right=0mm,top=0.2mm,bottom=1.5mm,boxsep=0mm,title=Examination Committee]{%
+		\renewcommand\arraystretch{1.3}
+		\begin{footnotesize}
+	    \begin{tabular}{rll}
+		 Chairman: &  Mr. Rokan Uddin Faruqui  & \hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\
+		 Member: & Dr. Kazi Ashrafuzzaman & \hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\
+		 Member: & Ms. Nasrin Akther & \hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\
+	 	\end{tabular}
+		\end{footnotesize}
+		}
+        \end{minipage}%
+		\endgroup
+}
+\cfoot{%
+    % \fbox{%
+    	\begingroup
+        \begin{center}
+        \begin{minipage}[t][2.5cm][l]{5in}%
+		\tcbset{colframe=gray,colback=white,%colupper=red!5,
+		fonttitle=\bfseries,nobeforeafter}
+		{\vspace*{0.2cm}}\tcbox[left=0mm,right=0mm,top=0.2mm,bottom=1.5mm,boxsep=0mm,title=Tabulators]{%
+		\renewcommand\arraystretch{1.3}
+		\begin{footnotesize}
+	    \begin{tabular}{rll}
+		 1. & Mr. Rokan Uddin Faruqui & \hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\
+		 2. & Dr. Kazi Ashrafuzzaman & \hdashrule[-0.5ex]{2cm}{1pt}{1pt}	\\
+		 3. & Prof. Dr. Osiur Rahman & \hdashrule[-0.5ex]{2cm}{1pt}{1pt}\\
+		\end{tabular}
+		\end{footnotesize}
+		}
+		\tcbset{colframe=gray,colback=white,%colupper=red!5,
+		fonttitle=\bfseries,nobeforeafter}
+        \hfill{\vspace*{-0.45cm}\tcbox[left=0mm,right=1mm,top=1cm,minipage,width=1.2in,height=1.2cm,bottom=2mm,boxsep=0mm,title=Date of Publication]{}}%\framebox(100,15){}}\vfill%
+        \end{minipage}%
+        \end{center}
+        \endgroup
+}
+
+		\lfoot{%
+    % \fbox{%
+    	\begingroup
+        \vspace*{0.65cm}
+        \begin{minipage}[b][2cm][c]{3in}%
+		\tcbset{colframe=gray,colback=white,%colupper=red!5,
+		fonttitle=\bfseries,nobeforeafter}
+		{\vspace*{0.02cm}}\tcbox[left=0mm,right=0mm,top=0.2mm,bottom=1.5mm,boxsep=0mm,title=Examination Committee]{%
+		\renewcommand\arraystretch{1.3}
+		\begin{footnotesize}
+	    \begin{tabular}{rll}
+		 Chairman: &  Mr. Rokan Uddin Faruqui  & \hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\
+		 Member: & Dr. Kazi Ashrafuzzaman & \hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\
+		 Member: & Ms. Nasrin Akther & \hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\
+	 	\end{tabular}
+		\end{footnotesize}
+		}
+        \end{minipage}%
+		\endgroup
+}
+\newcommand{\xgpps}[2]{\ifthenelse{\equal{#1}{X}}{X}{#2}}  
+
+\newcommand*\rot{\rotatebox{90}}
+
+\newcommand*{\numtwo}[1]{\ifthenelse{\equal{#1}{X}}{X}{\pgfmathprintnumber[fixed, precision=2, fixed zerofill=true]{#1}}}
+
+\newcommand*{\realrows}{36}
+
+\newcommand\ifismultiple[4]{%
+    \pgfmathparse{mod(#1,#2)==0} \ifnum \pgfmathresult=1 #3 \else #4 \fi
+}
+
+\makeatletter
+\def\Dummywarning{%
+  \multicolumn{\LT@cols}{c}{\textsc{\LARGE \textcolor{red}{Don't Print This Page. This Is DUMMY. Longtable  somehow affects the arraystretch at the header/footer badly, specifically at the \emph{last} page.}}}\\}
+\makeatother
+
+\makeatletter
+\def\toContinue{%
+  \multicolumn{\LT@cols}{r}{ \scriptsize Continued on the nest page $\cdots$ }\\}
+\makeatother
+
+\begin{document}
+
+\begingroup
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\setlength\tabcolsep{4.65pt}
+\setlength\extrarowheight{3pt}
+
+\begin{small}
+\vspace*{-4ex}\begin{longtable}{lc >{\centering\scshape}p{0.88in}|*{5}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{5}{c}| cc|cc |>{\centering}p{0.5in} p{0.5in}}\toprule\toprule%
+\multirow{2}{*}{SL\#} &\multirow{2}{*}{ID} &\multirow{2}{*}{{Name}} &\multicolumn{5}{c|}{CSE111 (Cr: 3)} &\multicolumn{5}{c|}{CSE113 (Cr: 3)} &\multicolumn{3}{c|}{CSE114 (Cr: 2)} &\multicolumn{5}{c|}{MAT131 (Cr: 3)} &\multicolumn{5}{c|}{STA151 (Cr: 3)} &\multicolumn{5}{c|}{EEE121 (Cr: 3)} &\multicolumn{3}{c|}{EEE122 (Cr: 1)} &\multirow{2}{*}{TCE} &\multirow{2}{*}{TPS} &\multirow{2}{*}{GPA} &\multirow{2}{*}{\rot{ Result }} &\multirow{2}{*}{Remark} &\multirow{2}{*}{\hspace*{3ex}{Hall}}\\\cmidrule(lr){4-8}  \cmidrule(lr){9-13} \cmidrule(lr){14-16} \cmidrule(lr){17-21} \cmidrule(lr){22-24} \cmidrule(lr){25-29} \cmidrule(lr){30-34} 
+& & & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & MO & LG & PS & CA & {Final} & MO & LG & PS & CA & {Final} & MO & LG & PS & & & & & & \\
+
+
+ \midrule \endfirsthead \toprule\toprule 
+ \midrule \endhead \bottomrule \endfoot \endlastfoot 
+ % \ifnumcomp{\value{csvrow}}{>}{20}{}{\toContinue} and \ifnumcomp{\value{page}}{<}{2}{\toContinue}{} worked in a weird way!!
+%\csvreader[head to column names,late after line=\csvifoddrow{\\[1.9ex]\midrule\rowcolor{white}} {\\[1.9ex]\midrule\rowcolor{gray!10}} \ifnumcomp{\value{csvrow}}{=}{\realrows}{\pagebreak\Dummywarning} {}]{rawextra.csv}{}
+% \csvreader[head to column names,late after line=\csvifoddrow{\\[1.8ex]\midrule\rowcolor{white}}{\ifismultiple{\thecsvrow}{14}{\\\pagebreak}{\\[1.8ex]}\midrule\rowcolor{gray!10}}\ifnumcomp{\value{csvrow}}{=}{35}{\pagebreak}{}]{rawextra.csv}{}%  ****** THIS WORKS, for integer multiple of lines
+%{\thecsvrow & \ID & \name & \numtwo{\ica} & \numtwo{\ifnl} & {\itot} &  {\ilg} &  \numtwo{\ips} & \numtwo{\iica} & \numtwo{\iifnl} & \iitot & \iilg & \numtwo{\iips} & \iiitot & \iiilg & \numtwo{\iiips} & \numtwo{\ivca} & \numtwo{\ivfnl} & \ivtot & \ivlg & \numtwo{\ivps} & \vtot & \vlg & \numtwo{\vips} & \numtwo{\vica} & \numtwo{\vifnl} & \vitot & \vilg & \numtwo{\vips} & \numtwo{\viica} & \numtwo{\viifnl} & \viitot & \viilg & \numtwo{\viips} & \tce & \numtwo{\tps} & \numtwo{\gpa} & \pf & \rem & \hall}
+141 & 16701063 & Al-Amin &  &  &  & X & 0.0&8.75 & 22.5 & 32.0 & D & 6.0&28.0 & B- & 5.5 & 12.375 & 9.0 & 22.0 & F & 0.0&18.0 & 13.0 & 31.0 & D & 6.0&16.0 & 7.0 & 23.0 & F & 0.0&15.0 & B & 3.0 & 9.00 & 20.50 & 1.14 & F & F-131, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline242 & 17701001 & Md. Nayeem Uddin Bhuiyan & 12.0 & 24.25 & 37.0 & C & 6.75& &  &  & X & 0.0& & X & 0.0 & 3.75 & 0.0 & 4.0 & F & 0.0& &  &  & X & 0.0&12.0 & 1.0 & 13.0 & F & 0.0&14.0 & B- & 2.75 & 4.00 & 9.50 & 0.53 & F & F-131, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline343 & 17701004 & Shah Azhar Hossain & 14.0 & 19.75 & 34.0 & C & 6.75&10.75 & 24.25 & 35.0 & C & 6.75&32.0 & B & 6.0 & 14.625 & 24.0 & 39.0 & C+ & 7.5&19.5 & 22.0 & 42.0 & B- & 8.25&15.5 & 18.0 & 34.0 & C & 6.75&13.0 & C+ & 2.5 & 18.00 & 44.50 & 2.48 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline444 & 17701005 & Sadab Sadman Islam & 19.25 & 26.25 & 46.0 & B & 9.0&13.25 & 26.25 & 40.0 & C+ & 7.5&30.0 & B & 6.0 & 18.375 & 27.0 & 46.0 & B & 9.0&19.5 & 25.0 & 45.0 & B & 9.0&19.5 & 6.0 & 26.0 & F & 0.0&16.0 & B & 3.0 & 15.00 & 43.50 & 2.42 & P & F-121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline545 & 17701006 & Md. Rizwan Uddin & 10.33 & 16.0 & 27.0 & F & 0.0&10.5 & 6.5 & 17.0 & F & 0.0&29.0 & B- & 5.5 & 9.375 & 0.0 & 10.0 & F & 0.0&16.5 & 0.0 & 17.0 & F & 0.0&11.5 & 0.0 & 12.0 & F & 0.0&16.0 & B & 3.0 & 3.00 & 8.50 & 0.48 & F & F-111, 113, 131, 151, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline646 & 17701009 & Zihad Been Mohsin & 17.25 & 31.5 & 49.0 & B+ & 9.75&15.75 & 33.0 & 49.0 & B+ & 9.75&35.0 & A- & 7.0 & 10.5 & 0.0 & 11.0 & F & 0.0&19.5 & 30.5 & 50.0 & B+ & 9.75&19.5 & 8.0 & 28.0 & F & 0.0&0.0 & F & 0.0 & 11.00 & 36.25 & 2.02 & F & F-131, 121, 122 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline747 & 17701012 & Md. Shihab Uddin & 16.0 & 32.75 & 49.0 & B+ & 9.75&20.25 & 33.75 & 54.0 & A- & 10.5&32.0 & B & 6.0 & 9.75 & 0.0 & 10.0 & F & 0.0&18.5 & 23.0 & 42.0 & B- & 8.25&18.0 & 7.0 & 25.0 & F & 0.0&21.0 & A+ & 4.0 & 12.00 & 38.50 & 2.14 & F & F-131, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline848 & 17701013 & Mohammad Showkat & 11.5 & 30.5 & 42.0 & B- & 8.25&19.75 & 42.0 & 62.0 & A+ & 12.0&28.0 & B- & 5.5 & 13.125 & 21.0 & 35.0 & C & 6.75&18.5 & 24.0 & 43.0 & B- & 8.25&11.0 & 22.0 & 33.0 & D & 6.0&13.0 & C+ & 2.5 & 18.00 & 49.25 & 2.74 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline949 & 17701020 & Md. Shahidul Islam & 13.5 & 26.5 & 40.0 & C+ & 7.5& &  &  & X & 0.0& & X & 0.0 & 10.875 & 9.0 & 20.0 & F & 0.0&18.5 & 18.0 & 37.0 & C & 6.75&11.0 & 19.0 & 30.0 & D & 6.0&0.0 & F & 0.0 & 9.00 & 20.25 & 1.13 & F & F-131, 122 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1050 & 17701024 & Md. Mamun Chy & 18.25 & 41.75 & 60.0 & A+ & 12.0&15.25 & 35.25 & 51.0 & B+ & 9.75&35.0 & A- & 7.0 & 18.0 & 34.0 & 52.0 & B+ & 9.75&17.5 & 37.0 & 55.0 & A- & 10.5&18.0 & 33.0 & 51.0 & B+ & 9.75&16.0 & B & 3.0 & 18.00 & 61.75 & 3.43 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1151 & 17701027 & Sarose Datta & 16.75 & 33.25 & 50.0 & B+ & 9.75&11.0 & 32.75 & 44.0 & B- & 8.25&35.0 & A- & 7.0 & 16.875 & 22.0 & 39.0 & C+ & 7.5&18.5 & 32.5 & 51.0 & B+ & 9.75&15.0 & 21.0 & 36.0 & C & 6.75&16.0 & B & 3.0 & 18.00 & 52.00 & 2.89 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1252 & 17701033 & Nishan Barua & 18.0 & 31.5 & 50.0 & B+ & 9.75&14.5 & 33.5 & 48.0 & B & 9.0&32.0 & B & 6.0 & 19.125 & 23.0 & 43.0 & B- & 8.25&19.0 & 30.0 & 49.0 & B+ & 9.75&18.0 & 20.0 & 38.0 & C+ & 7.5&0.0 & F & 0.0 & 17.00 & 50.25 & 2.80 & P & F-122 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1353 & 17701046 & Maruf Bin Soliman &  &  &  & X & 0.0& &  &  & X & 0.0& & X & 0.0 & 13.5 & 0.0 & 14.0 & F & 0.0&16.0 & 9.0 & 25.0 & F & 0.0&9.0 & 4.0 & 13.0 & F & 0.0&0.0 & F & 0.0 & 0.00 & 0.00 & 0.00 & F & F-131, 151, 121, 122 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1454 & 17701049 & Md. Raihan & 11.25 & 29.25 & 41.0 & C+ & 7.5&14.25 & 30.0 & 45.0 & B & 9.0&32.0 & B & 6.0 & 18.75 & 12.0 & 31.0 & D & 6.0&19.0 & 26.0 & 45.0 & B & 9.0&9.0 & 10.0 & 19.0 & F & 0.0&18.0 & A- & 3.5 & 15.00 & 41.00 & 2.28 & P & F-121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1555 & 17701050 & Mosharaf Hossain & 10.67 & 32.75 & 44.0 & B- & 8.25&3.0 & 34.0 & 37.0 & C & 6.75&30.0 & B & 6.0 & 15.75 & 21.5 & 38.0 & C+ & 7.5&19.0 & 32.0 & 51.0 & B+ & 9.75&10.0 & 6.0 & 16.0 & F & 0.0&18.0 & A- & 3.5 & 15.00 & 41.75 & 2.33 & P & F-121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1656 & 17701069 & Md. Majbaur Rahman Khan & 14.0 & 34.75 & 49.0 & B+ & 9.75&17.0 & 30.75 & 48.0 & B & 9.0&38.0 & A & 7.5 & 11.625 & 13.0 & 25.0 & F & 0.0&18.5 & 29.5 & 48.0 & B & 9.0&15.5 & 9.0 & 25.0 & F & 0.0&18.0 & A- & 3.5 & 12.00 & 38.75 & 2.16 & F & F-131, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1757 & 17701075 & Abdullah Al Maruf & 18.25 & 37.25 & 56.0 & A- & 10.5&18.75 & 38.25 & 57.0 & A & 11.25&46.0 & A+ & 8.0 & 15.75 & 32.0 & 48.0 & B & 9.0&19.0 & 37.0 & 56.0 & A- & 10.5&16.0 & 27.0 & 43.0 & B- & 8.25&19.0 & A & 3.75 & 18.00 & 61.25 & 3.41 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1858 & 17701093 & Shanta Islam & 19.0 & 36.75 & 56.0 & A- & 10.5&19.75 & 43.75 & 64.0 & A+ & 12.0&39.0 & A & 7.5 & 18.375 & 40.0 & 59.0 & A & 11.25&19.0 & 35.0 & 54.0 & A- & 10.5&21.5 & 26.5 & 48.0 & B & 9.0&20.0 & A+ & 4.0 & 18.00 & 64.75 & 3.61 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline1959 & 17701101 & Rofiqul Islam & 19.75 & 33.75 & 54.0 & A- & 10.5&19.0 & 40.25 & 60.0 & A+ & 12.0&48.0 & A+ & 8.0 & 20.625 & 40.0 & 61.0 & A+ & 12.0&19.5 & 32.5 & 52.0 & B+ & 9.75&18.0 & 37.0 & 55.0 & A- & 10.5&0.0 & F & 0.0 & 17.00 & 62.75 & 3.49 & P & F-122 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline2060 & 17701102 & Subrata Das & 10.67 & 38.0 & 49.0 & B+ & 9.75&14.5 & 30.5 & 45.0 & B & 9.0&30.0 & B & 6.0 & 10.125 & 17.0 & 28.0 & F & 0.0&18.5 & 24.5 & 43.0 & B- & 8.25&14.0 & 7.0 & 21.0 & F & 0.0&16.0 & B & 3.0 & 12.00 & 36.00 & 2.00 & F & F-131, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline2161 & 17701104 & Joytu Dev & 9.33 & 32.5 & 42.0 & B- & 8.25&14.5 & 37.0 & 52.0 & B+ & 9.75&35.0 & A- & 7.0 & 15.375 & 25.0 & 41.0 & C+ & 7.5&18.0 & 27.0 & 45.0 & B & 9.0&11.5 & 24.0 & 36.0 & C & 6.75&14.0 & B- & 2.75 & 18.00 & 51.00 & 2.84 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline2262 & 17701106 & Abul Hasanat Siam & 20.25 & 37.0 & 58.0 & A & 11.25&19.5 & 45.5 & 65.0 & A+ & 12.0&48.0 & A+ & 8.0 & 17.25 & 19.0 & 37.0 & C & 6.75&19.0 & 28.5 & 48.0 & B & 9.0&19.5 & 17.0 & 37.0 & C & 6.75&22.0 & A+ & 4.0 & 18.00 & 57.75 & 3.22 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline231 & 18701006 & Md. Habibul Bashar Faruq & 18.25 & 38.25 & 57.0 & A & 11.25&16.5 & 41.25 & 58.0 & A & 11.25&39.0 & A & 7.5 & 16.5 & 27.0 & 44.0 & B- & 8.25&19.0 & 38.0 & 57.0 & A & 11.25&16.5 & 27.0 & 44.0 & B- & 8.25&19.0 & A & 3.75 & 18.00 & 61.50 & 3.42 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline242 & 18701007 & Md. Abu Saiem Aziz Chowdhury & 13.5 & 27.75 & 42.0 & B- & 8.25&20.0 & 36.5 & 57.0 & A & 11.25&32.0 & B & 6.0 & 10.125 & 17.0 & 28.0 & F & 0.0&18.5 & 27.0 & 46.0 & B & 9.0&17.0 & 16.0 & 33.0 & D & 6.0&19.0 & A & 3.75 & 15.00 & 44.25 & 2.47 & P & F-131 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline253 & 18701009 & Yubayed Islam & 11.5 & 14.25 & 26.0 & F & 0.0&2.0 & 8.5 & 11.0 & F & 0.0& & X & 0.0 & 1.875 & 0.0 & 2.0 & F & 0.0&9.0 & 0.0 & 9.0 & F & 0.0&10.0 & 0.0 & 10.0 & F & 0.0&0.0 & F & 0.0 & 0.00 & 0.00 & 0.00 & F & F-111, 113, 131, 151, 121, 122 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline264 & 18701010 & Arup Dutta Bappy & 16.75 & 35.25 & 52.0 & B+ & 9.75&17.75 & 35.5 & 54.0 & A- & 10.5&38.0 & A & 7.5 & 17.25 & 20.0 & 38.0 & C+ & 7.5&18.5 & 33.0 & 52.0 & B+ & 9.75&10.0 & 26.0 & 36.0 & C & 6.75&13.0 & C+ & 2.5 & 18.00 & 54.25 & 3.02 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline275 & 18701012 & Shariar Hasan & 11.5 & 34.75 & 47.0 & B & 9.0&12.75 & 38.75 & 52.0 & B+ & 9.75&32.0 & B & 6.0 & 7.5 & 29.0 & 37.0 & C & 6.75&9.0 & 31.0 & 40.0 & C+ & 7.5&12.0 & 21.0 & 33.0 & D & 6.0&14.0 & B- & 2.75 & 18.00 & 47.75 & 2.66 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline286 & 18701018 & Kazi Farhan Hasan Tanjim & 20.25 & 39.5 & 60.0 & A+ & 12.0&19.0 & 36.25 & 56.0 & A- & 10.5&38.0 & A & 7.5 & 19.125 & 37.0 & 57.0 & A & 11.25&19.5 & 32.5 & 52.0 & B+ & 9.75&18.5 & 24.0 & 43.0 & B- & 8.25&21.0 & A+ & 4.0 & 18.00 & 63.25 & 3.52 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline297 & 18701020 & Misbah Uddin Farouque & 16.25 & 41.25 & 58.0 & A & 11.25&7.5 & 23.0 & 31.0 & D & 6.0&26.0 & C+ & 5.0 & 17.25 & 29.0 & 47.0 & B & 9.0&18.5 & 33.5 & 52.0 & B+ & 9.75&19.5 & 27.0 & 47.0 & B & 9.0&22.0 & A+ & 4.0 & 18.00 & 54.00 & 3.00 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline308 & 18701022 & Mohammed Saiful Islam Tarek & 18.75 & 35.5 & 55.0 & A- & 10.5&15.5 & 36.75 & 53.0 & A- & 10.5&30.0 & B & 6.0 & 21.0 & 40.0 & 61.0 & A+ & 12.0&18.5 & 35.0 & 54.0 & A- & 10.5&21.5 & 37.0 & 59.0 & A & 11.25&24.0 & A+ & 4.0 & 18.00 & 64.75 & 3.61 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline319 & 18701023 & Nadir Mahmud & 15.5 & 41.5 & 57.0 & A & 11.25&14.5 & 40.0 & 55.0 & A- & 10.5&32.0 & B & 6.0 & 11.25 & 27.0 & 39.0 & C+ & 7.5&19.5 & 35.0 & 55.0 & A- & 10.5&17.5 & 26.0 & 44.0 & B- & 8.25&20.0 & A+ & 4.0 & 18.00 & 58.00 & 3.23 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline3210 & 18701026 & Protoy Das & 17.0 & 20.0 & 37.0 & C & 6.75&12.25 & 27.5 & 40.0 & C+ & 7.5&28.0 & B- & 5.5 & 12.0 & 6.0 & 18.0 & F & 0.0&19.5 & 15.0 & 35.0 & C & 6.75&15.0 & 4.5 & 20.0 & F & 0.0&17.0 & B+ & 3.25 & 12.00 & 29.75 & 1.66 & F & F-131, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline3311 & 18701027 & Md. Jabed Hosen & 17.5 & 36.5 & 54.0 & A- & 10.5&16.5 & 34.5 & 51.0 & B+ & 9.75&32.0 & B & 6.0 & 18.0 & 24.0 & 42.0 & B- & 8.25&19.5 & 34.0 & 54.0 & A- & 10.5&19.5 & 15.0 & 35.0 & C & 6.75&22.0 & A+ & 4.0 & 18.00 & 55.75 & 3.11 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline3412 & 18701028 & Md. Touhedul Islam & 15.75 & 27.0 & 43.0 & B- & 8.25&16.75 & 32.25 & 49.0 & B+ & 9.75&35.0 & A- & 7.0 & 13.5 & 22.0 & 36.0 & C & 6.75&18.0 & 25.5 & 44.0 & B- & 8.25&18.5 & 21.0 & 40.0 & C+ & 7.5&21.0 & A+ & 4.0 & 18.00 & 51.50 & 2.87 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline3513 & 18701031 & Md. Aziz-Ul-Karim & 18.75 & 39.75 & 59.0 & A & 11.25&16.5 & 21.5 & 38.0 & C+ & 7.5&42.0 & A+ & 8.0 & 6.0 & 17.0 & 23.0 & F & 0.0&14.0 & 30.0 & 44.0 & B- & 8.25&14.0 & 17.0 & 31.0 & D & 6.0&16.0 & B & 3.0 & 15.00 & 44.00 & 2.45 & P & F-131 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline3614 & 18701032 & Abdul Aziz & 18.5 & 34.5 & 53.0 & A- & 10.5&16.5 & 36.75 & 54.0 & A- & 10.5&32.0 & B & 6.0 & 17.625 & 23.0 & 41.0 & C+ & 7.5&18.5 & 31.5 & 50.0 & B+ & 9.75&19.5 & 18.0 & 38.0 & C+ & 7.5&22.0 & A+ & 4.0 & 18.00 & 55.75 & 3.11 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline3715 & 18701033 & Abdul Kayum & 13.5 & 34.0 & 48.0 & B & 9.0&7.5 & 27.0 & 35.0 & C & 6.75&32.0 & B & 6.0 & 14.25 & 29.0 & 44.0 & B- & 8.25&18.5 & 31.5 & 50.0 & B+ & 9.75&12.5 & 18.0 & 31.0 & D & 6.0&15.0 & B & 3.0 & 18.00 & 48.75 & 2.72 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline3816 & 18701034 & Pritom Dey & 15.75 & 34.5 & 51.0 & B+ & 9.75&11.5 & 41.25 & 53.0 & A- & 10.5&31.0 & B & 6.0 & 8.25 & 26.0 & 35.0 & C & 6.75&14.5 & 34.5 & 49.0 & B+ & 9.75&11.5 & 29.0 & 41.0 & C+ & 7.5&14.0 & B- & 2.75 & 18.00 & 53.00 & 2.95 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline3917 & 18701035 & Roky Das & 18.0 & 35.5 & 54.0 & A- & 10.5&20.5 & 36.5 & 57.0 & A & 11.25&47.0 & A+ & 8.0 & 18.75 & 29.0 & 48.0 & B & 9.0&19.5 & 32.0 & 52.0 & B+ & 9.75&15.0 & 0.0 & 15.0 & F & 0.0&20.0 & A+ & 4.0 & 15.00 & 52.50 & 2.92 & P & F-121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4018 & 18701038 & Badhon & 13.67 & 38.5 & 53.0 & A- & 10.5&20.0 & 35.75 & 56.0 & A- & 10.5&31.0 & B & 6.0 & 15.375 & 31.0 & 47.0 & B & 9.0&18.5 & 31.5 & 50.0 & B+ & 9.75&19.0 & 24.0 & 43.0 & B- & 8.25&22.0 & A+ & 4.0 & 18.00 & 58.00 & 3.23 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4119 & 18701039 & Nurul Absar & 20.0 & 36.5 & 57.0 & A & 11.25&18.5 & 43.25 & 62.0 & A+ & 12.0&35.0 & A- & 7.0 & 18.375 & 37.0 & 56.0 & A- & 10.5&16.5 & 36.0 & 53.0 & A- & 10.5&18.5 & 30.0 & 49.0 & B+ & 9.75&21.0 & A+ & 4.0 & 18.00 & 65.00 & 3.62 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4220 & 18701044 & Tanveer Ahmed & 17.25 & 32.0 & 50.0 & B+ & 9.75&14.25 & 33.75 & 48.0 & B & 9.0&31.0 & B & 6.0 & 11.625 & 19.0 & 31.0 & D & 6.0&19.5 & 28.5 & 48.0 & B & 9.0&14.0 & 15.0 & 29.0 & F & 0.0&16.0 & B & 3.0 & 15.00 & 42.75 & 2.38 & P & F-121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4321 & 18701045 & Nu Shai Mong Marma & 18.25 & 35.5 & 54.0 & A- & 10.5&17.0 & 25.0 & 42.0 & B- & 8.25&30.0 & B & 6.0 & 13.875 & 0.0 & 14.0 & F & 0.0&19.0 & 29.5 & 49.0 & B+ & 9.75&14.0 & 16.0 & 30.0 & D & 6.0&15.0 & B & 3.0 & 15.00 & 43.50 & 2.42 & P & F-131 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4422 & 18701047 & Md Mosharaf Hossen Naiem & 6.5 & 22.5 & 29.0 & F & 0.0&11.75 & 31.5 & 44.0 & B- & 8.25&28.0 & B- & 5.5 & 7.5 & 18.0 & 26.0 & F & 0.0&16.0 & 24.5 & 41.0 & C+ & 7.5&12.0 & 16.0 & 28.0 & F & 0.0&14.0 & B- & 2.75 & 9.00 & 24.00 & 1.34 & F & F-111, 131, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4523 & 18701048 & Md Saifuddin Ahmed Shahed & 18.75 & 32.0 & 51.0 & B+ & 9.75&15.0 & 30.0 & 45.0 & B & 9.0&35.0 & A- & 7.0 & 15.375 & 21.0 & 37.0 & C & 6.75&16.5 & 26.0 & 43.0 & B- & 8.25&12.0 & 18.0 & 30.0 & D & 6.0&14.0 & B- & 2.75 & 18.00 & 49.50 & 2.75 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4624 & 18701049 & Nurl Mostafa Rahat & 16.0 & 33.5 & 50.0 & B+ & 9.75&14.25 & 27.0 & 42.0 & B- & 8.25&30.0 & B & 6.0 & 11.25 & 21.0 & 33.0 & D & 6.0&18.5 & 22.5 & 41.0 & C+ & 7.5&14.0 & 15.0 & 29.0 & F & 0.0&16.0 & B & 3.0 & 15.00 & 40.50 & 2.25 & P & F-121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4725 & 18701054 & Sahim Salem & 16.5 & 41.0 & 58.0 & A & 11.25&14.0 & 25.5 & 40.0 & C+ & 7.5&32.0 & B & 6.0 & 15.375 & 11.0 & 27.0 & F & 0.0&19.0 & 0.0 & 19.0 & F & 0.0&12.5 & 21.0 & 34.0 & C & 6.75&16.0 & B & 3.0 & 12.00 & 34.50 & 1.92 & F & F-131, 151 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4826 & 18701055 & Muntasir Md. Atiquzzaman Sifat & 16.75 & 28.25 & 45.0 & B & 9.0&8.5 & 19.0 & 28.0 & F & 0.0&35.0 & A- & 7.0 & 10.5 & 5.0 & 16.0 & F & 0.0&19.5 & 0.0 & 20.0 & F & 0.0&12.0 & 8.0 & 20.0 & F & 0.0&13.0 & C+ & 2.5 & 6.00 & 18.50 & 1.03 & F & F-113, 131, 151, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline4927 & 18701056 & Md. Shakawat Hossain Redoy & 17.5 & 32.5 & 50.0 & B+ & 9.75&13.0 & 28.25 & 42.0 & B- & 8.25&30.0 & B & 6.0 & 15.375 & 23.0 & 39.0 & C+ & 7.5&19.0 & 26.0 & 45.0 & B & 9.0&15.5 & 19.0 & 35.0 & C & 6.75&18.0 & A- & 3.5 & 18.00 & 50.75 & 2.83 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5028 & 18701057 & Mohsin Hossain & 20.0 & 40.5 & 61.0 & A+ & 12.0&16.0 & 42.5 & 59.0 & A & 11.25&40.0 & A+ & 8.0 & 18.375 & 39.0 & 58.0 & A & 11.25&19.5 & 36.5 & 56.0 & A- & 10.5&21.5 & 32.0 & 54.0 & A- & 10.5&24.0 & A+ & 4.0 & 18.00 & 67.50 & 3.75 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5129 & 18701058 & Papan Banik & 13.75 & 25.5 & 40.0 & C+ & 7.5&15.0 & 34.75 & 50.0 & B+ & 9.75&32.0 & B & 6.0 & 16.875 & 37.5 & 55.0 & A- & 10.5&38.0 & 0.0 & 38.0 & C+ & 7.5&15.5 & 16.0 & 32.0 & D & 6.0&17.0 & B+ & 3.25 & 18.00 & 50.50 & 2.81 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5230 & 18701060 & Mostaq Ahmed Shihab & 17.75 & 29.25 & 47.0 & B & 9.0&10.5 & 29.0 & 40.0 & C+ & 7.5&30.0 & B & 6.0 & 12.75 & 8.0 & 21.0 & F & 0.0&19.5 & 28.0 & 48.0 & B & 9.0&10.0 & 12.0 & 22.0 & F & 0.0&13.0 & C+ & 2.5 & 12.00 & 34.00 & 1.89 & F & F-131, 121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5331 & 18701061 & Shah Tareq Ahmed & 17.0 & 27.75 & 45.0 & B & 9.0&10.0 & 19.75 & 30.0 & D & 6.0&27.0 & C+ & 5.0 & 10.125 & 20.0 & 31.0 & D & 6.0&19.5 & 26.0 & 46.0 & B & 9.0&15.5 & 1.0 & 17.0 & F & 0.0&18.0 & A- & 3.5 & 15.00 & 38.50 & 2.14 & F & F-121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5432 & 18701062 & Muhammad Amjad Hossain Surat & 9.25 & 30.25 & 40.0 & C+ & 7.5&10.25 & 37.25 & 48.0 & B & 9.0&35.0 & A- & 7.0 & 16.5 & 42.0 & 59.0 & A & 11.25&19.0 & 33.5 & 53.0 & A- & 10.5&13.0 & 0.0 & 13.0 & F & 0.0&15.0 & B & 3.0 & 15.00 & 48.25 & 2.68 & P & F-121 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5533 & 18701063 & Md. Ruhul Amin & 18.5 & 32.25 & 51.0 & B+ & 9.75&13.0 & 32.5 & 46.0 & B & 9.0&30.0 & B & 6.0 & 15.75 & 23.0 & 39.0 & C+ & 7.5&17.0 & 26.5 & 44.0 & B- & 8.25&18.5 & 18.0 & 37.0 & C & 6.75&21.0 & A+ & 4.0 & 18.00 & 51.25 & 2.86 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5634 & 18701064 & Md. Sabiul Hassan & 18.75 & 40.25 & 59.0 & A & 11.25&13.75 & 31.75 & 46.0 & B & 9.0&33.0 & B+ & 6.5 & 15.0 & 30.0 & 45.0 & B & 9.0&16.5 & 27.5 & 44.0 & B- & 8.25&18.0 & 16.0 & 34.0 & C & 6.75&21.0 & A+ & 4.0 & 18.00 & 54.75 & 3.05 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5735 & 18701070 & Md. Hasin Arman & 20.0 & 42.0 & 62.0 & A+ & 12.0&18.0 & 35.75 & 54.0 & A- & 10.5&32.0 & B & 6.0 & 17.25 & 23.0 & 41.0 & C+ & 7.5&17.5 & 32.0 & 50.0 & B+ & 9.75&18.5 & 14.0 & 33.0 & D & 6.0&21.0 & A+ & 4.0 & 18.00 & 55.75 & 3.11 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5836 & 18701071 & Md. Akram Hossain & 18.5 & 40.0 & 59.0 & A & 11.25&19.25 & 39.0 & 59.0 & A & 11.25&39.0 & A & 7.5 & 17.25 & 28.0 & 46.0 & B & 9.0&19.5 & 38.0 & 58.0 & A & 11.25&15.0 & 29.0 & 44.0 & B- & 8.25&17.0 & B+ & 3.25 & 18.00 & 61.75 & 3.43 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline5937 & 18701073 & Farhad Kashem & 17.5 & 35.0 & 53.0 & A- & 10.5&12.75 & 39.75 & 53.0 & A- & 10.5&35.0 & A- & 7.0 & 12.375 & 24.0 & 37.0 & C & 6.75&17.5 & 32.5 & 50.0 & B+ & 9.75&16.5 & 18.0 & 35.0 & C & 6.75&19.0 & A & 3.75 & 18.00 & 55.00 & 3.06 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline6038 & 18701075 & Zishan Siddiqui Siam & 17.25 & 30.5 & 48.0 & B & 9.0&10.0 & 26.25 & 37.0 & C & 6.75&40.0 & A+ & 8.0 & 10.5 & 15.0 & 26.0 & F & 0.0&11.0 & 24.5 & 36.0 & C & 6.75&17.0 & 17.0 & 34.0 & C & 6.75&19.0 & A & 3.75 & 15.00 & 41.00 & 2.28 & P & F-131 & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline6139 & 18701076 & Roman Mia & 8.83 & 27.25 & 37.0 & C & 6.75&9.5 & 22.5 & 32.0 & D & 6.0&38.0 & A & 7.5 & 15.75 & 18.0 & 34.0 & C & 6.75&19.0 & 17.0 & 36.0 & C & 6.75&14.0 & 18.0 & 32.0 & D & 6.0&19.0 & A & 3.75 & 18.00 & 43.50 & 2.42 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline6240 & 18701077 & Md. Shamim Mia & 7.25 & 26.5 & 34.0 & C & 6.75&9.5 & 24.0 & 34.0 & C & 6.75&30.0 & B & 6.0 & 12.0 & 18.0 & 30.0 & D & 6.0&17.5 & 27.0 & 45.0 & B & 9.0&14.0 & 21.0 & 35.0 & C & 6.75&13.0 & C+ & 2.5 & 18.00 & 43.75 & 2.43 & P &  & Shaheed Abdur Rab\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline\pagebreak6363 & 18701030 & Tithi Rani Das & 20.5 & 35.0 & 56.0 & A- & 10.5&19.0 & 39.0 & 58.0 & A & 11.25&46.0 & A+ & 8.0 & 18.375 & 34.0 & 53.0 & A- & 10.5&18.0 & 29.0 & 47.0 & B & 9.0&19.5 & 25.0 & 45.0 & B & 9.0&22.0 & A+ & 4.0 & 18.00 & 62.25 & 3.47 & P &  & Shamsun Nahar\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline6464 & 18701037 & Sanjida Tanjir Liza & 20.5 & 41.5 & 62.0 & A+ & 12.0&12.5 & 33.75 & 47.0 & B & 9.0&28.0 & B- & 5.5 & 15.0 & 22.0 & 37.0 & C & 6.75&19.0 & 35.5 & 55.0 & A- & 10.5&18.5 & 21.0 & 40.0 & C+ & 7.5&21.0 & A+ & 4.0 & 18.00 & 55.25 & 3.08 & P &  & Shamsun Nahar\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline6565 & 18701040 & Mosharat Jahan & 19.0 & 41.75 & 61.0 & A+ & 12.0&15.5 & 43.0 & 59.0 & A & 11.25&32.0 & B & 6.0 & 19.5 & 35.0 & 55.0 & A- & 10.5&19.0 & 34.5 & 54.0 & A- & 10.5&14.0 & 27.0 & 41.0 & C+ & 7.5&16.0 & B & 3.0 & 18.00 & 60.75 & 3.38 & P &  & Shamsun Nahar\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline6666 & 18701043 & Murshida Akter & 18.5 & 47.0 & 66.0 & A+ & 12.0&17.5 & 41.5 & 59.0 & A & 11.25&32.0 & B & 6.0 & 19.5 & 46.0 & 66.0 & A+ & 12.0&19.5 & 38.5 & 58.0 & A & 11.25&18.0 & 28.0 & 46.0 & B & 9.0&20.0 & A+ & 4.0 & 18.00 & 65.50 & 3.64 & P &  & Shamsun Nahar\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline6767 & 18701046 & Israt Jahan & 15.5 & 41.5 & 57.0 & A & 11.25&11.75 & 39.25 & 51.0 & B+ & 9.75&28.0 & B- & 5.5 & 15.0 & 36.0 & 51.0 & B+ & 9.75&18.5 & 35.0 & 54.0 & A- & 10.5&17.0 & 28.0 & 45.0 & B & 9.0&19.0 & A & 3.75 & 18.00 & 59.50 & 3.31 & P &  & Shamsun Nahar\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline6868 & 18701050 & Rejoana Sultana & 17.5 & 36.5 & 54.0 & A- & 10.5&15.5 & 39.75 & 56.0 & A- & 10.5&35.0 & A- & 7.0 & 17.625 & 28.0 & 46.0 & B & 9.0&19.0 & 36.5 & 56.0 & A- & 10.5&19.5 & 13.0 & 33.0 & D & 6.0&22.0 & A+ & 4.0 & 18.00 & 57.50 & 3.20 & P &  & Shamsun Nahar\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline\pagebreak6976 & 17701007 & Afrin Sultana & 18.5 & 40.0 & 59.0 & A & 11.25&15.25 & 30.75 & 46.0 & B & 9.0&30.0 & B & 6.0 & 16.125 & 37.0 & 54.0 & A- & 10.5&19.5 & 31.5 & 51.0 & B+ & 9.75&14.0 & 27.0 & 41.0 & C+ & 7.5&18.0 & A- & 3.5 & 18.00 & 57.50 & 3.20 & P &  & Pritilata\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline7077 & 17701092 & U-Shangnu Marma & 14.58 & 21.25 & 36.0 & C & 6.75&14.75 & 31.75 & 47.0 & B & 9.0&34.0 & B+ & 6.5 & 14.625 & 2.0 & 17.0 & F & 0.0&18.5 & 27.0 & 46.0 & B & 9.0&19.5 & 20.0 & 40.0 & C+ & 7.5&0.0 & F & 0.0 & 14.00 & 38.75 & 2.16 & F & F-131, 122 & Pritilata\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline7169 & 18701051 & Sultana Tasnim Jahan & 21.5 & 37.25 & 59.0 & A & 11.25&17.75 & 34.75 & 53.0 & A- & 10.5&36.0 & A- & 7.0 & 16.5 & 26.0 & 43.0 & B- & 8.25&19.0 & 37.0 & 56.0 & A- & 10.5&19.5 & 23.0 & 43.0 & B- & 8.25&22.0 & A+ & 4.0 & 18.00 & 59.75 & 3.33 & P &  & Pritilata\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline7270 & 18701052 & Ripa Tamima & 17.25 & 37.25 & 55.0 & A- & 10.5&8.0 & 32.0 & 40.0 & C+ & 7.5&29.0 & B- & 5.5 & 12.0 & 21.0 & 33.0 & D & 6.0&19.5 & 0.0 & 20.0 & F & 0.0&11.0 & 21.0 & 32.0 & D & 6.0&13.0 & C+ & 2.5 & 15.00 & 38.00 & 2.12 & F & F-151 & Pritilata\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline7371 & 18701066 & Jannatul Naima & 9.5 & 21.25 & 31.0 & D & 6.0&9.5 & 24.25 & 34.0 & C & 6.75&28.0 & B- & 5.5 & 4.5 & 24.0 & 29.0 & F & 0.0&14.5 & 36.5 & 51.0 & B+ & 9.75&11.0 & 0.0 & 11.0 & F & 0.0&13.0 & C+ & 2.5 & 12.00 & 30.50 & 1.70 & F & F-131, 121 & Pritilata\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline7472 & 18701067 & Sejuti Saha Peu & 17.75 & 39.25 & 57.0 & A & 11.25&10.5 & 27.25 & 38.0 & C+ & 7.5&42.0 & A+ & 8.0 & 13.875 & 17.0 & 31.0 & D & 6.0&19.5 & 36.0 & 56.0 & A- & 10.5&18.5 & 19.0 & 38.0 & C+ & 7.5&21.0 & A+ & 4.0 & 18.00 & 54.75 & 3.05 & P &  & Pritilata\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline7573 & 18701069 & Ishra Naznin & 20.25 & 41.25 & 62.0 & A+ & 12.0&17.75 & 41.75 & 60.0 & A+ & 12.0&45.0 & A+ & 8.0 & 19.125 & 45.0 & 65.0 & A+ & 12.0&19.5 & 40.5 & 60.0 & A+ & 12.0&16.0 & 31.0 & 47.0 & B & 9.0&18.0 & A- & 3.5 & 18.00 & 68.50 & 3.81 & P &  & Pritilata\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline7674 & 18701072 & Afia Tasnim & 18.0 & 38.5 & 57.0 & A & 11.25&13.5 & 37.75 & 52.0 & B+ & 9.75&33.0 & B+ & 6.5 & 19.5 & 38.0 & 58.0 & A & 11.25&19.0 & 32.5 & 52.0 & B+ & 9.75&18.0 & 16.0 & 34.0 & C & 6.75&20.0 & A+ & 4.0 & 18.00 & 59.25 & 3.30 & P &  & Pritilata\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline7775 & 18701074 & Nishat Sultana Nuha & 18.25 & 33.0 & 52.0 & B+ & 9.75&19.0 & 39.75 & 59.0 & A & 11.25&35.0 & A- & 7.0 & 17.625 & 0.0 & 18.0 & F & 0.0&18.5 & 36.0 & 55.0 & A- & 10.5&17.0 & 10.0 & 27.0 & F & 0.0&19.0 & A & 3.75 & 12.00 & 42.25 & 2.36 & P & F-131, 121 & Pritilata\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline\pagebreak7878 & 18701015 & Fareen Tasneem & 16.0 & 35.25 & 52.0 & B+ & 9.75&12.0 & 34.25 & 47.0 & B & 9.0&30.0 & B & 6.0 & 11.625 & 30.0 & 42.0 & B- & 8.25&15.0 & 38.5 & 54.0 & A- & 10.5&15.0 & 22.0 & 37.0 & C & 6.75&17.0 & B+ & 3.25 & 18.00 & 53.50 & 2.98 & P &  & Deshnetri Begum Khaleda Zia\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline7979 & 18701016 & Tasmia Nuzhat & 13.75 & 36.5 & 51.0 & B+ & 9.75&13.5 & 33.0 & 47.0 & B & 9.0&35.0 & A- & 7.0 & 10.5 & 24.0 & 35.0 & C & 6.75&16.0 & 29.5 & 46.0 & B & 9.0&8.5 & 18.0 & 27.0 & F & 0.0&13.0 & C+ & 2.5 & 15.00 & 44.00 & 2.45 & P & F-121 & Deshnetri Begum Khaleda Zia\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline8080 & 18701017 & Namila Ayman & 18.0 & 35.0 & 53.0 & A- & 10.5&12.75 & 41.0 & 54.0 & A- & 10.5&35.0 & A- & 7.0 & 0.0 & 22.0 & 22.0 & F & 0.0&15.0 & 31.0 & 46.0 & B & 9.0&14.0 & 15.0 & 29.0 & F & 0.0&16.0 & B & 3.0 & 12.00 & 40.00 & 2.23 & P & F-131, 121 & Deshnetri Begum Khaleda Zia\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline8181 & 18701019 & Jannatun Naim & 17.25 & 47.75 & 65.0 & A+ & 12.0&18.75 & 34.5 & 54.0 & A- & 10.5&50.0 & A+ & 8.0 & 18.0 & 32.0 & 50.0 & B+ & 9.75&18.5 & 38.5 & 57.0 & A & 11.25&14.0 & 26.0 & 40.0 & C+ & 7.5&16.0 & B & 3.0 & 18.00 & 62.00 & 3.45 & P &  & Deshnetri Begum Khaleda Zia\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline8282 & 18701021 & Jannatul Naim & 18.75 & 42.25 & 61.0 & A+ & 12.0&17.75 & 42.75 & 61.0 & A+ & 12.0&30.0 & B & 6.0 & 16.875 & 22.0 & 39.0 & C+ & 7.5&16.0 & 36.0 & 52.0 & B+ & 9.75&21.5 & 20.0 & 42.0 & B- & 8.25&24.0 & A+ & 4.0 & 18.00 & 59.50 & 3.31 & P &  & Deshnetri Begum Khaleda Zia\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline8383 & 18701024 & Nuzat Tasnim & 20.5 & 40.0 & 61.0 & A+ & 12.0&19.5 & 41.0 & 61.0 & A+ & 12.0&48.0 & A+ & 8.0 & 19.5 & 31.0 & 51.0 & B+ & 9.75&19.5 & 30.0 & 50.0 & B+ & 9.75&16.5 & 22.0 & 39.0 & C+ & 7.5&19.0 & A & 3.75 & 18.00 & 62.75 & 3.49 & P &  & Deshnetri Begum Khaleda Zia\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline8484 & 18701025 & Shahnaz Akter Aney & 16.0 & 36.0 & 52.0 & B+ & 9.75&9.0 & 24.25 & 34.0 & C & 6.75&30.0 & B & 6.0 & 14.25 & 15.0 & 30.0 & D & 6.0&18.0 & 25.5 & 44.0 & B- & 8.25&17.5 & 16.0 & 34.0 & C & 6.75&20.0 & A+ & 4.0 & 18.00 & 47.50 & 2.64 & P &  & Deshnetri Begum Khaleda Zia\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline8585 & 18701029 & Radia Thun Tasnia & 20.0 & 35.25 & 56.0 & A- & 10.5&19.0 & 34.5 & 54.0 & A- & 10.5&47.0 & A+ & 8.0 & 18.0 & 20.0 & 38.0 & C+ & 7.5&18.5 & 32.0 & 51.0 & B+ & 9.75&22.5 & 21.0 & 44.0 & B- & 8.25&24.0 & A+ & 4.0 & 18.00 & 58.50 & 3.25 & P &  & Deshnetri Begum Khaleda Zia\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline\pagebreak8693 & 17701055 & Labanti Singha & 12.42 & 38.25 & 51.0 & B+ & 9.75&11.5 & 35.0 & 47.0 & B & 9.0&35.0 & A- & 7.0 & 12.0 & 14.0 & 26.0 & F & 0.0&19.0 & 0.0 & 19.0 & F & 0.0&16.0 & 18.0 & 34.0 & C & 6.75&16.0 & B & 3.0 & 12.00 & 35.50 & 1.98 & F & F-131, 151 & Jananatri Sheikh Hasina\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline8794 & 17701084 & Khadiza Morioum Sama & 14.0 & 38.5 & 53.0 & A- & 10.5&11.0 & 33.5 & 45.0 & B & 9.0&35.0 & A- & 7.0 & 11.625 & 13.0 & 25.0 & F & 0.0&18.5 & 36.5 & 55.0 & A- & 10.5&16.0 & 15.0 & 31.0 & D & 6.0&0.0 & F & 0.0 & 14.00 & 43.00 & 2.39 & P & F-131, 122 & Jananatri Sheikh Hasina\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline8886 & 18701001 & Purnima Miazy & 18.25 & 34.0 & 53.0 & A- & 10.5&18.0 & 38.25 & 57.0 & A & 11.25&30.0 & B & 6.0 & 18.0 & 18.0 & 36.0 & C & 6.75&19.0 & 26.0 & 45.0 & B & 9.0&18.0 & 15.0 & 33.0 & D & 6.0&21.0 & A+ & 4.0 & 18.00 & 53.50 & 2.98 & P &  & Jananatri Sheikh Hasina\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline8987 & 18701003 & Nuzhath Yesmin Niha & 17.0 & 37.75 & 55.0 & A- & 10.5&10.0 & 38.25 & 49.0 & B+ & 9.75&32.0 & B & 6.0 & 9.75 & 11.0 & 21.0 & F & 0.0&18.0 & 26.0 & 44.0 & B- & 8.25&17.0 & 12.0 & 29.0 & F & 0.0&18.0 & A- & 3.5 & 12.00 & 38.00 & 2.12 & F & F-131, 121 & Jananatri Sheikh Hasina\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline9088 & 18701004 & Jannatul Ferdous Talukdar & 17.5 & 32.25 & 50.0 & B+ & 9.75&11.75 & 23.5 & 36.0 & C & 6.75&35.0 & A- & 7.0 & 13.125 & 33.75 & 47.0 & B & 9.0&18.0 & 37.0 & 55.0 & A- & 10.5&16.0 & 30.0 & 46.0 & B & 9.0&18.0 & A- & 3.5 & 18.00 & 55.50 & 3.09 & P &  & Jananatri Sheikh Hasina\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline9189 & 18701005 & Saima Jahan Sultana & 19.0 & 42.75 & 62.0 & A+ & 12.0&18.0 & 48.25 & 67.0 & A+ & 12.0&48.0 & A+ & 8.0 & 14.25 & 37.0 & 52.0 & B+ & 9.75&18.5 & 37.0 & 56.0 & A- & 10.5&16.0 & 32.0 & 48.0 & B & 9.0&18.0 & A- & 3.5 & 18.00 & 64.75 & 3.61 & P &  & Jananatri Sheikh Hasina\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline9290 & 18701008 & Marufa Sultana & 18.25 & 40.25 & 59.0 & A & 11.25&16.25 & 44.5 & 61.0 & A+ & 12.0&42.0 & A+ & 8.0 & 19.5 & 44.0 & 64.0 & A+ & 12.0&19.5 & 33.5 & 53.0 & A- & 10.5&19.5 & 30.0 & 50.0 & B+ & 9.75&22.0 & A+ & 4.0 & 18.00 & 67.50 & 3.75 & P &  & Jananatri Sheikh Hasina\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline9391 & 18701013 & Tashin Hossain & 20.5 & 42.0 & 63.0 & A+ & 12.0&21.0 & 43.25 & 65.0 & A+ & 12.0&45.0 & A+ & 8.0 & 18.375 & 39.0 & 58.0 & A & 11.25&18.0 & 40.0 & 58.0 & A & 11.25&19.5 & 33.0 & 53.0 & A- & 10.5&22.0 & A+ & 4.0 & 18.00 & 69.00 & 3.84 & P &  & Jananatri Sheikh Hasina\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline9492 & 18701014 & Sadia Tahsin & 20.5 & 38.75 & 60.0 & A+ & 12.0&17.0 & 41.0 & 58.0 & A & 11.25&34.0 & B+ & 6.5 & 11.25 & 30.0 & 42.0 & B- & 8.25&18.5 & 26.5 & 45.0 & B & 9.0&16.5 & 24.0 & 41.0 & C+ & 7.5&19.0 & A & 3.75 & 18.00 & 58.25 & 3.24 & P &  & Jananatri Sheikh Hasina\\ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\hline\pagebreak\end{longtable}
+\end{small}
+\endgroup
+\end{document}

@@ -8,8 +8,7 @@ class ProcessingService
        ####Remove Old Caculations####
        #TabulationDetail.destroy_all
        Tabulation.where(exam_uuid:@exam.uuid).destroy_all
-       
-      
+
        #######Retrieve Registered students #########
        Registration.where(exam_uuid:@exam.uuid).each do |r|
             is_failed_in_a_course = false;
@@ -18,6 +17,7 @@ class ProcessingService
             tabulation.student_id = s.id;
             tabulation.exam_uuid = @exam.uuid
             tabulation.sl_no = r.sl_no
+            tabulation.student_type = r.student_type.to_sym
             tps = 0.0
             tce = 0.0
             remarks = []

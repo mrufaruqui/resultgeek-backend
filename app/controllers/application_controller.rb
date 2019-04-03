@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
     puts current_user.id
     puts current_user.exam_uuid
     @session = Session.find_by(uuid:current_user.session_uuid)
-    @exam = Exam.find_by(uuid: @session.exam_uuid)  
+    @exam = Exam.find_by(uuid: @session.exam_uuid)
     puts @exam.fullname
     @exam 
   end

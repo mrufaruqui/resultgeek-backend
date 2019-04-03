@@ -1,24 +1,23 @@
 class GenerateGradeSheetService
-    
     def self.create_gs_latex(options={})
         @exam = options[:exam]
+        @gradesheet_type = options[:student_type]
         @courses = Course.where(exam_uuid:@exam.uuid)
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
-   
-         options = generate_gs_view
-         perform(options)
-         true
+        data = generate_gs_view(options) 
+        perform(data)
+        true
     end
 
     def self.perform(options={})
-    File.open(Rails.root.join('reports/', @exam.uuid + '_gs.tex'), 'w') do |f| 
+    File.open(Rails.root.join('reports/', [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")), 'w') do |f| 
        f.puts latex_gs_template(options)
       end
-      @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: + 'gradesheets') || Doc.new(exam_uuid:@exam.uuid, uuid: + 'gradesheets') 
-      @doc.latex_loc = ['reports/', @exam.uuid + '_gs.tex'].join
-      @doc.latex_name = ["grade", "sheets" ,".tex"].join
-      @doc.description = ["grade", "sheets"].join("_").titlecase
+      @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @gradesheet_type.to_s + ' gradesheets') || Doc.new(exam_uuid:@exam.uuid, uuid: @gradesheet_type.to_s + ' gradesheets') 
+      @doc.latex_loc = 'reports/'+ [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")
+      @doc.latex_name = ["grade", "sheets", " ", @gradesheet_type.to_s ,".tex"].join("_")
+      @doc.description = ["grade", "sheets", @gradesheet_type.to_s].join("_").titlecase
 	  @doc.save
     end
 
@@ -35,12 +34,12 @@ class GenerateGradeSheetService
 
     def self.generate_gs_view(options={})
       a = []
-      @tab = Tabulation.where(exam_uuid:@exam.uuid)
+      @tab = Tabulation.where(exam_uuid:@exam.uuid, student_type: @gradesheet_type.to_s)
       @tab.each do |t| 
         @retHash = Hash.new
         @retHash[:gpa] = t.gpa
         @retHash[:result] = t.result
-        @retHash[:tce] = t.tce
+        @retHash[:tce] = t.tce.round
         @retHash[:roll] = t.student.roll
         @retHash[:name] = t.student.name
         @retHash[:hall] = t.student.hall_name;
@@ -107,7 +106,7 @@ class GenerateGradeSheetService
 
                 \\smallskip
 
-                {\\large {\\sc Grade Sheet}}\\\\
+                {\\large {\\sc Grade Sheet #{ '(Improvement)' if  @gradesheet_type ==  :improvement }}}\\\\
 
                 \\smallskip
                 \\textsc{#{@exam.fullname}}\\\\
