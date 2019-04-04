@@ -88,7 +88,7 @@ class GenerateSummationLatexService
     end
 
      def summation_header(course)
-      a =  <<-EOF
+     <<-EOF
     \\centering
     \\begin{minipage}[m]{.8\\textwidth} \\centering 
     %\\includegraphics[width=0.6in]{cu-logo.jpg}
@@ -101,21 +101,23 @@ class GenerateSummationLatexService
     \\end{minipage} 
     \\begin{center} 
 	\\renewcommand{\\arraystretch}{1.08}
-    \\begin{small}
-    EOF
-    b_theory =  <<-EOF
+    \\begin{small} 
+    
+    #{ course.course_type == "theory" ? 
+    <<-EOF
     \\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \\hline
 	\\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CA}  & 	\\multirow{2}{*}{CT}  & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{c|}{Section A}& \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{Marks}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
-	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\\\ \\hline
-    EOF
-
-    b_lab  =  <<-EOF
+    &  &  &  & Code A & Marks A & Code B & Marks B&  &  \\\\ \\hline
+     EOF
+    :
+    <<-EOF
     \\begin{tabular}{|l|c|} \\hline
 	\\multirow{2}{*}{ID} & 	 	 	\\multirow{2}{*}{Total Marks}  \\\\ 
 	&     \\\\ \\hline
+     EOF
+     }
     EOF
-     return course.course_type == "theroy" ? a + b_theory : a + b_lab 
-     end
+    end
 
      def summation_footer
         <<-EOF
