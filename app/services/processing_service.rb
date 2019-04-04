@@ -1,16 +1,26 @@
 class ProcessingService
    def self.perform(options={})
-       #######Retrieve exam info or default last one##########
-       #@exam = (options.include? :exam_uuid) ? Exam.find_by(uuid:options[:exam_uuid]) : Exam.last
-       @exam = options[:exam]
-       courses = Course.where(exam_uuid:@exam.uuid)
+       #######Retrieve exam info ##########
+        @exam = options[:exam]
+        @courses = Course.where(exam_uuid:@exam.uuid)
 
        ####Remove Old Caculations####
        #TabulationDetail.destroy_all
        Tabulation.where(exam_uuid:@exam.uuid).destroy_all
+       process_result_regular
+  end
+ 
+  ###Format CGPA According to CU Syndicate Directions ####
 
-       #######Retrieve Registered students #########
-       Registration.where(exam_uuid:@exam.uuid).each do |r|
+  def self.format_gpa(gpa)
+    third_decimal = ((gpa.round(3) - gpa.round(2)) * 1000).to_i
+    fourth_decimal = ((gpa.round(4) - gpa.round(3)) * 10000).to_i
+    third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
+  end
+
+  def self.process_result_regular
+    #######Retrieve Registered  Regular Studentsstudents #########
+     Registration.where(exam_uuid:@exam.uuid,:student_type=>:regular).each do |r|
             is_failed_in_a_course = false;
             s = r.student
             tabulation = Tabulation.find_by(student_id:s.id) || Tabulation.new
@@ -22,7 +32,7 @@ class ProcessingService
             tce = 0.0
             remarks = []
             sm_a = []
-            courses.each do |c|
+            @courses.each do |c|
                 sm = Summation.find_by(student_id:s.id, course_id: c.id) || Summation.create(student_id:s.id, course_id: c.id, gpa:'X', grade:0)
                # if sm.gpa != 'X' #!sm.blank? || !sm.nil?
                     td = TabulationDetail.find_by(:tabulation_id=>tabulation.id, :summation_id=>sm.id)  || TabulationDetail.new
@@ -40,7 +50,7 @@ class ProcessingService
             end
             #tabulation.summations = sm_a;
 
-            gpa = tps > 0 ? format_gpa(tps / 18.to_f) : 0.00
+            gpa = tps > 0 ? format_gpa(tps / Course.where(exam_id:@exam.id).sum(:credit).to_f) : 0.00
             s.gpa = gpa
             s.save
             tabulation.gpa = gpa #gpa.round(2);
@@ -48,22 +58,7 @@ class ProcessingService
             tabulation.result = (gpa >= 2.20) ? 'P' : 'F'
             tabulation.remarks = 'F-' + remarks.join(", ") if is_failed_in_a_course  
             tabulation.save
-       end
+            end
      true  
   end
- 
-  ###Format CGPA According to CU Syndicate Directions ####
-
-  def self.format_gpa(gpa)
-    third_decimal = ((gpa.round(3) - gpa.round(2)) * 1000).to_i
-    fourth_decimal = ((gpa.round(4) - gpa.round(3)) * 10000).to_i
-    third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
-  end
-
-#   def self.get_tenant
-#     @session = Session.find_by(uuid:current_user.session_uuid)
-#     @exam = Exam.find_by(uuid: @session.exam_uuid)
-#     @exam 
-#   end
-
 end

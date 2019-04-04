@@ -55,9 +55,14 @@ class ExamsController < ApplicationController
    end
 
    def generate_tabulations_latex
-    # @status =   GenerateTabulationLatexService.create_tabulation_latex({:exam=>@exam})
-     @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:regular})
-      @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:improvement})
+       @status =   GenerateTabulationLatexService.create_tabulation_latex({:exam=>@exam})
+       @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:regular})
+       @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:improvement})
+       render json: {:message=>"Job Submitted", :status=> @status}
+   end
+   
+   def generate_tabulations_xls
+       @status =    GenerateTabulationXlsService.perform({:exam=>@exam})
        render json: {:message=>"Job Submitted", :status=> @status}
    end
 
@@ -86,8 +91,8 @@ class ExamsController < ApplicationController
 
    def reset_exam_result
     #  TabulationDetail.destroy_all
-      Tabulation.where(exam_uuid:@current_exam.uuid).destroy_all
-      Summation.where(exam_uuid:@current_exam.uuid).destroy_all
+      Tabulation.where(exam_uuid:@exam.uuid).destroy_all
+      Summation.where(exam_uuid:@exam.uuid).destroy_all
       render json: {:message=>"Job Submitted", :status=> true}
    end
   

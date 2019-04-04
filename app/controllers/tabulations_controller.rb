@@ -43,6 +43,21 @@ class TabulationsController < ApplicationController
     @tabulation.destroy
   end
 
+
+  def import
+      @courses = Course.where(exam_uuid:@exam.uuid)
+      Tabulation.where(exam_uuid:@exam.uuid, :record_type=>:previous).destroy_all
+      data = params[:file]
+      header = data[0]
+      body = data - [header]
+      body.each do |i| 
+        row = Hash[[header.map(&:downcase), i].transpose].symbolize_keys
+        create_tabulation_row row
+      end  
+     render :index
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tabulation
@@ -53,26 +68,10 @@ class TabulationsController < ApplicationController
     def tabulation_params
       params.require(:tabulation).permit(:student_id, :gpa, :tce, :result, :remarks, :exam_uuid)
     end
-    # def generate_tabulations_view
-    #   a = []
-    #     @tab =  Tabulation.where(exam_uuid: @exam.uuid)
-    #     @tab.each do |t| 
-    #       @retHash = Hash.new
-    #       @retHash[:tabulation] = t;
-    #       @retHash[:student] = t.student;
-    #       @retHash[:summations] = []
-    #       t.tabulation_details.each do |td|
-    #         @retHash[:summations] << td.summation
-    #       end
-    #       puts @retHash
-    #       a << @retHash
-    #   end
-    #   a
-    # end
 
     def generate_tabulations_view
         a = []
-        @tab =  Tabulation.where(exam_uuid: @exam.uuid).order(:sl_no)
+        @tab =  Tabulation.where(exam_uuid: @exam.uuid, :record_type=>:current).order(:sl_no)
         @tab.each do |t| 
         @retHash = Hash.new
         @retHash[:sl_no] = t.sl_no
@@ -90,6 +89,7 @@ class TabulationsController < ApplicationController
             ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
             if td.summation.course.course_type === "lab"
                @retHash[td.summation.course.code + '_mo'] = td.summation.total_marks
+               @retHash[td.summation.course.code + '_pr'] = td.summation.percetage
                @retHash[td.summation.course.code + '_lg'] = td.summation.gpa
                @retHash[td.summation.course.code + '_gp'] = td.summation.grade
                @retHash[td.summation.course.code + '_ps'] = ps 
@@ -97,6 +97,7 @@ class TabulationsController < ApplicationController
                @retHash[td.summation.course.code + '_cact'] = td.summation.cact
                @retHash[td.summation.course.code + '_fem'] = td.summation.marks
                @retHash[td.summation.course.code + '_mo'] = td.summation.total_marks
+               @retHash[td.summation.course.code + '_pr'] = td.summation.percetage
                @retHash[td.summation.course.code + '_lg']  = td.summation.gpa
                @retHash[td.summation.course.code + '_gp'] = td.summation.grade
                @retHash[td.summation.course.code + '_ps'] = ps 
@@ -110,6 +111,57 @@ class TabulationsController < ApplicationController
           a << @retHash
       end
       a
+    end
+
+
+
+    def create_tabulation_row row
+      student =   Student.find_by(roll: row[:roll])
+      r = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid )  
+      if r
+              # r.student_type = :improvement
+              # r.student = student
+              # r.save
+              is_failed_in_a_course = false;
+              s = r.student
+              tabulation = Tabulation.find_by(student_id:s.id) || Tabulation.new
+              tabulation.student_id = s.id;
+              tabulation.exam_uuid = @exam.uuid
+              tabulation.sl_no = r.sl_no
+              tabulation.student_type = :improvement
+              tabulation.record_type = :previous
+              tps = row[:tps]
+              tce = row[:tce]
+              #sm_a = []
+             @courses.each do |c|
+                  summation = Summation.find_by(exam_uuid:@exam.uuid, course:c, student: s) || Summation.new
+                  summation.student = student
+                  summation.course = c
+                  summation.record_type = :previous
+               if c.course_type === "theory" 
+                  summation.cact = row[(c.code.downcase+'cact').to_sym] 
+                  summation.marks = row[(c.code.downcase+'fem').to_sym] 
+                  summation.total_marks = row[(c.code.downcase+'mo').to_sym]
+                else 
+                  summation.total_marks = row[(c.code.downcase+'mo').to_sym]
+                end
+
+                summation.percetage =  row[(c.code.downcase+'pr').to_sym]
+                summation.gpa = row[(c.code.downcase+'lg').to_sym]
+                summation.grade = row[(c.code.downcase+'gp').to_sym]
+                summation.save
+                td = TabulationDetail.find_by(:tabulation_id=>tabulation.id, :summation_id=>summation.id)  || TabulationDetail.new
+                td.tabulation = tabulation
+                td.summation  = summation
+                td.save
+             end
+              tabulation.gpa = row[:gpa].to_f
+              tabulation.tce = row[:tce].to_f
+              tabulation.result = row[:result]
+              tabulation.remarks = row[:remarks]
+              #tabulation.remarks = 'F-' + remarks.join(", ") if is_failed_in_a_course  
+              tabulation.save
+      end
     end
 end
 

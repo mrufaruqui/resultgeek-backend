@@ -49,7 +49,6 @@ class GenerateTabulationLatexService < TabulationBaseService
 
          footer = tabulation_footer
          header + main + footer
-         #GenerateTabulationXlsService.perform(tab_xls)
     end
 
    

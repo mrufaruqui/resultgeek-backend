@@ -6,7 +6,7 @@ class SummationsController < ApplicationController
   # GET /summations
   # GET /summations.json
   def index
-    @summations = Summation.where(exam_uuid:@exam.uuid)
+    @summations = Summation.where(exam_uuid:@exam.uuid, :record_type => "current")
   end
 
   # GET /summations/1
@@ -43,26 +43,45 @@ class SummationsController < ApplicationController
   end
 
    def import
-
       data = params[:file]
       @course = Course.find_by(id: params[:course_id])
     if !@course.blank?
       
       ##Destroy previous data
-      Tabulation.destroy_all
-      Summation.where(course_id:@course.id).destroy_all
-
+      Tabulation.where(exam_uuid:@exam.uuid).destroy_all
+      Summation.where(exam_uuid:@exam.uuid, course_id:@course.id).destroy_all
       header = data[0]
       body = data - [header]
       body.each do |i| 
         row = Hash[[header, i].transpose].symbolize_keys
+        create_summation row
+      end  
+     render :index
+    else  
+      render json: @course.errors, status: :unprocessable_entity
+    end
+  end
+  def get_by_course_id
+    c = Course.find_by(id:params[:id]);
+    @summations = Summation.where(exam_uuid:@exam.uuid,:course_id=>c.id)
+    render :index
+  end
+  private
+      def set_summation
+      @summation = Summation.find(params[:id])
+    end
+
+     def summation_params
+      params.require(:summation).permit(:assesment, :attendance, :section_a_marks, :section_b_marks, :total_marks, :gpa, :grade, :exam_uuid)
+    end
+
+     def create_summation(row)
         student =   Student.find_by(roll: row[:roll]) || Student.create(:roll=>row[:roll])
-        summation = Summation.find_by(student_id: student.id, course_id: @course.id) || Summation.new
+        registration = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid ) || Registration.new
+        summation = Summation.find_by(student_id: registration.student_id, course_id: @course.id) || Summation.new
         summation.exam_uuid = @exam.uuid 
-        summation.student =   student
+        summation.student =   registration.student
         summation.course   =  @course 
-        
-        
         if @course.course_type === "theory"
           puts "theory course"
           summation.assesment = row[:ct]
@@ -89,29 +108,7 @@ class SummationsController < ApplicationController
         summation.gpa = ret[:lg]
         summation.grade = ret[:ps]
         summation.save
-      end  
-     render :index
-    else  
-      render json: @course.errors, status: :unprocessable_entity
-    end
-  end
-  def get_by_course_id
-    c = Course.find_by(id:params[:id]);
-    @summations = Summation.where(:course_id=>c.id)
-    render :index
-  end
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_summation
-      @summation = Summation.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the whitce list through.
-    def summation_params
-      params.require(:summation).permit(:assesment, :attendance, :section_a_marks, :section_b_marks, :total_marks, :gpa, :grade, :exam_uuid)
-    end
-
-     
+     end 
 
     def calculate_grade(p)
       retHash = {}

@@ -17,7 +17,7 @@ class GenerateTabulationXlsService < TabulationBaseService
              sheet.add_row [tr[:roll], tr[:name]] + cr.flatten + [tr[:tce], tr[:tps], tr[:gpa], tr[:result], tr[:remarks], tr[:hall]]
          end
         end
-        p.serialize("reports/" + @exam.uuid+".xls")
+        p.serialize("reports/" + @exam.uuid+".xlsx")
      end
       true
     end

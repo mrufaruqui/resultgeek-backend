@@ -15,7 +15,8 @@
 #
 
 class Tabulation < ApplicationRecord
-    enum student_type: [:regular, :improvement]
+    enum student_type: [:regular, :improvement, :irregular]
+    enum record_type: [:current, :previous]
     belongs_to :student
     has_many   :tabulation_details,:dependent=> :destroy
     scope :with_tabulation_details, -> {includes(:tabulation_details)} 

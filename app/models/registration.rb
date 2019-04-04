@@ -14,7 +14,7 @@
 #
 
 class Registration < ApplicationRecord
-    enum student_type: [:regular, :improvement]
+     enum student_type: [:regular, :improvement]
      belongs_to :student
      belongs_to :exam
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190403124652) do
+ActiveRecord::Schema.define(version: 20190404004131) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20190403124652) do
     t.float "percetage", limit: 24
     t.float "cact", limit: 24
     t.string "exam_uuid"
+    t.integer "record_type", limit: 1, default: 0
     t.index ["course_id"], name: "index_summations_on_course_id"
     t.index ["student_id"], name: "index_summations_on_student_id"
   end
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(version: 20190403124652) do
     t.string "exam_uuid"
     t.integer "sl_no"
     t.integer "student_type", limit: 1, default: 0
+    t.integer "record_type", limit: 1, default: 0
     t.index ["student_id"], name: "index_tabulations_on_student_id", unique: true
   end
 

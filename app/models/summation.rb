@@ -24,6 +24,7 @@
 #
 
 class Summation < ApplicationRecord
+      enum record_type: [:current, :previous]
       belongs_to :student
       belongs_to :course
 end

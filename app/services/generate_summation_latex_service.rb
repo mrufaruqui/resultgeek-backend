@@ -25,14 +25,14 @@ class GenerateSummationLatexService
     end
 
     def write_to_latex_file(course)
-     File.open(Rails.root.join('reports', course.code + @exam.uuid + '_summation.tex'), 'w') do |f|
+     File.open(Rails.root.join('reports', course.code.downcase + @exam.uuid + '_summation.tex'), 'w') do |f|
        puts "writing latex file:"
-       puts Rails.root.join('reports', course.code + @exam.uuid + '_summation.tex')
+       puts Rails.root.join('reports', course.code.downcase + @exam.uuid + '_summation.tex')
        f_data = latex_summation_template(course)
        f.puts f_data
 
       @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: course.code.downcase + '_summation') || Doc.new(exam_uuid:@exam.uuid, uuid:course.code.downcase + '_summation') 
-	  @doc.latex_loc = ['reports/', course.code + @exam.uuid + '_summation.tex'].join
+	  @doc.latex_loc = ['reports/', course.code.downcase + @exam.uuid + '_summation.tex'].join
       @doc.latex_name = [course.code.downcase, '_summation.tex'].join
       @doc.latex_str = Base64.encode64(f_data)
       @doc.description = [course.code.upcase, "Summation", "Sheet"].join(" ")
@@ -67,7 +67,11 @@ class GenerateSummationLatexService
     end
 
     def summation_table_row(sm)
-      [sm.student.roll, sm.attendance,sm.assesment, sm.cact, sm.section_a_code, sm.section_a_marks, sm.section_b_code, sm.section_b_marks, sm.marks, sm.total_marks].join(" & ") 
+      if sm.course.course_type == "theory"
+        [sm.student.roll, sm.attendance,sm.assesment, sm.cact, sm.section_a_code, sm.section_a_marks, sm.section_b_code, sm.section_b_marks, sm.marks, sm.total_marks].join(" & ") 
+      else
+        [sm.student.roll, sm.total_marks].join(" & ") 
+      end
     end
 
     def latex_preamble
@@ -84,7 +88,7 @@ class GenerateSummationLatexService
     end
 
      def summation_header(course)
-        <<-EOF
+      a =  <<-EOF
     \\centering
     \\begin{minipage}[m]{.8\\textwidth} \\centering 
     %\\includegraphics[width=0.6in]{cu-logo.jpg}
@@ -97,11 +101,20 @@ class GenerateSummationLatexService
     \\end{minipage} 
     \\begin{center} 
 	\\renewcommand{\\arraystretch}{1.08}
-	\\begin{small}
+    \\begin{small}
+    EOF
+    b_theory =  <<-EOF
     \\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \\hline
 	\\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CA}  & 	\\multirow{2}{*}{CT}  & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{c|}{Section A}& \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{Marks}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
 	&  &  &  & Code A & Marks A & Code B & Marks B&  &  \\\\ \\hline
-	EOF
+    EOF
+
+    b_lab  =  <<-EOF
+    \\begin{tabular}{|l|c|} \\hline
+	\\multirow{2}{*}{ID} & 	 	 	\\multirow{2}{*}{Total Marks}  \\\\ 
+	&     \\\\ \\hline
+    EOF
+     return course.course_type == "theroy" ? a + b_theory : a + b_lab 
      end
 
      def summation_footer
