@@ -41,7 +41,7 @@ class GenerateSummationLatexService
     end
    
     def latex_summation_template(course)
-          no_sm_entries = Summation.where(course_id:course.id, exam_uuid:@exam.uuid).count
+          no_sm_entries = Summation.where(course_id:course.id, exam_uuid:@exam.uuid, :record_type=>:current).count
           batch_size = (no_sm_entries % 35 == 0) ? no_sm_entries / 35.to_i : (no_sm_entries / 35.to_i) + 1.to_i
           
           sm_sheet = ''
@@ -97,7 +97,7 @@ class GenerateSummationLatexService
 	\\textsc{Department of Computer Science \\& Engineering}\\\\
 	\\textsc{ #{@exam.fullname}}\\\\
     {\\large {\\sc Summation Sheet}}\\\\  
-     {\\centering #{course.code} : #{course.title}     Credit : #{course.credit} } \\\\
+     {\\centering #{course.display_code} : #{course.title}     Credit : #{course.credit} } \\\\
     \\end{minipage} 
     \\begin{center} 
 	\\renewcommand{\\arraystretch}{1.08}

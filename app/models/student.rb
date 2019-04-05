@@ -17,8 +17,7 @@ class Student < ApplicationRecord
   require 'roo'
     attr_accessor :file
     attr_accessor :students_info
-     default_scope { order({hall: :asc}, :roll) }
-
+    default_scope { order({hall: :asc}, :roll) } 
     has_many :registrations
     has_many :exams, through: :registrations
 

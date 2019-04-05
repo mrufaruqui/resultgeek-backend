@@ -34,13 +34,13 @@ Teacher.create(title:'Dr.', fullname:'Kazi Ashrafuzzaman', designation: :associa
 Teacher.create(title:'Dr.', fullname:'Osiur Rahman', designation: :professor, email:'osiur.ukm@gmail.com', dept: Dept.find_by(code:'CSE'))
 Teacher.create(title:'Ms.', fullname:'Nasrin Akther', designation: :assistant_professor, email:'nasrin1219@gmail.com', dept: Dept.find_by(code:'CSE'))
 
-Workforce.destroy_all
-Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "chairman") 
-Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "member")
-Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Nasrin%'), role: "member")
-Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "tabulator")
-Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "tabulator")
-Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Osiur%'), role: "tabulator")
+# Workforce.destroy_all
+# Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "chairman") 
+# Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "member")
+# Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Nasrin%'), role: "member")
+# Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "tabulator")
+# Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "tabulator")
+# Workforce.create(exam_uuid:Exam.last.uuid, exam:Exam.last, teacher: Teacher.find_by('fullname LIKE ?', '%Osiur%'), role: "tabulator")
 
 #####Student registration###############
 Student.all.each { |s| Registration.create(student:s, exam:Exam.first, exam_uuid:Exam.first.uuid, student_type:"regular") }

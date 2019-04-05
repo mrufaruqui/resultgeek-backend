@@ -284,7 +284,7 @@ EOF
 	 
     a = ''
     @courses.each  do |course|
-        a << "\\hline  " << [course.code, course.title, course.credit, course.credit * 25].join(' & ') << "  \\\\\n"
+        a << "\\hline  " << [course.display_code, course.title, course.credit, course.credit * 25].join(' & ') << "  \\\\\n"
     end
  _course_info_b = a
  

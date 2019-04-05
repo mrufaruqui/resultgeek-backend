@@ -1,14 +1,14 @@
-class GenerateTabulationLatexV2Service < TabulationBaseService
+class GenerateTabulationLatexV3Service < TabulationBaseService
 	def perform(options={})
 	    @student_type = options[:student_type]
 	    @exam = options[:exam]
-		@courses = Course.where(exam_uuid:@exam.uuid)
+		@courses = Course.where(exam_uuid:@exam.uuid).order(:sl_no)
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
         @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
 		@hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
 		@tco = Course.where(exam_uuid:@exam.uuid).sum(:credit).round
-		@hall_name = ' '
+		@hall_name = ''
       File.open( Rails.root.join('reports/', [@exam.uuid, @student_type.to_s, 'tabulation_v2.tex'].join("_")), 'w') do |f| 
        f.puts tabulation(options)
 	  end
@@ -66,52 +66,74 @@ part_a =<<-EOF
 \\setlength\\tabcolsep{4.65pt}
 \\setlength\\extrarowheight{3pt}
 \\begin{small}
-\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.88in}|*{5}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{3}{c}| *{5}{c}| *{5}{c}| cc|cc |>{\\centering}p{0.5in} p{0.5in}}\\toprule\\toprule%
+%%\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.88in}|*{4}{c}| *{3}{c}| *{4}{c}| *{3}{c}| *{4}{c}| *{3}{c}| *{4}{c}|*{3}{c}|*{4}{c}| cc|cc |>{\\centering}p{0.5in}p{0.5in}}\\toprule\\toprule \\\\  
 EOF
+
+c=[]
+c << "\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.88in}"
+@courses.each do | course|
+	if course.course_type == "theory"	
+		c << "*{4}{c}" 
+	else
+		c << "*{2}{c}" 
+	end
+end 
+part_a_a = c.join("|") + "| cc|cc |>{\\centering}p{0.5in} p{0.5in}}\\toprule\\toprule \n"
 
 a=[]
 a << "\\multirow{2}{*}{SL\\#}" << "\\multirow{2}{*}{ID}" << "\\multirow{2}{*}{{Name}}"
 @courses.each do | course|
 	if course.course_type == "theory"	
-		a << "\\multicolumn{5}{c|}{#{course.display_code} (Cr: #{course.credit})}" 
+		a << "\\multicolumn{4}{c|}{#{course.display_code} (Cr: #{course.credit})}" 
 	else
-		a << "\\multicolumn{3}{c|}{#{course.display_code} (Cr: #{course.credit})}" 
+		a << "\\multicolumn{2}{c|}{#{course.display_code} (Cr: #{course.credit})}" 
 	end
 end 
 a << "\\multirow{2}{*}{TCE}" << "\\multirow{2}{*}{TPS}" << "\\multirow{2}{*}{GPA}" << "\\multirow{2}{*}{\\rot{ Result }}" <<"\\multirow{2}{*}{Remark}" << "\\multirow{2}{*}{\\hspace*{3ex}{Hall}}"
-part_b = a.join(" &") + "\\\\"
+part_b =   a.join(" &") + "\\\\\n"
 
-part_c = <<-EOF
-%\\cmidrule(lr){4-8}  \\cmidrule(lr){9-13} \\cmidrule(lr){14-16} \\cmidrule(lr){17-21} \\cmidrule(lr){22-24} \\cmidrule(lr){25-29} \\cmidrule(lr){30-34} 
-%& & & CA & {Final} & MO & LG   & CA & {Final} & MO & LG   & MO & LG   & CA & {Final} & MO & LG   & MO & LG   & CA & {Final} & MO & LG   & CA & {Final} & MO & LG   & & & & &  \\\\
-\\midrule \\endfirsthead \\toprule\\toprule 
-EOF
+ 
 
-part_f = <<-EOF
-\\multirow{2}{*}{SL\\#} & \\multirow{2}{*}{ID} & \\multirow{2}{*}{{Name}} & \\multicolumn{5}{c|}{CSE 111 (Cr: 3)} & \\multicolumn{5}{c|}{CSE 113 (Cr: 3)} & \\multicolumn{3}{c|}{CSE 114 (Cr: 2)} & \\multicolumn{5}{c|}{EEE 121 (Cr: 3)} & \\multicolumn{3}{c|}{EEE 122 (Cr: 1)} & \\multicolumn{5}{c|}{MAT 131 (Cr: 3)} & \\multicolumn{5}{c|}{STA 151 (Cr: 3)} & \\multirow{2}{*}{TCE} & \\multirow{2}{*}{TPS} & \\multirow{2}{*}{GPA} & \\multirow{2}{*}{\\rot{ Result }} & \\multirow{2}{*}{Remark}} \\\\ 
-%\\cmidrule(lr){4-8}  \\cmidrule(lr){9-13} \\cmidrule(lr){14-16} \\cmidrule(lr){17-21} \\cmidrule(lr){22-24} \\cmidrule(lr){25-29} \\cmidrule(lr){30-34}
-%& & & CA & {Final} & MO & LG   & CA & {Final} & MO & LG   & MO & LG   & CA & {Final} & MO & LG   & MO & LG   & CA & {Final} & MO & LG   & CA & {Final} & MO & LG   & & & & &  \\\\
-EOF
+a=[]
+a << "\\cmidrule(lr){4-7}  \\cmidrule(lr){8-9} \\cmidrule(lr){10-13} \\cmidrule(lr){14-15} \\cmidrule(lr){16-19} \\cmidrule(lr){20-21} \\cmidrule(lr){22-25}\\cmidrule(lr){26-27} \\cmidrule(lr){28-31}\n"
+a << "& &"
+
+@courses.each do | course|
+	if course.course_type == "theory"	
+		a << "CA & FEM & MO & LG" 
+	else
+		a << "MO & LG" 
+	end
+end 
+ 
+
+
+part_c = a.join(" &") + "& & & & &  \\\\  \\midrule \\endfirsthead \\toprule\\toprule \n "
+
+part_f = part_b + a.join(" &") + " & & & & & \\\\"
+
+# <<-EOF
+# \\multirow{2}{*}{SL\\#} & \\multirow{2}{*}{ID} & \\multirow{2}{*}{{Name}} & \\multicolumn{5}{c|}{CSE 111 (Cr: 3)} & \\multicolumn{5}{c|}{CSE 113 (Cr: 3)} & \\multicolumn{3}{c|}{CSE 114 (Cr: 2)} & \\multicolumn{5}{c|}{EEE 121 (Cr: 3)} & \\multicolumn{3}{c|}{EEE 122 (Cr: 1)} & \\multicolumn{5}{c|}{MAT 131 (Cr: 3)} & \\multicolumn{5}{c|}{STA 151 (Cr: 3)} & \\multirow{2}{*}{TCE} & \\multirow{2}{*}{TPS} & \\multirow{2}{*}{GPA} & \\multirow{2}{*}{\\rot{ Result }} & \\multirow{2}{*}{Remark}} \\\\ 
+# \\cmidrule(lr){4-8}  \\cmidrule(lr){9-13} \\cmidrule(lr){14-16} \\cmidrule(lr){17-21} \\cmidrule(lr){22-24} \\cmidrule(lr){25-29} \\cmidrule(lr){30-34}
+#  & & CA & FEM & MO & LG   & CA & FEM & MO & LG   & MO & LG   & CA & FEM & MO & LG   & MO & LG   & CA & FEM & MO & LG   & CA & FEM & MO & LG   & & & & &  \\\\
+# EOF
 
 part_d =<<-EOF
-\\midrule \\endhead \\bottomrule \\endfoot \\endlastfoot 
-% \\ifnumcomp{\\value{csvrow}}{>}{20}{}{\\toContinue} and \\ifnumcomp{\\value{page}}{<}{2}{\\toContinue}{} worked in a weird way!!
-%\\csvreader[head to column names,late after line=\\csvifoddrow{\\\\[1.9ex]\\midrule\\rowcolor{white}} {\\\\[1.9ex]\\midrule\\rowcolor{gray!10}} \\ifnumcomp{\\value{csvrow}}{=}{\\realrows}{\\pagebreak\\Dummywarning} {}]{rawextra.csv}{}
-% \\csvreader[head to column names,late after line=\\csvifoddrow{\\\\[1.8ex]\\midrule\\rowcolor{white}}{\\ifismultiple{\\thecsvrow}{14}{\\\\\\pagebreak}{\\\\[1.8ex]}\\midrule\\rowcolor{gray!10}}\\ifnumcomp{\\value{csvrow}}{=}{35}{\\pagebreak}{}]{rawextra.csv}{}%  ****** THIS WORKS, for integer multiple of lines
-%{\\thecsvrow & \\ID & \\name & \\numtwo{\\ica} & \\numtwo{\\ifnl} & {\\itot} &  {\\ilg} &  \\numtwo{\\ips} & \\numtwo{\\iica} & \\numtwo{\\iifnl} & \\iitot & \\iilg & \\numtwo{\\iips} & \\iiitot & \\iiilg & \\numtwo{\\iiips} & \\numtwo{\\ivca} & \\numtwo{\\ivfnl} & \\ivtot & \\ivlg & \\numtwo{\\ivps} & \\vtot & \\vlg & \\numtwo{\\vips} & \\numtwo{\\vica} & \\numtwo{\\vifnl} & \\vitot & \\vilg & \\numtwo{\\vips} & \\numtwo{\\viica} & \\numtwo{\\viifnl} & \\viitot & \\viilg & \\numtwo{\\viips} & \\tce & \\numtwo{\\tps} & \\numtwo{\\gpa} & \\pf & \\rem & \\hall}
+\\midrule \\endhead \\bottomrule \\endfoot \\endlastfoot \n
 EOF
 
-part_a + part_b + part_c + part_d
+part_a + part_a_a + part_b + part_c + part_f + part_d
     end
 
 def tabulation_table
 #   <<-EOF
 #    {\\SL & \\ID & \\name & \\numtwo{\\ica} & \\numtwo{\\ifnl} & {\\itot} &  {\\ilg} &  \\numtwo{\\ips} & \\numtwo{\\iica} & \\numtwo{\\iifnl} & \\iitot & \\iilg & \\numtwo{\\iips} & \\iiitot & \\iiilg & \\numtwo{\\iiips} & \\numtwo{\\ivca} & \\numtwo{\\ivfnl} & \\ivtot & \\ivlg & \\numtwo{\\ivps} & \\vtot & \\vlg & \\numtwo{\\vips} & \\numtwo{\\vica} & \\numtwo{\\vifnl} & \\vitot & \\vilg & \\numtwo{\\vips} & \\numtwo{\\viica} & \\numtwo{\\viifnl} & \\viitot & \\viilg & \\numtwo{\\viips} & \\tce & \\numtwo{\\tps} & \\numtwo{\\gpa} & \\pf & \\hall}
-#    EOF 
+#    EOF
   a=''
   @hall_list.each do |hall|
-	@hall_name = hall
-	Tabulation.where(student_type:@student_type).joins(:student).merge(Student.where(hall_name:hall)).each do |t| 
+    @hall_name = hall 
+    puts @hall_name
+	Tabulation.where(student_type:@student_type, hall_name:hall).order(:sl_no).each do |t| 
 	  a<<tabulation_row(generate_single_page_tabulation(t))
 	 end
 	 a << '\\pagebreak'
@@ -132,7 +154,7 @@ def tabulation_footer
 	def tabulation_row(data)
 		 a = ''
           a << [data[:sl_no], data[:roll], data[:name]].join(' & ') << ' & '   
-          Course.all.each do |course|
+          @courses.each do |course|
             if course.course_type === "lab"
                 a << [data[course.code][:mo], data[course.code][:lg]].join(' & ') << ' & ' if data.include? course.code
              else
@@ -140,7 +162,7 @@ def tabulation_footer
              end
           end
 
-         a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks]].join(' & ')   #"\\multirow{3}{*}{#{data[:remarks]}}"
+         a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks], data[:hall]].join(' & ')
          a << "\\\\"
           
           30.times.each {a << ' & '}
@@ -230,7 +252,8 @@ EOF
 		MO & Marks Obtained: total marks in final (70\\%) + CA (rounded upwards)\\\\
 		LG & Letter Grade (per the table on the left)\\\\
 		GP & Grade Point (per the table on the left)\\\\
-		Cr & Credit (per course)\\\\
+      %%  Cr & Credit (per course)\\\\
+        FEM & Final Exam Marks\\\\
 		PS & Point Secured ($= \\text{GP} \\times \\text{Cr}$, per course)\\\\
 		TPS & Total Points Secured ($=\\!\\sum PS$ all courses)\\\\
 		TCE & Total Credit Earned\\\\
@@ -257,7 +280,8 @@ EOF
 		\\textsc{Department of Computer Science \\& Engineering}\\\\
 		{{\\sc Tabulation Sheet #{ '(Improvement)' if  @gradesheet_type ==  :improvement }}}\\\\
 		\\textsc{#{@exam.fullname}}\\\\
-		{Held in #{@exam.held_in}}
+        {Held in #{@exam.held_in}} \\\\
+      %%  {{\\sc Hall : #{ @hall_name }}}\\\\
 		\\end{LARGE}
 		\\end{center}
         \\end{minipage}%

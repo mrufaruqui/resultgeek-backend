@@ -12,7 +12,7 @@ class TabulationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tabulation" do
     assert_difference('Tabulation.count') do
-      post tabulations_url, params: { tabulation: { gpa: @tabulation.gpa, remarks: @tabulation.remarks, result: @tabulation.result, student_id: @tabulation.student_id, tce: @tabulation.tce } }, as: :json
+      post tabulations_url, params: { tabulation: { gpa: @tabulation.gpa, remarks: @tabulation.remarks, result: @tabulation.result, student_roll: @tabulation.student_roll, tce: @tabulation.tce } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class TabulationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tabulation" do
-    patch tabulation_url(@tabulation), params: { tabulation: { gpa: @tabulation.gpa, remarks: @tabulation.remarks, result: @tabulation.result, student_id: @tabulation.student_id, tce: @tabulation.tce } }, as: :json
+    patch tabulation_url(@tabulation), params: { tabulation: { gpa: @tabulation.gpa, remarks: @tabulation.remarks, result: @tabulation.result, student_roll: @tabulation.student_roll, tce: @tabulation.tce } }, as: :json
     assert_response 200
   end
 

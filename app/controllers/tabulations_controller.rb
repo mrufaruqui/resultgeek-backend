@@ -66,22 +66,23 @@ class TabulationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tabulation_params
-      params.require(:tabulation).permit(:student_id, :gpa, :tce, :result, :remarks, :exam_uuid)
+      params.require(:tabulation).permit(:student_roll, :gpa, :tce, :result, :remarks, :exam_uuid)
     end
 
     def generate_tabulations_view
         a = []
-        @tab =  Tabulation.where(exam_uuid: @exam.uuid, :record_type=>:current).order(:sl_no)
+        @tab =  Tabulation.where(exam_uuid: @exam.uuid).order(:sl_no)
         @tab.each do |t| 
+        s = Student.find_by(roll:t.student_roll)
         @retHash = Hash.new
         @retHash[:sl_no] = t.sl_no
         @retHash[:gpa] = '%.2f' % t.gpa
         @retHash[:result] = t.result
         @retHash[:tce] = '%.2f' % t.tce
         @retHash[:remarks] = t.remarks
-        @retHash[:roll] = t.student.roll
-        @retHash[:name] = t.student.name
-        @retHash[:hall] = t.student.hall_name;
+        @retHash[:roll] = s.roll
+        @retHash[:name] = s.name
+        @retHash[:hall] = s.hall_name;
         @retHash[:courses] = []
         tps = 0.0;
         t.tabulation_details.each do |td|
@@ -124,8 +125,8 @@ class TabulationsController < ApplicationController
               # r.save
               is_failed_in_a_course = false;
               s = r.student
-              tabulation = Tabulation.find_by(student_id:s.id) || Tabulation.new
-              tabulation.student_id = s.id;
+              tabulation = Tabulation.find_by(student_roll:s.roll, exam_uuid:@exam.uuid, :record_type=>:previous) || Tabulation.new
+              tabulation.student_roll = s.roll;
               tabulation.exam_uuid = @exam.uuid
               tabulation.sl_no = r.sl_no
               tabulation.student_type = :improvement
@@ -134,7 +135,7 @@ class TabulationsController < ApplicationController
               tce = row[:tce]
               #sm_a = []
              @courses.each do |c|
-                  summation = Summation.find_by(exam_uuid:@exam.uuid, course:c, student: s) || Summation.new
+                  summation = Summation.find_by(exam_uuid:@exam.uuid, course:c, student: s, :record_type=>:previous) || Summation.new
                   summation.student = student
                   summation.course = c
                   summation.record_type = :previous

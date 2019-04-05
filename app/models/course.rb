@@ -43,4 +43,9 @@ class Course < ApplicationRecord
     #      @exam = Exam.find_by(uuid: Exam.first.uuid) #@session.exam_uuid)
     #      self.exam_uuid = @exam.uuid 
     #   end
+
+    def display_code
+       [code.split(/[0-9]+/), code.split(/[a-zA-Z]+/)[1]].join(" ")
+    end
+   
 end

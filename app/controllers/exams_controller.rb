@@ -50,15 +50,18 @@ class ExamsController < ApplicationController
   end
 
    def process_result
-      @status = ProcessingService.perform({:exam=>@exam})
+      @status = ProcessingService.perform({:exam=>@exam, :student_type=>:regular, :record_type=>:current})
+      @status = ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
       render json: {:message=>"Job Submitted", :status=> @status}
    end
 
    def generate_tabulations_latex
-       @status =   GenerateTabulationLatexService.create_tabulation_latex({:exam=>@exam})
-       @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:regular})
-       @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:improvement})
-       render json: {:message=>"Job Submitted", :status=> @status}
+       #@status =   GenerateTabulationLatexService.create_tabulation_latex({:exam=>@exam})
+      # @status =   GenerateTabulationLatexVService.new.perform({:exam=>@exam,:student_type=>:regular})
+     #  @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:improvement})
+        @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular})
+        
+      render json: {:message=>"Job Submitted", :status=> @status}
    end
    
    def generate_tabulations_xls

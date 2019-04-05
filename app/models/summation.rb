@@ -21,10 +21,11 @@
 #  percetage       :float(24)
 #  cact            :float(24)
 #  exam_uuid       :string(255)
+#  record_type     :integer          default("current")
 #
 
 class Summation < ApplicationRecord
-      enum record_type: [:current, :previous]
+      enum record_type: [:current, :previous, :temp]
       belongs_to :student
       belongs_to :course
 end

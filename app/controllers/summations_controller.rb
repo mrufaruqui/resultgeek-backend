@@ -78,7 +78,7 @@ class SummationsController < ApplicationController
      def create_summation(row)
         student =   Student.find_by(roll: row[:roll]) || Student.create(:roll=>row[:roll])
         registration = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid ) || Registration.new
-        summation = Summation.find_by(student_id: registration.student_id, course_id: @course.id) || Summation.new
+        summation = Summation.find_by(student_roll: student.roll, course_id: @course.id) || Summation.new
         summation.exam_uuid = @exam.uuid 
         summation.student =   registration.student
         summation.course   =  @course 

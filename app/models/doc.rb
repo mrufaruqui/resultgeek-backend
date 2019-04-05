@@ -14,6 +14,8 @@
 #  description :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  latex_str   :binary(65535)
+#  pdf_str     :binary(65535)
 #
 
 class Doc < ApplicationRecord

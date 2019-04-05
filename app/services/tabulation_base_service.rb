@@ -1,15 +1,17 @@
 class TabulationBaseService
     ######For each Tabulation.includes(:tabulation_details) generate a single row########
   def generate_single_page_tabulation(t) 
+        student = Student.find_by(roll: t.student_roll)
+        r = Registration.find_by(student:student)
         @retHash = Hash.new
-        @retHash[:sl_no] = t.sl_no
+        @retHash[:sl_no] = r.sl_no
         @retHash[:gpa] = '%.2f' % t.gpa
         @retHash[:result] = t.result
         @retHash[:tce] = '%.2f' % t.tce
         @retHash[:remarks] = t.remarks
-        @retHash[:roll] = t.student.roll
-        @retHash[:name] = t.student.name
-        @retHash[:hall] = t.student.hall_name;
+        @retHash[:roll] = student.roll
+        @retHash[:name] = student.name
+        @retHash[:hall] = student.hall_name;
         @retHash[:courses] = []
         tps = 0.0;
         t.tabulation_details.each do |td|

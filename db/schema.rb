@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190404004131) do
+ActiveRecord::Schema.define(version: 20190405133638) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -146,18 +146,19 @@ ActiveRecord::Schema.define(version: 20190404004131) do
   end
 
   create_table "tabulations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "student_id"
+    t.integer "student_roll"
     t.float "gpa", limit: 24
     t.float "tce", limit: 24
     t.string "result"
     t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "exam_uuid"
-    t.integer "sl_no"
-    t.integer "student_type", limit: 1, default: 0
     t.integer "record_type", limit: 1, default: 0
-    t.index ["student_id"], name: "index_tabulations_on_student_id", unique: true
+    t.integer "sl_no"
+    t.string "exam_uuid"
+    t.integer "student_type", limit: 1, default: 0
+    t.string "hall_name"
+    t.index ["student_roll", "exam_uuid", "record_type"], name: "registered_student_record"
   end
 
   create_table "teachers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -184,15 +185,6 @@ ActiveRecord::Schema.define(version: 20190404004131) do
     t.datetime "updated_at", null: false
     t.index ["exam_id"], name: "index_tenants_on_exam_id"
     t.index ["exam_uuid"], name: "index_tenants_on_exam_uuid"
-  end
-
-  create_table "tennats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "exam_id"
-    t.string "exam_uuid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["exam_id"], name: "index_tennats_on_exam_id"
-    t.index ["exam_uuid"], name: "index_tennats_on_exam_uuid"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -229,13 +221,13 @@ ActiveRecord::Schema.define(version: 20190404004131) do
   end
 
   create_table "workforces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "role", limit: 1, default: 0
     t.integer "status"
     t.string "exam_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "exam_id"
     t.bigint "teacher_id"
+    t.integer "role", limit: 1, default: 0
     t.index ["exam_id"], name: "index_workforces_on_exam_id"
     t.index ["teacher_id"], name: "index_workforces_on_teacher_id"
   end
@@ -244,8 +236,6 @@ ActiveRecord::Schema.define(version: 20190404004131) do
   add_foreign_key "registrations", "students"
   add_foreign_key "tabulation_details", "summations"
   add_foreign_key "tabulation_details", "tabulations"
-  add_foreign_key "tabulations", "students"
   add_foreign_key "teachers", "depts"
   add_foreign_key "tenants", "exams"
-  add_foreign_key "tennats", "exams"
 end

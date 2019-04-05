@@ -5,6 +5,7 @@ class GenerateGradeSheetService
         @courses = Course.where(exam_uuid:@exam.uuid)
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
+        @tco = Course.where(exam_uuid:@exam.uuid).sum(:credit).round
         data = generate_gs_view(options) 
         perform(data)
         true
@@ -36,16 +37,19 @@ class GenerateGradeSheetService
       a = []
       @tab = Tabulation.where(exam_uuid:@exam.uuid, student_type: @gradesheet_type.to_s)
       @tab.each do |t| 
+        s = Student.find_by(roll: t.student_roll)
+        r = Registration.find_by(student:s)
         @retHash = Hash.new
         @retHash[:gpa] = t.gpa
         @retHash[:result] = t.result
         @retHash[:tce] = t.tce.round
-        @retHash[:roll] = t.student.roll
-        @retHash[:name] = t.student.name
-        @retHash[:hall] = t.student.hall_name;
+        @retHash[:roll] = s.roll
+        @retHash[:name] = s.name
+        @retHash[:hall] = s.hall_name;
+        @retHash[:sl_no] = r.sl_no
         @retHash[:courses] = []
         t.tabulation_details.each do |td|
-            course = {:code=> td.summation.course.code, :title=>td.summation.course.title, :credit=>td.summation.course.credit, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2) }
+            course = {:code=> td.summation.course.display_code, :title=>td.summation.course.title, :credit=>td.summation.course.credit, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2) }
             @retHash[:courses] << course
         end
         puts @retHash
@@ -115,7 +119,7 @@ class GenerateGradeSheetService
                 \\hspace{0.2cm}
                 \\begin{minipage}[m]{0.3\\linewidth} \\flushright
                 \\vspace*{-1.5in}  
-                {\\flushright \\bf	Serial No:\\sl \\\\}
+                {\\flushright \\bf	Serial No:#{data[:sl_no]} \\\\}
                 \\vspace{4mm}
                 \\begin{small}
                 \\renewcommand{\\arraystretch}{1.01}
@@ -157,7 +161,7 @@ class GenerateGradeSheetService
 
                 \\begin{center}
                 \\begin{tabular}{p{1.5in} >{\\raggedright}p{1.6in} p{0.1in} >{\\raggedright}p{2.8in} >{\\raggedleft}p{1.0in}}
-                Credits Offered: $18$ &  Credits Earned: $#{data[:tce]}$ & &  Grade Point Average (GPA): \\fbox{\\bf~#{data[:gpa]}} & Result: \\fbox{\\bf~{#{data[:result]}}~} \\\\
+                Credits Offered: $#{@tco}$ &  Credits Earned: $#{data[:tce]}$ & &  Grade Point Average (GPA): \\fbox{\\bf~#{data[:gpa]}} & Result: \\fbox{\\bf~{#{data[:result]}}~} \\\\
                 \\end{tabular}
                 \\end{center}
             \\vspace{1cm}
@@ -194,7 +198,7 @@ class GenerateGradeSheetService
           courses.each do |course|
             a << 
             <<-EOF
-                \\hline   #{course[:code]} &  #{course[:title]}		 & #{course[:credit]} & #{course[:lg]} & #{course[:gp]} & #{course[:ps]} \\\\ %\\numtwo{summation.gp} %\\\\ 
+                \\hline   #{course[:code]} &  #{course[:title]}		 & #{course[:credit]} & #{course[:lg]} & #{'%.2f' % course[:gp]} & #{ '%.2f' % course[:ps]} \\\\ %\\numtwo{summation.gp} %\\\\ 
             EOF
           end
           a << "\n\\hline"
