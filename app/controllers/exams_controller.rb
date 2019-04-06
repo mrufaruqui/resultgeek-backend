@@ -53,8 +53,6 @@ class ExamsController < ApplicationController
       @status = ProcessingService.perform({:exam=>@exam, :student_type=>:regular, :record_type=>:current})
       #@status = ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current})
       #@status = ProcessingService.perform({:exam=>@exam, :student_type=>:improvement, :record_type=>:current})
-      #@status = ProcessingService.perform({:exam=>@exam, :student_type=>:improvement, :record_type=>:current})
-      #@status = ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current})
       #@status = ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
       #@status = ProcessingService.process_result_irregular({:exam=>@exam, :student_type=>:irregular, :record_type=>:temp})
       render json: {:message=>"Job Submitted", :status=> @status}
@@ -65,8 +63,10 @@ class ExamsController < ApplicationController
       # @status =   GenerateTabulationLatexVService.new.perform({:exam=>@exam,:student_type=>:regular})
       #  @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp})
       #  @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:irregular,:record_type=>:temp})
-     #   @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current})
+         @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current})
          @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:improvement,:record_type=>:temp})
+         @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:irregular,:record_type=>:temp})
+         
       render json: {:message=>"Job Submitted", :status=> @status}
    end
    

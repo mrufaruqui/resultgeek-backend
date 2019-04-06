@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190405133638) do
+ActiveRecord::Schema.define(version: 20190406093518) do
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 20190405133638) do
     t.string "exam_uuid"
     t.integer "student_type", limit: 1, default: 0
     t.string "hall_name"
+    t.integer "tps", default: 0
     t.index ["student_roll", "exam_uuid", "record_type"], name: "registered_student_record"
   end
 

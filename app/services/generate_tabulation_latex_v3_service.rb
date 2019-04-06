@@ -137,10 +137,13 @@ def tabulation_table
 		Tabulation.where(exam_uuid:@exam.uuid, student_type:@student_type, hall_name:hall, :record_type=>:current).order(:sl_no).each do |t| 
 		a<<tabulation_row(generate_single_page_tabulation(t))
 		end
-	# elsif 	@student_type = :improvement
-	# 	Tabulation.where(student_type:@student_type, hall_name:hall).order(:sl_no).each do |t| 
-	# 		a<<tabulation_row(generate_single_page_tabulation(t))
-	# 	end
+	elsif 	@student_type = :irregular
+		 Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
+			t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:current)
+			t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
+			a<<tabulation_row(generate_single_page_tabulation({:t=> t_cur, :t_temp=>t_temp, :record_type=> :temp}))
+			a<<tabulation_row(generate_single_page_tabulation({:t=> t, :record_type=> :previous}))
+		end
 	elsif 	@student_type == :improvement
 		Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
 			t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
@@ -149,7 +152,7 @@ def tabulation_table
 			options[:t_cur]  = t_cur if t_cur
 			options[:t_temp] = t_temp if t_temp
 			
-			a<<tabulation_row(generate_single_page_tabulation(t))
+			a<<tabulation_row(generate_single_page_tabulation({:t=>t, :record_type=> :current}))
 			a<<tabulation_row(generate_single_page_tabulation_improvement(options))
 		end
 	end
