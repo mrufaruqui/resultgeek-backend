@@ -47,7 +47,7 @@ class GenerateSummationLatexService
           sm_sheet = ''
           batch_size.times.each do |item|
              a = ''
-            Summation.where(course_id:course.id, exam_uuid:@exam.uuid).limit(35).offset(item* 35).each do |sm|  
+            Summation.where(course_id:course.id, exam_uuid:@exam.uuid, :record_type=>:current).limit(35).offset(item* 35).each do |sm|  
                a << summation_table_row(sm) 
                a << "\\\\ \\hline \n"
              end 
@@ -57,14 +57,14 @@ class GenerateSummationLatexService
     end
 
 
-    def summation_body
-         a = ''
-        Summation.where(exam_uuid:@exam.uuid).first(35).each do |sm|
-          a << summation_table_row(sm) unless sm.nil? || sm.student.nil?
-          a << "\\\\ \\hline \n"
-        end
-        a
-    end
+    # def summation_body
+    #      a = ''
+    #     Summation.where(exam_uuid:@exam.uuid, :record_type=>:current).first(35).each do |sm|
+    #       a << summation_table_row(sm) unless sm.nil? || sm.student.nil?
+    #       a << "\\\\ \\hline \n"
+    #     end
+    #     a
+    # end
 
     def summation_table_row(sm)
       if sm.course.course_type == "theory"

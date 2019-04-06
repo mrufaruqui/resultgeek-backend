@@ -6,7 +6,7 @@ class SummationsController < ApplicationController
   # GET /summations
   # GET /summations.json
   def index
-    @summations = Summation.where(exam_uuid:@exam.uuid, :record_type => "current")
+    @summations = Summation.where(exam_uuid:@exam.uuid, :record_type => :current)
   end
 
   # GET /summations/1
@@ -63,7 +63,7 @@ class SummationsController < ApplicationController
   end
   def get_by_course_id
     c = Course.find_by(id:params[:id]);
-    @summations = Summation.where(exam_uuid:@exam.uuid,:course_id=>c.id)
+    @summations = Summation.where(exam_uuid:@exam.uuid,:course_id=>c.id, :record_type=>:current)
     render :index
   end
   private

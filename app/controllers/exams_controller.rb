@@ -51,10 +51,10 @@ class ExamsController < ApplicationController
 
    def process_result
       @status = ProcessingService.perform({:exam=>@exam, :student_type=>:regular, :record_type=>:current})
-      #@status = ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current})
-      #@status = ProcessingService.perform({:exam=>@exam, :student_type=>:improvement, :record_type=>:current})
-      #@status = ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
-      #@status = ProcessingService.process_result_irregular({:exam=>@exam, :student_type=>:irregular, :record_type=>:temp})
+      @status = ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current})
+      @status = ProcessingService.perform({:exam=>@exam, :student_type=>:improvement, :record_type=>:current})
+      @status = ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
+      @status = ProcessingService.process_result_irregular({:exam=>@exam, :student_type=>:irregular, :record_type=>:temp})
       render json: {:message=>"Job Submitted", :status=> @status}
    end
 
@@ -100,9 +100,10 @@ class ExamsController < ApplicationController
    end
 
    def reset_exam_result
-    #  TabulationDetail.destroy_all
+      TabulationDetail.destroy_all
       Tabulation.where(exam_uuid:@exam.uuid).destroy_all
       Summation.where(exam_uuid:@exam.uuid).destroy_all
+      Registration.where(exam_uuid:@exam.uuid).destroy_all
       render json: {:message=>"Job Submitted", :status=> true}
    end
   

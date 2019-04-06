@@ -5,14 +5,14 @@ class TabulationBaseService
         student = Student.find_by(roll: t.student_roll)
         r = Registration.find_by(student:student)
         @retHash = Hash.new
-        @retHash[:sl_no] = options[:record_type] == :previous ? ' ' : r.sl_no
-        @retHash[:gpa] = options[:record_type] == :previous ? ' ' : '%.2f' % t.gpa
-        @retHash[:result] = options[:record_type] == :previous ?  ' ' : t.result
-        @retHash[:tce] = options[:record_type] == :previous ? ' ' :  t.tce.to_i
-        @retHash[:remarks] = options[:record_type] == :previous ? ' ' : t.remarks
-        @retHash[:roll] = options[:record_type] == :previous ? ' ' : student.roll
-        @retHash[:name] = options[:record_type] == :previous ? 'Previous Result' : student.name
-        @retHash[:hall] = options[:record_type] == :previous ? ' ' : student.hall_name 
+        @retHash[:sl_no] = (options.has_key? :record_type and options[:record_type] == :previous) ? ' ' : r.sl_no
+        @retHash[:gpa] =   (options.has_key? :record_type and  options[:record_type] == :previous) ? ' ' : '%.2f' % t.gpa
+        @retHash[:result] = (options.has_key? :record_type and  options[:record_type] == :previous) ?  ' ' : t.result
+        @retHash[:tce] =    (options.has_key? :record_type and  options[:record_type] == :previous )? ' ' :  t.tce.to_i
+        @retHash[:remarks] = (options.has_key? :record_type and  options[:record_type] == :previous) ? ' ' : t.remarks
+        @retHash[:roll] = (options.has_key? :record_type and  options[:record_type] == :previous) ? ' ' : student.roll
+        @retHash[:name] = (options.has_key? :record_type and  options[:record_type] == :previous) ? 'Previous Result' : student.name
+        @retHash[:hall] =  (options.has_key? :record_type and options[:record_type] == :previous) ? ' ' : student.hall_name 
         @retHash[:courses] = []
         tps = 0.0;
         t.tabulation_details.each do |td|

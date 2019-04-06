@@ -133,11 +133,13 @@ def tabulation_table
   @hall_list.each do |hall|
     @hall_name = hall 
 	puts @hall_name
-    if 	@student_type == :regular
+	if 	@student_type == :regular
+		options = Hash.new
 		Tabulation.where(exam_uuid:@exam.uuid, student_type:@student_type, hall_name:hall, :record_type=>:current).order(:sl_no).each do |t| 
-		a<<tabulation_row(generate_single_page_tabulation(t))
+		    options[:t] = t
+			a<<tabulation_row(generate_single_page_tabulation(options))
 		end
-	elsif 	@student_type = :irregular
+	elsif 	@student_type == :irregular
 		 Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
 			t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:current)
 			t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
@@ -151,7 +153,6 @@ def tabulation_table
 			options = Hash.new
 			options[:t_cur]  = t_cur if t_cur
 			options[:t_temp] = t_temp if t_temp
-			
 			a<<tabulation_row(generate_single_page_tabulation({:t=>t, :record_type=> :current}))
 			a<<tabulation_row(generate_single_page_tabulation_improvement(options))
 		end
