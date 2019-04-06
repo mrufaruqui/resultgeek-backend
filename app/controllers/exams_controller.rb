@@ -51,15 +51,19 @@ class ExamsController < ApplicationController
 
    def process_result
       @status = ProcessingService.perform({:exam=>@exam, :student_type=>:regular, :record_type=>:current})
-      @status = ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
+      @status = ProcessingService.perform({:exam=>@exam, :student_type=>:improvement, :record_type=>:current})
+      @status = ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current})
+      #@status = ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
+      #@status = ProcessingService.process_result_irregular({:exam=>@exam, :student_type=>:irregular, :record_type=>:temp})
       render json: {:message=>"Job Submitted", :status=> @status}
    end
 
    def generate_tabulations_latex
        #@status =   GenerateTabulationLatexService.create_tabulation_latex({:exam=>@exam})
       # @status =   GenerateTabulationLatexVService.new.perform({:exam=>@exam,:student_type=>:regular})
-     #  @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:improvement})
-        @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular})
+      #  @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp})
+      #  @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:irregular,:record_type=>:temp})
+        @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current})
         
       render json: {:message=>"Job Submitted", :status=> @status}
    end
@@ -71,7 +75,8 @@ class ExamsController < ApplicationController
 
    def generate_gradesheets_latex
        @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:regular})
-        @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:improvement})
+       @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp})
+       @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:irregular, :record_type=>:temp})
        render json: {:message=>"Job Submitted", :status=> @status}
    end
    def generate_summationsheets_latex

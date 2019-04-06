@@ -1,6 +1,7 @@
 class GenerateGradeSheetService
     def self.create_gs_latex(options={})
         @exam = options[:exam]
+        @record_type = options[:record_type]
         @gradesheet_type = options[:student_type]
         @courses = Course.where(exam_uuid:@exam.uuid)
         @members = @exam.workforces.where(role:"member")
@@ -35,7 +36,7 @@ class GenerateGradeSheetService
 
     def self.generate_gs_view(options={})
       a = []
-      @tab = Tabulation.where(exam_uuid:@exam.uuid, student_type: @gradesheet_type.to_s)
+      @tab = Tabulation.where(exam_uuid:@exam.uuid, student_type: @gradesheet_type.to_s, :record_type=>@record_type)
       @tab.each do |t| 
         s = Student.find_by(roll: t.student_roll)
         r = Registration.find_by(student:s)
@@ -161,7 +162,7 @@ class GenerateGradeSheetService
 
                 \\begin{center}
                 \\begin{tabular}{p{1.5in} >{\\raggedright}p{1.6in} p{0.1in} >{\\raggedright}p{2.8in} >{\\raggedleft}p{1.0in}}
-                Credits Offered: $#{@tco}$ &  Credits Earned: $#{data[:tce]}$ & &  Grade Point Average (GPA): \\fbox{\\bf~#{data[:gpa]}} & Result: \\fbox{\\bf~{#{data[:result]}}~} \\\\
+                Credits Offered: $#{@tco}$ &  Credits Earned: $#{data[:tce]}$ & &  Grade Point Average (GPA): \\fbox{\\bf~#{'%.2f' % data[:gpa]}} & Result: \\fbox{\\bf~{#{data[:result]}}~} \\\\
                 \\end{tabular}
                 \\end{center}
             \\vspace{1cm}

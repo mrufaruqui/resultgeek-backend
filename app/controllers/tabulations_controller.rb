@@ -44,9 +44,25 @@ class TabulationsController < ApplicationController
   end
 
 
-  def import
+  def import_improvement
       @courses = Course.where(exam_uuid:@exam.uuid)
-      Tabulation.where(exam_uuid:@exam.uuid, :record_type=>:previous).destroy_all
+      @student_type = :improvement
+      Tabulation.where(exam_uuid:@exam.uuid, :record_type=>:previous, :student_type=>:improvement).destroy_all
+      data = params[:file]
+      header = data[0]
+      body = data - [header]
+      body.each do |i| 
+        row = Hash[[header.map(&:downcase), i].transpose].symbolize_keys
+        create_tabulation_row row  
+      end  
+     @status = ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
+     render :index
+  end
+
+  def import_irregular
+      @courses = Course.where(exam_uuid:@exam.uuid)
+      @student_type = :irregular
+      Tabulation.where(exam_uuid:@exam.uuid, :record_type=>:previous, :student_type=>:irregular).destroy_all
       data = params[:file]
       header = data[0]
       body = data - [header]
@@ -54,9 +70,9 @@ class TabulationsController < ApplicationController
         row = Hash[[header.map(&:downcase), i].transpose].symbolize_keys
         create_tabulation_row row
       end  
+    #  @status = ProcessingService.process_result_irregular({:exam=>@exam, :student_type=>:irregular, :record_type=>:temp})
      render :index
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -129,8 +145,9 @@ class TabulationsController < ApplicationController
               tabulation.student_roll = s.roll;
               tabulation.exam_uuid = @exam.uuid
               tabulation.sl_no = r.sl_no
-              tabulation.student_type = :improvement
+              tabulation.student_type = @student_type
               tabulation.record_type = :previous
+              tabulation.hall_name = s.hall_name
               tps = row[:tps]
               tce = row[:tce]
               #sm_a = []
