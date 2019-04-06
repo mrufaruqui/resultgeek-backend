@@ -36,16 +36,17 @@ class GenerateTabulationXlsService < TabulationBaseService
         a
      end
 
-     def self.generate_single_page_tabulation(t) 
+     def self.generate_single_page_tabulation(t)
+        student = Student.find_by(roll:t.student_roll) 
         @retHash = Hash.new
         @retHash[:sl_no] = t.sl_no
         @retHash[:gpa] = '%.2f' % t.gpa
         @retHash[:result] = t.result
         @retHash[:tce] = '%.2f' % t.tce
         @retHash[:remarks] = t.remarks
-        @retHash[:roll] = t.student.roll
-        @retHash[:name] = t.student.name
-        @retHash[:hall] = t.student.hall_name;
+        @retHash[:roll] = student.roll
+        @retHash[:name] = student.name
+        @retHash[:hall] = student.hall_name;
         @retHash[:courses] = []
         tps = 0.0;
         t.tabulation_details.each do |td|

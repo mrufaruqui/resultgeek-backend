@@ -7,8 +7,8 @@ class ProcessingService
 
        ####Remove Old Caculations####
        #TabulationDetail.destroy_all
-       Tabulation.where(exam_uuid:@exam.uuid, student_type: @student_type, :record_type=>options[:record_type]).destroy_all
-       process_result_regular({:student_type=>@student_type, :record_type=>:current})
+       Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:regular, :record_type=>:current).destroy_all 
+       process_result_regular({:exam=>@exam, :student_type=>@student_type, :record_type=>:current})
   end
  
   ###Format CGPA According to CU Syndicate Directions ####
@@ -38,7 +38,7 @@ class ProcessingService
             remarks = []
             sm_a = []
             @courses.each do |c|
-                sm = Summation.find_by(student_id:s.id, course_id: c.id, :record_type=>:temp) || Summation.create(:record_type=>:current, student_id:s.id, course_id: c.id, gpa:'X', grade:0)
+                sm = Summation.find_by(student_id:s.id, course_id: c.id, :record_type=>options[:record_type]) || Summation.create(:record_type=>:current, student_id:s.id, course_id: c.id, gpa:'X', grade:0)
                # if sm.gpa != 'X' #!sm.blank? || !sm.nil?
                     td = TabulationDetail.find_by(:tabulation_id=>tabulation.id, :summation_id=>sm.id)  || TabulationDetail.new
                         td.tabulation = tabulation
@@ -70,6 +70,7 @@ class ProcessingService
   def self.process_result_improvement options
      @exam = options[:exam]
      @courses = Course.where(exam_uuid:@exam.uuid)
+     Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:irregular, :record_type=>:temp).destroy_all 
     #######Retrieve Registered  Regular Studentsstudents #########
       Registration.where(exam_uuid:@exam.uuid,:student_type=>:improvement).each do |r|
             is_failed_in_a_course = false;
@@ -78,7 +79,7 @@ class ProcessingService
                 sm_cur = Summation.find_by(student_id:s.id, course_id: c.id, :record_type=>:current)
                 if  !sm_cur.blank? or !sm_cur.nil?
                     sm_prev = Summation.find_by(student_id:s.id, course_id: c.id, :record_type=>:previous)
-                    sm_temp = Summation.new(s_prev.as_json)
+                    sm_temp = Summation.new(sm_prev.as_json)
                     sm_temp.id = nil;
                     sm_temp.record_type = :temp     
                     if c.course_type === "theory"
@@ -103,10 +104,11 @@ class ProcessingService
   end
 
 def self.process_result_irregular options
-  # Summation.where(:student_type=>:irregular,:record_type=>:temp).destroy_all
-   Tabulation.where(:student_type=>:irregular, :record_type=>:temp).destroy_all 
     @exam = options[:exam]
     @courses = Course.where(exam_uuid:@exam.uuid)
+  # Summation.where(:student_type=>:irregular,:record_type=>:temp).destroy_all
+   Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:irregular, :record_type=>:temp).destroy_all 
+    
     #######Retrieve Registered  Regular Studentsstudents #########
       Registration.where(exam_uuid:@exam.uuid,:student_type=>:irregular).each do |r|
             is_failed_in_a_course = false;
@@ -114,7 +116,7 @@ def self.process_result_irregular options
             @courses.each do |c|
                      sm_cur = Summation.find_by(student_id:s.id, course_id: c.id, :record_type=>:current)
                      sm_prev = Summation.find_by(student_id:s.id, course_id: c.id, :record_type=>:previous)
-                     Summation.where(course_id:c.id,student:s, :record_type=>:temp).destroy_all
+                     #Summation.where(course_id:c.id,student:s, :record_type=>:temp).destroy_all
 
                  if  (!sm_cur.blank? or !sm_cur.nil?)  and (!sm_prev.blank? or !sm_prev.nil?)
                        sm_temp =  sm_prev.grade > sm_cur.grade ? Summation.new(sm_prev.as_json) :  Summation.new(sm_cur.as_json) 
