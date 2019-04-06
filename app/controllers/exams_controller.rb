@@ -65,8 +65,8 @@ class ExamsController < ApplicationController
       # @status =   GenerateTabulationLatexVService.new.perform({:exam=>@exam,:student_type=>:regular})
       #  @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp})
       #  @status =   GenerateTabulationLatexV2Service.new.perform({:exam=>@exam,:student_type=>:irregular,:record_type=>:temp})
-        @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current})
-        
+     #   @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current})
+         @status =   GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:improvement,:record_type=>:temp})
       render json: {:message=>"Job Submitted", :status=> @status}
    end
    

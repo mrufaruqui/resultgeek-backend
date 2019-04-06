@@ -96,7 +96,7 @@ part_b =   a.join(" &") + "\\\\\n"
 
 a=[]
 a << "\\cmidrule(lr){4-7}  \\cmidrule(lr){8-9} \\cmidrule(lr){10-13} \\cmidrule(lr){14-15} \\cmidrule(lr){16-19} \\cmidrule(lr){20-21} \\cmidrule(lr){22-25}\\cmidrule(lr){26-27} \\cmidrule(lr){28-31}\n"
-a << "& &"
+a << "& "
 
 @courses.each do | course|
 	if course.course_type == "theory"	
@@ -132,10 +132,27 @@ def tabulation_table
   a=''
   @hall_list.each do |hall|
     @hall_name = hall 
-    puts @hall_name
-	Tabulation.where(student_type:@student_type, hall_name:hall).order(:sl_no).each do |t| 
-	  a<<tabulation_row(generate_single_page_tabulation(t))
-	 end
+	puts @hall_name
+    if 	@student_type == :regular
+		Tabulation.where(exam_uuid:@exam.uuid, student_type:@student_type, hall_name:hall, :record_type=>:current).order(:sl_no).each do |t| 
+		a<<tabulation_row(generate_single_page_tabulation(t))
+		end
+	# elsif 	@student_type = :improvement
+	# 	Tabulation.where(student_type:@student_type, hall_name:hall).order(:sl_no).each do |t| 
+	# 		a<<tabulation_row(generate_single_page_tabulation(t))
+	# 	end
+	elsif 	@student_type == :improvement
+		Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
+			t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
+			t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
+			options = Hash.new
+			options[:t_cur]  = t_cur if t_cur
+			options[:t_temp] = t_temp if t_temp
+			
+			a<<tabulation_row(generate_single_page_tabulation(t))
+			a<<tabulation_row(generate_single_page_tabulation_improvement(options))
+		end
+	end
 	 a << '\\pagebreak'
    end
   a
