@@ -26,8 +26,7 @@ class GenerateSummationLatexService
 
     def write_to_latex_file(course)
      File.open(Rails.root.join('reports', course.code.downcase + @exam.uuid + '_summation.tex'), 'w') do |f|
-       puts "writing latex file:"
-       puts Rails.root.join('reports', course.code.downcase + @exam.uuid + '_summation.tex')
+       MyLogger.info "writing latex file: " + Rails.root.join('reports', course.code.downcase + @exam.uuid + '_summation.tex').to_s
        f_data = latex_summation_template(course)
        f.puts f_data
 

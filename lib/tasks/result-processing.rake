@@ -23,5 +23,6 @@ desc 'process full exam'
 task process_6thsem2018: :environment do  
     options = Hash.new
     options[:exam] = Exam.find_by(uuid:"_sixthbsc2018") 
-    ProcessFullExamJob.perform options
+    ProcessFullExamJob.perform_now options
+    PdfyLatexJob.perform_now options
 end

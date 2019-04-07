@@ -9,6 +9,9 @@ class GenerateTabulationLatexV2Service < TabulationBaseService
 		@hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
 		@tco = Course.where(exam_uuid:@exam.uuid).sum(:credit).round
 		@hall_name = ' '
+		
+		MyLogger.info "Writing files: " + Rails.root.join('reports/', [@exam.uuid, @student_type.to_s, 'tabulation_v2.tex'].join("_")).to_s
+
       File.open( Rails.root.join('reports/', [@exam.uuid, @student_type.to_s, 'tabulation_v2.tex'].join("_")), 'w') do |f| 
        f.puts tabulation(options)
 	  end

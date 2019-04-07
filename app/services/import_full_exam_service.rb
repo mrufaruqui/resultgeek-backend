@@ -5,6 +5,7 @@ class ImportFullExamService
     def self.register_students(options={})
             @exam = options[:exam]
         if options.has_key? :exam  
+            MyLogger.info  "Reading files: " + "../6thSem2018/students.csv"
             file = CSV.read("../6thSem2018/students.csv")
             header = file[0]
             body = file - [header]
@@ -25,17 +26,14 @@ class ImportFullExamService
                 registration.course_list=row[:courses]
                 registration.save 
             end
-          puts "No of regular students: "
-          puts Registration.where(exam:@exam, :student_type=>:regular).count
-          puts "No of irregular students: "
-          puts Registration.where(exam:@exam, :student_type=>:irregular).count
-          puts "No of improvement students: "
-          puts Registration.where(exam:@exam, :student_type=>:improvement).count
-          puts "Total students: "
-          puts Registration.where(exam:@exam).count
+          MyLogger.info "No of regular students: "    + Registration.where(exam:@exam, :student_type=>:regular).count.to_s
+          MyLogger.info "No of irregular students: "  +  Registration.where(exam:@exam, :student_type=>:irregular).count.to_s
+          MyLogger.info "No of improvement students: " + Registration.where(exam:@exam, :student_type=>:improvement).count.to_s
+          MyLogger.info "Total students: " + Registration.where(exam:@exam).count.to_s
+          
           true
         else
-             puts "Specify exam"
+             MyLogger.info "Specify exam"
              return true
         end
 
@@ -48,8 +46,7 @@ class ImportFullExamService
         options = Hash.new
         options[:exam] = @exam
         if !@course.blank?
-            ##Destroy previous data
-            #Tabulation.where(exam_uuid:@exam.uuid).destroy_all
+            MyLogger.info  @course.code + ":" + @course.title + "  " + @course.credit.to_s 
             Summation.where(exam_uuid:@exam.uuid, course_id:@course.id).destroy_all
             header = data[0]
             body = data - [header]
@@ -57,9 +54,10 @@ class ImportFullExamService
                 row = Hash[[header, i].transpose].symbolize_keys
                 options[:row] = row
                 create_summation options
-            end   
+            end
+          MyLogger.info  body.size.to_s + " students' marks imported" 
         else  
-          puts "no such course"
+          MyLogger.info "no such course"
         end   
     end
 
@@ -68,6 +66,7 @@ class ImportFullExamService
        courses = Course.where(exam_uuid:@exam.uuid)
        courses.each do |c|
          options[:course] = c
+         MyLogger.info  "Reading files: " + "../6thSem2018/"+ c.code.split(/[a-zA-z]/).last+".csv"
          options[:data] = CSV.read("../6thSem2018/"+ c.code.split(/[a-zA-z]/).last+".csv") 
          import_single_course options
        end
@@ -78,7 +77,7 @@ class ImportFullExamService
         @exam = options[:exam]
 
         student =   Student.find_by(roll: row[:roll]) || Student.create(:roll=>row[:roll])
-        registration = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid ) || Registration.new
+        registration = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid ) || Registration.create(student:student, exam:@exam)
         summation = Summation.find_by(student_id: student.id, course_id: @course.id) || Summation.new
         summation.exam_uuid = @exam.uuid 
         summation.student =   registration.student
@@ -164,11 +163,12 @@ class ImportFullExamService
    end
 
 
-    def self.import_irregular options
+   def self.import_irregular options
       @exam = options[:exam]
       @courses = Course.where(exam_uuid:@exam.uuid)
       @student_type = :irregular
       Tabulation.where(exam_uuid:@exam.uuid, :record_type=>:previous, :student_type=>:irregular).destroy_all
+      MyLogger.info  "Reading files: "  + "../6thSem2018/irregular.csv"
       data = CSV.read("../6thSem2018/irregular.csv") 
       header = data[0]
       body = data - [header]
@@ -184,6 +184,7 @@ class ImportFullExamService
       @courses = Course.where(exam_uuid:@exam.uuid) 
       @student_type = :improvement
       Tabulation.where(exam_uuid:@exam.uuid, :record_type=>:previous, :student_type=>:improvement).destroy_all
+      MyLogger.info  "Reading files: "  +  "../6thSem2018/improve.csv"
       data = CSV.read("../6thSem2018/improve.csv") 
       header = data[0]
       body = data - [header]
@@ -225,7 +226,8 @@ class ImportFullExamService
         @exam = options[:exam]
         GenerateSummationLatexService.new.perform({:exam=>@exam})
    end
-   def self.create_tabulation_row options
+   
+  def self.create_tabulation_row options
         row = options[:row]
         @exam = options[:exam]
        
@@ -250,6 +252,7 @@ class ImportFullExamService
              @courses.each do |c|
                   summation = Summation.find_by(exam_uuid:@exam.uuid, course:c, student: s, :record_type=>:previous) || Summation.new
                   summation.student = student
+                  summation.exam_uuid = @exam.uuid
                   summation.course = c
                   summation.record_type = :previous
                if c.course_type === "theory" 
@@ -275,39 +278,31 @@ class ImportFullExamService
               tabulation.remarks = row[:remarks]
               #tabulation.remarks = 'F-' + remarks.join(", ") if is_failed_in_a_course  
               tabulation.save
-      end
-    end
+        end
+  end
   
-  
-   
   def self.perform options
     @exam = options[:exam]
 
-    ## step 1
+    MyLogger.info  "Destroy prevoius calculations"
        reset_exam_result options
-    ## step 2
+    MyLogger.info  "Register students"
        register_students options
        
-    ## step 3
-       import_all_courses options
-
-
-       
-    ## process regular result
+     MyLogger.info  "## Step 3: import all course marks"
+       import_all_courses options       
+    MyLogger.info  "Processing   result: regular"
         Tabulation.where(exam_uuid:@exam.uuid).destroy_all
         process_result_regular options
-    ## import irregular previous result
+    MyLogger.info  "Importing irregular previous result"
         import_irregular options
-    ## process improve result
-        
+    MyLogger.info  "Processing   result: irregular"
         full_process_result_irregular options
-    ## import irregular previous result
+    MyLogger.info  "Importing irregular previous result"
         import_improvement options
-    ## process improve result
-        
+    MyLogger.info  "Processing  result: improvement"
         full_process_result_improve options
-
-     ## generate latex result
+    MyLogger.info  "Generating latex files"
         generate_summations_sheets options
         generate_tabulations options
         generate_gradesheets options

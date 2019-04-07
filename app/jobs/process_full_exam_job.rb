@@ -1,7 +1,7 @@
 class ProcessFullExamJob < ApplicationJob
   queue_as :default
 
-  def self.perform(options={})
+  def perform(options={})
    ImportFullExamService.perform options
   end
 

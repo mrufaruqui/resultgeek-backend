@@ -13,7 +13,8 @@ class GenerateGradeSheetService
     end
 
     def self.perform(options={})
-    File.open(Rails.root.join('reports/', [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")), 'w') do |f| 
+      MyLogger.info "Writing files: " + Rails.root.join('reports/', [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")).to_s
+      File.open(Rails.root.join('reports/', [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")), 'w') do |f| 
        f.puts latex_gs_template(options)
       end
       @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @gradesheet_type.to_s + ' gradesheets') || Doc.new(exam_uuid:@exam.uuid, uuid: @gradesheet_type.to_s + ' gradesheets') 

@@ -153,6 +153,7 @@ class TabulationsController < ApplicationController
              @courses.each do |c|
                   summation = Summation.find_by(exam_uuid:@exam.uuid, course:c, student: s, :record_type=>:previous) || Summation.new
                   summation.student = student
+                  summation.exam_uuid = @exam.uuid
                   summation.course = c
                   summation.record_type = :previous
                if c.course_type === "theory" 
