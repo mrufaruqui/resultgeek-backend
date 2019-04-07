@@ -126,39 +126,36 @@ part_a + part_a_a + part_b + part_c + part_f + part_d
     end
 
 def tabulation_table
-#   <<-EOF
-#    {\\SL & \\ID & \\name & \\numtwo{\\ica} & \\numtwo{\\ifnl} & {\\itot} &  {\\ilg} &  \\numtwo{\\ips} & \\numtwo{\\iica} & \\numtwo{\\iifnl} & \\iitot & \\iilg & \\numtwo{\\iips} & \\iiitot & \\iiilg & \\numtwo{\\iiips} & \\numtwo{\\ivca} & \\numtwo{\\ivfnl} & \\ivtot & \\ivlg & \\numtwo{\\ivps} & \\vtot & \\vlg & \\numtwo{\\vips} & \\numtwo{\\vica} & \\numtwo{\\vifnl} & \\vitot & \\vilg & \\numtwo{\\vips} & \\numtwo{\\viica} & \\numtwo{\\viifnl} & \\viitot & \\viilg & \\numtwo{\\viips} & \\tce & \\numtwo{\\tps} & \\numtwo{\\gpa} & \\pf & \\hall}
-#    EOF
+ 
   a=''
-  @hall_list.each do |hall|
-    @hall_name = hall 
-	puts @hall_name
-	if 	@student_type == :regular
-		options = Hash.new
-		Tabulation.where(exam_uuid:@exam.uuid, student_type:@student_type, hall_name:hall, :record_type=>:current).order(:sl_no).each do |t| 
-		    options[:t] = t
-			a<<tabulation_row(generate_single_page_tabulation(options))
+    @hall_list.each do |hall|
+		@hall_name = hall  
+		if 	@student_type == :regular
+		   options = Hash.new
+		   Tabulation.where(exam_uuid:@exam.uuid, student_type:@student_type, hall_name:hall, :record_type=>:current).order(:sl_no).each do |t| 
+				options[:t] = t
+				a<<tabulation_row(generate_single_page_tabulation(options))
+		   end
+		elsif 	@student_type == :irregular
+			Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
+				t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:current)
+				t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
+				a<<tabulation_row(generate_single_page_tabulation({:t=> t_cur, :t_temp=>t_temp, :record_type=> :temp}))
+				a<<tabulation_row(generate_single_page_tabulation({:t=> t, :record_type=> :previous}))
+			end
+		elsif 	@student_type == :improvement
+			Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
+				t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
+				t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
+				options = Hash.new
+				options[:t_cur]  = t_cur if t_cur
+				options[:t_temp] = t_temp if t_temp
+				a<<tabulation_row(generate_single_page_tabulation({:t=>t, :record_type=> :current}))
+				a<<tabulation_row(generate_single_page_tabulation_improvement(options))
+			end
 		end
-	elsif 	@student_type == :irregular
-		 Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
-			t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:current)
-			t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
-			a<<tabulation_row(generate_single_page_tabulation({:t=> t_cur, :t_temp=>t_temp, :record_type=> :temp}))
-			a<<tabulation_row(generate_single_page_tabulation({:t=> t, :record_type=> :previous}))
-		end
-	elsif 	@student_type == :improvement
-		Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
-			t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
-			t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
-			options = Hash.new
-			options[:t_cur]  = t_cur if t_cur
-			options[:t_temp] = t_temp if t_temp
-			a<<tabulation_row(generate_single_page_tabulation({:t=>t, :record_type=> :current}))
-			a<<tabulation_row(generate_single_page_tabulation_improvement(options))
-		end
+		a << '\\pagebreak'
 	end
-	 a << '\\pagebreak'
-   end
   a
 end
 
@@ -378,7 +375,7 @@ EOF
     % \\fbox{%
     	\\begingroup
         \\begin{center}
-        \\begin{minipage}[t][2.5cm][l]{5in}%
+        \\begin{minipage}[t][2.5cm][l]{6in}%
 		\\tcbset{colframe=gray,colback=white,%colupper=red!5,
 		fonttitle=\\bfseries,nobeforeafter}
 		{\\vspace*{0.2cm}}\\tcbox[left=0mm,right=0mm,top=0.2mm,bottom=1.5mm,boxsep=0mm,title=Tabulators]{%
@@ -393,7 +390,7 @@ EOF
 		}
 		\\tcbset{colframe=gray,colback=white,%colupper=red!5,
 		fonttitle=\\bfseries,nobeforeafter}
-        \\hfill{\\vspace*{-0.45cm}\\tcbox[left=0mm,right=1mm,top=1cm,minipage,width=1.2in,height=1.2cm,bottom=2mm,boxsep=0mm,title=Date of Publication]{}}%\\framebox(100,15){}}\\vfill%
+        \\hfill{\\vspace*{-0.45cm}\\tcbox[left=0mm,right=1mm,top=1cm,minipage,width=2in,height=1.2cm,bottom=2mm,boxsep=0mm,title=Date of Publication]{}}%\\framebox(100,15){}}\\vfill%
         \\end{minipage}%
         \\end{center}
         \\endgroup

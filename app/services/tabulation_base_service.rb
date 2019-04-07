@@ -28,8 +28,8 @@ class TabulationBaseService
         end
         @retHash[:tps] = options[:record_type] == :previous ? ' ' :  '%.2f' % tps; 
 
-       if options.has_key? :t_temp
-          @retHash[:gpa] =   '%.2f' % options[:t_temp].gpa
+       if options.has_key? :t_temp  #and (!options[:t_temp].blank? or !options[:t_temp].nil?)
+          @retHash[:gpa] =   '%.2f' % options[:t_temp].gpa  unless options[:t_temp].nil?
           @retHash[:result] =  options[:t_temp].result
           @retHash[:tce] =     options[:t_temp].tce.to_i
           @retHash[:tps] =     '%.2f' %  (options[:t_temp].tce * options[:t_temp].gpa)

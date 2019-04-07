@@ -123,8 +123,7 @@ class TabulationsController < ApplicationController
           #  @retHash[:courses] << course
         end
         @retHash[:tps] = '%.2f' % tps; 
-        @retHash
-          puts @retHash
+        @retHash 
           a << @retHash
       end
       a

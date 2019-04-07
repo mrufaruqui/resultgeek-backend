@@ -7,8 +7,9 @@ class ProcessingService
 
        ####Remove Old Caculations####
        #TabulationDetail.destroy_all
-       Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:regular, :record_type=>:current).destroy_all 
-       process_result_regular({:exam=>@exam, :student_type=>@student_type, :record_type=>:current})
+      # Tabulation.where(exam_uuid:@exam.uuid, :student_type=>options[:student_type], :record_type=>options[:record_type]).destroy_all 
+       process_result_regular({:exam=>@exam, :student_type=>@student_type, :record_type=>options[:record_type]})
+       true
   end
  
   ###Format CGPA According to CU Syndicate Directions ####
@@ -70,7 +71,7 @@ class ProcessingService
   def self.process_result_improvement options
      @exam = options[:exam]
      @courses = Course.where(exam_uuid:@exam.uuid)
-     Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:irregular, :record_type=>:temp).destroy_all 
+    # Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:irregular, :record_type=>:temp).destroy_all 
     #######Retrieve Registered  Regular Studentsstudents #########
       Registration.where(exam_uuid:@exam.uuid,:student_type=>:improvement).each do |r|
             is_failed_in_a_course = false;
@@ -83,8 +84,8 @@ class ProcessingService
                     sm_temp.id = nil;
                     sm_temp.record_type = :temp     
                     if c.course_type === "theory"
-                         sm_temp.marks = sm_prev.marks
-                         ap sm_cur.marks
+                        sm_temp.marks = sm_prev.marks
+                        sm_cur.marks
                         sm_temp.marks = (sm_cur.marks.to_f > sm_prev.marks.to_f ? sm_cur.marks.to_f : sm_prev.marks.to_f).to_s unless sm_cur.marks.nil?
                         sm_temp.total_marks = (sm_temp.marks.to_f + sm_temp.cact.to_f).ceil
                     else 
@@ -107,7 +108,7 @@ def self.process_result_irregular options
     @exam = options[:exam]
     @courses = Course.where(exam_uuid:@exam.uuid)
   # Summation.where(:student_type=>:irregular,:record_type=>:temp).destroy_all
-   Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:irregular, :record_type=>:temp).destroy_all 
+   #Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:irregular, :record_type=>:temp).destroy_all 
     
     #######Retrieve Registered  Regular Studentsstudents #########
       Registration.where(exam_uuid:@exam.uuid,:student_type=>:irregular).each do |r|

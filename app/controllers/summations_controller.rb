@@ -82,8 +82,7 @@ class SummationsController < ApplicationController
         summation.exam_uuid = @exam.uuid 
         summation.student =   registration.student
         summation.course   =  @course 
-        if @course.course_type === "theory"
-          puts "theory course"
+        if @course.course_type === "theory" 
           summation.assesment = row[:ct]
           summation.attendance = row[:ca]
           if row[:cact].blank?
@@ -98,8 +97,7 @@ class SummationsController < ApplicationController
           summation.marks = summation.section_a_marks.to_f + summation.section_b_marks.to_f
           m = 
           summation.total_marks = (summation.marks.to_f + summation.cact.to_f).ceil
-        else
-          puts "lab"
+        else 
           summation.total_marks = (row[:marks]).to_f.ceil
         end
 

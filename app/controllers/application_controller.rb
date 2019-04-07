@@ -3,12 +3,8 @@ class ApplicationController < ActionController::API
 
   protected
   def get_tenant
-    puts "current_user"
-    puts current_user.id
-    puts current_user.exam_uuid
     @session = Session.find_by(uuid:current_user.session_uuid)
-    @exam = Exam.find_by(uuid: @session.exam_uuid)
-    puts @exam.fullname
+    @exam = Exam.find_by(uuid: @session.exam_uuid) 
     @exam 
   end
 

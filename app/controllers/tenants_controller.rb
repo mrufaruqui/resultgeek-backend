@@ -8,8 +8,7 @@ class TenantsController < ApplicationController
     @user= current_user.update(session_uuid:@session.uuid) if @session.save 
   end
 
-  def reset_exam
-    puts session[:current_user_id]
+  def reset_exam 
     @session = Session.find_by(uuid:current_user.session_uuid)
     @user= current_user.update(session_uuid:nil)
     @session.destroy
