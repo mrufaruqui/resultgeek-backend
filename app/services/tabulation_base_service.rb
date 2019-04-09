@@ -41,8 +41,7 @@ class TabulationBaseService
   
   def generate_single_page_tabulation_improvement(options)
         t = options[:t_temp] 
-        t_cur  = options[:t_cur]
-
+       # t_cur  = options[:t_cur]
           student = Student.find_by(roll: t.student_roll)
           r = Registration.find_by(student:student)
           @retHash = Hash.new
@@ -59,8 +58,10 @@ class TabulationBaseService
           t.tabulation_details.each do |td|
               course = Hash.new
               ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
+
               sm_cur = Summation.find_by(student:student, course:td.summation.course, :record_type=>:current)
-            if r.course_list.split.include? td.summation.course.code.split(/[a-zA-Z]+/)[1] #and sm_cur.gpa != "X"
+           
+            if r.course_list.split(";").include?  td.summation.course.code.split(/[a-zA-Z]+/)[1] #and sm_cur.gpa != "X"
               if td.summation.course.course_type === "lab"
                 @retHash[td.summation.course.code] =  {:mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
               else
@@ -101,7 +102,7 @@ class TabulationBaseService
               course = Hash.new
               ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
               sm_cur = Summation.find_by(student:student, course:td.summation.course, :record_type=>:current)
-            if r.course_list.split.include? td.summation.course.code.split(/[a-zA-Z]+/)[1] #and sm_cur.gpa != "X"
+            if r.course_list.split(";").include?  td.summation.course.code.split(/[a-zA-Z]+/)[1] #and sm_cur.gpa != "X"
               if td.summation.course.course_type === "lab"
                 @retHash[td.summation.course.code] =  {:mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
               else

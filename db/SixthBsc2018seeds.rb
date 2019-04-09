@@ -7,16 +7,25 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(email: 'rokan@cu.ac.bd', nickname: 'Rokan', name: 'Rokan Faruqui', password: "1234qwer")
 Exam.create(sem: :_sixth, year: "2018", program: "bsc", title: "", uuid: "_sixthbsc2018")
+
 @exam = Exam.find_by(uuid: "_sixthbsc2018")
 
 Course.create(code:'CSE611',	title:'Computer Interfacing and Microcontroller', credit:3, exam_uuid: "_sixthbsc2018", exam: @exam)
+
 Course.create(code:'CSE612',	title:'Computer Interfacing and Microcontroller Lab', credit:1, course_type:"lab", exam_uuid: "_sixthbsc2018", exam: @exam)
+
 Course.create(code:'CSE613',	title:	'Computer Networks', credit: 3, exam_uuid: "_sixthbsc2018", exam: @exam)
+
 Course.create(code:'CSE614',	title:	'Computer Networks Lab', credit:1, course_type:"lab", exam_uuid: "_sixthbsc2018", exam: @exam)
+
 Course.create(code:'CSE615',	title:	'Web Engineering', credit: 3, exam_uuid: "_sixthbsc2018", exam: @exam)
+
 Course.create(code:'CSE616',	title:	'Web Engineering Lab', credit:1, course_type:"lab", exam_uuid: "_sixthbsc2018", exam: @exam)
+
 Course.create(code:'CSE617',	title:	'Theory of Computation', credit: 3, exam_uuid: "_sixthbsc2018", exam: @exam)
+
 Course.create(code:'CSE618',	title:	'Mobile Apps Development Lab', credit:2, course_type:"lab", exam_uuid: "_sixthbsc2018", exam: @exam)
+
 Course.create(code:'EEE621',	title:	'Electrical Engineering', credit: 3, exam_uuid: "_sixthbsc2018", exam: @exam)
 
 Course.find_by(code:'CSE611').update(sl_no:1)

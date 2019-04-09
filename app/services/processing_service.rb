@@ -45,24 +45,26 @@ class ProcessingService
                         td.tabulation = tabulation
                         td.summation  = sm
                         td.save 
-                        remarks << c.code.split(/[a-zA-Z]/).last if sm.gpa === 'F' 
-                        tce += c.credit unless sm.gpa === 'F' || sm.gpa === 'X'
-                        is_failed_in_a_course = true if sm.gpa === 'F'
-               # end
-                
-                ##Generate remarks if failed 
-                tps += (sm.grade * c.credit) unless sm.nil? || sm.blank? || sm.gpa === 'X' || sm.gpa === 'F'
-                sm_a << sm
-            end
-            #tabulation.summations = sm_a;
 
-            gpa = tps > 0 ? format_gpa(tps / Course.where(exam_id:@exam.id).sum(:credit).to_f) : 0.00
-            s.gpa = gpa
+                        # if r.student_type != :improvement
+                          remarks << c.code.split(/[a-zA-Z]/).last if sm.gpa === 'F' 
+                          tce += c.credit unless sm.gpa === 'F' || sm.gpa === 'X'
+                          is_failed_in_a_course = true if sm.gpa === 'F'
+                          tps += (sm.grade * c.credit) unless sm.nil? || sm.blank? || sm.gpa === 'X' || sm.gpa === 'F'
+                        # end
+                        sm_a << sm
+            end
+            
+           # if r.student_type != :improvement
+              gpa = tps > 0 ? format_gpa(tps / Course.where(exam_id:@exam.id).sum(:credit).to_f) : 0.00
+              s.gpa = gpa
+              tabulation.gpa = gpa #gpa.round(2);
+              tabulation.tce = tce.to_i
+              tabulation.result = (gpa >= 2.20) ? 'P' : 'F'
+              tabulation.remarks = 'F-' + remarks.join(", ") if is_failed_in_a_course 
+           # end 
+            
             s.save
-            tabulation.gpa = gpa #gpa.round(2);
-            tabulation.tce = tce.to_i
-            tabulation.result = (gpa >= 2.20) ? 'P' : 'F'
-            tabulation.remarks = 'F-' + remarks.join(", ") if is_failed_in_a_course  
             tabulation.save
             end
      true  
@@ -94,6 +96,15 @@ class ProcessingService
 
                     sm_temp.percetage = (sm_temp.total_marks.to_f / (c.credit.to_f * 25.to_f)) * 100.to_f
                     ret = calculate_grade(sm_temp.percetage.to_f) 
+                   
+                       puts ret
+                   ##punishment grading
+                    if (ret[:ps] > 3.00)
+                         ret[:ps] = 3.00
+                         ret[:lg] = 'B'
+                         puts ret
+                    end
+
                     sm_temp.gpa = ret[:lg]
                     sm_temp.grade = ret[:ps]
                     sm_temp.save

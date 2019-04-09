@@ -5,12 +5,14 @@ class ImportFullExamService
     def self.register_students(options={})
             @exam = options[:exam]
         if options.has_key? :exam  
-            MyLogger.info  "Reading files: " + "../6thSem2018/students.csv"
-            file = CSV.read("../6thSem2018/students.csv")
-            header = file[0]
-            body = file - [header]
+            filename = @folder +  "students.csv" 
+            data = MyCSVReader.read(filename)
+            return true if data.nil?
+            header = data[0]
+            body = data - [header]
             body.each do |i| 
                 row = Hash[[header, i].transpose].symbolize_keys
+            #data.each do |row|
                 student = Student.find_by(roll: row[:roll]) || Student.new
                 student.roll = row[:roll]
                 student.name = row[:name]
@@ -26,11 +28,43 @@ class ImportFullExamService
                 registration.course_list=row[:courses]
                 registration.save 
             end
-          MyLogger.info "No of regular students: "    + Registration.where(exam:@exam, :student_type=>:regular).count.to_s
-          MyLogger.info "No of irregular students: "  +  Registration.where(exam:@exam, :student_type=>:irregular).count.to_s
+          MyLogger.info "No of regular students: "     + Registration.where(exam:@exam, :student_type=>:regular).count.to_s
+          MyLogger.info "No of irregular students: "   +  Registration.where(exam:@exam, :student_type=>:irregular).count.to_s
           MyLogger.info "No of improvement students: " + Registration.where(exam:@exam, :student_type=>:improvement).count.to_s
           MyLogger.info "Total students: " + Registration.where(exam:@exam).count.to_s
           
+          true
+        else
+             MyLogger.info "Specify exam"
+             return true
+        end
+
+    end
+
+     def self.import_course_info(options={})
+
+            @exam = options[:exam]
+            Course.where(exam_uuid:@exam.uuid).destroy_all
+        if options.has_key? :exam   
+            filename = @folder +  "courses.csv" 
+            data = MyCSVReader.read(filename)
+            return true if data.nil?
+            header = data[0]
+            body = data - [header]
+            body.each do |i| 
+                row = Hash[[header, i].transpose].symbolize_keys
+            #data.each do |row|
+                course = Course.find_by(code: row[:code].split.join, exam_uuid:@exam.uuid) || Course.new
+                course.exam_id = @exam.id
+                course.exam_uuid = @exam.uuid
+                course.code = row[:code].split.join
+                course.title = row[:title]
+                course.credit=row[:credit].to_i
+                course.sl_no = row[:sl_no].to_i
+                course.course_type = row[:course_type].to_sym
+                course.save 
+            end
+            
           true
         else
              MyLogger.info "Specify exam"
@@ -52,10 +86,11 @@ class ImportFullExamService
             body = data - [header]
             body.each do |i| 
                 row = Hash[[header, i].transpose].symbolize_keys
+            #data.each do |row|
                 options[:row] = row
                 create_summation options
             end
-          MyLogger.info  body.size.to_s + " students' marks imported" 
+          MyLogger.info  data.size.to_s + " students' marks imported" 
         else  
           MyLogger.info "no such course"
         end   
@@ -65,10 +100,11 @@ class ImportFullExamService
        @exam = options[:exam]
        courses = Course.where(exam_uuid:@exam.uuid)
        courses.each do |c|
-         options[:course] = c
-         MyLogger.info  "Reading files: " + "../6thSem2018/"+ c.code.split(/[a-zA-z]/).last+".csv"
-         options[:data] = CSV.read("../6thSem2018/"+ c.code.split(/[a-zA-z]/).last+".csv") 
-         import_single_course options
+        options[:course] = c
+        filename = @folder+ c.code.split(/[a-zA-z]/).last+".csv" 
+        options[:data] = MyCSVReader.read(filename) 
+        return true if options[:data].nil?
+        import_single_course options
        end
     end
 
@@ -82,11 +118,12 @@ class ImportFullExamService
         summation.exam_uuid = @exam.uuid 
         summation.student =   registration.student
         summation.course   =  @course 
+       if registration.student_type != :improvement
         if @course.course_type === "theory" 
           summation.assesment = row[:ct]
           summation.attendance = row[:ca]
           if row[:cact].blank?
-              summation.cact = summation.marks.to_f + summation.assesment.to_f
+              summation.cact = summation.attendance.to_f + summation.assesment.to_f
           else
               summation.cact = row[:cact]
           end
@@ -95,7 +132,6 @@ class ImportFullExamService
           summation.section_a_code = row[:code_a]
           summation.section_b_code = row[:code_b]
           summation.marks = summation.section_a_marks.to_f + summation.section_b_marks.to_f
-          m = 
           summation.total_marks = (summation.marks.to_f + summation.cact.to_f).ceil
         else
           summation.total_marks = (row[:marks]).to_f.ceil
@@ -105,6 +141,13 @@ class ImportFullExamService
         ret = calculate_grade(summation.percetage.to_f) 
         summation.gpa = ret[:lg]
         summation.grade = ret[:ps]
+      else
+       summation.section_a_marks = row[:marks_a]
+       summation.section_b_marks = row[:marks_b]
+       summation.section_a_code = row[:code_a]
+       summation.section_b_code = row[:code_b]
+       summation.marks = summation.section_a_marks.to_f + summation.section_b_marks.to_f
+      end
         summation.save
     end
     
@@ -149,7 +192,7 @@ class ImportFullExamService
 
      def self.reset_exam_result options
       @exam = options[:exam]
-      TabulationDetail.destroy_all
+      #TabulationDetail.destroy_all
       Tabulation.where(exam_uuid:@exam.uuid).destroy_all
       Summation.where(exam_uuid:@exam.uuid).destroy_all
       Registration.where(exam_uuid:@exam.uuid).destroy_all
@@ -168,13 +211,16 @@ class ImportFullExamService
       @courses = Course.where(exam_uuid:@exam.uuid)
       @student_type = :irregular
       Tabulation.where(exam_uuid:@exam.uuid, :record_type=>:previous, :student_type=>:irregular).destroy_all
-      MyLogger.info  "Reading files: "  + "../6thSem2018/irregular.csv"
-      data = CSV.read("../6thSem2018/irregular.csv") 
+      filename = @folder+ "irregular.csv" 
+      data = MyCSVReader.read(filename)
+      return true if data.nil?
       header = data[0]
       body = data - [header]
       body.each do |i| 
         row = Hash[[header.map(&:downcase), i].transpose].symbolize_keys
+      #data.each do |row|
         options[:row] = row
+        options[:student_type] = :irregular
         create_tabulation_row options
       end  
    end
@@ -184,13 +230,16 @@ class ImportFullExamService
       @courses = Course.where(exam_uuid:@exam.uuid) 
       @student_type = :improvement
       Tabulation.where(exam_uuid:@exam.uuid, :record_type=>:previous, :student_type=>:improvement).destroy_all
-      MyLogger.info  "Reading files: "  +  "../6thSem2018/improve.csv"
-      data = CSV.read("../6thSem2018/improve.csv") 
+      filename = @folder+ "improve.csv" 
+      data = MyCSVReader.read(filename) 
+      return true if data.nil?
       header = data[0]
       body = data - [header]
       body.each do |i| 
         row = Hash[[header.map(&:downcase), i].transpose].symbolize_keys
+      #data.each do |row|
         options[:row] = row
+        options[:student_type] = :improvement
         create_tabulation_row options  
       end  
   end
@@ -234,9 +283,12 @@ class ImportFullExamService
       student =   Student.find_by(roll: row[:roll])
       r = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid )  
       if r
-              # r.student_type = :improvement
-              # r.student = student
-              # r.save
+              if options.has_key? :student_type and options[:student_type] == :irregular      
+                r.student_type =  :irregular
+                r.student = student
+                r.save
+              end
+
               is_failed_in_a_course = false;
               s = r.student
               tabulation = Tabulation.find_by(student_roll:s.roll, exam_uuid:@exam.uuid, :record_type=>:previous) || Tabulation.new
@@ -283,13 +335,15 @@ class ImportFullExamService
   
   def self.perform options
     @exam = options[:exam]
+    @folder = options[:folder]
 
     MyLogger.info  "Destroy prevoius calculations"
        reset_exam_result options
     MyLogger.info  "Register students"
        register_students options
-       
-     MyLogger.info  "## Step 3: import all course marks"
+    MyLogger.info  "Import course info"
+       import_course_info options
+    MyLogger.info  "## Step 3: import all course marks"
        import_all_courses options       
     MyLogger.info  "Processing   result: regular"
         Tabulation.where(exam_uuid:@exam.uuid).destroy_all

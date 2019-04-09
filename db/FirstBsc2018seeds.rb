@@ -1,14 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-User.create(email: 'rokan@cu.ac.bd', nickname: 'Rokan', name: 'Rokan Faruqui', password: "1234qwer")
 @exam = Exam.create(sem: "_first", year: "2018", program: "bsc", title: "", uuid: "_firstbsc2018")
 
 #Course.delete_all
+@exam = Exam.find_by(uuid: "_firstbsc2018")
 Course.create(code:'CSE111',	title:  'Introduction to Computer Systems and Computing Agents', credit:3, exam_uuid: "_firstbsc2018", exam: @exam)
 Course.create(code:'CSE113',	title:	'Structured Programming Language', credit: 3, exam_uuid: "_firstbsc2018", exam: @exam)
 Course.create(code:'CSE114',	title:	'Structured Programming Language Lab', credit:2, course_type:"lab", exam_uuid: "_firstbsc2018", exam: @exam)

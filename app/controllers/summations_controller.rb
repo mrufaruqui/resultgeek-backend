@@ -86,7 +86,7 @@ class SummationsController < ApplicationController
           summation.assesment = row[:ct]
           summation.attendance = row[:ca]
           if row[:cact].blank?
-              summation.cact = summation.marks.to_f + summation.assesment.to_f
+              summation.cact = summation.attendance.to_f + summation.assesment.to_f
           else
               summation.cact = row[:cact]
           end
