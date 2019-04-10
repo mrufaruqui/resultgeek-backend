@@ -407,8 +407,8 @@ EOF
 		\\begingroup
         \\vspace*{1.cm}\\begin{minipage}[b][2cm][l]{4in}%
 		\\tcbset{colframe=gray,colback=white,fonttitle=\\bfseries,nobeforeafter}
-        \\tcbox[minipage,width=1.8in,height=0.7in,left=0mm,right=0mm,top=5mm,bottom=0mm,boxsep=0mm,title=Controller of Examination]{}%}\\hfill
-        \\hfill\\tcbox[minipage,width=1.8in,height=0.7in,left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Vice-Chancellor]{}%}\\hfill
+        \\tcbox[minipage,width=2.2in,height=0.7in,left=0mm,right=0mm,top=5mm,bottom=0mm,boxsep=0mm,title=Controller of Examination]{}%}\\hfill
+        %%\\hfill\\tcbox[minipage,width=1.8in,height=0.7in,left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Vice-Chancellor]{}%}\\hfill
         \\end{minipage}%
         \\endgroup
 }

@@ -369,6 +369,8 @@ class ImportFullExamService
   def self.perform options
     @exam = options[:exam]
     @folder = options[:folder]
+    MyLogger.info  "Validate input files"
+       validate_input options
 
     MyLogger.info  "Destroy prevoius calculations"
        reset_exam_result options

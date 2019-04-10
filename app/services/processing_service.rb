@@ -101,8 +101,7 @@ class ProcessingService
                    ##punishment grading
                     if (ret[:ps] > 3.00)
                          ret[:ps] = 3.00
-                         ret[:lg] = 'B'
-                         puts ret
+                         ret[:lg] = 'B' 
                     end
 
                     sm_temp.gpa = ret[:lg]
