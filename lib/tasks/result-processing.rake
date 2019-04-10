@@ -25,7 +25,7 @@ task process_6thsem2018: :environment do
     options[:folder] = "../6thSem2018/"
     options[:exam] = Exam.find_by(uuid:"_sixthbsc2018") 
     ProcessFullExamJob.perform_now options
-    #PdfyLatexJob.perform_now options
+    PdfyLatexJob.perform_now options
 end
 
 desc 'process full exam'
@@ -34,6 +34,6 @@ task process_1stsem2018: :environment do
     options[:exam] = Exam.find_by(uuid:"_firstbsc2018") 
     options[:folder] = "../1stSem2018/"
     ProcessFullExamJob.perform_now options
-    #PdfyLatexJob.perform_now options
+    PdfyLatexJob.perform_now options
 end
 

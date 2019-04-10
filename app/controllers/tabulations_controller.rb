@@ -87,50 +87,27 @@ class TabulationsController < ApplicationController
 
     def generate_tabulations_view
         a = []
-        @tab =  Tabulation.where(exam_uuid: @exam.uuid).order(:sl_no)
+         @tab =  Tabulation.where(exam_uuid: @exam.uuid, :student_type=>:regular, :record_type=>:current).order(:sl_no)
         @tab.each do |t| 
-        s = Student.find_by(roll:t.student_roll)
-        @retHash = Hash.new
-        @retHash[:sl_no] = t.sl_no
-        @retHash[:gpa] = '%.2f' % t.gpa
-        @retHash[:result] = t.result
-        @retHash[:tce] = '%.2f' % t.tce
-        @retHash[:remarks] = t.remarks
-        @retHash[:roll] = s.roll
-        @retHash[:name] = s.name
-        @retHash[:hall] = s.hall_name;
-        @retHash[:courses] = []
-        tps = 0.0;
-        t.tabulation_details.each do |td|
-            course = Hash.new
-            ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
-            if td.summation.course.course_type === "lab"
-               @retHash[td.summation.course.code + '_mo'] = td.summation.total_marks
-               @retHash[td.summation.course.code + '_pr'] = td.summation.percetage
-               @retHash[td.summation.course.code + '_lg'] = td.summation.gpa
-               @retHash[td.summation.course.code + '_gp'] = td.summation.grade
-               @retHash[td.summation.course.code + '_ps'] = ps 
-            else
-               @retHash[td.summation.course.code + '_cact'] = td.summation.cact
-               @retHash[td.summation.course.code + '_fem'] = td.summation.marks
-               @retHash[td.summation.course.code + '_mo'] = td.summation.total_marks
-               @retHash[td.summation.course.code + '_pr'] = td.summation.percetage
-               @retHash[td.summation.course.code + '_lg']  = td.summation.gpa
-               @retHash[td.summation.course.code + '_gp'] = td.summation.grade
-               @retHash[td.summation.course.code + '_ps'] = ps 
-            end  
-            tps += ps;
-          #  @retHash[:courses] << course
+            @retHash = view_tabulation_row t
+        a << @retHash
         end
-        @retHash[:tps] = '%.2f' % tps; 
-        @retHash 
-          a << @retHash
-      end
+        @tab =  Tabulation.where(exam_uuid: @exam.uuid, :student_type=>:improvement, :record_type=>:temp).order(:sl_no)
+        @tab.each do |t| 
+            @retHash = view_tabulation_row t
+        a << @retHash
+        end
+
+        @tab =  Tabulation.where(exam_uuid: @exam.uuid, :student_type=>:irregular, :record_type=>:temp).order(:sl_no)
+        @tab.each do |t| 
+            @retHash = view_tabulation_row t
+        a << @retHash
+        end
       a
     end
 
 
-
+private
     def create_tabulation_row row
       student =   Student.find_by(roll: row[:roll])
       r = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid )  
@@ -180,6 +157,43 @@ class TabulationsController < ApplicationController
               #tabulation.remarks = 'F-' + remarks.join(", ") if is_failed_in_a_course  
               tabulation.save
       end
+    end
+    def view_tabulation_row t
+       s = Student.find_by(roll:t.student_roll)
+        @retHash = Hash.new
+        @retHash[:sl_no] = t.sl_no
+        @retHash[:gpa] = '%.2f' % t.gpa
+        @retHash[:result] = t.result
+        @retHash[:tce] = '%.2f' % t.tce
+        @retHash[:remarks] = t.remarks
+        @retHash[:roll] = s.roll
+        @retHash[:name] = s.name
+        @retHash[:hall] = s.hall_name;
+        @retHash[:courses] = []
+        tps = 0.0;
+        t.tabulation_details.each do |td|
+            course = Hash.new
+            ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
+            if td.summation.course.course_type === "lab"
+               @retHash[td.summation.course.code + '_mo'] = td.summation.total_marks
+               @retHash[td.summation.course.code + '_pr'] = td.summation.percetage
+               @retHash[td.summation.course.code + '_lg'] = td.summation.gpa
+               @retHash[td.summation.course.code + '_gp'] = td.summation.grade
+               @retHash[td.summation.course.code + '_ps'] = ps 
+            else
+               @retHash[td.summation.course.code + '_cact'] = td.summation.cact
+               @retHash[td.summation.course.code + '_fem'] = td.summation.marks
+               @retHash[td.summation.course.code + '_mo'] = td.summation.total_marks
+               @retHash[td.summation.course.code + '_pr'] = td.summation.percetage
+               @retHash[td.summation.course.code + '_lg']  = td.summation.gpa
+               @retHash[td.summation.course.code + '_gp'] = td.summation.grade
+               @retHash[td.summation.course.code + '_ps'] = ps 
+            end  
+            tps += ps;
+          #  @retHash[:courses] << course
+        end
+        @retHash[:tps] = '%.2f' % tps; 
+        @retHash 
     end
 end
 

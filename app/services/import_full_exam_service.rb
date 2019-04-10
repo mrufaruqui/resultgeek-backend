@@ -1,7 +1,40 @@
 require 'csv'
 class ImportFullExamService
 
-    
+    def self.validate_input options
+       @exam = options[:exam]
+       @folder = options[:folder]
+
+      filename = @folder+ "students.csv" 
+      students_data = MyCSVReader.smart_read filename 
+      options[:filename] = filename
+      options[:field] = :roll
+      options[:data]  = students_data
+      check_duplicate options
+
+
+         
+       Course.where(exam_uuid:@exam.uuid).each do |c|
+           filename = @folder+ c.code.split(/[a-zA-z]/).last+".csv" 
+           course_data = MyCSVReader.smart_read filename 
+             options[:filename] = filename
+             options[:field] = :roll
+             options[:data]  = course_data
+             check_duplicate options
+       end
+      true
+    end
+
+     def self.check_duplicate options
+            MyLogger.info "Number of records : " + options[:data].pluck(options[:field]).count.to_s
+           if options[:data].pluck(options[:field]).count - options[:data].pluck(options[:field]).uniq.count > 0
+                MyLogger.error 'Duplicate values in : ' + options[:filename]
+                MyLogger.warn "Number of unique records : "  + options[:data].pluck(options[:field]).uniq.count.to_s
+                b = options[:data].group_by { |h| h[options[:field]] }.values.select { |a| a.size > 1 }.flatten
+                MyLogger.error b.to_s
+            end
+     end
+
     def self.register_students(options={})
             @exam = options[:exam]
         if options.has_key? :exam  
