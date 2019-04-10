@@ -34,7 +34,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
     end
 
      def latex_full_preamble
-        latex_preamble + latex_preamble_lhead + latex_preamble_chead + latex_preamble_rhead + tabulation_lfoot + tabulation_cfoot + tabulation_lfoot
+        latex_preamble + latex_preamble_lhead + latex_preamble_chead + latex_preamble_rhead + tabulation_lfoot + tabulation_cfoot + tabulation_rfoot
     end
 
 
