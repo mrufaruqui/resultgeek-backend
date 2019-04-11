@@ -97,7 +97,6 @@ class ProcessingService
                     sm_temp.percetage = (sm_temp.total_marks.to_f / (c.credit.to_f * 25.to_f)) * 100.to_f
                     ret = calculate_grade(sm_temp.percetage.to_f) 
                    
-                       puts ret
                    ##punishment grading
                     if (ret[:ps] > 3.00)
                          ret[:ps] = 3.00

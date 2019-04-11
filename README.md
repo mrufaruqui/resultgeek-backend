@@ -23,4 +23,4 @@ Things you may want to cover:
 
 * ...
 <!-- 
-CSV.open("6thBsc2018.csv", "wb") { |csv|  csv << ["id", "result", "remarks"]; t.each { |tab| csv<<tab } }  -->
+CSV.open("./reports/gazette.csv", "wb") { |csv|  csv << ["id", "result", "remarks"]; t.each { |tab| csv<<tab } }  -->
