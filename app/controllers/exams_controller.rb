@@ -50,11 +50,14 @@ class ExamsController < ApplicationController
   end
 
    def process_result
-      @status = ProcessingService.perform({:exam=>@exam, :student_type=>:regular, :record_type=>:current})
-      @status = ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current})
-      @status = ProcessingService.perform({:exam=>@exam, :student_type=>:improvement, :record_type=>:current})
-      @status = ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
-      @status = ProcessingService.process_result_irregular({:exam=>@exam, :student_type=>:irregular, :record_type=>:temp})
+      # @status = ProcessingService.perform({:exam=>@exam, :student_type=>:regular, :record_type=>:current})
+      # @status = ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current})
+      # @status = ProcessingService.perform({:exam=>@exam, :student_type=>:improvement, :record_type=>:current})
+      # @status = ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
+      # @status = ProcessingService.process_result_irregular({:exam=>@exam, :student_type=>:irregular, :record_type=>:temp})
+      @status = ProcessRegularJob.perform_later({:exam=>@exam})
+      @status = ProcessIrregularJob.perform_later({:exam=>@exam})
+      @status = ProcessImprovementJob.perform_later({:exam=>@exam})
       render json: {:message=>"Job Submitted", :status=> @status}
    end
 

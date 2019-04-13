@@ -42,10 +42,10 @@ Course.find_by(code:'EEE621').update(sl_no:9)
 Dept.create(code:'CSE', name:'Computer Science and Engineering')
 
  
-Teacher.create(title:'Mr.', fullname:'Rokan Uddin Faruqui', designation: :associate_professor, email:'rokan@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
-Teacher.create(title:'Dr.', fullname:'Hanif Siddiki', designation: :professor, email:'hanif@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
-Teacher.create(title:'Mr.', fullname:'Nihad Karim Chowdhury', designation: :associate_professor, email:'nihad@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
-Teacher.create(title:'Mr.', fullname:'A. H. M Sajedul Hoque', designation: :assistant_professor, email:'hoque.cse@cu.ac.bd ', dept: Dept.find_by(code:'CSE'))
+Teacher.create(title:'', fullname:'Rokan Uddin Faruqui', designation: :associate_professor, email:'rokan@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
+Teacher.create(title:'Dr.', fullname:'Md. Hanif Seddiqui', designation: :professor, email:'hanif@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
+Teacher.create(title:'', fullname:'Nihad Karim Chowdhury', designation: :associate_professor, email:'nihad@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
+Teacher.create(title:'', fullname:'A. H. M Sajedul Hoque', designation: :assistant_professor, email:'hoque.cse@cu.ac.bd ', dept: Dept.find_by(code:'CSE'))
 
  
 Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Hanif%'), role: "chairman") 
