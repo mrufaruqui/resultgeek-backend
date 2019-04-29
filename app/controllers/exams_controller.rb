@@ -79,9 +79,9 @@ class ExamsController < ApplicationController
    end
 
    def generate_gradesheets_latex
-       @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:regular, :record_type=>:current})
-       @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp})
-       @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:irregular, :record_type=>:temp})
+       @status = GenerateGsJob.perform_later({:exam=>@exam})
+      #  @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp})
+      #  @status =  GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:irregular, :record_type=>:temp})
        render json: {:message=>"Job Submitted", :status=> @status}
    end
    def generate_summationsheets_latex
@@ -103,7 +103,7 @@ class ExamsController < ApplicationController
    end
 
    def reset_exam_result
-      TabulationDetail.destroy_all
+      #TabulationDetail.destroy_all
       Tabulation.where(exam_uuid:@exam.uuid).destroy_all
       Summation.where(exam_uuid:@exam.uuid).destroy_all
       Registration.where(exam_uuid:@exam.uuid).destroy_all

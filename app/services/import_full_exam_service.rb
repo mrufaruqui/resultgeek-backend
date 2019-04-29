@@ -226,13 +226,15 @@ class ImportFullExamService
      def self.reset_exam_result options
       @exam = options[:exam]
       #TabulationDetail.destroy_all
+      Registration.where(exam_uuid:@exam.uuid).destroy_all
       Tabulation.where(exam_uuid:@exam.uuid).destroy_all
       Summation.where(exam_uuid:@exam.uuid).destroy_all
-      Registration.where(exam_uuid:@exam.uuid).destroy_all
+     
    end
 
    def self.process_result_regular options
       @exam = options[:exam]
+      Tabulation.where(exam_uuid:@exam.uuid).destroy_all
       ProcessingService.perform({:exam=>@exam, :student_type=>:regular, :record_type=>:current})
       ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current})
       ProcessingService.perform({:exam=>@exam, :student_type=>:improvement, :record_type=>:current})
@@ -285,7 +287,7 @@ class ImportFullExamService
    
    def self.full_process_result_improve options
         @exam = options[:exam]
-        Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:improve, :record_type=> :temp).destroy_all
+        Tabulation.where(exam_uuid:@exam.uuid, :student_type=>:improvement, :record_type=> :temp).destroy_all
         ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
    end
 

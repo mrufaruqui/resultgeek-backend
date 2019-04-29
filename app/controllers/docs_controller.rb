@@ -59,15 +59,13 @@ class DocsController < ApplicationController
 
 
    def download
-     
-     file = Doc.find_by(latex_name: params[:filename])
-     
-   if params[:filename].include?".tex" and !file.latex_str.blank?
-      render json: {:data=>file.latex_str, :filename=>params[:filename], :status=>"200 ok"} 
-   elsif params[:filename].include?".pdf" and !file.pdf_str.blank?
-      render json: {:data=>file.pdf_str, :filename=>params[:filename], :status=>"200 ok"}   
+    file = Doc.find_by(id:params[:id])
+    if params[:filename].include? ".tex" and !file.latex_str.blank?
+          render json: {:data=> file.latex_str, :filename=>params[:filename], :status=>"200 ok"} 
+    elsif params[:filename].include? ".pdf" and !file.pdf_str.blank?
+          render json: {:data=>file.pdf_str, :filename=>params[:filename], :status=>"200 ok"}   
     else
-        render json: {:errors=>file.errors, :status=>false}
+          render json: {:errors=>file.errors, :status=>false}
     end
   end
 
