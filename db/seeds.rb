@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(email: 'rokan@cu.ac.bd', nickname: 'Rokan', name: 'Rokan Faruqui', password: "1234qwer")
-@exam = Exam.create(sem: "_first", year: "2018", program: "bsc", title: "", uuid: "_firstbsc2018")
+@exam = Exam.find_by(uuid:"_firstbsc2018") || Exam.create(sem: "_first", year: "2018", program: "bsc", title: "", uuid: "_firstbsc2018") 
 
 #Course.delete_all
 Course.create(code:'CSE111',	title:  'Introduction to Computer Systems and Computing Agents', credit:3, exam_uuid: "_firstbsc2018", exam: @exam)

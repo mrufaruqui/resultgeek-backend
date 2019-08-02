@@ -98,7 +98,7 @@ class ProcessingService
                     ret = calculate_grade(sm_temp.percetage.to_f) 
                    
                    ##punishment grading
-                    if (ret[:ps] > 3.00)
+                    if (sm_cur.gpa != 'X' and ret[:ps] > 3.00)
                          ret[:ps] = 3.00
                          ret[:lg] = 'B' 
                     end
