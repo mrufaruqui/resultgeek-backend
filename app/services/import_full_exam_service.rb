@@ -75,8 +75,8 @@ class ImportFullExamService
     end
 
      def self.import_course_info(options={})
-
             @exam = options[:exam]
+            @folder= options[:folder]
             Course.where(exam_uuid:@exam.uuid).destroy_all
         if options.has_key? :exam   
             filename = @folder +  "courses.csv" 
