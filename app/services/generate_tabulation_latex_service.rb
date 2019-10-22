@@ -13,6 +13,14 @@ class GenerateTabulationLatexService < TabulationBaseService
     end
 
     def self.perform(options={})
+        @exam = options[:exam]
+        @courses = Course.where(exam_uuid:@exam.uuid)
+        @members = @exam.workforces.where(role:"member")
+        @tabulators = @exam.workforces.where(role:"tabulator")
+        @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
+        @hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
+        @hall_name = ' '
+
       File.open( ['reports/',@exam.uuid, 'tabulation.tex'].join, 'w') do |f| 
        f.puts latex_tabulation_template(options)
       end
@@ -85,26 +93,26 @@ class GenerateTabulationLatexService < TabulationBaseService
 
     def self.main_preamble(data={})
        part_a =  <<-EOF 
-\\begin{table}[ht]
-\\begin{tabularx}{\\linewidth}{llll}
-    EOF
-part_b = grading_system + "&\n" + abbreviations + "&\n" + exam_info + "&\n" + course_info + "\n"
-part_c = <<-EOF   
-\\end{tabularx}
-\\end{table}
-
-
-\\vspace*{-0.5cm}
-\\begin{center}
-	%\\hspace*{1in}
-	\\renewcommand{\\arraystretch}{1.08}
-	
-	\\begin{small}
-\\begin{tabularx}{\\linewidth}{|X|X|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|c|X|X|} \\hline
-    \\bf ID No. & \\bf Student Name &\\multicolumn{4}{c|}{\\textbf{CSE 111}}  & \\multicolumn{4}{c|}{\\textbf{CSE 113}} & \\multicolumn{2}{c|}{\\textbf{CSE 114}} & \\multicolumn{4}{c|}{\\textbf{EEE 121}} & \\multicolumn{2}{c|}{\\textbf{EEE 122}} &  \\multicolumn{4}{c|}{\\textbf{MAT 131}} & \\multicolumn{4}{c|}{\\textbf{STA 151}} & TCE & TPS & GPA & Result & Remarks  \\\\ \\hline
-	 
-    &   & CATM & FEM & MO & LG     & CATM & FEM & MO &  LG   & MO & LG   & CATM & FEM & MO & LG   & MO & LG   & CATM & FEM & MO & LG   & CATM & FEM & MO & LG   &  &   &   &  \\\\ \\hline
+        \\begin{table}[ht]
+        \\begin{tabularx}{\\linewidth}{llll}
             EOF
+        part_b = grading_system + "&\n" + abbreviations + "&\n" + exam_info + "&\n" + course_info + "\n"
+        part_c = <<-EOF   
+        \\end{tabularx}
+        \\end{table}
+
+
+        \\vspace*{-0.5cm}
+        \\begin{center}
+            %\\hspace*{1in}
+            \\renewcommand{\\arraystretch}{1.08}
+            
+            \\begin{small}
+        \\begin{tabularx}{\\linewidth}{|X|X|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|c|X|X|} \\hline
+            \\bf ID No. & \\bf Student Name &\\multicolumn{4}{c|}{\\textbf{CSE 111}}  & \\multicolumn{4}{c|}{\\textbf{CSE 113}} & \\multicolumn{2}{c|}{\\textbf{CSE 114}} & \\multicolumn{4}{c|}{\\textbf{EEE 121}} & \\multicolumn{2}{c|}{\\textbf{EEE 122}} &  \\multicolumn{4}{c|}{\\textbf{MAT 131}} & \\multicolumn{4}{c|}{\\textbf{STA 151}} & TCE & TPS & GPA & Result & Remarks  \\\\ \\hline
+            
+            &   & CATM & FEM & MO & LG     & CATM & FEM & MO &  LG   & MO & LG   & CATM & FEM & MO & LG   & MO & LG   & CATM & FEM & MO & LG   & CATM & FEM & MO & LG   &  &   &   &  \\\\ \\hline
+                    EOF
         part_a + part_b + part_c
     end
 
@@ -187,100 +195,100 @@ part_c = <<-EOF
 
     def self.grading_system
         <<-EOF
-     \\begin{minipage}[m]{0.3\\linewidth} \\flushleft
-%\\vspace*{3.0cm} 
-\\begin{small}
-\\begin{tabular}{ |c|>{\\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\\centering}p{1cm} | >{\\centering}p{1cm} |}
-	\\hline {\\bf Numerical Range} & {\\bf Letter Grade} & {\\bf Grade Point} \\\\
-	\\hline   80\\% and above & A+ & $4.00$  \\\\ 
-	\\hline   75\\% to less than 80\\% &  A & $3.75$\\\\ 
-	\\hline   70\\% to less than 75\\% &  A- & $3.50$ \\\\ 
-	\\hline   65\\% to less than 70\\% &  B+ & $3.25$\\\\ 
-	\\hline   60\\% to less than 65\\% &  B  & $3.00$\\\\ 
-	\\hline   55\\% to less than 60\\% &  B- & $2.75$\\\\ 
-	\\hline   50\\% to less than 55\\% &  C+ & $2.50$\\\\ 
-	\\hline   45\\% to less than 50\\% &  C  & $2.25$\\\\
-	\\hline   40\\% to less than 45\\% &  D  & $2.00$\\\\
-	\\hline   Less than 40\\%         &  F  & $0.00$\\\\ 
-	\\hline   Incomplete/Absent         &  X  & X\\\\ 
-	\\hline 
-	
-\\end{tabular}
-\\end{small}
-\\end{minipage}
+            \\begin{minipage}[m]{0.3\\linewidth} \\flushleft
+        %\\vspace*{3.0cm} 
+        \\begin{small}
+        \\begin{tabular}{ |c|>{\\centering}m{0.9cm}|m{0.91cm}|}%| c | >{\\centering}p{1cm} | >{\\centering}p{1cm} |}
+            \\hline {\\bf Numerical Range} & {\\bf Letter Grade} & {\\bf Grade Point} \\\\
+            \\hline   80\\% and above & A+ & $4.00$  \\\\ 
+            \\hline   75\\% to less than 80\\% &  A & $3.75$\\\\ 
+            \\hline   70\\% to less than 75\\% &  A- & $3.50$ \\\\ 
+            \\hline   65\\% to less than 70\\% &  B+ & $3.25$\\\\ 
+            \\hline   60\\% to less than 65\\% &  B  & $3.00$\\\\ 
+            \\hline   55\\% to less than 60\\% &  B- & $2.75$\\\\ 
+            \\hline   50\\% to less than 55\\% &  C+ & $2.50$\\\\ 
+            \\hline   45\\% to less than 50\\% &  C  & $2.25$\\\\
+            \\hline   40\\% to less than 45\\% &  D  & $2.00$\\\\
+            \\hline   Less than 40\\%         &  F  & $0.00$\\\\ 
+            \\hline   Incomplete/Absent         &  X  & X\\\\ 
+            \\hline 
+            
+        \\end{tabular}
+        \\end{small}
+        \\end{minipage}
      EOF
     end
 
     def self.abbreviations 
         <<-EOF
-\\begin{minipage}[m]{0.3\\linewidth} %\\centering
-	\\hspace{-5cm}
-%	\\vspace*{-3.0cm} 
-	\\begin{small}
-		\\renewcommand{\\arraystretch}{1.01}{
-			\\begin{tabular}{ |c|} 
-				\\hline {\\bf	ABBREVIATIONS } \\\\		
-				\\hline 	NG = Numerical Grade		 \\\\			
-				\\hline 	LG = Letter Grade			 \\\\		
-				\\hline 	GP = Grade Points			 \\\\		
-				\\hline	CATM = Class Attendance \\\\ 
-				and Class Test Marks	 \\\\				
-				\\hline 	FEM = Final Exam Marks				
-				\\\\	
-				\\hline 	MO = Marks Obtained				
-				\\\\	
-				\\hline 	CP = Credit Points = Credit x GP	 \\\\				
-				\\hline 	TCE = Total Credit Earned		 \\\\			
-				\\hline 	TCP = Total Credit Points		 \\\\			
-				\\hline 	GPA = Grade Point Average = TCP/18		 \\\\	 
-				\\hline 
-				
-			\\end{tabular}
-		}
-	\\end{small}
-\\end{minipage}
+            \\begin{minipage}[m]{0.3\\linewidth} %\\centering
+                \\hspace{-5cm}
+            %	\\vspace*{-3.0cm} 
+                \\begin{small}
+                    \\renewcommand{\\arraystretch}{1.01}{
+                        \\begin{tabular}{ |c|} 
+                            \\hline {\\bf	ABBREVIATIONS } \\\\		
+                            \\hline 	NG = Numerical Grade		 \\\\			
+                            \\hline 	LG = Letter Grade			 \\\\		
+                            \\hline 	GP = Grade Points			 \\\\		
+                            \\hline	CATM = Class Attendance \\\\ 
+                            and Class Test Marks	 \\\\				
+                            \\hline 	FEM = Final Exam Marks				
+                            \\\\	
+                            \\hline 	MO = Marks Obtained				
+                            \\\\	
+                            \\hline 	CP = Credit Points = Credit x GP	 \\\\				
+                            \\hline 	TCE = Total Credit Earned		 \\\\			
+                            \\hline 	TCP = Total Credit Points		 \\\\			
+                            \\hline 	GPA = Grade Point Average = TCP/18		 \\\\	 
+                            \\hline 
+                            
+                        \\end{tabular}
+                    }
+                \\end{small}
+            \\end{minipage}
 
-     EOF
+        EOF
 
     end
 
     def self.exam_info
         <<-EOF
-     \\hspace{-5in}
-\\begin{minipage}[m]{0.35\\textwidth} \\centering
-%	\\vspace*{-0.2in} 
-\\includegraphics[width=0.6in]{cu-logo.jpg}
-	
-	\\smallskip
-	
-	\\noindent {\\textsc{University of Chittagong}}\\\\
-	\\textsc{Department of Computer Science \\& Engineering}\\\\
-	
-	\\smallskip
-	
-	{\\large {\\sc Tabulation Sheet}}\\\\
-	{\\large {\\sc Hall: #{@hall_name}}}\\\\
-	
-	\\smallskip
-	\\textsc{#{@exam.fullname}}\\\\
-	{Held in #{@exam.held_in}}\\\\
-\\end{minipage}
-EOF
+        \\hspace{-5in}
+        \\begin{minipage}[m]{0.35\\textwidth} \\centering
+        %	\\vspace*{-0.2in} 
+        \\includegraphics[width=0.6in]{cu-logo.jpg}
+            
+            \\smallskip
+            
+            \\noindent {\\textsc{University of Chittagong}}\\\\
+            \\textsc{Department of Computer Science \\& Engineering}\\\\
+            
+            \\smallskip
+            
+            {\\large {\\sc Tabulation Sheet}}\\\\
+            {\\large {\\sc Hall: #{@hall_name}}}\\\\
+            
+            \\smallskip
+            \\textsc{#{@exam.fullname}}\\\\
+            {Held in #{@exam.held_in}}\\\\
+        \\end{minipage}
+        EOF
     end
 
     def self.course_info
       _course_info_a = <<-EOF
-\\hspace{1cm}
-\\begin{minipage}[m]{0.3\\linewidth} \\flushright
-%	\\vspace*{-1in} %\\centering 
-	%{\\flushright \\bf	Serial No:\\sl \\\\}
-	%\\vspace{4mm}
-	\\hspace{-5cm}
-	\\begin{small}
-		\\renewcommand{\\arraystretch}{1.01}
-		\\begin{tabular} {|l|l|r|r|}
-			\\hline \\hline Code & Title  & Credit &  Marks \\\\ \\hline
-EOF
+            \\hspace{1cm}
+            \\begin{minipage}[m]{0.3\\linewidth} \\flushright
+            %	\\vspace*{-1in} %\\centering 
+                %{\\flushright \\bf	Serial No:\\sl \\\\}
+                %\\vspace{4mm}
+                \\hspace{-5cm}
+                \\begin{small}
+                    \\renewcommand{\\arraystretch}{1.01}
+                    \\begin{tabular} {|l|l|r|r|}
+                        \\hline \\hline Code & Title  & Credit &  Marks \\\\ \\hline
+        EOF
 	 
     a = ''
     @courses.each  do |course|
@@ -289,13 +297,14 @@ EOF
  _course_info_b = a
  
  _course_info_c= <<-EOF
- \\hline
-		\\end{tabular}
-	\\end{small} 
-\\end{minipage}
-EOF
+    \\hline
+            \\end{tabular}
+        \\end{small} 
+    \\end{minipage}
+    EOF
  _course_info_a + _course_info_b + _course_info_c
     end
+
 def self.generate_single_page_tabulation(t) 
         @retHash = Hash.new
         @retHash[:sl_no] = t.sl_no

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   resources :courses
   #root_to 'students#index'
   resources :docs
-
+  resources :depts
+  
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {
   sessions:           'exam_sessions',
   }

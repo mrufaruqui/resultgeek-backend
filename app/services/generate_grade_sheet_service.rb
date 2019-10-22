@@ -96,10 +96,8 @@ class GenerateGradeSheetService
 
             \\vspace*{-3.0cm} 
             \\begin{tabular}{l >{\\hspace*{-1.8ex}}p{2.6in}} % >{\\raggedleft}m{1.5in}}
-           
-                Name &: \\textsc{#{data[:name]}}\\\\ 
-                Session &: \\IfSubStr{#{data[:roll]}}{1770}{$2017-2018$}{$2018-2019$}\\\\ 
-                Roll/ID No. &: $#{data[:roll]}$\\\\ 
+                Name &: \\textsc{#{data[:name]}}\\\\  
+                ID No. &: $#{data[:roll]}$\\\\ 
                 Hall &: #{data[:hall]} \\\\ 
                 \\end{tabular} 
                 \\end{minipage}

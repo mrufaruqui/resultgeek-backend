@@ -44,7 +44,7 @@ class SummationsController < ApplicationController
 
    def import
       data = params[:file]
-      @course = Course.find_by(id: params[:course_id])
+      @course = Course.find_by(id: params[:course_id], exam_uuid:@exam.uuid)
     if !@course.blank?
       
       ##Destroy previous data
@@ -52,8 +52,12 @@ class SummationsController < ApplicationController
       Summation.where(exam_uuid:@exam.uuid, course_id:@course.id).destroy_all
       header = data[0]
       body = data - [header]
-      body.each do |i| 
+      body.each do |i|
         row = Hash[[header, i].transpose].symbolize_keys
+        # if @course.course_type === "theory" 
+        #   create_summation_section_a row
+        #   create_summation_section_b row
+        # end
         create_summation row
       end  
      render :index
@@ -62,7 +66,7 @@ class SummationsController < ApplicationController
     end
   end
   def get_by_course_id
-    c = Course.find_by(id:params[:id]);
+    c = Course.find_by(id:params[:id], exam_uuid:@exam.uuid);
     @summations = Summation.where(exam_uuid:@exam.uuid,:course_id=>c.id, :record_type=>:current)
     render :index
   end
@@ -82,6 +86,7 @@ class SummationsController < ApplicationController
         summation.exam_uuid = @exam.uuid 
         summation.student =   registration.student
         summation.course   =  @course 
+
         if @course.course_type === "theory" 
           summation.assesment = row[:ct]
           summation.attendance = row[:ca]
@@ -95,7 +100,6 @@ class SummationsController < ApplicationController
           summation.section_a_code = row[:code_a]
           summation.section_b_code = row[:code_b]
           summation.marks = summation.section_a_marks.to_f + summation.section_b_marks.to_f
-          m = 
           summation.total_marks = (summation.marks.to_f + summation.cact.to_f).ceil
         else 
           summation.total_marks = (row[:marks]).to_f.ceil
@@ -105,6 +109,33 @@ class SummationsController < ApplicationController
         ret = calculate_grade(summation.percetage.to_f) 
         summation.gpa = ret[:lg]
         summation.grade = ret[:ps]
+        summation.save
+     end 
+
+
+     def create_summation_section_a(row)
+        student =   Student.find_by(roll: row[:roll_a]) || Student.create(:roll=>row[:roll_a])
+        registration = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid ) || Registration.new
+        summation = Summation.find_by(student_id: student.id, course_id: @course.id) || Summation.new
+
+        summation.exam_uuid = @exam.uuid 
+        summation.student =   registration.student
+        summation.course   =  @course 
+        summation.section_a_marks = row[:marks_a]
+        summation.section_a_code = row[:code_a]
+        summation.save
+     end 
+
+    def create_summation_section_b(row)
+        student =   Student.find_by(roll: row[:roll_b]) || Student.create(:roll=>row[:roll_b])
+        registration = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid ) || Registration.new
+        summation = Summation.find_by(student_id: student.id, course_id: @course.id) || Summation.new
+        summation.exam_uuid = @exam.uuid 
+        summation.student =   registration.student
+        summation.course   =  @course 
+
+        summation.section_b_marks = row[:marks_b]
+        summation.section_b_code = row[:code_b]
         summation.save
      end 
 
