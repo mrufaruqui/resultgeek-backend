@@ -3,7 +3,7 @@ class TabulationBaseService
   def generate_single_page_tabulation(options)
        t = options[:t]
         student = Student.find_by(roll: t.student_roll)
-        r = Registration.find_by(student:student)
+        r = Registration.find_by(student:student, exam_uuid:t.exam_uuid)
         @retHash = Hash.new
         @retHash[:sl_no] = (options.has_key? :record_type and options[:record_type] == :previous) ? ' ' : r.sl_no
         @retHash[:gpa] =   (options.has_key? :record_type and  options[:record_type] == :previous) ? ' ' : '%.2f' % t.gpa
@@ -43,7 +43,7 @@ class TabulationBaseService
         t = options[:t_temp] 
        # t_cur  = options[:t_cur]
           student = Student.find_by(roll: t.student_roll)
-          r = Registration.find_by(student:student)
+          r = Registration.find_by(student:student, exam_uuid:t.exam_uuid)
           @retHash = Hash.new
           @retHash[:sl_no] = ' '
           @retHash[:gpa] = '%.2f' % t.gpa
@@ -86,7 +86,7 @@ class TabulationBaseService
         t_temp  = options[:t_temp]
 
           student = Student.find_by(roll: t.student_roll)
-          r = Registration.find_by(student:student)
+          r = Registration.find_by(student:student, exam_uuid:t.exam_uuid)
           @retHash = Hash.new
           @retHash[:sl_no] = ' '
           @retHash[:gpa] = '%.2f' % t.gpa

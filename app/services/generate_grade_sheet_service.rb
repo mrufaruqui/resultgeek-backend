@@ -44,7 +44,7 @@ class GenerateGradeSheetService
       @tab = Tabulation.where(exam_uuid:@exam.uuid, student_type: @gradesheet_type.to_s, :record_type=>@record_type)
       @tab.each do |t| 
         s = Student.find_by(roll: t.student_roll)
-        r = Registration.find_by(student:s)
+        r = Registration.find_by(student:s, exam_uuid:@exam.uuid)
         @retHash = Hash.new
         @retHash[:gpa] = t.gpa
         @retHash[:result] = t.result
