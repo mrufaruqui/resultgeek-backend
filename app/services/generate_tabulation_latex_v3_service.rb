@@ -28,51 +28,28 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
     end
      
     def tabulation(options={})
-        latex_full_preamble + tabulation_body
+        latex_full_preamble + tabulation_body + latex_footer
     end
 
 
-    def tabulation_body
-          tabulation_header + tabulation_table + tabulation_footer
+	def tabulation_body
+		a = ''
+		@hall_list.each do |hall|
+		 a << latex_preamble_chead(hall)
+		 a << tabulation_header + tabulation_table(hall) + tabulation_footer
+		 a << '\\pagebreak'
+		end
+		a
     end
 
     def latex_full_preamble
-        latex_preamble + latex_preamble_lhead + latex_preamble_chead + latex_preamble_rhead + tabulation_lfoot + tabulation_cfoot + tabulation_rfoot
+        latex_preamble + latex_preamble_lhead  + latex_preamble_rhead + tabulation_lfoot + tabulation_cfoot + tabulation_rfoot
     end
 
 
 
-	def tabulation_header
-		part_a =<<-EOF
-			\\newcommand{\\xgpps}[2]{\\ifthenelse{\\equal{#1}{X}}{X}{#2}}  
-
-			\\newcommand*\\rot{\\rotatebox{90}}
-
-			\\newcommand*{\\numtwo}[1]{\\ifthenelse{\\equal{#1}{X}}{X}{\\pgfmathprintnumber[fixed, precision=2, fixed zerofill=true]{#1}}}
-
-			\\newcommand*{\\realrows}{36}
-
-			\\newcommand\\ifismultiple[4]{%
-				\\pgfmathparse{mod(#1,#2)==0} \\ifnum \\pgfmathresult=1 #3 \\else #4 \\fi
-			}
-
-			\\makeatletter
-			\\def\\Dummywarning{%
-			\\multicolumn{\\LT@cols}{c}{\\textsc{\\LARGE \\textcolor{red}{Don't Print This Page. This Is DUMMY. Longtable  somehow affects the arraystretch at the header/footer badly, specifically at the \\emph{last} page.}}}\\\\}
-			\\makeatother
-			\\makeatletter
-			\\def\\toContinue{%
-			\\multicolumn{\\LT@cols}{r}{ \\scriptsize Continued on the nest page $\\cdots$ }\\\\}
-			\\makeatother
-			\\begin{document}
-			\\begingroup
-			\\setlength\\LTleft{0pt}
-			\\setlength\\LTright{0pt}
-			\\setlength\\tabcolsep{4.65pt}
-			\\setlength\\extrarowheight{3pt}
-			\\begin{small}
-			%%\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.88in}|*{4}{c}| *{3}{c}| *{4}{c}| *{3}{c}| *{4}{c}| *{3}{c}| *{4}{c}|*{3}{c}|*{4}{c}| cc|cc |>{\\centering}p{0.5in}p{0.5in}}\\toprule\\toprule \\\\  
-			EOF
+	def tabulation_header 
+		part_a =''
 
 		c=[]
 		c << "\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.88in}"
@@ -83,10 +60,10 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 				c << "*{2}{c}" 
 			end
 		end 
-		part_a_a = c.join("|") + "| cc|cc |>{\\centering}p{0.5in} p{0.5in}}\\toprule\\toprule \n"
+		part_a_a = c.join("|") + "| cc|cc |>{\\centering}p{0.5in} r}\\toprule\\toprule \n"
 
 		a=[]
-		a << "\\multirow{2}{*}{SL\\#}" << "\\multirow{2}{*}{ID}" << "\\multirow{2}{*}{{Name}}"
+		a << "\\multirow{2}{*}{\\bf SL\\#}" << "\\multirow{2}{*}{\\bf ID}" << "\\multirow{2}{*}{{\\bf Name}}"
 		@courses.each do | course|
 			if course.course_type == "theory"	
 				a << "\\multicolumn{4}{c|}{#{course.display_code} (Cr: #{course.credit})}" 
@@ -94,14 +71,36 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 				a << "\\multicolumn{2}{c|}{#{course.display_code} (Cr: #{course.credit})}" 
 			end
 		end 
-		a << "\\multirow{2}{*}{TCE}" << "\\multirow{2}{*}{TPS}" << "\\multirow{2}{*}{GPA}" << "\\multirow{2}{*}{\\rot{ Result }}" <<"\\multirow{2}{*}{Remark}" << "\\multirow{2}{*}{\\hspace*{3ex}{Hall}}"
+		a << "\\multirow{2}{*}{TCE}" << "\\multirow{2}{*}{TPS}" << "\\multirow{2}{*}{\\bf GPA}" << "\\multirow{2}{*}{\\rot{\\bf Result }}" <<"\\multirow{2}{*}{\\bf Remark}" << "\\multirow{2}{*}{\\hspace*{3ex}{\\bf ID}}"
 
 		part_b =   a.join(" &") + "\\\\\n"
 
 	
 
-		a=[]
-		a << "\\cmidrule(lr){4-7}  \\cmidrule(lr){8-9} \\cmidrule(lr){10-13} \\cmidrule(lr){14-15} \\cmidrule(lr){16-19} \\cmidrule(lr){20-21} \\cmidrule(lr){22-25}\\cmidrule(lr){26-27} \\cmidrule(lr){28-31}\n"
+		# a=[]
+		# a << "\\cmidrule(lr){4-7}  \\cmidrule(lr){8-9} \\cmidrule(lr){10-13} \\cmidrule(lr){14-15} \\cmidrule(lr){16-19} \\cmidrule(lr){20-21} \\cmidrule(lr){22-25}\\cmidrule(lr){26-27} \\cmidrule(lr){28-31}\n"
+		# a << "& "
+
+
+
+		cmd=''
+		i = 4
+		j = 0
+		@courses.each do | course|
+			if course.course_type == "theory"	
+				 j = i + 3
+			else
+				 j = i + 1
+			end
+			 cmd += "\\cmidrule(lr){#{i}-#{j}}"
+			 i = j + 1
+		end 
+		cmd <<"\n"
+
+		a = []
+		a << cmd
+		#\cmidrule(lr){4-7} &\cmidrule(lr){8-9} &\cmidrule(lr){10-13} &\cmidrule(lr){14-15} &\cmidrule(lr){16-19} &\cmidrule(lr){20-21} &\cmidrule(lr){22-25} &\cmidrule(lr){26-27} &\cmidrule(lr){28-31}
+		# a << "\\cmidrule(lr){4-7}  \\cmidrule(lr){8-9} \\cmidrule(lr){10-13} \\cmidrule(lr){14-15} \\cmidrule(lr){16-19} \\cmidrule(lr){20-21} \\cmidrule(lr){22-25}\\cmidrule(lr){26-27} \\cmidrule(lr){28-31}\n"
 		a << "& "
 
 		@courses.each do | course|
@@ -117,13 +116,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		part_c = a.join(" &") + "& & & & &  \\\\  \\midrule \\endfirsthead \\toprule\\toprule \n "
 
 		part_f = part_b + a.join(" &") + " & & & & & \\\\"
-
-		# <<-EOF
-		# \\multirow{2}{*}{SL\\#} & \\multirow{2}{*}{ID} & \\multirow{2}{*}{{Name}} & \\multicolumn{5}{c|}{CSE 111 (Cr: 3)} & \\multicolumn{5}{c|}{CSE 113 (Cr: 3)} & \\multicolumn{3}{c|}{CSE 114 (Cr: 2)} & \\multicolumn{5}{c|}{EEE 121 (Cr: 3)} & \\multicolumn{3}{c|}{EEE 122 (Cr: 1)} & \\multicolumn{5}{c|}{MAT 131 (Cr: 3)} & \\multicolumn{5}{c|}{STA 151 (Cr: 3)} & \\multirow{2}{*}{TCE} & \\multirow{2}{*}{TPS} & \\multirow{2}{*}{GPA} & \\multirow{2}{*}{\\rot{ Result }} & \\multirow{2}{*}{Remark}} \\\\ 
-		# \\cmidrule(lr){4-8}  \\cmidrule(lr){9-13} \\cmidrule(lr){14-16} \\cmidrule(lr){17-21} \\cmidrule(lr){22-24} \\cmidrule(lr){25-29} \\cmidrule(lr){30-34}
-		#  & & CA & FEM & MO & LG   & CA & FEM & MO & LG   & MO & LG   & CA & FEM & MO & LG   & MO & LG   & CA & FEM & MO & LG   & CA & FEM & MO & LG   & & & & &  \\\\
-		# EOF
-
+		
 		part_d =<<-EOF
 			\\midrule \\endhead \\bottomrule \\endfoot \\endlastfoot \n
 			EOF
@@ -131,10 +124,10 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		part_a + part_a_a + part_b + part_c + part_f + part_d
 	end
 
-	def tabulation_table
+	def tabulation_table(hall)
 	
 		a=''
-			@hall_list.each do |hall|
+			# @hall_list.each do |hall|
 				@hall_name = hall  
 				if 	@student_type == :regular
 				options = Hash.new
@@ -160,24 +153,21 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 						a<<tabulation_row(generate_single_page_tabulation_improvement(options))
 					end
 				end
-				a << '\\pagebreak'
-			end
+				# a << '\\pagebreak'
+			# end
 		a
 	end
 
 	def tabulation_footer
 		<<-EOF
-		\\end{longtable}
-		\\end{small}
-		\\endgroup
-		\\end{document}
+		\\end{longtable} 
 		EOF
 	end
 
 	def tabulation_row(data)
 			a = ''
 			d = ''
-			a << [data[:sl_no], data[:roll], data[:name]].join(' & ') << ' & '   
+			a << [data[:sl_no], '{\\bf '+ data[:roll].to_s + ' }', '{\\bf ' + data[:name] + ' }'].join(' & ') << ' & '   
 			d <<['','',''].join(' & ') << ' & ' 
 			@courses.each do |course|
 				if course.course_type === "lab"
@@ -189,7 +179,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 				end
 			end
 
-			a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks], data[:hall]].join(' & ')
+			a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks], data[:roll].to_s.slice(0..1) + ".." + data[:roll].to_s.slice(-2..-1)].join(' & ')
 			d << ['', '', '', '', '', ''].join(' & ')
 			
 			a << "\\\\"
@@ -287,7 +277,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
         EOF
     end
 
-    def latex_preamble_chead
+    def latex_preamble_chead (hall)
         <<-EOF
 			\\chead{%
 					\\begingroup
@@ -302,7 +292,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 					{{\\sc Tabulation Sheet #{ '(Improvement)' if  @gradesheet_type ==  :improvement }}}\\\\
 					\\textsc{#{@exam.fullname}}\\\\
 					{Held in #{@exam.held_in}} \\\\
-				%%  {{\\sc Hall : #{ @hall_name }}}\\\\
+				    {\\sc Hall : #{ hall }}\\\\
 					\\end{LARGE}
 					\\end{center}
 					\\end{minipage}%
@@ -347,7 +337,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
     end
     
     def tabulation_lfoot
-		<<-EOF
+		a = <<-EOF
 					\\lfoot{%
 				% \\fbox{%
 					\\begingroup
@@ -360,15 +350,25 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 					\\begin{footnotesize}
 					\\begin{tabular}{rll}
 					Chairman: &  #{@exam.workforces.find_by(role:"chairman").teacher.display_name}  & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
-					Member: & #{@members[0].teacher.display_name unless @members[0].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
-					Member: & #{@members[1].teacher.display_name unless @members[1].nil? || @members.length < 2} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+		EOF
+		  b = ''
+		@members.each do |member|
+		  b <<	"Member: & #{member.teacher.display_name unless member.nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\"
+		  end
+	# b =	<<-EOF
+	# 				Member: & #{@members[0].teacher.display_name unless @members[0].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+	# 				Member: & #{@members[1].teacher.display_name unless @members[1].nil? || @members.length < 2} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+	# 	EOF
+		
+	c =	<<-EOF
 					\\end{tabular}
 					\\end{footnotesize}
 					}
 					\\end{minipage}%
 					\\endgroup
 			}
-        EOF
+		EOF
+		a + b +c
     end
    
     def tabulation_cfoot
@@ -412,7 +412,42 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 			\\end{minipage}%
 			\\endgroup
 			}
+			\\newcommand{\\xgpps}[2]{\\ifthenelse{\\equal{#1}{X}}{X}{#2}}  
+
+			\\newcommand*\\rot{\\rotatebox{90}}
+
+			\\newcommand*{\\numtwo}[1]{\\ifthenelse{\\equal{#1}{X}}{X}{\\pgfmathprintnumber[fixed, precision=2, fixed zerofill=true]{#1}}}
+
+			\\newcommand*{\\realrows}{36}
+
+			\\newcommand\\ifismultiple[4]{%
+				\\pgfmathparse{mod(#1,#2)==0} \\ifnum \\pgfmathresult=1 #3 \\else #4 \\fi
+			}
+
+			\\makeatletter
+			\\def\\Dummywarning{%
+			\\multicolumn{\\LT@cols}{c}{\\textsc{\\LARGE \\textcolor{red}{Don't Print This Page. This Is DUMMY. Longtable  somehow affects the arraystretch at the header/footer badly, specifically at the \\emph{last} page.}}}\\\\}
+			\\makeatother
+			\\makeatletter
+			\\def\\toContinue{%
+			\\multicolumn{\\LT@cols}{r}{ \\scriptsize Continued on the nest page $\\cdots$ }\\\\}
+			\\makeatother
+			\\begin{document}
+			\\begingroup
+			\\setlength\\LTleft{0pt}
+			\\setlength\\LTright{0pt}
+			\\setlength\\tabcolsep{4.65pt}
+			\\setlength\\extrarowheight{3pt}
+			\\begin{small}
+			
 			EOF
     end
-    
+	
+	def latex_footer
+		<<-EOF
+		\\end{small}
+		\\endgroup
+		\\end{document}
+		EOF
+	end
 end
