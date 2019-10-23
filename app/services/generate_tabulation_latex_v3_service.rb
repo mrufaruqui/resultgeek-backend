@@ -6,7 +6,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		@courses = Course.where(exam_uuid:@exam.uuid).order(:sl_no)
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
-        @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
+        @number_of_tabulation_columns  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 8
 		@hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
 		@tco = Course.where(exam_uuid:@exam.uuid).sum(:credit).round
 		@hall_name = ''
@@ -17,12 +17,12 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
        f.puts f_data
 	  end
 	 
-	  @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') || Doc.new(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') 
-	  @doc.latex_loc = 'reports/' + [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")
-	  @doc.latex_name =  ["tabulation", "sheets", "v3", @student_type.to_s ,".tex"].join("_")
-	  @doc.latex_str =   MyCompressionService.compress f_data
-	  @doc.description = ["tabulation", "sheets", @student_type.to_s ].join("_").titlecase
-	  @doc.save
+	#   @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') || Doc.new(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') 
+	#   @doc.latex_loc = 'reports/' + [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")
+	#   @doc.latex_name =  ["tabulation", "sheets", "v3", @student_type.to_s ,".tex"].join("_")
+	#   @doc.latex_str =   MyCompressionService.compress f_data
+	#   @doc.description = ["tabulation", "sheets", @student_type.to_s ].join("_").titlecase
+	#   @doc.save
 	 
 	  true
     end
@@ -176,26 +176,25 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 
 	def tabulation_row(data)
 			a = ''
+			d = ''
 			a << [data[:sl_no], data[:roll], data[:name]].join(' & ') << ' & '   
+			d <<['','',''].join(' & ') << ' & ' 
 			@courses.each do |course|
 				if course.course_type === "lab"
 					a << [data[course.code][:mo], data[course.code][:lg]].join(' & ') << ' & ' if data.include? course.code
+					d << ['', ''].join(' & ') << ' & ' if data.include? course.code
 				else
 					a << [data[course.code][:cact], data[course.code][:fem], data[course.code][:mo], data[course.code][:lg]].join(' & ') << '&' if data.include? course.code
+					d << ['', '', '', ''].join(' & ') << '&' if data.include? course.code
 				end
 			end
 
 			a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks], data[:hall]].join(' & ')
+			d << ['', '', '', '', '', ''].join(' & ')
+			
 			a << "\\\\"
-			
-			30.times.each {a << ' & '}
-			a << "\\\\\n"
-			
-			30.times.each {a << ' & '}
-			a << "\\\\\n"
-
-			a << "\\hline"
-			a   
+			d << "\\\\"
+			a   + d + d +  "\\hline"
 	end
 
    
