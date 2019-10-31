@@ -43,5 +43,6 @@ task process_7thsem2019: :environment do
     options[:exam] = Exam.find_by(uuid:"_seventhbsc2019")
     options[:folder] = "../7thSem2019/"
     ProcessFullExamJob.perform_now options
+     options[:folder] = "../7thSem2019"
     PdfyLatexJob.perform_now options
 end

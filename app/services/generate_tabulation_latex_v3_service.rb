@@ -6,23 +6,22 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		@courses = Course.where(exam_uuid:@exam.uuid).order(:sl_no)
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
-        @number_of_tabulation_columns  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 8
-		@hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
-		@tco = Course.where(exam_uuid:@exam.uuid).sum(:credit).round
+        @tco = @courses.where(exam_uuid:@exam.uuid).sum(:credit).round
+		@number_of_tabulation_column  = @courses.where(:course_type=>"theory").count * 4 + @courses.where(:course_type=>"lab").count * 2 + 7
+		@hall_list =  Tabulation.where(exam_uuid:@exam.uuid).pluck(:hall_name).uniq
 		@hall_name = ''
-	  
-	  f_data = tabulation(options)
-	  MyLogger.info "Writing files: " + Rails.root.join('reports/',[@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")).to_s
-      File.open( Rails.root.join('reports/', [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")), 'w') do |f| 
-       f.puts f_data
-	  end
+		f_data = tabulation(options)
+		MyLogger.info "Writing files: " + Rails.root.join('reports/',[@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")).to_s
+		File.open( Rails.root.join('reports/', [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")), 'w') do |f| 
+		f.puts f_data
+		end
 	 
-	#   @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') || Doc.new(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') 
-	#   @doc.latex_loc = 'reports/' + [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")
-	#   @doc.latex_name =  ["tabulation", "sheets", "v3", @student_type.to_s ,".tex"].join("_")
-	#   @doc.latex_str =   MyCompressionService.compress f_data
-	#   @doc.description = ["tabulation", "sheets", @student_type.to_s ].join("_").titlecase
-	#   @doc.save
+	  @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') || Doc.new(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') 
+	  @doc.latex_loc = 'reports/' + [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")
+	  @doc.latex_name =  ["tabulation", "sheets", "v3", @student_type.to_s ,".tex"].join("_")
+	 # @doc.latex_str =   MyCompressionService.compress f_data
+	  @doc.description = ["tabulation", "sheets", @student_type.to_s ].join("_").titlecase
+	  @doc.save
 	 
 	  true
     end
@@ -36,7 +35,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		a = ''
 		@hall_list.each do |hall|
 		 a << latex_preamble_chead(hall)
-		 a << tabulation_header + tabulation_table(hall) + tabulation_footer
+		 a << tabulation_header + tabulation_table(hall)  + tabulation_footer
 		 a << '\\pagebreak'
 		end
 		a
@@ -76,11 +75,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		part_b =   a.join(" &") + "\\\\\n"
 
 	
-
-		# a=[]
-		# a << "\\cmidrule(lr){4-7}  \\cmidrule(lr){8-9} \\cmidrule(lr){10-13} \\cmidrule(lr){14-15} \\cmidrule(lr){16-19} \\cmidrule(lr){20-21} \\cmidrule(lr){22-25}\\cmidrule(lr){26-27} \\cmidrule(lr){28-31}\n"
-		# a << "& "
-
+ 
 
 
 		cmd=''
@@ -99,8 +94,6 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 
 		a = []
 		a << cmd
-		#\cmidrule(lr){4-7} &\cmidrule(lr){8-9} &\cmidrule(lr){10-13} &\cmidrule(lr){14-15} &\cmidrule(lr){16-19} &\cmidrule(lr){20-21} &\cmidrule(lr){22-25} &\cmidrule(lr){26-27} &\cmidrule(lr){28-31}
-		# a << "\\cmidrule(lr){4-7}  \\cmidrule(lr){8-9} \\cmidrule(lr){10-13} \\cmidrule(lr){14-15} \\cmidrule(lr){16-19} \\cmidrule(lr){20-21} \\cmidrule(lr){22-25}\\cmidrule(lr){26-27} \\cmidrule(lr){28-31}\n"
 		a << "& "
 
 		@courses.each do | course|
@@ -121,39 +114,46 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 			\\midrule \\endhead \\bottomrule \\endfoot \\endlastfoot \n
 			EOF
 
-		part_a + part_a_a + part_b + part_c + part_f + part_d
+		part_a + part_a_a + part_b + part_c + part_f + part_d + "\n"
 	end
 
 	def tabulation_table(hall)
 	
 		a=''
 			# @hall_list.each do |hall|
-				@hall_name = hall  
-				if 	@student_type == :regular
+				@hall_name = hall
+				@tab = '' 
 				options = Hash.new
-				Tabulation.where(exam_uuid:@exam.uuid, student_type:@student_type, hall_name:hall, :record_type=>:current).order(:sl_no).each do |t| 
-						options[:t] = t
-						a<<tabulation_row(generate_single_page_tabulation(options))
-				end
+
+				if 	@student_type == :regular
+					@tab = Tabulation.where(exam_uuid:@exam.uuid, student_type:@student_type, hall_name:hall, :record_type=>:current).order(:sl_no)
+					@tab.each do |t| 
+							options[:t] = t
+							a<<tabulation_row(generate_single_page_tabulation(options))
+							 a << '\\pagebreak' if t.sl_no % 10 == 0  and @tab.count >= 10
+					end
 				elsif 	@student_type == :irregular
-					Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
+					@tab = Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no)
+					@tab.each do |t| 
 						t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:current)
 						t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
 						a<<tabulation_row(generate_single_page_tabulation({:t=> t_cur, :t_temp=>t_temp, :record_type=> :temp}))
 						a<<tabulation_row(generate_single_page_tabulation({:t=> t, :record_type=> :previous}))
+						a << '\\pagebreak' if t.sl_no % 10 == 0 and @tab.count >= 10
 					end
 				elsif 	@student_type == :improvement
-					Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no).each do |t| 
+					@tab = Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no)
+					@tab.each do |t| 
 						t_cur = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
 						t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
-						options = Hash.new
 						options[:t_cur]  = t_cur if t_cur
 						options[:t_temp] = t_temp if t_temp
 						a<<tabulation_row(generate_single_page_tabulation({:t=>t, :record_type=> :current}))
 						a<<tabulation_row(generate_single_page_tabulation_improvement(options))
+						a << '\\pagebreak' if t.sl_no % 10 == 0 and @tab.count >= 10
 					end
 				end
-				# a << '\\pagebreak'
+				
 			# end
 		a
 	end
@@ -179,12 +179,12 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 				end
 			end
 
-			a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks], data[:roll].to_s.slice(0..1) + ".." + data[:roll].to_s.slice(-2..-1)].join(' & ')
+			a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks], data[:roll] ].join(' & ')#.map{|i| "\\multirow{3}{*}{" + i.to_s + "}"}.join(' & ')
 			d << ['', '', '', '', '', ''].join(' & ')
 			
 			a << "\\\\"
-			d << "\\\\"
-			a   + d + d +  "\\hline"
+			d << "\\\\[10pt]"
+			a  + d + d+  "\\hline" + "\n"
 	end
 
    
@@ -250,11 +250,11 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 					\\end{minipage}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 					\\endgroup
 					\\begingroup
-					\\begin{minipage}[m][5cm][c]{2in}%
+					\\begin{minipage}[m][4cm][c]{2in}%
 					\\begin{footnotesize}
 					\\rowcolors{1}{white}{gray!10}
 					\\setlength\\tabcolsep{4pt}		
-					\\tcbset{colframe=gray!60,width=2in,height=5cm,colback=white,%colupper=red!5,
+					\\tcbset{colframe=gray!60,width=2in,height=5.25cm,colback=white,%colupper=red!5,
 					fonttitle=\\bfseries,nobeforeafter}
 					{\\vspace*{0.41cm}}\\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Acromyms/Glossaries]{%
 					\\renewcommand\\arraystretch{0.89}
@@ -263,12 +263,12 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 					MO & Marks Obtained: total marks in final (70\\%) + CA (rounded upwards)\\\\
 					LG & Letter Grade (per the table on the left)\\\\
 					GP & Grade Point (per the table on the left)\\\\
-				%%  Cr & Credit (per course)\\\\
+				  Cr & Credit (per course)\\\\
 					FEM & Final Exam Marks\\\\
 					PS & Point Secured ($= \\text{GP} \\times \\text{Cr}$, per course)\\\\
 					TPS & Total Points Secured ($=\\!\\sum PS$ all courses)\\\\
 					TCE & Total Credit Earned\\\\
-					GPA & TPS/18 (Total Credits Offered=$#{@tco}$)\\\\
+					GPA & TPS/$#{@tco}$ (Total Credits Offered=$#{@tco}$)\\\\
 					\\end{tabular}}
 					\\end{footnotesize}
 					\\end{minipage}%
@@ -289,7 +289,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 					\\begin{LARGE}
 					{\\textsc{University of Chittagong}}\\\\
 					\\textsc{Department of Computer Science \\& Engineering}\\\\
-					{{\\sc Tabulation Sheet #{ '(Improvement)' if  @gradesheet_type ==  :improvement }}}\\\\
+					{{\\sc Tabulation Sheet #{ '(Improvement)' if  @student_type == :improvement }}}\\\\
 					\\textsc{#{@exam.fullname}}\\\\
 					{Held in #{@exam.held_in}} \\\\
 				    {\\sc Hall : #{ hall }}\\\\
