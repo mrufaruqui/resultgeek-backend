@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190406093518) do
+ActiveRecord::Schema.define(version: 20191031051711) do
+
+  create_table "course_workforces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "exam_uuid"
+    t.bigint "course_id"
+    t.bigint "teacher_id"
+    t.integer "status", limit: 1, default: 0
+    t.integer "role", limit: 1, default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_workforces_on_course_id"
+    t.index ["teacher_id"], name: "index_course_workforces_on_teacher_id"
+  end
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -233,6 +245,8 @@ ActiveRecord::Schema.define(version: 20190406093518) do
     t.index ["teacher_id"], name: "index_workforces_on_teacher_id"
   end
 
+  add_foreign_key "course_workforces", "courses"
+  add_foreign_key "course_workforces", "teachers"
   add_foreign_key "registrations", "exams"
   add_foreign_key "registrations", "students"
   add_foreign_key "tabulation_details", "summations"

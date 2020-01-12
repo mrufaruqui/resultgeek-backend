@@ -1,6 +1,6 @@
 @exam = Exam.find_by(uuid: "_seventhbsc2019")
 
-Course.create(code:'CSE611',	title:'Computer Interfacing and Microcontroller', credit:3, exam_uuid: "_sixthbsc2018", exam: @exam)
+c1 = Course.create(code:'CSE611',	title:'Computer Interfacing and Microcontroller', credit:3, exam_uuid: "_sixthbsc2018", exam: @exam)
 
 Course.create(code:'CSE612',	title:'Computer Interfacing and Microcontroller Lab', credit:1, course_type:"lab", exam_uuid: "_sixthbsc2018", exam: @exam)
 
@@ -36,11 +36,17 @@ Teacher.find_or_create_by(title:'', fullname:'Rokan Uddin Faruqui', designation:
 Teacher.find_or_create_by(title:'Dr.', fullname:'Kazi Ashrafuzzaman', designation: :associate_professor, email:'ashraf@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
 Teacher.find_or_create_by(title:'Dr.', fullname:'Rashed Mustafa', designation: :associate_professor, email:'nihad@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
 Teacher.find_or_create_by(title:'', fullname:'A. H. M. Sajedul Hoque', designation: :assistant_professor, email:'hoque.cse@cu.ac.bd ', dept: Dept.find_by(code:'CSE'))
+Teacher.find_or_create_by(title:'Dr.', fullname:'Asaduzzaman', designation: :professor, email:'asaduzzaman@cuet.ac.bd ', dept: Dept.find_by(code:'CSE', institute_code: 'CUET'))
 
  
 Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "chairman") 
 Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "member")
 Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Rashed%'), role: "member")
+Workforce.create(exam_uuid:@exam.uuid, exam_id:@exam.id, teacher: Teacher.find_by('fullname LIKE ?', '%Asaduzzaman%'), role: "external_member")
+
 Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "tabulator")
 Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "tabulator")
 Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Sajedul%'), role: "tabulator")
+
+#  CourseWorkforce.create(exam_uuid:e.uuid, course_id:c.id, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "section_a_examiner")
+#  CourseWorkforce.create(exam_uuid:e.uuid, course_id:c.id, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "section_b_examiner")

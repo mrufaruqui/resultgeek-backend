@@ -19,8 +19,10 @@ class Course < ApplicationRecord
 
     enum course_type: [:theory, :lab]
     default_scope { order(:sl_no) }
-    belongs_to :exam
+    belongs_to :exam 
 
+    has_many :course_workforces
+    has_many :teachers, through: :course_workforces
 
     def self.import(students_info) 
       header = students_info[0]

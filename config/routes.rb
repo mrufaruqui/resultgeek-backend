@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :course_workforces
   resources :tenants
   resources :registrations
   resources :workforces
@@ -8,10 +9,9 @@ Rails.application.routes.draw do
   resources :tabulations
   resources :exams
   resources :courses
-  #root_to 'students#index'
   resources :docs
-  resources :depts
-  
+  resources :depts 
+
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {
   sessions:           'exam_sessions',
   }
@@ -32,6 +32,4 @@ Rails.application.routes.draw do
    get 'reset_exam_result'                  => 'exams#reset_exam_result'
    post 'set_exam'                          => 'tenants#set_exam'
    post 'reset_exam'                        => 'tenants#reset_exam'
-      
-      
 end
