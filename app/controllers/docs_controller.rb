@@ -9,6 +9,7 @@ class DocsController < ApplicationController
   # GET /docs.json
   def index
     @docs = Doc.where(exam_uuid:@exam.uuid)
+    render json: @docs
   end
 
   # GET /docs/1

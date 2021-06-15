@@ -6,11 +6,13 @@ class TeachersController < ApplicationController
   # GET /teachers.json
   def index
     @teachers = Teacher.all
+    render json: @teachers
   end
 
   # GET /teachers/1
   # GET /teachers/1.json
   def show
+    render json: @teacher
   end
 
   # POST /teachers

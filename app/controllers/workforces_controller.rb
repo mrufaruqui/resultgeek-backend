@@ -32,6 +32,7 @@ class WorkforcesController < ApplicationController
   # GET /workforces/1
   # GET /workforces/1.json
   def show
+    render json: @workforce
   end
 
   # POST /workforces

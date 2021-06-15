@@ -26,5 +26,6 @@ reports/tabulation.pdf
 reports/tabulation.synctex.gz
 .DS_Store
 reports/tabulation.synctex.gz
-.DS_Store
+**/.DS_Store
 reports/*.tex
+app/views/.DS_Store

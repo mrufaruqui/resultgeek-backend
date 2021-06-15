@@ -56,7 +56,7 @@ class ProcessingService
             end
             
            # if r.student_type != :improvement
-              gpa = tps > 0 ? format_gpa(tps / Course.where(exam_id:@exam.id).sum(:credit).to_f) : 0.00
+              gpa = tps > 0 ? format_gpa(tps / Course.where(exam_uuid:@exam.uuid).sum(:credit).to_f) : 0.00
               s.gpa = gpa
               tabulation.gpa = gpa #gpa.round(2);
               tabulation.tce = tce.to_i
@@ -91,7 +91,7 @@ class ProcessingService
                         sm_temp.marks = (sm_cur.marks.to_f > sm_prev.marks.to_f ? sm_cur.marks.to_f : sm_prev.marks.to_f).to_s unless sm_cur.marks.nil?
                         sm_temp.total_marks = (sm_temp.marks.to_f + sm_temp.cact.to_f).ceil
                     else 
-                      # sm_temp.total_marks = (sm_cur.total_marks > sm_prev.total_marks ? sm_cur.total_marks : sm_prev.total_marks)
+                        sm_temp.total_marks = (sm_cur.total_marks > sm_prev.total_marks ? sm_cur.total_marks : sm_prev.total_marks) unless sm_cur.total_marks.nil?
                     end
 
                     sm_temp.percetage = (sm_temp.total_marks.to_f / (c.credit.to_f * 25.to_f)) * 100.to_f

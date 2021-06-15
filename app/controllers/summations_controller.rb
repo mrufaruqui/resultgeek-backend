@@ -7,11 +7,13 @@ class SummationsController < ApplicationController
   # GET /summations.json
   def index
     @summations = Summation.where(exam_uuid:@exam.uuid, :record_type => :current)
+    render json: @summations
   end
 
   # GET /summations/1
   # GET /summations/1.json
   def show
+    render json: @summation
   end
 
   # POST /summations

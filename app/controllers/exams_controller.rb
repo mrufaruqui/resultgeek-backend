@@ -1,16 +1,18 @@
 class ExamsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :get_tenant, except: [:index, :create, :show, :update, :destroy]
+  #before_action :get_tenant, except: [:index, :create, :show, :update, :destroy]
 
   # GET /exams
   # GET /exams.json
   def index
     @exams = Exam.all
+    render json: @exams
   end
 
   # GET /exams/1
   # GET /exams/1.json
   def show
+    render json: @exam
   end
 
   # POST /exams

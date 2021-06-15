@@ -37,6 +37,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1
   # GET /registrations/1.json
   def show
+    render json: @registration
   end
 
   # POST /registrations

@@ -2,42 +2,45 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191031051711) do
+ActiveRecord::Schema.define(version: 2019_10_31_051711) do
 
-  create_table "course_workforces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "course_workforces", force: :cascade do |t|
     t.string "exam_uuid"
     t.bigint "course_id"
     t.bigint "teacher_id"
-    t.integer "status", limit: 1, default: 0
-    t.integer "role", limit: 1, default: 0
+    t.integer "status", limit: 2, default: 0
+    t.integer "role", limit: 2, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_workforces_on_course_id"
     t.index ["teacher_id"], name: "index_course_workforces_on_teacher_id"
   end
 
-  create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "courses", force: :cascade do |t|
     t.string "title"
     t.string "code"
     t.integer "credit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "course_type", limit: 1, default: 0
+    t.integer "course_type", limit: 2, default: 0
     t.integer "sl_no"
     t.string "exam_uuid"
     t.bigint "exam_id"
     t.index ["exam_id"], name: "index_courses_on_exam_id"
   end
 
-  create_table "delayed_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
     t.text "handler", null: false
@@ -52,7 +55,7 @@ ActiveRecord::Schema.define(version: 20191031051711) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "depts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "depts", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,7 +64,7 @@ ActiveRecord::Schema.define(version: 20191031051711) do
     t.string "institute_code"
   end
 
-  create_table "docs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "docs", force: :cascade do |t|
     t.string "exam_uuid"
     t.string "uuid"
     t.string "latex_name"
@@ -77,23 +80,23 @@ ActiveRecord::Schema.define(version: 20191031051711) do
     t.binary "pdf_str"
   end
 
-  create_table "exams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "exams", force: :cascade do |t|
     t.string "year"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "held_in"
     t.string "uuid"
-    t.integer "sem", limit: 1, default: 0
-    t.integer "program", limit: 1, default: 0
-    t.integer "program_type", limit: 1, default: 0
+    t.integer "sem", limit: 2, default: 0
+    t.integer "program", limit: 2, default: 0
+    t.integer "program_type", limit: 2, default: 0
     t.index ["uuid"], name: "index_exams_on_uuid", unique: true
   end
 
-  create_table "registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "registrations", force: :cascade do |t|
     t.bigint "exam_id"
     t.bigint "student_id"
-    t.integer "student_type", limit: 1, default: 0
+    t.integer "student_type", limit: 2, default: 0
     t.string "course_list"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,7 +106,7 @@ ActiveRecord::Schema.define(version: 20191031051711) do
     t.index ["student_id"], name: "index_registrations_on_student_id"
   end
 
-  create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "sessions", force: :cascade do |t|
     t.string "uuid", null: false
     t.string "exam_uuid"
     t.datetime "created_at", null: false
@@ -113,25 +116,25 @@ ActiveRecord::Schema.define(version: 20191031051711) do
     t.index ["uuid"], name: "index_sessions_on_uuid", unique: true
   end
 
-  create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "students", force: :cascade do |t|
     t.string "name"
     t.integer "roll"
     t.integer "hall"
     t.string "hall_name"
-    t.float "gpa", limit: 24
-    t.integer "status", limit: 1, default: 0
+    t.float "gpa"
+    t.integer "status", limit: 2, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "summations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.float "assesment", limit: 24
-    t.float "attendance", limit: 24
-    t.float "section_a_marks", limit: 24
-    t.float "section_b_marks", limit: 24
-    t.float "total_marks", limit: 24
+  create_table "summations", force: :cascade do |t|
+    t.float "assesment"
+    t.float "attendance"
+    t.float "section_a_marks"
+    t.float "section_b_marks"
+    t.float "total_marks"
     t.string "gpa"
-    t.float "grade", limit: 24
+    t.float "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "section_a_code"
@@ -140,15 +143,15 @@ ActiveRecord::Schema.define(version: 20191031051711) do
     t.bigint "course_id"
     t.string "marks"
     t.string "remarks"
-    t.float "percetage", limit: 24
-    t.float "cact", limit: 24
+    t.float "percetage"
+    t.float "cact"
     t.string "exam_uuid"
-    t.integer "record_type", limit: 1, default: 0
+    t.integer "record_type", limit: 2, default: 0
     t.index ["course_id"], name: "index_summations_on_course_id"
     t.index ["student_id"], name: "index_summations_on_student_id"
   end
 
-  create_table "tabulation_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tabulation_details", force: :cascade do |t|
     t.bigint "summation_id"
     t.bigint "tabulation_id"
     t.datetime "created_at", null: false
@@ -157,39 +160,39 @@ ActiveRecord::Schema.define(version: 20191031051711) do
     t.index ["tabulation_id"], name: "index_tabulation_details_on_tabulation_id"
   end
 
-  create_table "tabulations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tabulations", force: :cascade do |t|
     t.integer "student_roll"
-    t.float "gpa", limit: 24
-    t.float "tce", limit: 24
+    t.float "gpa"
+    t.float "tce"
     t.string "result"
     t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "record_type", limit: 1, default: 0
+    t.integer "record_type", limit: 2, default: 0
     t.integer "sl_no"
     t.string "exam_uuid"
-    t.integer "student_type", limit: 1, default: 0
+    t.integer "student_type", limit: 2, default: 0
     t.string "hall_name"
     t.integer "tps", default: 0
     t.index ["student_roll", "exam_uuid", "record_type"], name: "registered_student_record"
   end
 
-  create_table "teachers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "teachers", force: :cascade do |t|
     t.string "title"
     t.string "fullname"
-    t.integer "designation", limit: 1, default: 0
+    t.integer "designation", limit: 2, default: 0
     t.bigint "dept_id"
     t.string "address"
     t.string "email"
     t.integer "phone"
-    t.integer "status", limit: 1, default: 0
+    t.integer "status", limit: 2, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sl_no"
     t.index ["dept_id"], name: "index_teachers_on_dept_id"
   end
 
-  create_table "tenants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tenants", force: :cascade do |t|
     t.bigint "exam_id"
     t.string "exam_uuid"
     t.datetime "login_time"
@@ -200,7 +203,7 @@ ActiveRecord::Schema.define(version: 20191031051711) do
     t.index ["exam_uuid"], name: "index_tenants_on_exam_uuid"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -233,14 +236,14 @@ ActiveRecord::Schema.define(version: 20191031051711) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  create_table "workforces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "workforces", force: :cascade do |t|
     t.integer "status"
     t.string "exam_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "exam_id"
     t.bigint "teacher_id"
-    t.integer "role", limit: 1, default: 0
+    t.integer "role", limit: 2, default: 0
     t.index ["exam_id"], name: "index_workforces_on_exam_id"
     t.index ["teacher_id"], name: "index_workforces_on_teacher_id"
   end

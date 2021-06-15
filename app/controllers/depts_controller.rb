@@ -6,6 +6,7 @@ class DeptsController < ApplicationController
   # GET /depts.json
   def index
     @depts = Dept.all
+    render json: @depts
   end
 
   # GET /depts/1
