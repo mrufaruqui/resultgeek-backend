@@ -17,7 +17,7 @@
 #
 
 class Teacher < ApplicationRecord
-    enum designation: [:professor, :associate_professor, :assistant_professor, :lecturer]
+    enum designation: [:professor, :associate_professor, :assistant_professor, :lecturer, :principal]
     enum status: [:active, :on_leave, :retired, :resigned]
 
     has_many :workforces

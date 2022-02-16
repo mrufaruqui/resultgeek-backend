@@ -46,3 +46,37 @@ task process_7thsem2019: :environment do
      options[:folder] = "../7thSem2019"
     PdfyLatexJob.perform_now options
 end
+
+
+desc 'process full exam: 2nd Sem 2020 NEC'
+task process_2nd2020NEC: :environment do
+    options = Hash.new
+    options[:exam] = Exam.find_by(uuid:"_secondbsc2019cnec")
+    options[:folder] = "../2ndSemAC/"
+    ProcessFullExamJob.perform_now options
+     options[:folder] = "../2ndSemAC"
+    PdfyLatexJob.perform_now options
+end
+
+
+desc 'process full exam: 2nd Sem 2020 CIET'
+task process_2nd2020CIET: :environment do
+    options = Hash.new
+    options[:exam] = Exam.find_by(uuid:"_secondbsc2019ciet")
+    options[:folder] = "../2ndSemCIET/"
+    ProcessFullExamJob.perform_now options
+     options[:folder] = "../2ndSemCIET"
+    PdfyLatexJob.perform_now options
+end
+
+
+desc 'process full exam: 5th Sem 2020'
+task process_fifthbsc2020: :environment do
+    options = Hash.new
+    options[:exam] = Exam.find_by(uuid:"_fifthbsc2020")
+    options[:folder] = "../5thSem2020/"
+    ProcessFullExamJob.perform_now options
+     options[:folder] = "../5thSem2020"
+    PdfyLatexJob.perform_now options
+end
+

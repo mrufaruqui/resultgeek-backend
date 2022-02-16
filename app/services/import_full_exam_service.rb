@@ -17,7 +17,7 @@ class ImportFullExamService
 
          
        Course.where(exam_uuid:@exam.uuid).each do |c|
-           filename = @folder+ c.code.split(/[a-zA-z]/).last+".csv" 
+           filename = @folder+ c.code.downcase + ".csv" #c.code.split(/[a-zA-z]/).last+".csv" 
            course_data = MyCSVReader.smart_read filename 
              options[:filename] = filename
              options[:field] = :roll
@@ -136,7 +136,7 @@ class ImportFullExamService
        courses = Course.where(exam_uuid:@exam.uuid)
        courses.each do |c|
         options[:course] = c
-        filename = @folder+ c.code.split(/[a-zA-z]/).last+".csv" 
+        filename = @folder+ c.code.downcase+".csv" #c.code.split(/[a-zA-z]/).last+".csv" 
         options[:data] = MyCSVReader.read(filename) 
         return true if options[:data].nil?
         import_single_course options
@@ -282,6 +282,8 @@ class ImportFullExamService
       return true if data.nil?
       header = data[0]
       body = data - [header]
+      p data
+      p header
       body.each do |i| 
         row = Hash[[header.map(&:downcase), i].transpose].symbolize_keys
       #data.each do |row|
@@ -398,8 +400,8 @@ class ImportFullExamService
     MyLogger.info  "Processing   result: regular"
         Tabulation.where(exam_uuid:@exam.uuid).destroy_all
         process_result_regular options
-    MyLogger.info  "Importing irregular previous result"
-        import_irregular options
+    # # MyLogger.info  "Importing irregular previous result"
+    # #     import_irregular options
     
     MyLogger.info  "Importing  previous results"
         import_improvement options

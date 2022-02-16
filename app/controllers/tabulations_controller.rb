@@ -7,7 +7,7 @@ class TabulationsController < ApplicationController
   # GET /tabulations.json
   def index
      @tabulation = generate_tabulations_view
-     render json: @tabulation
+     render :aggregate
   end
 
   # GET /tabulations/1

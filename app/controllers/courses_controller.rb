@@ -6,13 +6,12 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index 
-    @courses = Course.where(exam_uuid:@exam.uuid)
-    render json: @courses
+    @courses = Course.where(exam_uuid:@exam.uuid) 
   end
 
   # GET /courses/1
   # GET /courses/1.json
-  def show
+  def show 
   end
 
   # POST /courses

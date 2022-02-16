@@ -93,7 +93,8 @@ class GenerateSummationLatexService
     %\\includegraphics[width=0.6in]{cu-logo.jpg}
 	\\smallskip
 	\\noindent {\\textsc{University of Chittagong}}\\\\
-	\\textsc{Department of Computer Science \\& Engineering}\\\\
+    %%\\textsc{Institute: Chittagong National Engineering College}\\\\
+    \\textsc{Department Computer Science \\& Engineering}\\\\
 	\\textsc{ #{@exam.fullname}}\\\\
     {\\large {\\sc Summation Sheet}}\\\\  
      {\\centering #{course.display_code} : #{course.title}     Credit : #{course.credit} } \\\\

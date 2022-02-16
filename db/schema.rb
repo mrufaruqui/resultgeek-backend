@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_051711) do
+ActiveRecord::Schema.define(version: 2021_06_15_135100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 2019_10_31_051711) do
     t.integer "sem", limit: 2, default: 0
     t.integer "program", limit: 2, default: 0
     t.integer "program_type", limit: 2, default: 0
+    t.bigint "dept_id"
+    t.index ["dept_id"], name: "index_exams_on_dept_id"
     t.index ["uuid"], name: "index_exams_on_uuid", unique: true
   end
 

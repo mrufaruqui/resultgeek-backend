@@ -98,7 +98,7 @@ class GenerateGradeSheetService
             \\begin{tabular}{l >{\\hspace*{-1.8ex}}p{2.6in}} % >{\\raggedleft}m{1.5in}}
                 Name &: \\textsc{#{data[:name]}}\\\\  
                 ID No. &: $#{data[:roll]}$\\\\ 
-                Hall &: #{data[:hall]} \\\\ 
+               
                 \\end{tabular} 
                 \\end{minipage}
                 \\hspace{0.3cm}
@@ -109,7 +109,8 @@ class GenerateGradeSheetService
                 \\smallskip
 
                 \\noindent {\\textsc{University of Chittagong}}\\\\
-                \\textsc{Department of Computer Science \\& Engineering}\\\\
+               %% \\textsc{ Institute : #{data[:hall]}} \\\\ 
+                \\textsc{Department Computer Science \\& Engineering}\\\\
 
                 \\smallskip
 

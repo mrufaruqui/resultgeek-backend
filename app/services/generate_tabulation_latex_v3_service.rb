@@ -287,12 +287,13 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 					\\hspace*{2.0in}\\begin{minipage}[m][5cm][c]{5in}%
 					\\raggedright\\begin{center}
 					\\begin{LARGE}
-					{\\textsc{University of Chittagong}}\\\\
-					\\textsc{Department of Computer Science \\& Engineering}\\\\
+					\\textsc{Department Computer Science \\& Engineering}\\\\
+				%%	{\\textsc{University of Chittagong}}\\\\
+				%%	\\textsc{Subject: Mechanical Engineering}\\\\
 					{{\\sc Tabulation Sheet #{ '(Improvement)' if  @student_type == :improvement }}}\\\\
 					\\textsc{#{@exam.fullname}}\\\\
 					{Held in #{@exam.held_in}} \\\\
-				    {\\sc Hall : #{ hall }}\\\\
+				    {\\sc Institute : #{ hall }}\\\\
 					\\end{LARGE}
 					\\end{center}
 					\\end{minipage}%

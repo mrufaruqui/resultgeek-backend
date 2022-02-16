@@ -5,14 +5,12 @@ class ExamsController < ApplicationController
   # GET /exams
   # GET /exams.json
   def index
-    @exams = Exam.all
-    render json: @exams
+    @exams = Exam.all 
   end
 
   # GET /exams/1
   # GET /exams/1.json
-  def show
-    render json: @exam
+  def show 
   end
 
   # POST /exams

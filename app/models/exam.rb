@@ -27,10 +27,16 @@ class Exam < ApplicationRecord
     has_many :students, through: :registrations
 
     has_many :courses
-
+ 
+    belongs_to :dept
+    before_create :set_title 
 
     def fullname
       [ sem, program_type,  program,"Engineering Exam",   year].join(" ").titlecase
     end
  
+  private
+      def set_title
+        self.title = [ sem, program_type,  program,"Engineering Exam",   year].join(" ").titlecase
+      end
 end

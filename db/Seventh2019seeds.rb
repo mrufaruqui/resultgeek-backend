@@ -29,13 +29,14 @@ Course.find_by(code:'CSE618').update(sl_no:8)
 Course.find_by(code:'EEE621').update(sl_no:9) 
 
 
-Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering')
+Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CNEC", institute: "Chittagong National Engineering College")
+Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CIET", institute: "Chittagong Institute of  Engineering and Technology")
 
  
-Teacher.find_or_create_by(title:'', fullname:'Rokan Uddin Faruqui', designation: :associate_professor, email:'rokan@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
-Teacher.find_or_create_by(title:'Dr.', fullname:'Kazi Ashrafuzzaman', designation: :associate_professor, email:'ashraf@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
-Teacher.find_or_create_by(title:'Dr.', fullname:'Rashed Mustafa', designation: :associate_professor, email:'nihad@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
-Teacher.find_or_create_by(title:'', fullname:'A. H. M. Sajedul Hoque', designation: :assistant_professor, email:'hoque.cse@cu.ac.bd ', dept: Dept.find_by(code:'CSE'))
+Teacher.find_or_create_by(title:'', fullname:'Rokan Uddin Faruqui', designation: :associate_professor, email:'rokan@cu.ac.bd', dept: Dept.find_by(code:'CSE', institute_code: 'CU'))
+Teacher.find_or_create_by(title:'Dr.', fullname:'Kazi Ashrafuzzaman', designation: :associate_professor, email:'ashraf@cu.ac.bd', dept: Dept.find_by(code:'CSE', institute_code: 'CU'))
+Teacher.find_or_create_by(title:'Dr.', fullname:'Rashed Mustafa', designation: :associate_professor, email:'nihad@cu.ac.bd', dept: Dept.find_by(code:'CSE', institute_code: 'CU'))
+Teacher.find_or_create_by(title:'', fullname:'A. H. M. Sajedul Hoque', designation: :assistant_professor, email:'hoque.cse@cu.ac.bd ', dept: Dept.find_by(code:'CSE', institute_code: 'CU'))
 Teacher.find_or_create_by(title:'Dr.', fullname:'Asaduzzaman', designation: :professor, email:'asaduzzaman@cuet.ac.bd ', dept: Dept.find_by(code:'CSE', institute_code: 'CUET'))
 
  

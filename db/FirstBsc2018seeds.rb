@@ -20,6 +20,8 @@ Course.find_by(code:'STA151').update(sl_no:7)
 
 
 Dept.create(code:'CSE', name:'Computer Science and Engineering')
+Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CUET", institute: "Chittagong University of Engineering and Technology")
+Dept.find_or_create_by(code:'ME', name:'Mechanical Engineering', institute_code:"CNEC", institute: "Chittagong National Engineering College")
 
 #Teacher.destroy_all
 Teacher.create(title:'Mr.', fullname:'Rokan Uddin Faruqui', designation: :associate_professor, email:'rokan@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
