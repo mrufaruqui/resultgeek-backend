@@ -127,10 +127,10 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 
 				if 	@student_type == :regular
 					@tab = Tabulation.where(exam_uuid:@exam.uuid, student_type:@student_type, hall_name:hall, :record_type=>:current).order(:sl_no)
-					@tab.each do |t| 
+					@tab.each_with_index do |t, i| 
 							options[:t] = t
 							a<<tabulation_row(generate_single_page_tabulation(options))
-							 a << '\\pagebreak' if t.sl_no % 10 == 0  and @tab.count >= 10
+							a << '\\pagebreak' if (i + 1) % 6 == 0  #and @tab.count >= 6
 					end
 				elsif 	@student_type == :irregular
 					@tab = Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no)
@@ -139,7 +139,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 						t_temp = Tabulation.find_by(exam_uuid:@exam.uuid, student_roll: t.student_roll,:record_type=>:temp)
 						a<<tabulation_row(generate_single_page_tabulation({:t=> t_cur, :t_temp=>t_temp, :record_type=> :temp}))
 						a<<tabulation_row(generate_single_page_tabulation({:t=> t, :record_type=> :previous}))
-						a << '\\pagebreak' if t.sl_no % 10 == 0 and @tab.count >= 10
+						a << '\\pagebreak' if t.sl_no % 6 == 0 and @tab.count >= 6
 					end
 				elsif 	@student_type == :improvement
 					@tab = Tabulation.where(exam_uuid:@exam.uuid,student_type:@student_type, hall_name:hall, :record_type=>:previous).order(:sl_no)
@@ -150,7 +150,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 						options[:t_temp] = t_temp if t_temp
 						a<<tabulation_row(generate_single_page_tabulation({:t=>t, :record_type=> :current}))
 						a<<tabulation_row(generate_single_page_tabulation_improvement(options))
-						a << '\\pagebreak' if t.sl_no % 10 == 0 and @tab.count >= 10
+						a << '\\pagebreak' if t.sl_no % 6 == 0 and @tab.count >= 6
 					end
 				end
 				
@@ -293,7 +293,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 					{{\\sc Tabulation Sheet #{ '(Improvement)' if  @student_type == :improvement }}}\\\\
 					\\textsc{#{@exam.fullname}}\\\\
 					{Held in #{@exam.held_in}} \\\\
-				    {\\sc Institute : #{ hall }}\\\\
+				    {\\sc Hall : #{ hall }}\\\\
 					\\end{LARGE}
 					\\end{center}
 					\\end{minipage}%
@@ -385,9 +385,9 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 						\\renewcommand\\arraystretch{1.3}
 						\\begin{footnotesize}
 						\\begin{tabular}{rll}
-						1. & #{@tabulators[0].teacher.display_name unless @tabulators[0].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
-						2. & #{@tabulators[1].teacher.display_name unless @tabulators[1].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}	\\\\
-						3. & #{@tabulators[2].teacher.display_name unless @tabulators[2].nil? || @tabulators.length < 3} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}\\\\
+						1. & #{@tabulators[2].teacher.display_name unless @tabulators[0].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+						2. & #{@tabulators[0].teacher.display_name unless @tabulators[1].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}	\\\\
+						3. & #{@tabulators[1].teacher.display_name unless @tabulators[2].nil? || @tabulators.length < 3} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}\\\\
 						\\end{tabular}
 						\\end{footnotesize}
 						}
