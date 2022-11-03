@@ -5,4 +5,5 @@ WORKDIR /app
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 RUN bundle install
+RUN bundle lock --add-platform x86_64-linux
 ADD . /app
