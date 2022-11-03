@@ -1,4 +1,8 @@
-@exam = Exam.create(sem: "_first", year: "2018", program: "bsc", title: "", uuid: "_firstbsc2018")
+@dept = Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CU", institute: "Unversity of Chittagong Chittagong")
+#Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CUET", institute: "Chittagong University of Engineering and Technology")
+#Dept.find_or_create_by(code:'ME', name:'Mechanical Engineering', institute_code:"CNEC", institute: "Chittagong National Engineering College")
+
+@exam = Exam.create(sem: "_first", year: "2018", program: "bsc", title: "", uuid: "_firstbsc2018", dept:@dept)
 
 #Course.delete_all
 @exam = Exam.find_by(uuid: "_firstbsc2018")
@@ -19,7 +23,7 @@ Course.find_by(code:'MAT131').update(sl_no:6)
 Course.find_by(code:'STA151').update(sl_no:7)
 
 
-Dept.create(code:'CSE', name:'Computer Science and Engineering')
+Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CU", institute: "Unversity of Chittagong Chittagong")
 Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CUET", institute: "Chittagong University of Engineering and Technology")
 Dept.find_or_create_by(code:'ME', name:'Mechanical Engineering', institute_code:"CNEC", institute: "Chittagong National Engineering College")
 

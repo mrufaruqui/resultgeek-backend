@@ -1,0 +1,26 @@
+version: '3.8' 
+services:
+  web:
+   container_name: result_backend_web
+   build: .
+   command: bundle exec rails s -p 3000 -b '0.0.0.0'
+   volumes: 
+      - ".:/app"
+   ports:
+     - "3000:3000" 
+   environment:
+    DB_USER: postgres
+    DB_NAME: app
+    DB_PASSWORD: postgres
+    DB_HOST: 0.0.0.0
+  worker:
+   container_name: result_backend_worker
+   build: .
+   command: rake jobs:work 
+   volumes: 
+      - ".:/app"  
+   environment:
+    DB_USER: postgres
+    DB_NAME: app
+    DB_PASSWORD: postgres
+    DB_HOST: db

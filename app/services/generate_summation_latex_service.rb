@@ -7,6 +7,7 @@ class GenerateSummationLatexService
 
     def perform(options={})
      @exam = options[:exam]
+     @folder = options[:folder]
      @courses = Course.where(exam_uuid:@exam.uuid)
      @members = @exam.workforces.where(role:"member")
      @tabulators = @exam.workforces.where(role:"tabulator")
@@ -25,13 +26,13 @@ class GenerateSummationLatexService
     end
 
     def write_to_latex_file(course)
-     File.open(Rails.root.join('reports', course.code.downcase + @exam.uuid + '_summation.tex'), 'w') do |f|
-       MyLogger.info "writing latex file: " + Rails.root.join('reports', course.code.downcase + @exam.uuid + '_summation.tex').to_s
+     File.open(Rails.root.join(@folder, course.code.downcase + @exam.uuid + '_summation.tex'), 'w') do |f|
+       MyLogger.info "writing latex file: " + Rails.root.join(@folder, course.code.downcase + @exam.uuid + '_summation.tex').to_s
        f_data = latex_summation_template(course)
        f.puts f_data
 
       @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: course.code.downcase + '_summation') || Doc.new(exam_uuid:@exam.uuid, uuid:course.code.downcase + '_summation') 
-	  @doc.latex_loc = ['reports/', course.code.downcase + @exam.uuid + '_summation.tex'].join
+	  @doc.latex_loc = [@folder, course.code.downcase + @exam.uuid + '_summation.tex'].join
       @doc.latex_name = [course.code.downcase, '_summation.tex'].join
       @doc.latex_str = Base64.encode64(f_data)
       @doc.description = [course.code.upcase, "Summation", "Sheet"].join(" ")

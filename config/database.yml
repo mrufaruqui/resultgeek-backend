@@ -11,10 +11,12 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  encoding: unicode 
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
 
 # default: &default
 #   adapter: mysql2
@@ -55,6 +57,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  # <<: *default
+  # database: resultgeek-prod
   adapter: pg
   port: 5432
   database: <%= ENV["DATABASE_NAME"] %>

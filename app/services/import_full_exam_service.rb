@@ -309,22 +309,22 @@ class ImportFullExamService
 
    def self.generate_tabulations options
       
-      GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current})
-      GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:improvement,:record_type=>:temp})
-      GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:irregular,:record_type=>:temp}) 
+      GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current, :folder=>@folder})
+      GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:improvement,:record_type=>:temp, :folder=>@folder})
+      GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:irregular,:record_type=>:temp, :folder=>@folder}) 
    end
 
    def self.generate_gradesheets  options
         
-        GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:regular, :record_type=>:current})
-        GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp})
-       GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:irregular, :record_type=>:temp})
+        GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:regular, :record_type=>:current, :folder=>@folder})
+        GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp, :folder=>@folder})
+       GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:irregular, :record_type=>:temp, :folder=>@folder})
    end
  
 
    def self.generate_summations_sheets  options
         
-        GenerateSummationLatexService.new.perform({:exam=>@exam})
+        GenerateSummationLatexService.new.perform({:exam=>@exam, :folder=>@folder})
    end
    
   def self.create_tabulation_row options
@@ -403,8 +403,8 @@ class ImportFullExamService
     # # MyLogger.info  "Importing irregular previous result"
     # #     import_irregular options
     
-    MyLogger.info  "Importing  previous results"
-        import_improvement options
+    # MyLogger.info  "Importing  previous results"
+    #     import_improvement options
     
     MyLogger.info  "Generating latex files"
         generate_summations_sheets options

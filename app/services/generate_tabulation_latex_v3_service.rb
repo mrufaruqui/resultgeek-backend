@@ -3,6 +3,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 	def perform(options={})
 	    @student_type = options[:student_type]
 	    @exam = options[:exam]
+		@folder = options[:folder]
 		@courses = Course.where(exam_uuid:@exam.uuid).order(:sl_no)
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
@@ -11,13 +12,13 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		@hall_list =  Tabulation.where(exam_uuid:@exam.uuid).pluck(:hall_name).uniq
 		@hall_name = ''
 		f_data = tabulation(options)
-		MyLogger.info "Writing files: " + Rails.root.join('reports/',[@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")).to_s
-		File.open( Rails.root.join('reports/', [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")), 'w') do |f| 
+		MyLogger.info "Writing files: " + Rails.root.join(@folder,[@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")).to_s
+		File.open( Rails.root.join(@folder, [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")), 'w') do |f| 
 		f.puts f_data
 		end
 	 
 	  @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') || Doc.new(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') 
-	  @doc.latex_loc = 'reports/' + [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")
+	  @doc.latex_loc = @folder + [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")
 	  @doc.latex_name =  ["tabulation", "sheets", "v3", @student_type.to_s ,".tex"].join("_")
 	 # @doc.latex_str =   MyCompressionService.compress f_data
 	  @doc.description = ["tabulation", "sheets", @student_type.to_s ].join("_").titlecase
