@@ -17,7 +17,7 @@
 class Course < ApplicationRecord
     #before_create :set_exam_uuid
 
-    enum course_type: [:theory, :lab]
+    enum course_type: [:theory, :lab, :project, :thesis]
     default_scope { order(:sl_no) }
     belongs_to :exam 
 

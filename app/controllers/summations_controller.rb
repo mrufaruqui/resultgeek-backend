@@ -103,6 +103,13 @@ class SummationsController < ApplicationController
           summation.section_b_code = row[:code_b]
           summation.marks = summation.section_a_marks.to_f + summation.section_b_marks.to_f
           summation.total_marks = (summation.marks.to_f + summation.cact.to_f).ceil
+        elsif @course.course_type === "project" or  @course.course_type === "thesis"
+          summation.cact = row[:oral]
+          summation.section_a_code = row[:code]
+          summation.section_a_marks = row[:internal]
+          summation.section_b_marks = row[:external]
+          summation.marks = summation.section_a_marks.to_f + summation.section_b_marks.to_f
+          summation.total_marks = (summation.marks.to_f + summation.cact.to_f).ceil
         else 
           summation.total_marks = (row[:marks]).to_f.ceil
         end

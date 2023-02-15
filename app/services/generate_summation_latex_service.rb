@@ -69,7 +69,9 @@ class GenerateSummationLatexService
     def summation_table_row(sm)
       if sm.course.course_type == "theory"
         [sm.student.roll, sm.attendance,sm.assesment, sm.cact, sm.section_a_code, sm.section_a_marks, sm.section_b_code, sm.section_b_marks, sm.marks, sm.total_marks].join(" & ") 
-      else
+     elsif  sm.course.course_type == "project" or  sm.course.course_type == "thesis"
+        [sm.student.roll, sm.section_a_code,  sm.section_a_marks, sm.section_b_marks,sm.cact, sm.total_marks].join(" & ") 
+     else
         [sm.student.roll, sm.total_marks].join(" & ") 
       end
     end
@@ -107,8 +109,14 @@ class GenerateSummationLatexService
     #{ course.course_type == "theory" ? 
     <<-EOF
     \\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \\hline
-	\\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CA}  & 	\\multirow{2}{*}{CT}  & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{c|}{Section A}& \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{Marks}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
+	\\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CA}  & 	\\multirow{2}{*}{CT}  & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{c|}{Section A} & \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{Marks}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
     &  &  &  & Code A & Marks A & Code B & Marks B&  &  \\\\ \\hline
+     EOF
+    : (course.course_type == "project" or course.course_type == "thesis") ? 
+    <<-EOF
+    \\begin{tabular}{|l|c|c|c|c|c|} \\hline
+	\\multirow{2}{*}{ID} &  \\multirow{2}{*}{Code} & \\multirow{2}{*}{Internal Marks} & \\multirow{2}{*}{External Marks}  & 	\\multirow{2}{*}{Viva}	  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
+    &  &  &  & &   \\\\ \\hline
      EOF
     :
     <<-EOF

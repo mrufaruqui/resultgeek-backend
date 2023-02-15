@@ -8,7 +8,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
         @members = @exam.workforces.where(role:"member")
         @tabulators = @exam.workforces.where(role:"tabulator")
         @tco = @courses.where(exam_uuid:@exam.uuid).sum(:credit).round
-		@number_of_tabulation_column  = @courses.where(:course_type=>"theory").count * 4 + @courses.where(:course_type=>"lab").count * 2 + 7
+		@number_of_tabulation_column  = @courses.where(:course_type=>"theory").count * 4 + @courses.where(:course_type=>"project").count * 4+ @courses.where(:course_type=>"lab").count * 2 + 7
 		@hall_list =  Tabulation.where(exam_uuid:@exam.uuid).pluck(:hall_name).uniq
 		@hall_name = ''
 		f_data = tabulation(options)
@@ -52,26 +52,26 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		part_a =''
 
 		c=[]
-		c << "\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.88in}"
+		c << "\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.76in}"
 		@courses.each do | course|
-			if course.course_type == "theory"	
+			if course.course_type != "lab"	
 				c << "*{4}{c}" 
 			else
 				c << "*{2}{c}" 
 			end
 		end 
-		part_a_a = c.join("|") + "| cc|cc |>{\\centering}p{0.5in} r}\\toprule\\toprule \n"
+		part_a_a = c.join("|") + "| cc|c |>{\\centering}p{0.5in} r}\\toprule\\toprule \n"
 
 		a=[]
 		a << "\\multirow{2}{*}{\\bf SL\\#}" << "\\multirow{2}{*}{\\bf ID}" << "\\multirow{2}{*}{{\\bf Name}}"
 		@courses.each do | course|
-			if course.course_type == "theory"	
+			if course.course_type != "lab"	
 				a << "\\multicolumn{4}{c|}{#{course.display_code} (Cr: #{course.credit})}" 
 			else
 				a << "\\multicolumn{2}{c|}{#{course.display_code} (Cr: #{course.credit})}" 
 			end
 		end 
-		a << "\\multirow{2}{*}{TCE}" << "\\multirow{2}{*}{TPS}" << "\\multirow{2}{*}{\\bf GPA}" << "\\multirow{2}{*}{\\rot{\\bf Result }}" <<"\\multirow{2}{*}{\\bf Remark}" << "\\multirow{2}{*}{\\hspace*{3ex}{\\bf ID}}"
+		a << "\\multirow{2}{*}{TCE}" << "\\multirow{2}{*}{TPS}" << "\\multirow{2}{*}{\\bf GPA}" << "\\multirow{2}{*}{\\rot{\\bf Result }}" <<"\\multirow{2}{*}{\\bf Remark}"
 
 		part_b =   a.join(" &") + "\\\\\n"
 
@@ -83,7 +83,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		i = 4
 		j = 0
 		@courses.each do | course|
-			if course.course_type == "theory"	
+			if course.course_type != "lab"	
 				 j = i + 3
 			else
 				 j = i + 1
@@ -98,7 +98,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		a << "& "
 
 		@courses.each do | course|
-			if course.course_type == "theory"	
+			if course.course_type != "lab"	
 				a << "CA & FEM & MO & LG" 
 			else
 				a << "MO & LG" 
@@ -109,7 +109,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 
 		part_c = a.join(" &") + "& & & & &  \\\\  \\midrule \\endfirsthead \\toprule\\toprule \n "
 
-		part_f = part_b + a.join(" &") + " & & & & & \\\\"
+		part_f = part_b + a.join(" &") + " & & & &  \\\\"
 		
 		part_d =<<-EOF
 			\\midrule \\endhead \\bottomrule \\endfoot \\endlastfoot \n
@@ -180,8 +180,8 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 				end
 			end
 
-			a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks], data[:roll] ].join(' & ')#.map{|i| "\\multirow{3}{*}{" + i.to_s + "}"}.join(' & ')
-			d << ['', '', '', '', '', ''].join(' & ')
+			a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks] ].join(' & ')#.map{|i| "\\multirow{3}{*}{" + i.to_s + "}"}.join(' & ')
+			d << ['', '', '', '', ''].join(' & ')
 			
 			a << "\\\\"
 			d << "\\\\[10pt]"
