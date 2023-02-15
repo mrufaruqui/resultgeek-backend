@@ -12,7 +12,7 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
-    render json: @teacher
+    render @teacher.serializable_hash(except: [:created_at, :updated_at], methods: :display_name)
   end
 
   # POST /teachers

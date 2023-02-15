@@ -318,7 +318,7 @@ class ImportFullExamService
         
         GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:regular, :record_type=>:current, :folder=>@folder})
         GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp, :folder=>@folder})
-       GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:irregular, :record_type=>:temp, :folder=>@folder})
+        GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:irregular, :record_type=>:temp, :folder=>@folder})
    end
  
 
@@ -413,6 +413,9 @@ class ImportFullExamService
 
     MyLogger.info "Creating Gazette"
       CreateGazette.perform options
+    
+    MyLogger.info "Generate Validations Reports"
+      GenerateAttendanceService.new(options).genereate_validation_reports
   end
 
    def self.generate_latex_files options

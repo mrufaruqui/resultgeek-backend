@@ -17,6 +17,8 @@
 #
 
 class Teacher < ApplicationRecord
+    include ActiveModel::Serializers::JSON
+    
     enum designation: [:professor, :associate_professor, :assistant_professor, :lecturer, :principal]
     enum status: [:active, :on_leave, :retired, :resigned]
 

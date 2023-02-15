@@ -69,7 +69,7 @@ class GenerateAttendanceService
              sheet.add_row tr.values
          end
         end
-        p.serialize("reports/validations_" + @exam.uuid+".xlsx")
+        p.serialize(@folder + "/validations_" + @exam.uuid+".xlsx")
      end
       true
     end

@@ -4,6 +4,7 @@ class GenerateGradeSheetService
     def self.create_gs_latex(options={})
         @exam = options[:exam]
         @record_type = options[:record_type]
+        @folder = options[:folder]
         @gradesheet_type = options[:student_type]
         @courses = Course.where(exam_uuid:@exam.uuid)
         @members = @exam.workforces.where(role:"member")
@@ -15,13 +16,13 @@ class GenerateGradeSheetService
     end
 
     def self.perform(options={})
-      MyLogger.info "Writing files: " + Rails.root.join('reports/', [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")).to_s
+      MyLogger.info "Writing files: " + Rails.root.join(@folder, [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")).to_s
       f_data = latex_gs_template(options)
-      File.open(Rails.root.join('reports/', [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")), 'w') do |f| 
+      File.open(Rails.root.join(@folder, [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")), 'w') do |f| 
        f.puts f_data
       end
       @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @gradesheet_type.to_s + ' gradesheets') || Doc.new(exam_uuid:@exam.uuid, uuid: @gradesheet_type.to_s + ' gradesheets') 
-      @doc.latex_loc = 'reports/'+ [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")
+      @doc.latex_loc = @folder + '/'+ [@exam.uuid, @gradesheet_type.to_s, '_gs.tex'].join("_")
       @doc.latex_name = ["grade", "sheets", " ", @gradesheet_type.to_s ,".tex"].join("_")
       @doc.latex_str = Base64.encode64(Zlib::Deflate.deflate(f_data))
       @doc.description = ["grade", "sheets", @gradesheet_type.to_s].join("_").titlecase

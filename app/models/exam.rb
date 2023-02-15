@@ -15,6 +15,7 @@
 #
 
 class Exam < ApplicationRecord
+  include ActiveModel::Serializers::JSON
     #validates :uuid, presence: true
     enum sem: [:_first, :_second, :_third, :_fourth, :_fifth, :_sixth, :_seventh, :_eight ]
     enum program: [:bsc, :msc, :mphil, :phd]

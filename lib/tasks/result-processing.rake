@@ -80,3 +80,13 @@ task process_fifthbsc2020: :environment do
     PdfyLatexJob.perform_now options
 end
 
+
+desc 'process full exam: 7th Sem 2021'
+task process_seventhbsc2021: :environment do
+    options = Hash.new
+    options[:exam] = Exam.find_by(uuid:"_seventhbsc2021")
+    options[:folder] = "../7thSem2021/"
+    ProcessFullExamJob.perform_now options
+     options[:folder] = "../7thSem2021"
+    PdfyLatexJob.perform_now options
+end
