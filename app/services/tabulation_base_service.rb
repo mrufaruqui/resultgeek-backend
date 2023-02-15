@@ -20,6 +20,8 @@ class TabulationBaseService
             ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
             if td.summation.course.course_type === "lab"
                @retHash[td.summation.course.code] =  {:mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
+            elsif td.summation.course.course_type === "project" or   td.summation.course.course_type === "thesis"
+               @retHash[td.summation.course.code] =  {:cact=>td.summation.cact, :section_a_marks=>td.summation.section_a_marks, :section_b_marks=>td.summation.section_b_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
             else
                @retHash[td.summation.course.code] = {:cact=>td.summation.cact, :fem=>td.summation.marks, :mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
             end  

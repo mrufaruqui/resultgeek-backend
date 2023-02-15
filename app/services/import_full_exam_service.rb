@@ -426,9 +426,8 @@ class ImportFullExamService
   end
 
    def self.generate_latex_files options
-       
         generate_summations_sheets options
         generate_tabulations options
         generate_gradesheets options
-   end 
+   end  
 end

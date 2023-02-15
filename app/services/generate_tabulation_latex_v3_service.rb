@@ -52,7 +52,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		part_a =''
 
 		c=[]
-		c << "\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.76in}"
+		c << "\\vspace*{-4ex}\\begin{longtable}{lc >{\\centering\\scshape}p{0.56in}"
 		@courses.each do | course|
 			if course.course_type != "lab"	
 				c << "*{4}{c}" 
@@ -98,8 +98,10 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		a << "& "
 
 		@courses.each do | course|
-			if course.course_type != "lab"	
+			if course.course_type == "theory"	
 				a << "CA & FEM & MO & LG" 
+			elsif course.course_type == "project" or course.course_type == "thesis" 
+				a << "IA & EM & VM & LG" 
 			else
 				a << "MO & LG" 
 			end
@@ -171,13 +173,19 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 			a << [data[:sl_no], '{\\bf '+ data[:roll].to_s + ' }', '{\\bf ' + data[:name] + ' }'].join(' & ') << ' & '   
 			d <<['','',''].join(' & ') << ' & ' 
 			@courses.each do |course|
-				if course.course_type === "lab"
+				ap "ID: #{course.id} Code: #{course.code} Type: #{course.course_type}, IsTheory? #{course.course_type == "theory"}, IsLab? #{course.course_type == "lab"}, IsProject? #{course.course_type == "project"}"
+				 
+
+				if course.course_type == "theory"
+					a << [data[course.code][:cact], data[course.code][:fem], data[course.code][:mo], data[course.code][:lg]].join(' & ') << '&' if data.include? course.code
+					d << ['', '', '', ''].join(' & ') << '&' if data.include? course.code
+			   	elsif course.course_type == "lab"
 					a << [data[course.code][:mo], data[course.code][:lg]].join(' & ') << ' & ' if data.include? course.code
 					d << ['', ''].join(' & ') << ' & ' if data.include? course.code
 				else
-					a << [data[course.code][:cact], data[course.code][:fem], data[course.code][:mo], data[course.code][:lg]].join(' & ') << '&' if data.include? course.code
+					a << [data[course.code][:cact], data[course.code][:section_a_marks], data[course.code][:section_b_marks], data[course.code][:lg]].join(' & ') << '&' if data.include? course.code
 					d << ['', '', '', ''].join(' & ') << '&' if data.include? course.code
-				end
+		        end
 			end
 
 			a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks] ].join(' & ')#.map{|i| "\\multirow{3}{*}{" + i.to_s + "}"}.join(' & ')

@@ -88,5 +88,5 @@ task process_seventhbsc2021: :environment do
     options[:folder] = "../7thSem2021/"
     ProcessFullExamJob.perform_now options
      options[:folder] = "../7thSem2021"
-    PdfyLatexJob.perform_now options
+    #PdfyLatexJob.perform_now options
 end
