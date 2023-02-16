@@ -60,7 +60,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 				c << "*{2}{c}" 
 			end
 		end 
-		part_a_a = c.join("|") + "| cc|c |>{\\centering}p{0.5in} r}\\toprule\\toprule \n"
+		part_a_a = c.join("|") + "| cc|c |>{\\centering}p{0.15in} p{0.5in}}\\toprule\\toprule \n"
 
 		a=[]
 		a << "\\multirow{2}{*}{\\bf SL\\#}" << "\\multirow{2}{*}{\\bf ID}" << "\\multirow{2}{*}{{\\bf Name}}"
@@ -101,7 +101,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 			if course.course_type == "theory"	
 				a << "CA & FEM & MO & LG" 
 			elsif course.course_type == "project" or course.course_type == "thesis" 
-				a << "IA & EM & VM & LG" 
+				a << "IM & EM & VM & LG" 
 			else
 				a << "MO & LG" 
 			end
@@ -173,8 +173,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 			a << [data[:sl_no], '{\\bf '+ data[:roll].to_s + ' }', '{\\bf ' + data[:name] + ' }'].join(' & ') << ' & '   
 			d <<['','',''].join(' & ') << ' & ' 
 			@courses.each do |course|
-				ap "ID: #{course.id} Code: #{course.code} Type: #{course.course_type}, IsTheory? #{course.course_type == "theory"}, IsLab? #{course.course_type == "lab"}, IsProject? #{course.course_type == "project"}"
-				 
+				  
 
 				if course.course_type == "theory"
 					a << [data[course.code][:cact], data[course.code][:fem], data[course.code][:mo], data[course.code][:lg]].join(' & ') << '&' if data.include? course.code
@@ -272,9 +271,10 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 					MO & Marks Obtained: total marks in final (70\\%) + CA (rounded upwards)\\\\
 					LG & Letter Grade (per the table on the left)\\\\
 					GP & Grade Point (per the table on the left)\\\\
-				  Cr & Credit (per course)\\\\
+				    Cr & Credit (per course)\\\\
 					FEM & Final Exam Marks\\\\
-					PS & Point Secured ($= \\text{GP} \\times \\text{Cr}$, per course)\\\\
+					IM/EM/VM & Internal/External/Viva Marks \\\\
+				%%	PS & Point Secured ($= \\text{GP} \\times \\text{Cr}$, per course)\\\\
 					TPS & Total Points Secured ($=\\!\\sum PS$ all courses)\\\\
 					TCE & Total Credit Earned\\\\
 					GPA & TPS/$#{@tco}$ (Total Credits Offered=$#{@tco}$)\\\\
