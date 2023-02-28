@@ -40,21 +40,24 @@ class GenerateGradeSheetService
          header + main + footer
     end
 
-    def self.generate_gs_view(options={})
+    def self.generate_gs_view(options)
       a = []
-      @tab = Tabulation.where(exam_uuid:@exam.uuid, student_type: @gradesheet_type.to_s, :record_type=>@record_type)
+      @tab = Tabulation.where(exam_uuid:options[:exam].uuid, student_type: options[:student_type].to_s, :record_type=>options[:record_type]).order(:sl_no)
       @tab.each do |t| 
         s = Student.find_by(roll: t.student_roll)
-        r = Registration.find_by(student:s, exam_uuid:@exam.uuid)
+        r = Registration.find_by(student:s, exam_uuid:options[:exam].uuid)
         @retHash = Hash.new
         @retHash[:gpa] = t.gpa
         @retHash[:result] = t.result
         @retHash[:tce] = t.tce.round
         @retHash[:roll] = s.roll
         @retHash[:name] = s.name
+        @retHash[:email] = s.email
         @retHash[:hall] = s.hall_name;
-        @retHash[:sl_no] = r.sl_no
+        @retHash[:sl_no] = r.sl_no 
         @retHash[:courses] = []
+        @retHash[:remarks] = t.remarks
+        @retHash[:tps] = t.tps
         t.tabulation_details.each do |td|
             course = {:code=> td.summation.course.display_code, :title=>td.summation.course.title, :credit=>td.summation.course.credit, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2) }
             @retHash[:courses] << course
@@ -102,8 +105,8 @@ class GenerateGradeSheetService
                 Hall &: #{data[:hall]} \\\\ 
                 \\end{tabular} 
                 \\end{minipage}
-                \\hspace{0.3cm}
-                \\begin{minipage}[b]{0.35\\textwidth}
+               %% \\hspace{0.3cm}
+                \\begin{minipage}[b]{0.38\\textwidth}
                     \\vspace*{.5in}
                 \\centering \\includegraphics[width=0.6in]{cu-logo.jpg}
 
@@ -111,7 +114,7 @@ class GenerateGradeSheetService
 
                 \\noindent {\\textsc{University of Chittagong}}\\\\
                %% \\textsc{ Institute : #{data[:hall]}} \\\\ 
-                \\textsc{Department Computer Science \\& Engineering}\\\\
+                \\textsc{Department of Computer Science and Engineering}\\\\
 
                 \\smallskip
 
@@ -121,10 +124,10 @@ class GenerateGradeSheetService
                 \\textsc{#{@exam.fullname}}\\\\
                 {Held in #{@exam.held_in}}\\\\
                 \\end{minipage}
-                \\hspace{0.2cm}
+              %%  \\hspace{0.2cm}
                 \\begin{minipage}[m]{0.3\\linewidth} \\flushright
                 \\vspace*{-1.5in}  
-                {\\flushright \\bf	Serial No:#{data[:sl_no]} \\\\}
+                {\\flushright \\bf	Serial No~:~#{data[:sl_no]} \\\\}
                 \\vspace{4mm}
                 \\begin{small}
                 \\renewcommand{\\arraystretch}{1.01}
@@ -153,7 +156,7 @@ class GenerateGradeSheetService
                     \\renewcommand{\\arraystretch}{1.08}
                     
                 \\begin{tabular}{|c|l|c|>{\\scshape}c|c|c|}
-                \\hline  \\rule[-1ex]{0pt}{3.5ex} {\\centering{\\bf Course Code}} &  \\multicolumn{1}{c|}{\\textbf{Course Title}}  & {\\bf Credits} & {\\bf Letter Grade} & {\\bf Grade Point} & {\\bf Point Secured}  \\\\ 
+                \\hline  \\rule[-1ex]{0pt}{3.5ex} {\\centering{\\bf Course Code}} &  \\multicolumn{1}{c|}{\\textbf{Course Title}}  & {\\bf Credits} & {\\bf Letter Grade} & {\\bf Grade Point} & {\\bf Credit Points}  \\\\ 
                 EOF
     end
 
@@ -165,9 +168,17 @@ class GenerateGradeSheetService
                 \\renewcommand{\\arraystretch}{1.03}
 
                 \\begin{center}
-                \\begin{tabular}{p{1.5in} >{\\raggedright}p{1.6in} p{0.1in} >{\\raggedright}p{2.8in} >{\\raggedleft}p{1.0in}}
-                Credits Offered: $#{@tco}$ &  Credits Earned: $#{data[:tce]}$ & &  Grade Point Average (GPA): \\fbox{\\bf~#{'%.2f' % data[:gpa]}} & Result: \\fbox{\\bf~{#{data[:result]}}~} \\\\
-                \\end{tabular}
+               
+                 \\begin{tabular}{lrr}
+                 Total Credits Offered: $#{@tco}$ &  Total Credits Earned: $#{data[:tce]}$ &   Total Credit Points: $#{data[:tps]}$   \\\\
+                 Grade Point Average (GPA): \\fbox{\\bf~#{'%.2f' % data[:gpa]}} & Result: \\fbox{\\bf~{#{data[:result]}}~} & #{'Remarks:  \\fbox{\\bf~{' + data[:remarks] +' }~}' unless data[:remarks].blank?} \\\\
+                 \\end{tabular}
+
+                %% \\begin{tabular}{p{1.8in} >{\\raggedright}p{1.8in} p{0.1in} >{\\raggedright}p{2.8in} >{\\raggedleft}p{1.0in}>{\\raggedleft}p{1.7in}}
+               %% Total Credits Offered: $#{@tco}$ &  Total Credits Earned: $#{data[:tce]}$ & &  Grade Point Average (GPA): \\fbox{\\bf~#{'%.2f' % data[:gpa]}} & Result: \\fbox{\\bf~{#{data[:result]}}~} & #{'Remark:  \\fbox{\\bf~{' + data[:remarks] +'}~}' unless data[:remarks].blank?} \\\\
+               %% \\end{tabular}
+
+
                 \\end{center}
             \\vspace{1cm}
             \\centering\\begin{table}[hb]

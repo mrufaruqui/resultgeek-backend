@@ -16,6 +16,7 @@ gem 'puma', '~> 5.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'dotenv-rails', :groups => [:development, :test]
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2' 
 gem 'devise_token_auth'
@@ -33,6 +34,15 @@ gem 'active_model_serializers'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+
+
+
+gem 'resque', "~> 1.27.0" # or a compatible alternative / fork
+gem 'resque_mailer' 
+gem 'resque-scheduler'
+gem 'resque-retry'
+gem 'mail'
+gem 'net-smtp', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,7 +77,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # # Use Redis adapter to run Action Cable in production
-# # gem 'redis', '~> 4.0'
+ gem 'redis', '~> 4.0'
 # # Use ActiveModel has_secure_password
 # # gem 'bcrypt', '~> 3.1.7'
 

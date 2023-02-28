@@ -76,7 +76,17 @@ task process_fifthbsc2020: :environment do
     options[:exam] = Exam.find_by(uuid:"_fifthbsc2020")
     options[:folder] = "../5thSem2020/"
     ProcessFullExamJob.perform_now options
-     options[:folder] = "../5thSem2020"
+    options[:folder] = "../5thSem2020"
+    PdfyLatexJob.perform_now options
+end
+
+desc 'process full exam: 5th Sem 2021'
+task process_fifthbsc2021: :environment do
+    options = Hash.new
+    options[:exam] = Exam.find_by(uuid:"_fifthbsc2021")
+    options[:folder] = "../5thSem2021/"
+    ProcessFullExamJob.perform_now options
+    options[:folder] = "../5thSem2021"
     PdfyLatexJob.perform_now options
 end
 
@@ -90,3 +100,21 @@ task process_seventhbsc2021: :environment do
      options[:folder] = "../7thSem2021"
     PdfyLatexJob.perform_now options
 end
+
+desc 'Email individual result: 7th Sem 2021'
+task email_seventhbsc2021: :environment do
+    options = Hash.new
+    options[:exam] = Exam.find_by(uuid:"_seventhbsc2021")
+    options[:folder] = "../7thSem2021/"
+    options[:student_type] = :regular
+    results= GenerateGradeSheetService.generate_gs_view({:exam=>options[:exam],:student_type=>options[:student_type], :record_type=>:current, :folder=>   options[:folder]})
+    results.each do |result|
+        options[:result] = result
+        ResultMailerJob.perform_later options
+    end
+     
+end
+
+
+
+ 

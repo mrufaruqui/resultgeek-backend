@@ -4,7 +4,8 @@ class LatexToPdfJob < ApplicationJob
   def perform(options={})
    d = options[:doc]
     Doc.where.not('latex_name LIKE ?', '%tabulation%').each do |d|
-       system "pdflatex -shell-escape -output-directory=#{Rails.root.join('reports')} -no-file-line-error #{d.latex_loc}"
+      #-synctex=1 -interaction=nonstopmode
+       system "pdflatex -shell-escape -output-directory=#{Rails.root.join('reports')} -no-file-line-error -synctex=1 -interaction=nonstopmode #{d.latex_loc}"
        save_to_db(d)
      end
    true

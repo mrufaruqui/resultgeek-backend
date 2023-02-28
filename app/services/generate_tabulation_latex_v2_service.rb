@@ -205,7 +205,7 @@ EOF
 		\\midrule
 		   80\\% and above & A+ & $4.00$  \\\\ 
 		   75\\% to less than 80\\% &  A & $3.75$\\\\ 
-		   70\\% to less that 75\\% &  A- & $3.50$ \\\\ 
+		   70\\% to less than 75\\% &  A- & $3.50$ \\\\ 
 		   65\\% to less than 70\\% &  B+ & $3.25$\\\\ 
 		   60\\% to less than 65\\% &  B  & $3.00$\\\\ 
 		   55\\% to less than 60\\% &  B- & $2.75$\\\\ 
@@ -226,7 +226,7 @@ EOF
 		\\setlength\\tabcolsep{4pt}		
 		\\tcbset{colframe=gray!60,width=2in,height=5cm,colback=white,%colupper=red!5,
 		fonttitle=\\bfseries,nobeforeafter}
-		{\\vspace*{0.41cm}}\\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Acromyms/Glossaries]{%
+		{\\vspace*{0.41cm}}\\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Acronyms/Glossaries]{%
 		\\renewcommand\\arraystretch{0.89}
 	    \\begin{tabular}{lm{1.8in}}
 		CA & Continuous Assessment marks (30\\% of total: 10\\% in attendance + 20\\% in class tests) \\\\

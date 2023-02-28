@@ -332,7 +332,7 @@ class GenerateTabulationLatexV4Service < TabulationBaseService
             \\hspace{1cm}
             \\begin{minipage}[m]{0.3\\linewidth} \\flushright
             %	\\vspace*{-1in} %\\centering 
-                %{\\flushright \\bf	Serial No:\\sl \\\\}
+                %{\\flushright \\bf	Serial No~:~\\sl \\\\}
                 %\\vspace{4mm}
                 \\hspace{-5cm}
                 \\begin{small}

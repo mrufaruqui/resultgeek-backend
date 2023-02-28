@@ -52,6 +52,7 @@ class ImportFullExamService
                     student = Student.find_by(roll: row[:roll]) || Student.new
                     student.roll = row[:roll]
                     student.name = row[:name]
+                    student.email = row[:email].strip.downcase
                     student.hall_name = row[:hall_name]
                     student.hall = row[:hall] 
                     student.save
@@ -330,14 +331,12 @@ class ImportFullExamService
  
 
    def self.generate_summations_sheets  options
-        
         GenerateSummationLatexService.new.perform({:exam=>@exam, :folder=>@folder})
    end
    
   def self.create_tabulation_row options
-        row = options[:row]
-        
-        @courses = Course.where(exam_uuid:@exam.uuid)
+      row = options[:row]
+      @courses = Course.where(exam_uuid:@exam.uuid)
       student =   Student.find_by(roll: row[:roll])
       r = Registration.find_by(student_id: student.id, exam_uuid:@exam.uuid )  
       if r
@@ -410,8 +409,8 @@ class ImportFullExamService
     # # MyLogger.info  "Importing irregular previous result"
     # #     import_irregular options
     
-    # MyLogger.info  "Importing  previous results"
-    #     import_improvement options
+    MyLogger.info  "Importing  previous results"
+         import_improvement options
     
     MyLogger.info  "Generating latex files"
         generate_summations_sheets options

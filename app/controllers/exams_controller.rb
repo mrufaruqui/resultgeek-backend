@@ -17,6 +17,7 @@ class ExamsController < ApplicationController
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
+    @exam.dept = Dept.find_by(code:"CSE", institute_code: "CU")
     # @exam.program = params[:program].underscore.to_sym if params.include? :program
     # @exam.sem = params[:sem].underscore.to_sym if params.include? :sem
     # @exam.program_type = params[:program_type].underscore.to_sym if params.include? :program_type

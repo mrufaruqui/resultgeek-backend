@@ -7,11 +7,11 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   def index
-   @registrations =  Registration.where(exam_uuid:@exam.uuid).includes(:student).pluck(:id,:sl_no, :roll, :student_type, :course_list, "students.name", "students.hall_name")
+   @registrations =  Registration.where(exam_uuid:@exam.uuid).includes(:student).pluck(:id,:sl_no, :roll,"students.email", :student_type, :course_list, "students.name", "students.hall_name")
     # @registrations = Registration.where(exam_uuid:@exam.uuid).includes(:student)
    if @registrations
       a = []
-      header = ["id","sl_no","roll","student_type","courses","name", "hall_name"]
+      header = ["id","sl_no","roll","email","student_type","courses","name", "hall_name"]
       @registrations.each { |i| a <<  Hash[[header, i].transpose].symbolize_keys }
     #   a = []
     #   @registrations.each do |r|

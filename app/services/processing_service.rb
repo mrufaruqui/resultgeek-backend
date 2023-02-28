@@ -15,16 +15,17 @@ class ProcessingService
   ###Format CGPA According to CU Syndicate Directions ####
 
   def self.format_gpa(gpa)
-    third_decimal = ((gpa.round(3) - gpa.round(2)) * 1000).to_i
-    fourth_decimal = ((gpa.round(4) - gpa.round(3)) * 10000).to_i
-    third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
+    gpa.round(2)
+   #  third_decimal = ((gpa.round(3) - gpa.round(2)) * 1000).to_i
+    # fourth_decimal = ((gpa.round(4) - gpa.round(3)) * 10000).to_i
+    # third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
   end
 
   def self.process_result_regular(options) 
      @exam = options[:exam]
      @courses = Course.where(exam_uuid:@exam.uuid)
     #######Retrieve Registered  Regular Studentsstudents #########
-     Registration.where(exam_uuid:@exam.uuid,:student_type=>options[:student_type]).each do |r|
+     Registration.where(exam_uuid:@exam.uuid,:student_type=>options[:student_type]).order(:sl_no).each do |r|
             is_failed_in_a_course = false;
             s = r.student
             tabulation = Tabulation.find_by(student_roll:s.roll, exam_uuid:@exam.uuid, :record_type=> options[:record_type] ) || Tabulation.new

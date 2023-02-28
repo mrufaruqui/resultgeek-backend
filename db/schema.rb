@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_135100) do
+ActiveRecord::Schema.define(version: 2023_02_20_140916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_135100) do
     t.integer "status", limit: 2, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "summations", force: :cascade do |t|
@@ -175,7 +176,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_135100) do
     t.string "exam_uuid"
     t.integer "student_type", limit: 2, default: 0
     t.string "hall_name"
-    t.integer "tps", default: 0
+    t.float "tps", default: 0.0
     t.index ["student_roll", "exam_uuid", "record_type"], name: "registered_student_record"
   end
 

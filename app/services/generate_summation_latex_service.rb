@@ -97,7 +97,7 @@ class GenerateSummationLatexService
 	\\smallskip
 	\\noindent {\\textsc{University of Chittagong}}\\\\
     %%\\textsc{Institute: Chittagong National Engineering College}\\\\
-    \\textsc{Department Computer Science \\& Engineering}\\\\
+    \\textsc{Department of Computer Science \\& Engineering}\\\\
 	\\textsc{ #{@exam.fullname}}\\\\
     {\\large {\\sc Summation Sheet}}\\\\  
      {\\centering #{course.display_code} : #{course.title}     Credit : #{course.credit} } \\\\
@@ -108,19 +108,19 @@ class GenerateSummationLatexService
     
     #{ course.course_type == "theory" ? 
     <<-EOF
-    \\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|} \\hline
+    \\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \\hline
 	\\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CA}  & 	\\multirow{2}{*}{CT}  & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{c|}{Section A} & \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{Marks}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
     &  &  &  & Code A & Marks A & Code B & Marks B&  &  \\\\ \\hline
      EOF
     : (course.course_type == "project" or course.course_type == "thesis") ? 
     <<-EOF
-    \\begin{tabular}{|l|c|c|c|c|c|} \\hline
+    \\begin{tabular}{|c|c|c|c|c|c|} \\hline
 	\\multirow{2}{*}{ID} &  \\multirow{2}{*}{Code} & \\multirow{2}{*}{Internal Marks} & \\multirow{2}{*}{External Marks}  & 	\\multirow{2}{*}{Viva}	  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
     &  &  &  & &   \\\\ \\hline
      EOF
     :
     <<-EOF
-    \\begin{tabular}{|l|c|} \\hline
+    \\begin{tabular}{|c|c|} \\hline
 	\\multirow{2}{*}{ID} & 	 	 	\\multirow{2}{*}{Total Marks}  \\\\ 
 	&     \\\\ \\hline
      EOF
@@ -145,11 +145,10 @@ class GenerateSummationLatexService
             \\begin{minipage}[b]{0.5\\linewidth} %\\centering
             {\\centering Tabulators }
             \\begin{enumerate}
-                \\item #{@tabulators[0].teacher.display_name unless @tabulators[0].nil?} \\hspace*{1ex} $\\ldots \\ldots  $  
-                \\item #{@tabulators[1].teacher.display_name unless @tabulators[1].nil? || @tabulators.length < 2} \\hspace*{1ex} $\\ldots \\ldots  $  
-                \\item #{@tabulators[2].teacher.display_name unless @tabulators[2].nil? || @tabulators.length < 3} \\hspace*{1ex} $\\ldots \\ldots $  
+                \\item #{@tabulators[0].teacher.display_name unless @tabulators[2].nil?} \\hspace*{1ex} $\\ldots \\ldots  $  
+                \\item #{@tabulators[2].teacher.display_name unless @tabulators[0].nil? || @tabulators.length < 2} \\hspace*{1ex} $\\ldots \\ldots  $  
+                \\item #{@tabulators[1].teacher.display_name unless @tabulators[1].nil? || @tabulators.length < 3} \\hspace*{1ex} $\\ldots \\ldots $  
             \\end{enumerate} 
-
             \\end{minipage}
             \\hspace*{1.2cm}
             \\begin{minipage}[b]{0.4\\linewidth} \\centering
