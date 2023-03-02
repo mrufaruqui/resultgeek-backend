@@ -3,8 +3,8 @@ class GenerateTabulationLatexService < TabulationBaseService
     def self.create_tabulation_latex(options={})
         @exam = options[:exam]
         @courses = Course.where(exam_uuid:@exam.uuid)
-        @members = @exam.workforces.where(role:"member")
-        @tabulators = @exam.workforces.where(role:"tabulator")
+        @members = @exam.workforces.where(role:"member").order(:sl_no)
+        @tabulators = @exam.workforces.where(role:"tabulator").order(:sl_no)
         @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
         @hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
         @hall_name = ' '
@@ -15,8 +15,8 @@ class GenerateTabulationLatexService < TabulationBaseService
     def self.perform(options={})
         @exam = options[:exam]
         @courses = Course.where(exam_uuid:@exam.uuid)
-        @members = @exam.workforces.where(role:"member")
-        @tabulators = @exam.workforces.where(role:"tabulator")
+        @members = @exam.workforces.where(role:"member").order(:sl_no)
+        @tabulators = @exam.workforces.where(role:"tabulator").order(:sl_no)
         @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
         @hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
         @hall_name = ' '

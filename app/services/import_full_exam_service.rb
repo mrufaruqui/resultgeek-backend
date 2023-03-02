@@ -315,15 +315,13 @@ class ImportFullExamService
         ProcessingService.process_result_improvement({:exam=>@exam, :student_type=>:improvement, :record_type=>:temp})
    end
 
-   def self.generate_tabulations options
-      
+   def self.generate_tabulations options   
       GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current, :folder=>@folder})
       GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:improvement,:record_type=>:temp, :folder=>@folder})
       GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:irregular,:record_type=>:temp, :folder=>@folder}) 
    end
 
    def self.generate_gradesheets  options
-        
         GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:regular, :record_type=>:current, :folder=>@folder})
         GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:improvement, :record_type=>:temp, :folder=>@folder})
         GenerateGradeSheetService.create_gs_latex({:exam=>@exam,:student_type=>:irregular, :record_type=>:temp, :folder=>@folder})

@@ -4,8 +4,8 @@ class GenerateTabulationLatexV4Service < TabulationBaseService
 	    @student_type = options[:student_type]
 	    @exam = options[:exam]
 		@courses = Course.where(exam_uuid:@exam.uuid).order(:sl_no)
-        @members = @exam.workforces.where(role:"member")
-        @tabulators = @exam.workforces.where(role:"tabulator")
+        @members = @exam.workforces.where(role:"member").order(:sl_no)
+        @tabulators = @exam.workforces.where(role:"tabulator").order(:sl_no)
         @number_of_tabulation_column  = @courses.where(:course_type=>"theory").count * 4 + @courses.where(:course_type=>"lab").count * 2 + 7
 		@hall_list =  Tabulation.where(exam_uuid:@exam.uuid).pluck(:hall_name).uniq
 		@tco = @courses.where(exam_uuid:@exam.uuid).sum(:credit).round

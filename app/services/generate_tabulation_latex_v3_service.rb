@@ -5,8 +5,9 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 	    @exam = options[:exam]
 		@folder = options[:folder]
 		@courses = Course.where(exam_uuid:@exam.uuid).order(:sl_no)
-        @members = @exam.workforces.where(role:"member").order(:teacher_id)
-        @tabulators = @exam.workforces.where(role:"tabulator")
+        @members = @exam.workforces.where(role:"member").order(:sl_no)
+        @tabulators = @exam.workforces.where(role:"tabulator").order(:sl_no)
+		@gradesheet_type = options[:student_type]
         @tco = @courses.where(exam_uuid:@exam.uuid).sum(:credit).round
 		@number_of_tabulation_column  = @courses.where(:course_type=>"theory").count * 4 + @courses.where(:course_type=>"project").count * 4+ @courses.where(:course_type=>"lab").count * 2 + 7
 		@hall_list =  Tabulation.where(exam_uuid:@exam.uuid).pluck(:hall_name).uniq
@@ -60,7 +61,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 				c << "*{2}{c}" 
 			end
 		end 
-		part_a_a = c.join("|") + "| cc|c |>{\\centering}p{0.15in} p{0.5in}p{0.5in}}\\toprule\\toprule \n"
+		part_a_a = c.join("|") + "| cc|c |>{\\centering}p{0.15in} p{0.45in}p{0.5in}}\\toprule\\toprule \n"
 
 		a=[]
 		a << "\\multirow{2}{*}{\\bf SL\\#}" << "\\multirow{2}{*}{\\bf ID}" << "\\multirow{2}{*}{{\\bf Name}}"
@@ -181,10 +182,10 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 				  
 
 				if course.course_type == "theory"
-					a << [data[course.code][:cact], data[course.code][:fem], data[course.code][:mo], data[course.code][:lg]].join(' & ') << '&' if data.include? course.code
+					a << [data[course.code][:cact], data[course.code][:fem], "{\\bf #{data[course.code][:mo]} }", "{\\bf #{data[course.code][:lg]} }"].join(' & ') << '&' if data.include? course.code
 					d << ['', '', '', ''].join(' & ') << '&' if data.include? course.code
 			   	else #if course.course_type == "lab"
-					a << [data[course.code][:mo], data[course.code][:lg]].join(' & ') << ' & ' if data.include? course.code
+					a << [ "{\\bf #{data[course.code][:mo]} }", "{\\bf #{data[course.code][:lg]} }"].join(' & ') << ' & ' if data.include? course.code
 					d << ['', ''].join(' & ') << ' & ' if data.include? course.code
 				# else
 				# 	a << [data[course.code][:section_a_marks], data[course.code][:section_b_marks], data[course.code][:cact], data[course.code][:lg]].join(' & ') << '&' if data.include? course.code
@@ -192,7 +193,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 		        end
 			end
 
-			a << [data[:tce], data[:tps], data[:gpa], data[:result], data[:remarks],data[:roll]  ].join(' & ')#.map{|i| "\\multirow{3}{*}{" + i.to_s + "}"}.join(' & ')
+			a << ["{\\bf #{data[:tce]}  }","{\\bf #{data[:tps]} }", "{\\bf #{data[:gpa]}}", "{\\bf #{data[:result]} }", "{\\bf #{data[:remarks]} }", "{\\bf #{data[:roll]} }" ].join(' & ')#.map{|i| "\\multirow{3}{*}{" + i.to_s + "}"}.join(' & ')
 			d << ['', '', '', '', ''].join(' & ')
 			
 			a << "\\\\"
@@ -272,13 +273,14 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 					{\\vspace*{0.41cm}}\\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Acronyms/Glossaries]{%
 					\\renewcommand\\arraystretch{0.89}
 					\\begin{tabular}{lm{1.8in}}
-					CA & Continuous Assessment marks (30\\% of total: 10\\% in attendance + 20\\% in class tests) \\\\
-					MO & Marks Obtained: total marks in final (70\\%) + CA (rounded upwards)\\\\
+				%%	CA & Continuous Assessment marks (30\\% of total: 10\\% in attendance + 20\\% in class tests) \\\\
+					CA & #{  @gradesheet_type ==  :improvement ? 'Continuous Assessment marks (30\\% of total: 10\\% in attendance + 20\\% in class tests)' : 'Continuous Assessment marks (28\\% of total: 10\\% in attendance + 18\\% in class tests)'}  \\\\
+					MO & #{  @gradesheet_type ==  :improvement ? 'Marks Obtained: total marks in final (70\\%) + CA (rounded upwards)' : 'Marks Obtained: total marks in final (72\\%) + CA (rounded upwards)' }\\\\
 					LG & Letter Grade (per the table on the left)\\\\
 					GP & Grade Point (per the table on the left)\\\\
 				    Cr & Credit (per course)\\\\
 					FEM & Final Exam Marks\\\\
-					IM/EM/VM & Internal/External/Viva Marks \\\\
+				%%	IM/EM/VM & Internal/External/Viva Marks \\\\
 				%%	PS & Point Secured ($= \\text{GP} \\times \\text{Cr}$, per course)\\\\
 					TCP & Total Credit Points ($=\\!\\sum PS$ all courses)\\\\
 					TCE & Total Credits Earned\\\\
@@ -399,9 +401,9 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 						\\renewcommand\\arraystretch{1.3}
 						\\begin{footnotesize}
 						\\begin{tabular}{rll}
-						1. & #{@tabulators[0].teacher.display_name unless @tabulators[2].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
-						2. & #{@tabulators[2].teacher.display_name unless @tabulators[0].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}	\\\\
-						3. & #{@tabulators[1].teacher.display_name unless @tabulators[1].nil? || @tabulators.length < 3} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}\\\\
+						1. & #{@tabulators[0].teacher.display_name unless @tabulators[0].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+						2. & #{@tabulators[1].teacher.display_name unless @tabulators[1].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}	\\\\
+						3. & #{@tabulators[2].teacher.display_name unless @tabulators[2].nil? || @tabulators.length < 3} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt}\\\\
 						\\end{tabular}
 						\\end{footnotesize}
 						}

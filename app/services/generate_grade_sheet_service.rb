@@ -6,9 +6,9 @@ class GenerateGradeSheetService
         @record_type = options[:record_type]
         @folder = options[:folder]
         @gradesheet_type = options[:student_type]
-        @courses = Course.where(exam_uuid:@exam.uuid)
-        @members = @exam.workforces.where(role:"member")
-        @tabulators = @exam.workforces.where(role:"tabulator")
+        @courses = Course.where(exam_uuid:@exam.uuid).order(:sl_no)
+        @members = @exam.workforces.where(role:"member").order(:sl_no)
+        @tabulators = @exam.workforces.where(role:"tabulator").order(:sl_no)
         @tco = Course.where(exam_uuid:@exam.uuid).sum(:credit).round
         data = generate_gs_view(options) 
         perform(data)

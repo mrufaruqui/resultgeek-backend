@@ -116,5 +116,20 @@ task email_seventhbsc2021: :environment do
 end
 
 
+desc 'Email individual result: 5th Sem 2021'
+task email_fifthbsc2021: :environment do
+    options = Hash.new
+    options[:exam] = Exam.find_by(uuid:"_fifthbsc2021")
+    options[:folder] = "../fifthbsc2021/"
+    options[:student_type] = :regular
+    results= GenerateGradeSheetService.generate_gs_view({:exam=>options[:exam],:student_type=>options[:student_type], :record_type=>:current, :folder=>   options[:folder]})
+    results.each do |result|
+        options[:result] = result
+        ResultMailerJob.perform_later options
+    end
+     
+end
+
+
 
  

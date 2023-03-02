@@ -3,8 +3,8 @@ class ResultMailerJob < ApplicationJob
 
   def perform(options)
     email = Hash.new
-    email[:recipents ] = options[:result][:email]
-    email[:subject] = "#{options[:exam].fullname} -- CSE712 -- Result Correction"
+    email[:recipents ] = options[:result][:email] #"kazi.ashrafuzzaman@gmail.com;rokan@cu.ac.bd;rudra@cu.ac.bd;sohelcu.cse@gmail.com"
+    email[:subject] = "#{options[:exam].fullname} : Unofficial Result"
     email[:body] = email_body options
     ResultMailer.email_indiviual_result(email).deliver unless email[:recipents ].blank?
   end
@@ -27,7 +27,9 @@ table, th, td {
      <body>
       Dear #{result[:name]},<br></br>
 
-      <i> This is your unofficial updated result. The committee is still working and verifying the results, so your final results may be changed. </i>
+      <i> The following is a preliminary, informal result calculated on the basis of the marks you were given by the examiners in the . Be warned, however, that there is no guarantee at this point that the calculations are entirely correct and you are entitled to this result. All relevant results, including yours, are still under scrutiny and audit by the
+      exam committee, and corrections are in order whenever errors in the associated data are found. The Controller of Examinations is set to receive the results from the exam committee before sending their signed copies to
+      the office of your residential Hall. You are meant to receive your official results from there in a day or two. </i>
       <br></br>
        <center>
         <h4>Department of Computer Science and Engineering</h4>

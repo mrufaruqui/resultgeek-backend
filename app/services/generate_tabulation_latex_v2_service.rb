@@ -3,8 +3,8 @@ class GenerateTabulationLatexV2Service < TabulationBaseService
 	    @student_type = options[:student_type]
 	    @exam = options[:exam]
 		@courses = Course.where(exam_uuid:@exam.uuid)
-        @members = @exam.workforces.where(role:"member")
-        @tabulators = @exam.workforces.where(role:"tabulator")
+        @members = @exam.workforces.where(role:"member").order(:sl_no)
+        @tabulators = @exam.workforces.where(role:"tabulator").order(:sl_no)
         @number_of_tabulation_column  = Course.where(:course_type=>"theory").count * 4 + Course.where(:course_type=>"lab").count * 2 + 7
 		@hall_list = (Student.all - Student.where(hall_name:nil)).pluck(:hall_name).uniq
 		@tco = Course.where(exam_uuid:@exam.uuid).sum(:credit).round
@@ -229,8 +229,8 @@ EOF
 		{\\vspace*{0.41cm}}\\tcbox[left=0mm,right=0mm,top=0mm,bottom=0mm,boxsep=0mm,title=Acronyms/Glossaries]{%
 		\\renewcommand\\arraystretch{0.89}
 	    \\begin{tabular}{lm{1.8in}}
-		CA & Continuous Assessment marks (30\\% of total: 10\\% in attendance + 20\\% in class tests) \\\\
-		MO & Marks Obtained: total marks in final (70\\%) + CA (rounded upwards)\\\\
+		CA & #{ 'Continuous Assessment marks (28\\% of total: 10\\% in attendance + 18\\% in class tests)' if  @gradesheet_type ==  :regular else 'Continuous Assessment marks (30\\% of total: 10\\% in attendance + 12\\% in class tests)'}  \\\\
+		MO & Marks Obtained: total marks in final (72\\%) + CA (rounded upwards)\\\\
 		LG & Letter Grade (per the table on the left)\\\\
 		GP & Grade Point (per the table on the left)\\\\
 		Cr & Credit (per course)\\\\
@@ -318,7 +318,7 @@ EOF
 		\\renewcommand\\arraystretch{1.3}
 		\\begin{footnotesize}
 	    \\begin{tabular}{rll}
-		 Chairman: &  #{@exam.workforces.find_by(role:"chairman").teacher.display_name}  & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
+		 Chairman: &  #{@exam.workforces.find_by(role:"chairman").order(:sl_no).teacher.display_name}  & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
 		 Member: & #{@members[0].teacher.display_name unless @members[0].nil?} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
 		 Member: & #{@members[1].teacher.display_name unless @members[1].nil? || @members.length < 2} & \\hdashrule[-0.5ex]{2cm}{1pt}{1pt} \\\\
 	 	\\end{tabular}

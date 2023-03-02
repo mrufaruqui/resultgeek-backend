@@ -15,10 +15,14 @@ class ProcessingService
   ###Format CGPA According to CU Syndicate Directions ####
 
   def self.format_gpa(gpa)
-    gpa.round(2)
-   #  third_decimal = ((gpa.round(3) - gpa.round(2)) * 1000).to_i
-    # fourth_decimal = ((gpa.round(4) - gpa.round(3)) * 10000).to_i
-    # third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
+    if  @student_type == :improvement 
+      third_decimal = ((gpa.round(3) - gpa.round(2)) * 1000).to_i
+      fourth_decimal = ((gpa.round(4) - gpa.round(3)) * 10000).to_i
+      third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
+    else 
+      gpa.round(2)
+    end
+
   end
 
   def self.process_result_regular(options) 

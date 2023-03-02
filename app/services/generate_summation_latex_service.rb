@@ -8,9 +8,9 @@ class GenerateSummationLatexService
     def perform(options={})
      @exam = options[:exam]
      @folder = options[:folder]
-     @courses = Course.where(exam_uuid:@exam.uuid)
-     @members = @exam.workforces.where(role:"member")
-     @tabulators = @exam.workforces.where(role:"tabulator")
+     @courses = Course.where(exam_uuid:@exam.uuid).order(:sl_no)
+     @members = @exam.workforces.where(role:"member").order(:sl_no)
+     @tabulators = @exam.workforces.where(role:"tabulator").order(:sl_no)
      summations_courses
      true
     end
@@ -68,7 +68,7 @@ class GenerateSummationLatexService
 
     def summation_table_row(sm)
       if sm.course.course_type == "theory"
-        [sm.student.roll, sm.attendance,sm.assesment, sm.cact, sm.section_a_code, sm.section_a_marks, sm.section_b_code, sm.section_b_marks, sm.marks, sm.total_marks].join(" & ") 
+        [sm.student.roll, sm.cact, sm.section_a_code, sm.section_a_marks, sm.section_b_code, sm.section_b_marks, sm.marks, sm.total_marks].join(" & ") 
      elsif  sm.course.course_type == "project" or  sm.course.course_type == "thesis"
         [sm.student.roll, sm.section_a_code,  sm.section_a_marks, sm.section_b_marks,sm.cact, sm.total_marks].join(" & ") 
      else
@@ -97,10 +97,10 @@ class GenerateSummationLatexService
 	\\smallskip
 	\\noindent {\\textsc{University of Chittagong}}\\\\
     %%\\textsc{Institute: Chittagong National Engineering College}\\\\
-    \\textsc{Department of Computer Science \\& Engineering}\\\\
+    \\textsc{Department of Computer Science and Engineering}\\\\
 	\\textsc{ #{@exam.fullname}}\\\\
     {\\large {\\sc Summation Sheet}}\\\\  
-     {\\centering #{course.display_code} : #{course.title}     Credit : #{course.credit} } \\\\
+     {\\centering #{course.display_code} : #{course.title}~~~~ ~~~~~~~~~Credit : #{course.credit} } \\\\
     \\end{minipage} 
     \\begin{center} 
 	\\renewcommand{\\arraystretch}{1.08}
@@ -108,9 +108,16 @@ class GenerateSummationLatexService
     
     #{ course.course_type == "theory" ? 
     <<-EOF
-    \\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \\hline
-	\\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CA}  & 	\\multirow{2}{*}{CT}  & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{c|}{Section A} & \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{Marks}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
-    &  &  &  & Code A & Marks A & Code B & Marks B&  &  \\\\ \\hline
+   
+    %% \\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \\hline
+   %% \\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CA}  & 	\\multirow{2}{*}{CT}  & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{c|}{Section A} & \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{FEM}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
+   %%  &  &  &  & Code A & Marks A & Code B & Marks B&  &  \\\\ \\hline
+
+    \\begin{tabular}{|c||c|c|c|c|c|c|c|c|} \\hline
+    \\multirow{2}{*}{ID} & 	\\multirow{2}{*}{CACT}  & \\multicolumn{2 }{c|}{Section A} & \\multicolumn{2 }{c|}{Section B} & 	\\multirow{2}{*}{FEM}  & 	\\multirow{2}{*}{Total Marks}  \\\\ 
+        &  & Code A & Marks A & Code B & Marks B&  &  \\\\ \\hline
+
+
      EOF
     : (course.course_type == "project" or course.course_type == "thesis") ? 
     <<-EOF
@@ -145,9 +152,9 @@ class GenerateSummationLatexService
             \\begin{minipage}[b]{0.5\\linewidth} %\\centering
             {\\centering Tabulators }
             \\begin{enumerate}
-                \\item #{@tabulators[0].teacher.display_name unless @tabulators[2].nil?} \\hspace*{1ex} $\\ldots \\ldots  $  
-                \\item #{@tabulators[2].teacher.display_name unless @tabulators[0].nil? || @tabulators.length < 2} \\hspace*{1ex} $\\ldots \\ldots  $  
-                \\item #{@tabulators[1].teacher.display_name unless @tabulators[1].nil? || @tabulators.length < 3} \\hspace*{1ex} $\\ldots \\ldots $  
+                \\item #{@tabulators[0].teacher.display_name unless @tabulators[0].nil?} \\hspace*{1ex} $\\ldots \\ldots  $  
+                \\item #{@tabulators[1].teacher.display_name unless @tabulators[1].nil? || @tabulators.length < 2} \\hspace*{1ex} $\\ldots \\ldots  $  
+                \\item #{@tabulators[2].teacher.display_name unless @tabulators[2].nil? || @tabulators.length < 3} \\hspace*{1ex} $\\ldots \\ldots $  
             \\end{enumerate} 
             \\end{minipage}
             \\hspace*{1.2cm}
