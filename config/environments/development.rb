@@ -47,13 +47,25 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors =true
+  mail_setting = {
+    :address => ENV["SmtpServer"],
+    :port => ENV["SmtpPort"].to_i,
+    :user_name => ENV["UserName"],
+    :password => ENV["EmailPassword"],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+}
 
+ 
   config.action_mailer.smtp_settings = {
-      :address => "smtp.gmail.com",
-      :port => 587,
-      :user_name => "sapl.mailer@gmail.com",
-      :password => "saplsapl@ict",
+      :address => ENV["SmtpServer"],
+      :port => ENV["SmtpPort"].to_i,
+      :user_name => ENV["UserName"],
+      :password => ENV["AppPassword"],
       :authentication => :plain,
       :enable_starttls_auto => true
   }
 end
+
+
+ 

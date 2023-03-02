@@ -13,6 +13,7 @@ class TabulationsController < ApplicationController
   # GET /tabulations/1
   # GET /tabulations/1.json
   def show
+    render json: @tabulation
   end
 
   # POST /tabulations

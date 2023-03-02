@@ -24,4 +24,19 @@ class RafKhata
                 WHERE t.exam_uuid = '_sixthbsc2018'
         """ 
     end
+
+    def self.sit_for_exam? course_id
+        sql = """
+        SELECT name, roll,attendance, assesment, cact, section_a_marks, section_b_marks, marks
+        FROM students as s 
+        INNER JOIN registrations as r 
+        INNER JOIN summations as sm
+        ON s.id = r.student_id and
+           r.student_id = sm.student_id and
+           sm.course_id = #{course_id}
+        WHERE r.exam_uuid = '_sixthbsc2018'
+        """ 
+        r = ActiveRecord::Base.connection.exec_query(sql)
+        r
+    end
 end

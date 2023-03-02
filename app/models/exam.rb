@@ -15,9 +15,10 @@
 #
 
 class Exam < ApplicationRecord
+  include ActiveModel::Serializers::JSON
     #validates :uuid, presence: true
     enum sem: [:_first, :_second, :_third, :_fourth, :_fifth, :_sixth, :_seventh, :_eight ]
-    enum program: [:bsc, :msc, :mphil, :phd]
+    enum program: ["BSc", "MSc", "MPhil", "Phd"]
     enum program_type: [:semester, :year, :term]
 
     has_many :workforces
@@ -27,10 +28,18 @@ class Exam < ApplicationRecord
     has_many :students, through: :registrations
 
     has_many :courses
-
+ 
+    belongs_to :dept
+    before_create :set_title 
 
     def fullname
-      [ sem, program_type,  program,"Engineering Exam",   year].join(" ").titlecase
+      title
+     # prgram_name = program == :bsc ? " BSc " : " MSc "
+     # [ sem, program_type].join(" ").titlecase  + prgram_name +["Engineering Examination",   year].join(" ").titlecase
     end
  
+  private
+      def set_title
+        self.title = [ sem.titlecase, program_type.titlecase,  program,"Engineering Examination",   year].join(" ")
+      end
 end

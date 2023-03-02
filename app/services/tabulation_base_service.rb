@@ -3,7 +3,7 @@ class TabulationBaseService
   def generate_single_page_tabulation(options)
        t = options[:t]
         student = Student.find_by(roll: t.student_roll)
-        r = Registration.find_by(student:student)
+        r = Registration.find_by(student:student, exam_uuid:t.exam_uuid)
         @retHash = Hash.new
         @retHash[:sl_no] = (options.has_key? :record_type and options[:record_type] == :previous) ? ' ' : r.sl_no
         @retHash[:gpa] =   (options.has_key? :record_type and  options[:record_type] == :previous) ? ' ' : '%.2f' % t.gpa
@@ -20,11 +20,14 @@ class TabulationBaseService
             ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
             if td.summation.course.course_type === "lab"
                @retHash[td.summation.course.code] =  {:mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
+            elsif td.summation.course.course_type === "project" or   td.summation.course.course_type === "thesis"
+               @retHash[td.summation.course.code] =  {:cact=>td.summation.cact, :section_a_marks=>td.summation.section_a_marks, :section_b_marks=>td.summation.section_b_marks,:mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
             else
                @retHash[td.summation.course.code] = {:cact=>td.summation.cact, :fem=>td.summation.marks, :mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
             end  
             tps += ps;
           #  @retHash[:courses] << course
+         
         end
         @retHash[:tps] = options[:record_type] == :previous ? ' ' :  '%.2f' % tps; 
 
@@ -36,6 +39,7 @@ class TabulationBaseService
           @retHash[:remarks] = options[:t_temp].remarks
        end
 
+      
         @retHash
   end    
   
@@ -43,12 +47,12 @@ class TabulationBaseService
         t = options[:t_temp] 
        # t_cur  = options[:t_cur]
           student = Student.find_by(roll: t.student_roll)
-          r = Registration.find_by(student:student)
+          r = Registration.find_by(student:student, exam_uuid:t.exam_uuid)
           @retHash = Hash.new
           @retHash[:sl_no] = ' '
           @retHash[:gpa] = '%.2f' % t.gpa
           @retHash[:result] = t.result
-          @retHash[:tce] = '%.2f' % t.tce
+          @retHash[:tce] =  t.tce.to_i
           @retHash[:remarks] = t.remarks
           @retHash[:roll] = ' '
           @retHash[:name] = 'Improvement'
@@ -61,7 +65,7 @@ class TabulationBaseService
 
               sm_cur = Summation.find_by(student:student, course:td.summation.course, :record_type=>:current)
            
-            if r.course_list.split(";").include?  td.summation.course.code.split(/[a-zA-Z]+/)[1] #and sm_cur.gpa != "X"
+            if !r.course_list.blank? and r.course_list.split(";").include?  td.summation.course.code.split(/[a-zA-Z]+/)[1] #and sm_cur.gpa != "X"
               if td.summation.course.course_type === "lab"
                 @retHash[td.summation.course.code] =  {:mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
               else
@@ -78,6 +82,9 @@ class TabulationBaseService
             #  @retHash[:courses] << course
           end
           @retHash[:tps] = '%.2f' % tps; 
+          p "Updating Improvement TPS"
+          t.tps =  @retHash[:tps]
+          t.save
           @retHash
   end
 
@@ -86,7 +93,7 @@ class TabulationBaseService
         t_temp  = options[:t_temp]
 
           student = Student.find_by(roll: t.student_roll)
-          r = Registration.find_by(student:student)
+          r = Registration.find_by(student:student, exam_uuid:t.exam_uuid)
           @retHash = Hash.new
           @retHash[:sl_no] = ' '
           @retHash[:gpa] = '%.2f' % t.gpa
@@ -102,7 +109,7 @@ class TabulationBaseService
               course = Hash.new
               ps = ( td.summation.course.credit.to_f * td.summation.grade.to_f).round(2)
               sm_cur = Summation.find_by(student:student, course:td.summation.course, :record_type=>:current)
-            if r.course_list.split(";").include?  td.summation.course.code.split(/[a-zA-Z]+/)[1] #and sm_cur.gpa != "X"
+            if !r.course_list.blank? and r.course_list.split(";").include?  td.summation.course.code.split(/[a-zA-Z]+/)[1] #and sm_cur.gpa != "X"
               if td.summation.course.course_type === "lab"
                 @retHash[td.summation.course.code] =  {:mo=>td.summation.total_marks, :lg=>td.summation.gpa, :gp=>td.summation.grade, :ps=>ps }
               else
@@ -119,6 +126,7 @@ class TabulationBaseService
             #  @retHash[:courses] << course
           end
           @retHash[:tps] = '%.2f' % tps; 
+          
           @retHash
   end
 protected

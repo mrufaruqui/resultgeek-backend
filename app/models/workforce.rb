@@ -13,8 +13,12 @@
 #
 
 class Workforce < ApplicationRecord
+     #include ActiveModel::Serializers::JSON
+     #attribute :role
+
      belongs_to :exam
-     belongs_to :teacher
-     enum role: [:member, :chairman,:tabulator, :scritinizer, :instructor, :examiner, :section_a_examiner, :section_b_examiner, :course_teacher]
+     belongs_to :teacher  
+     enum role: [:member, :chairman,:tabulator, :scritinizer, :instructor, :external_member]
      enum status: [:active, :inactive]
 end
+

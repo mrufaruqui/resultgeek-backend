@@ -17,10 +17,12 @@
 class Course < ApplicationRecord
     #before_create :set_exam_uuid
 
-    enum course_type: [:theory, :lab]
+    enum course_type: [:theory, :lab, :project, :thesis]
     default_scope { order(:sl_no) }
-    belongs_to :exam
+    belongs_to :exam 
 
+    has_many :course_workforces
+    has_many :teachers, through: :course_workforces
 
     def self.import(students_info) 
       header = students_info[0]

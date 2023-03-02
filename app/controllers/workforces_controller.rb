@@ -11,7 +11,7 @@ class WorkforcesController < ApplicationController
       a = []
      @w.each do |w| 
       rethash = Hash.new
-      rethash[:role] = w.role.titlecase 
+      rethash[:role] = w.role.titlecase unless w.role.nil?
       rethash[:status] = w.status
       rethash[:name] = w.teacher.display_name
       rethash[:designation]= w.teacher.designation.titlecase unless w.teacher.designation.nil?
@@ -32,6 +32,7 @@ class WorkforcesController < ApplicationController
   # GET /workforces/1
   # GET /workforces/1.json
   def show
+    render json: @workforce
   end
 
   # POST /workforces

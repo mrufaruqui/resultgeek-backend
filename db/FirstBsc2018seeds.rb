@@ -1,4 +1,8 @@
-@exam = Exam.create(sem: "_first", year: "2018", program: "bsc", title: "", uuid: "_firstbsc2018")
+@dept = Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CU", institute: "Unversity of Chittagong Chittagong")
+#Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CUET", institute: "Chittagong University of Engineering and Technology")
+#Dept.find_or_create_by(code:'ME', name:'Mechanical Engineering', institute_code:"CNEC", institute: "Chittagong National Engineering College")
+
+@exam = Exam.create(sem: "_first", year: "2018", program: "bsc", title: "", uuid: "_firstbsc2018", dept:@dept)
 
 #Course.delete_all
 @exam = Exam.find_by(uuid: "_firstbsc2018")
@@ -19,21 +23,23 @@ Course.find_by(code:'MAT131').update(sl_no:6)
 Course.find_by(code:'STA151').update(sl_no:7)
 
 
-Dept.create(code:'CSE', name:'Computer Science and Engineering')
+Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CU", institute: "Unversity of Chittagong Chittagong")
+Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CUET", institute: "Chittagong University of Engineering and Technology")
+Dept.find_or_create_by(code:'ME', name:'Mechanical Engineering', institute_code:"CNEC", institute: "Chittagong National Engineering College")
 
 #Teacher.destroy_all
-Teacher.create(title:'Mr.', fullname:'Rokan Uddin Faruqui', designation: :associate_professor, email:'rokan@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
-Teacher.create(title:'Dr.', fullname:'Kazi Ashrafuzzaman', designation: :associate_professor, email:'kazi.ashrafuzzaman@gmail.com', dept: Dept.find_by(code:'CSE'))
-Teacher.create(title:'Dr.', fullname:'Osiur Rahman', designation: :professor, email:'osiur.ukm@gmail.com', dept: Dept.find_by(code:'CSE'))
-Teacher.create(title:'Ms.', fullname:'Nasrin Akther', designation: :assistant_professor, email:'nasrin1219@gmail.com', dept: Dept.find_by(code:'CSE'))
+Teacher.find_or_create_by(title:'Mr.', fullname:'Rokan Uddin Faruqui', designation: :associate_professor, email:'rokan@cu.ac.bd', dept: Dept.find_by(code:'CSE'))
+Teacher.find_or_create_by(title:'Dr.', fullname:'Kazi Ashrafuzzaman', designation: :associate_professor, email:'kazi.ashrafuzzaman@gmail.com', dept: Dept.find_by(code:'CSE'))
+Teacher.find_or_create_by(title:'Dr.', fullname:'Osiur Rahman', designation: :professor, email:'osiur.ukm@gmail.com', dept: Dept.find_by(code:'CSE'))
+Teacher.find_or_create_by(title:'Ms.', fullname:'Nasrin Akther', designation: :assistant_professor, email:'nasrin1219@gmail.com', dept: Dept.find_by(code:'CSE'))
 
 # Workforce.destroy_all
-Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "chairman") 
-Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "member")
-Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Nasrin%'), role: "member")
-Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "tabulator")
-Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "tabulator")
-Workforce.create(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Osiur%'), role: "tabulator")
+Workforce.find_or_create_by(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "chairman") 
+Workforce.find_or_create_by(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "member")
+Workforce.find_or_create_by(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Nasrin%'), role: "member")
+Workforce.find_or_create_by(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Rokan%'), role: "tabulator")
+Workforce.find_or_create_by(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Ashraf%'), role: "tabulator")
+Workforce.find_or_create_by(exam_uuid:@exam.uuid, exam:@exam, teacher: Teacher.find_by('fullname LIKE ?', '%Osiur%'), role: "tabulator")
 
 #####Student registration###############
 # Student.all.each { |s| Registration.create(student:s, exam:Exam.first, exam_uuid:Exam.first.uuid, student_type:"regular") }

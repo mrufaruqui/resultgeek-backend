@@ -15,16 +15,21 @@ class ProcessingService
   ###Format CGPA According to CU Syndicate Directions ####
 
   def self.format_gpa(gpa)
-    third_decimal = ((gpa.round(3) - gpa.round(2)) * 1000).to_i
-    fourth_decimal = ((gpa.round(4) - gpa.round(3)) * 10000).to_i
-    third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
+    if  @student_type == :improvement 
+      third_decimal = ((gpa.round(3) - gpa.round(2)) * 1000).to_i
+      fourth_decimal = ((gpa.round(4) - gpa.round(3)) * 10000).to_i
+      third_decimal > 0  || fourth_decimal > 0 ? (gpa.round(2).+(0.01)).round(2) : gpa.round(2)
+    else 
+      gpa.round(2)
+    end
+
   end
 
   def self.process_result_regular(options) 
      @exam = options[:exam]
      @courses = Course.where(exam_uuid:@exam.uuid)
     #######Retrieve Registered  Regular Studentsstudents #########
-     Registration.where(exam_uuid:@exam.uuid,:student_type=>options[:student_type]).each do |r|
+     Registration.where(exam_uuid:@exam.uuid,:student_type=>options[:student_type]).order(:sl_no).each do |r|
             is_failed_in_a_course = false;
             s = r.student
             tabulation = Tabulation.find_by(student_roll:s.roll, exam_uuid:@exam.uuid, :record_type=> options[:record_type] ) || Tabulation.new
@@ -56,7 +61,7 @@ class ProcessingService
             end
             
            # if r.student_type != :improvement
-              gpa = tps > 0 ? format_gpa(tps / Course.where(exam_id:@exam.id).sum(:credit).to_f) : 0.00
+              gpa = tps > 0 ? format_gpa(tps / Course.where(exam_uuid:@exam.uuid).sum(:credit).to_f) : 0.00
               s.gpa = gpa
               tabulation.gpa = gpa #gpa.round(2);
               tabulation.tce = tce.to_i
@@ -91,7 +96,7 @@ class ProcessingService
                         sm_temp.marks = (sm_cur.marks.to_f > sm_prev.marks.to_f ? sm_cur.marks.to_f : sm_prev.marks.to_f).to_s unless sm_cur.marks.nil?
                         sm_temp.total_marks = (sm_temp.marks.to_f + sm_temp.cact.to_f).ceil
                     else 
-                      # sm_temp.total_marks = (sm_cur.total_marks > sm_prev.total_marks ? sm_cur.total_marks : sm_prev.total_marks)
+                        sm_temp.total_marks = (sm_cur.total_marks > sm_prev.total_marks ? sm_cur.total_marks : sm_prev.total_marks) unless sm_cur.total_marks.nil?
                     end
 
                     sm_temp.percetage = (sm_temp.total_marks.to_f / (c.credit.to_f * 25.to_f)) * 100.to_f

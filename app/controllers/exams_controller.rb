@@ -1,22 +1,23 @@
 class ExamsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :get_tenant, except: [:index, :create, :show, :update, :destroy]
+  #before_action :get_tenant, except: [:index, :create, :show, :update, :destroy]
 
   # GET /exams
   # GET /exams.json
   def index
-    @exams = Exam.all
+    @exams = Exam.all 
   end
 
   # GET /exams/1
   # GET /exams/1.json
-  def show
+  def show 
   end
 
   # POST /exams
   # POST /exams.json
   def create
     @exam = Exam.new(exam_params)
+    @exam.dept = Dept.find_by(code:"CSE", institute_code: "CU")
     # @exam.program = params[:program].underscore.to_sym if params.include? :program
     # @exam.sem = params[:sem].underscore.to_sym if params.include? :sem
     # @exam.program_type = params[:program_type].underscore.to_sym if params.include? :program_type

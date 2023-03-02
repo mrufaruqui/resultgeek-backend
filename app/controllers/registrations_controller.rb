@@ -7,20 +7,25 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   def index
-      @registrations = Registration.where(exam_uuid:@exam.uuid)
+   @registrations =  Registration.where(exam_uuid:@exam.uuid).includes(:student).pluck(:id,:sl_no, :roll,"students.email", :student_type, :course_list, "students.name", "students.hall_name")
+    # @registrations = Registration.where(exam_uuid:@exam.uuid).includes(:student)
    if @registrations
       a = []
-      @registrations.each do |r|
-       retHash = Hash.new
-       retHash[:id] = r.id
-       retHash[:sl_no] = r.sl_no
-       retHash[:roll] = r.student.roll
-       retHash[:hall_name] = r.student.hall_name unless r.student.hall_name.blank?
-       retHash[:name] = r.student.name.titlecase unless r.student.name.blank?
-       retHash[:student_type] = r.student_type.titlecase unless r.student_type.blank?
-       retHash[:courses] = r.course_list.split(";").join(",") unless r.course_list.blank?
-       a << retHash
-    end
+      header = ["id","sl_no","roll","email","student_type","courses","name", "hall_name"]
+      @registrations.each { |i| a <<  Hash[[header, i].transpose].symbolize_keys }
+    #   a = []
+    #   @registrations.each do |r|
+    #    retHash = Hash.new
+    #    retHash[:id] = r.id
+    #    retHash[:sl_no] = r.sl_no
+    #    retHash[:roll] = r.student.roll
+    #    retHash[:hall_name] = r.student.hall_name unless r.student.hall_name.blank?
+    #    retHash[:name] = r.student.name.titlecase unless r.student.name.blank?
+    #    retHash[:student_type] = r.student_type.titlecase unless r.student_type.blank?
+    #    retHash[:courses] = r.course_list.split(";").join(",") unless r.course_list.blank?
+    #    a << retHash
+    # end
+    
       render json: a, status: "200 ok"
      else
       render json: @registrations.errors, status: :unprocessable_entity
@@ -32,6 +37,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1
   # GET /registrations/1.json
   def show
+    render json: @registration
   end
 
   # POST /registrations

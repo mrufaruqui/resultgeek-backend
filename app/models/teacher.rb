@@ -17,10 +17,17 @@
 #
 
 class Teacher < ApplicationRecord
-    enum designation: [:professor, :associate_professor, :assistant_professor, :lecturer]
+    include ActiveModel::Serializers::JSON
+    
+    enum designation: [:professor, :associate_professor, :assistant_professor, :lecturer, :principal]
     enum status: [:active, :on_leave, :retired, :resigned]
+
     has_many :workforces
     has_many :exams, through: :workforces
+
+    has_many :course_workforces
+    has_many :courses, through: :course_workforces
+
     belongs_to  :dept
     default_scope { order(:designation)}
     default_scope { includes(:dept)}

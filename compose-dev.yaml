@@ -1,0 +1,57 @@
+services:
+  app:
+    entrypoint:
+    - sleep
+    - infinity
+    image: docker/dev-environments-default:stable-1
+    init: true
+    volumes:
+    - type: bind
+      source: /var/run/docker.sock
+      target: /var/run/docker.sock
+  db: 
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres 
+        - POSTGRES_HOST_AUTH_METHOD = trust
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+  web:
+   build: .
+   command: bundle exec rails s -p 3000 -b '0.0.0.0'
+   volumes: 
+      - ".:/app"
+   ports:
+     - "3001:3000"
+   depends_on:
+     - db
+   links:
+     - db
+   environment:
+    DB_USER: postgres
+    DB_NAME: app
+    DB_PASSWORD: postgres
+    DB_HOST: db
+  worker:
+   build: .
+   command: rake jobs:work
+   volumes: 
+      - ".:/app" 
+   depends_on:
+     - db
+   links:
+     - db
+   environment:
+    DB_USER: postgres
+    DB_NAME: app
+    DB_PASSWORD: postgres
+    DB_HOST: db
+
+volumes:
+    db:
+      driver: local
+
