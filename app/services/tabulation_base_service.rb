@@ -81,8 +81,7 @@ class TabulationBaseService
               tps += ps;
             #  @retHash[:courses] << course
           end
-          @retHash[:tps] = '%.2f' % tps; 
-          p "Updating Improvement TPS"
+          @retHash[:tps] = '%.2f' % tps;  
           t.tps =  @retHash[:tps]
           t.save
           @retHash

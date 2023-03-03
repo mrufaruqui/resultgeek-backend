@@ -316,9 +316,9 @@ class ImportFullExamService
    end
 
    def self.generate_tabulations options   
-      GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current, :folder=>@folder})
-      GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:improvement,:record_type=>:temp, :folder=>@folder})
-      GenerateTabulationLatexV3Service.new.perform({:exam=>@exam,:student_type=>:irregular,:record_type=>:temp, :folder=>@folder}) 
+      GenerateTabulationLatexV4Service.new.perform({:exam=>@exam,:student_type=>:regular,:record_type=>:current, :folder=>@folder})
+      GenerateTabulationLatexV4Service.new.perform({:exam=>@exam,:student_type=>:improvement,:record_type=>:temp, :folder=>@folder})
+      GenerateTabulationLatexV4Service.new.perform({:exam=>@exam,:student_type=>:irregular,:record_type=>:temp, :folder=>@folder}) 
    end
 
    def self.generate_gradesheets  options
