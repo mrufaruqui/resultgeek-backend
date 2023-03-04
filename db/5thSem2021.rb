@@ -1,5 +1,5 @@
 @dept = Dept.find_or_create_by(code:'CSE', name:'Computer Science and Engineering', institute_code:"CU", institute: "Unversity of Chittagong Chittagong")
-Exam.create(sem: :_fifth, year: "2021", program: "bsc", title: "", uuid: "_fifthbsc2021", dept:@dept)
+Exam.create(sem: :_fifth, year: "2021", program: "BSc", title: "", uuid: "_fifthbsc2021", dept:@dept)
 
 @exam = Exam.find_by(uuid: "_fifthbsc2021")
 

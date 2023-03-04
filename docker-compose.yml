@@ -3,10 +3,8 @@ services:
   db: 
     image: postgres:14.1-alpine
     restart: always
-    environment:
-        - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=postgres 
-        - POSTGRES_HOST_AUTH_METHOD = trust
+    environment:       
+      - POSTGRES_PASSWORD=postgres
     ports:
       - '5432:5432'
     volumes:
@@ -24,7 +22,7 @@ services:
      - db
    environment:
     DB_USER: postgres
-    DB_NAME: app
+    DB_NAME: resultporcessing-docker-dev
     DB_PASSWORD: postgres
     DB_HOST: db
   worker:
@@ -38,7 +36,7 @@ services:
      - db
    environment:
     DB_USER: postgres
-    DB_NAME: app
+    DB_NAME: resultporcessing-docker-dev
     DB_PASSWORD: postgres
     DB_HOST: db
 
