@@ -1,5 +1,5 @@
 User.create(email: 'rokan@cu.ac.bd', nickname: 'Rokan', name: 'Rokan Faruqui', password: "1234qwer")
-Exam.create(sem: :_sixth, year: "2018", program: "bsc", title: "", uuid: "_sixthbsc2018")
+Exam.create(sem: :_sixth, year: "2018", program: "BSc", title: "", uuid: "_sixthbsc2018")
 
 @exam = Exam.find_by(uuid: "_sixthbsc2018")
 

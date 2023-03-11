@@ -10,7 +10,7 @@
 #  held_in      :string(255)
 #  uuid         :string(255)
 #  sem          :integer          default("_first")
-#  program      :integer          default("bsc")
+#  program      :integer          default("BSc")
 #  program_type :integer          default("semester")
 #
 
@@ -34,7 +34,7 @@ class Exam < ApplicationRecord
 
     def fullname
       title
-     # prgram_name = program == :bsc ? " BSc " : " MSc "
+     # prgram_name = program == :BSc ? " BSc " : " MSc "
      # [ sem, program_type].join(" ").titlecase  + prgram_name +["Engineering Examination",   year].join(" ").titlecase
     end
  

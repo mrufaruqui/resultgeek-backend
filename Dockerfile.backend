@@ -1,0 +1,20 @@
+FROM ruby:3.1.3
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN mkdir /backend
+WORKDIR /backend
+ADD ./resultgeek-backend/Gemfile /backend/Gemfile
+ADD ./resultgeek-backend/Gemfile.lock /backend/Gemfile.lock
+RUN bundle install
+ADD /resultgeek-backend/. /backend
+RUN mkdir /data
+COPY ./data/. /data/
+
+ENV RAILS_ENV=development
+RUN bin/rails assets:precompile
+RUN bin/rails db:prepare
+
+EXPOSE 3000
+ENV RAILS_LOG_TO_STDOUT=true
+ENV RAILS_SERVE_STATIC_FILES=true
+CMD bin/rails server
+

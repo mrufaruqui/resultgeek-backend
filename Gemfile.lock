@@ -82,6 +82,7 @@ GEM
       activesupport
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    date (3.3.3)
     delayed_job (4.1.11)
       activesupport (>= 3.0, < 8.0)
     delayed_job_active_record (4.1.7)
@@ -97,10 +98,8 @@ GEM
       bcrypt (~> 3.0)
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 7.1)
-    dotenv (2.8.1)
-    dotenv-rails (2.8.1)
-      dotenv (= 2.8.1)
-      railties (>= 3.2)
+    dockerfile-rails (1.2.5)
+      rails
     erubi (1.11.0)
     et-orbi (1.2.7)
       tzinfo
@@ -139,6 +138,11 @@ GEM
     multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
+    net-imap (0.3.4)
+      date
+      net-protocol
+    net-pop (0.1.2)
+      net-protocol
     net-protocol (0.2.1)
       timeout
     net-smtp (0.3.3)
@@ -147,6 +151,8 @@ GEM
     nokogiri (1.13.9-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.13.9-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     omniauth (2.1.0)
       hashie (>= 3.4.6)
@@ -265,6 +271,7 @@ PLATFORMS
   aarch64-linux
   arm64-darwin-21
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   active_model_serializers
@@ -275,11 +282,13 @@ DEPENDENCIES
   byebug
   delayed_job_active_record
   devise_token_auth
-  dotenv-rails
+  dockerfile-rails (>= 1.2)
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mail
+  net-imap (~> 0.3.4)
+  net-pop (~> 0.1.2)
   net-smtp
   omniauth
   pg (~> 1.1)

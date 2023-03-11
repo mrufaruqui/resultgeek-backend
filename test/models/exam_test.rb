@@ -10,7 +10,7 @@
 #  held_in      :string(255)
 #  uuid         :string(255)
 #  sem          :integer          default("_first")
-#  program      :integer          default("bsc")
+#  program      :integer          default("BSc")
 #  program_type :integer          default("semester")
 #
 
