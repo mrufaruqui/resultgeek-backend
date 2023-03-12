@@ -21,7 +21,7 @@ class GenerateTabulationLatexV3Service < TabulationBaseService
 	  @doc = Doc.find_by(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') || Doc.new(exam_uuid:@exam.uuid, uuid: @student_type.to_s + 'tabulation_v3') 
 	  @doc.latex_loc = @folder + [@exam.uuid, @student_type.to_s, 'tabulation_v3.tex'].join("_")
 	  @doc.latex_name =  ["tabulation", "sheets", "v3", @student_type.to_s ,".tex"].join("_")
-	 # @doc.latex_str =   MyCompressionService.compress f_data
+	  @doc.latex_str = Base64.encode64(Zlib::Deflate.deflate(f_data))
 	  @doc.description = ["tabulation", "sheets", @student_type.to_s ].join("_").titlecase
 	  @doc.save
 	 

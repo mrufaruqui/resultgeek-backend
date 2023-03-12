@@ -251,7 +251,6 @@ class ImportFullExamService
    end
 
    def self.process_result_regular options
-      
       Tabulation.where(exam_uuid:@exam.uuid).destroy_all
       ProcessingService.perform({:exam=>@exam, :student_type=>:regular, :record_type=>:current})
       ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current})

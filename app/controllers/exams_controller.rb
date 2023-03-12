@@ -51,13 +51,14 @@ class ExamsController < ApplicationController
   end
 
    def process_result
-      ap "Processing result ...."
-      @exam = Exam.find_by(uuid:_seventhbsc2021) #Exam.find_by(uuid:params[:exam_uuid]);
-      ap @exam
-      @status = ProcessRegularJob.perform_later({:exam=>@exam})
-      @status = ProcessIrregularJob.perform_later({:exam=>@exam})
-      @status = ProcessImprovementJob.perform_later({:exam=>@exam})
-      render json: {:message=>"Job Submitted", :status=> @status}
+      ap "Processing Regular result ...."
+      @exam = Exam.find_by(uuid:params[:uuid]);
+      Tabulation.where(exam_uuid:@exam.uuid).destroy_all
+
+      ProcessingService.perform({:exam=>@exam, :student_type=>:regular, :record_type=>:current}) 
+      ProcessingService.perform({:exam=>@exam, :student_type=>:improvement, :record_type=>:current}) unless  Registration.where(exam_uuid: @exam.uuid, student_type: "improvement").count == 0
+      ProcessingService.perform({:exam=>@exam, :student_type=>:irregular, :record_type=>:current}) unless  Registration.where(exam_uuid: @exam.uuid, student_type: "irregular").count == 0
+      render json: {:message=>"Job Submitted", :status=> "200 OK"}
    end
 
    def generate_tabulations_latex
@@ -99,7 +100,10 @@ class ExamsController < ApplicationController
    end
 
    def reset_exam_result
-      #TabulationDetail.destroy_all
+      ap "Destroying previous results"
+      @exam = Exam.find_by(uuid:params[:uuid]);
+      ap @exam
+
       Tabulation.where(exam_uuid:@exam.uuid).destroy_all
       Summation.where(exam_uuid:@exam.uuid).destroy_all
       Registration.where(exam_uuid:@exam.uuid).destroy_all

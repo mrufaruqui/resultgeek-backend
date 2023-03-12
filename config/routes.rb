@@ -31,5 +31,6 @@ Rails.application.routes.draw do
    get 'latex_to_pdf'                       => 'exams#latex_to_pdf'
    get 'reset_exam_result'                  => 'exams#reset_exam_result'
    post 'set_exam'                          => 'tenants#set_exam'
-   post 'reset_exam'                        => 'tenants#reset_exam'
+   post 'reset_exam'                        => 'tenants#reset_exam' 
+   get '/'                                  => 'health_check#index'
 end
