@@ -13,7 +13,7 @@ default: &default
   adapter: postgresql
   encoding: unicode 
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: <%= ENV['DB_NAME'] %>
+ # database: <%= ENV['DB_NAME'] %>
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   host: <%= ENV['DB_HOST'] %>
@@ -28,7 +28,7 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV["DB_NAME"] %>
+  database:  "resultgeek-dev"
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
